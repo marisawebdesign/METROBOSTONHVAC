@@ -924,35 +924,135 @@
             margin-bottom: 2px;
         }
 
-        .local-image {
+        /* Service Area Map */
+        .service-area-map-wrapper {
             position: relative;
             border-radius: 16px;
             overflow: hidden;
             box-shadow: 0 20px 50px rgba(26, 58, 82, 0.15);
+            height: 520px;
         }
 
-        .local-image img {
+        #serviceAreaMap {
             width: 100%;
             height: 100%;
-            object-fit: cover;
-            display: block;
+            z-index: 1;
         }
 
-        .local-image-badge {
+        .map-city-overlay {
             position: absolute;
-            bottom: 20px;
-            left: 20px;
-            background: var(--navy);
-            color: white;
-            padding: 14px 20px;
-            border-radius: 10px;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            width: 260px;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(6px);
+            z-index: 2;
+            overflow-y: auto;
+            padding: 20px 16px;
+            border-right: 1px solid rgba(0,0,0,0.08);
+        }
+
+        .map-city-overlay h4 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 18px;
+            color: var(--navy);
+            letter-spacing: 1px;
+            margin-bottom: 6px;
+        }
+
+        .map-region-label {
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            padding: 10px 0 6px;
+            border-bottom: 2px solid;
+            margin-bottom: 6px;
+        }
+
+        .map-region-label.metro { color: var(--orange); border-color: var(--orange); }
+        .map-region-label.south-shore { color: #2196F3; border-color: #2196F3; }
+
+        .map-city-list {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 8px;
+        }
+
+        .map-city-list li {
             display: flex;
             align-items: center;
-            gap: 10px;
-            font-weight: 700;
-            font-size: 15px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            gap: 8px;
+            padding: 5px 8px;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--gray-600);
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s ease;
         }
+
+        .map-city-list li:hover,
+        .map-city-list li.active {
+            background: rgba(26, 58, 82, 0.08);
+            color: var(--navy);
+        }
+
+        .map-city-list li .city-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            flex-shrink: 0;
+            border: 2px solid;
+            background: transparent;
+            transition: all 0.2s ease;
+        }
+
+        .map-city-list li:hover .city-dot,
+        .map-city-list li.active .city-dot {
+            background: currentColor;
+        }
+
+        .map-city-list.metro .city-dot { border-color: var(--orange); }
+        .map-city-list.metro li:hover .city-dot,
+        .map-city-list.metro li.active .city-dot { background: var(--orange); }
+
+        .map-city-list.south-shore .city-dot { border-color: #2196F3; }
+        .map-city-list.south-shore li:hover .city-dot,
+        .map-city-list.south-shore li.active .city-dot { background: #2196F3; }
+
+        .map-legend {
+            position: absolute;
+            bottom: 16px;
+            right: 16px;
+            background: rgba(255,255,255,0.92);
+            backdrop-filter: blur(6px);
+            border-radius: 10px;
+            padding: 12px 16px;
+            z-index: 2;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .map-legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--navy);
+        }
+
+        .map-legend-item + .map-legend-item { margin-top: 6px; }
+
+        .map-legend-swatch {
+            width: 16px;
+            height: 16px;
+            border-radius: 4px;
+        }
+
+        .map-legend-swatch.metro { background: rgba(255, 107, 53, 0.35); border: 2px solid var(--orange); }
+        .map-legend-swatch.south-shore { background: rgba(33, 150, 243, 0.25); border: 2px solid #2196F3; }
 
         .local-image-badge svg {
             width: 22px;
@@ -1253,9 +1353,14 @@
                 order: 2;
             }
 
-            .local-image {
+            .service-area-map-wrapper {
                 order: 1;
-                max-height: 400px;
+                height: 460px;
+            }
+
+            .map-city-overlay {
+                width: 220px;
+                padding: 16px 12px;
             }
         }
 
@@ -1302,6 +1407,24 @@
                 padding: 60px 20px;
             }
 
+            .service-area-map-wrapper {
+                height: 400px;
+            }
+
+            .map-city-overlay {
+                width: 190px;
+                padding: 14px 10px;
+            }
+
+            .map-city-overlay h4 {
+                font-size: 15px;
+            }
+
+            .map-city-list li {
+                font-size: 11px;
+                padding: 4px 6px;
+            }
+
             .reviews-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
@@ -1337,6 +1460,7 @@
             }
         }
     </style>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 </head>
 <body>
 
@@ -1696,7 +1820,7 @@
                 <h2 class="local-title">Your Neighbors Trust Us With Their Comfort</h2>
 
                 <p class="local-text">
-                    We've been taking care of homes and businesses across Stoughton and the surrounding communities for <strong>over 30 years</strong>. When your AC goes out on the hottest day of the summer or your furnace stops working in the middle of January, you need someone who actually picks up the phone.
+                    We've been taking care of homes and businesses across Greater Boston and the South Shore for <strong>over 30 years</strong>. When your AC goes out on the hottest day of the summer or your furnace stops working in the middle of January, you need someone who actually picks up the phone.
                 </p>
 
                 <p class="local-text">
@@ -1744,13 +1868,70 @@
                 </div>
             </div>
 
-            <div class="local-image">
-                <img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=800&q=80" alt="HVAC technician servicing residential AC unit">
-                <div class="local-image-badge">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-                    </svg>
-                    30+ Years Serving MA
+            <div class="service-area-map-wrapper">
+                <div class="map-city-overlay">
+                    <h4>Service Areas</h4>
+
+                    <div class="map-region-label metro">Boston Metro</div>
+                    <ul class="map-city-list metro" id="metroList">
+                        <li data-city="boston"><span class="city-dot"></span>Boston</li>
+                        <li data-city="brookline"><span class="city-dot"></span>Brookline</li>
+                        <li data-city="cambridge"><span class="city-dot"></span>Cambridge</li>
+                        <li data-city="somerville"><span class="city-dot"></span>Somerville</li>
+                        <li data-city="newton"><span class="city-dot"></span>Newton</li>
+                        <li data-city="quincy"><span class="city-dot"></span>Quincy</li>
+                        <li data-city="dedham"><span class="city-dot"></span>Dedham</li>
+                        <li data-city="milton"><span class="city-dot"></span>Milton</li>
+                        <li data-city="needham"><span class="city-dot"></span>Needham</li>
+                        <li data-city="wellesley"><span class="city-dot"></span>Wellesley</li>
+                        <li data-city="waltham"><span class="city-dot"></span>Waltham</li>
+                        <li data-city="medford"><span class="city-dot"></span>Medford</li>
+                        <li data-city="malden"><span class="city-dot"></span>Malden</li>
+                        <li data-city="watertown"><span class="city-dot"></span>Watertown</li>
+                        <li data-city="arlington"><span class="city-dot"></span>Arlington</li>
+                        <li data-city="belmont"><span class="city-dot"></span>Belmont</li>
+                        <li data-city="lexington"><span class="city-dot"></span>Lexington</li>
+                        <li data-city="norwood"><span class="city-dot"></span>Norwood</li>
+                        <li data-city="canton"><span class="city-dot"></span>Canton</li>
+                        <li data-city="weston"><span class="city-dot"></span>Weston</li>
+                    </ul>
+
+                    <div class="map-region-label south-shore">South Shore</div>
+                    <ul class="map-city-list south-shore" id="southShoreList">
+                        <li data-city="stoughton"><span class="city-dot"></span>Stoughton</li>
+                        <li data-city="braintree"><span class="city-dot"></span>Braintree</li>
+                        <li data-city="weymouth"><span class="city-dot"></span>Weymouth</li>
+                        <li data-city="randolph"><span class="city-dot"></span>Randolph</li>
+                        <li data-city="brockton"><span class="city-dot"></span>Brockton</li>
+                        <li data-city="avon"><span class="city-dot"></span>Avon</li>
+                        <li data-city="holbrook"><span class="city-dot"></span>Holbrook</li>
+                        <li data-city="abington"><span class="city-dot"></span>Abington</li>
+                        <li data-city="rockland"><span class="city-dot"></span>Rockland</li>
+                        <li data-city="hanover"><span class="city-dot"></span>Hanover</li>
+                        <li data-city="hingham"><span class="city-dot"></span>Hingham</li>
+                        <li data-city="norwell"><span class="city-dot"></span>Norwell</li>
+                        <li data-city="scituate"><span class="city-dot"></span>Scituate</li>
+                        <li data-city="marshfield"><span class="city-dot"></span>Marshfield</li>
+                        <li data-city="plymouth"><span class="city-dot"></span>Plymouth</li>
+                        <li data-city="easton"><span class="city-dot"></span>Easton</li>
+                        <li data-city="sharon"><span class="city-dot"></span>Sharon</li>
+                        <li data-city="foxborough"><span class="city-dot"></span>Foxborough</li>
+                        <li data-city="mansfield"><span class="city-dot"></span>Mansfield</li>
+                        <li data-city="taunton"><span class="city-dot"></span>Taunton</li>
+                    </ul>
+                </div>
+
+                <div id="serviceAreaMap"></div>
+
+                <div class="map-legend">
+                    <div class="map-legend-item">
+                        <div class="map-legend-swatch metro"></div>
+                        Boston Metro
+                    </div>
+                    <div class="map-legend-item">
+                        <div class="map-legend-swatch south-shore"></div>
+                        South Shore
+                    </div>
                 </div>
             </div>
         </div>
@@ -1937,5 +2118,177 @@
         </div>
     </section>
 
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+(function() {
+    var map = L.map('serviceAreaMap', {
+        center: [42.18, -71.02],
+        zoom: 10,
+        zoomControl: false,
+        scrollWheelZoom: false,
+        attributionControl: false
+    });
+
+    L.control.zoom({ position: 'topright' }).addTo(map);
+
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+        attribution: '© OpenStreetMap © CARTO',
+        maxZoom: 16,
+        minZoom: 9
+    }).addTo(map);
+
+    // City coordinates
+    var cities = {
+        // Boston Metro
+        boston:     { lat: 42.3601, lng: -71.0589, region: 'metro' },
+        brookline: { lat: 42.3318, lng: -71.1212, region: 'metro' },
+        cambridge: { lat: 42.3736, lng: -71.1097, region: 'metro' },
+        somerville:{ lat: 42.3876, lng: -71.0995, region: 'metro' },
+        newton:    { lat: 42.3370, lng: -71.2092, region: 'metro' },
+        quincy:    { lat: 42.2529, lng: -71.0023, region: 'metro' },
+        dedham:    { lat: 42.2418, lng: -71.1663, region: 'metro' },
+        milton:    { lat: 42.2498, lng: -71.0662, region: 'metro' },
+        needham:   { lat: 42.2804, lng: -71.2328, region: 'metro' },
+        wellesley: { lat: 42.2968, lng: -71.2924, region: 'metro' },
+        waltham:   { lat: 42.3765, lng: -71.2356, region: 'metro' },
+        medford:   { lat: 42.4184, lng: -71.1062, region: 'metro' },
+        malden:    { lat: 42.4251, lng: -71.0662, region: 'metro' },
+        watertown: { lat: 42.3709, lng: -71.1828, region: 'metro' },
+        arlington: { lat: 42.4153, lng: -71.1564, region: 'metro' },
+        belmont:   { lat: 42.3959, lng: -71.1789, region: 'metro' },
+        lexington: { lat: 42.4473, lng: -71.2245, region: 'metro' },
+        norwood:   { lat: 42.1946, lng: -71.1995, region: 'metro' },
+        canton:    { lat: 42.1584, lng: -71.1448, region: 'metro' },
+        weston:    { lat: 42.3668, lng: -71.3031, region: 'metro' },
+        // South Shore
+        stoughton: { lat: 42.1251, lng: -71.0984, region: 'south-shore' },
+        braintree: { lat: 42.2041, lng: -70.9992, region: 'south-shore' },
+        weymouth:  { lat: 42.2188, lng: -70.9396, region: 'south-shore' },
+        randolph:  { lat: 42.1626, lng: -71.0418, region: 'south-shore' },
+        brockton:  { lat: 42.0834, lng: -71.0184, region: 'south-shore' },
+        avon:      { lat: 42.1307, lng: -71.0412, region: 'south-shore' },
+        holbrook:  { lat: 42.1551, lng: -70.9904, region: 'south-shore' },
+        abington:  { lat: 42.1048, lng: -70.9454, region: 'south-shore' },
+        rockland:  { lat: 42.1307, lng: -70.9076, region: 'south-shore' },
+        hanover:   { lat: 42.1132, lng: -70.8120, region: 'south-shore' },
+        hingham:   { lat: 42.2418, lng: -70.8898, region: 'south-shore' },
+        norwell:   { lat: 42.1612, lng: -70.7932, region: 'south-shore' },
+        scituate:  { lat: 42.1951, lng: -70.7256, region: 'south-shore' },
+        marshfield:{ lat: 42.0918, lng: -70.7076, region: 'south-shore' },
+        plymouth:  { lat: 41.9584, lng: -70.6673, region: 'south-shore' },
+        easton:    { lat: 42.0243, lng: -71.1284, region: 'south-shore' },
+        sharon:    { lat: 42.1237, lng: -71.1784, region: 'south-shore' },
+        foxborough:{ lat: 42.0654, lng: -71.2476, region: 'south-shore' },
+        mansfield: { lat: 42.0334, lng: -71.2189, region: 'south-shore' },
+        taunton:   { lat: 41.9001, lng: -71.0898, region: 'south-shore' }
+    };
+
+    // Region polygons (approximate convex hulls)
+    var metroPolygon = L.polygon([
+        [42.46, -71.30], [42.46, -71.04], [42.40, -70.96],
+        [42.35, -70.94], [42.30, -70.95], [42.24, -70.97],
+        [42.19, -71.04], [42.15, -71.12], [42.18, -71.20],
+        [42.24, -71.24], [42.28, -71.30], [42.34, -71.32],
+        [42.38, -71.31], [42.44, -71.28]
+    ], {
+        color: '#ff6b35',
+        weight: 2,
+        fillColor: '#ff6b35',
+        fillOpacity: 0.12,
+        dashArray: '6 4'
+    }).addTo(map);
+
+    var southShorePolygon = L.polygon([
+        [42.24, -70.97], [42.25, -70.88], [42.22, -70.72],
+        [42.16, -70.68], [42.09, -70.66], [41.94, -70.64],
+        [41.88, -70.72], [41.88, -71.08], [41.90, -71.12],
+        [42.02, -71.26], [42.07, -71.26], [42.12, -71.20],
+        [42.15, -71.12], [42.19, -71.04]
+    ], {
+        color: '#2196F3',
+        weight: 2,
+        fillColor: '#2196F3',
+        fillOpacity: 0.10,
+        dashArray: '6 4'
+    }).addTo(map);
+
+    // Add city markers (small circles, hidden by default)
+    var markers = {};
+    Object.keys(cities).forEach(function(key) {
+        var c = cities[key];
+        var color = c.region === 'metro' ? '#ff6b35' : '#2196F3';
+        markers[key] = L.circleMarker([c.lat, c.lng], {
+            radius: 5,
+            fillColor: color,
+            color: '#fff',
+            weight: 2,
+            fillOpacity: 0.7
+        }).addTo(map);
+        markers[key].bindTooltip(key.charAt(0).toUpperCase() + key.slice(1), {
+            direction: 'top',
+            offset: [0, -8],
+            className: 'city-tooltip'
+        });
+    });
+
+    // Hover interaction: city list <-> map markers
+    var activeItem = null;
+    var activeMarker = null;
+
+    document.querySelectorAll('.map-city-list li').forEach(function(li) {
+        var cityKey = li.getAttribute('data-city');
+        li.addEventListener('mouseenter', function() {
+            if (activeItem) activeItem.classList.remove('active');
+            if (activeMarker) {
+                activeMarker.setRadius(5);
+                activeMarker.closeTooltip();
+            }
+            li.classList.add('active');
+            activeItem = li;
+
+            var marker = markers[cityKey];
+            if (marker) {
+                marker.setRadius(10);
+                marker.openTooltip();
+                activeMarker = marker;
+            }
+        });
+
+        li.addEventListener('mouseleave', function() {
+            li.classList.remove('active');
+            activeItem = null;
+            if (activeMarker) {
+                activeMarker.setRadius(5);
+                activeMarker.closeTooltip();
+                activeMarker = null;
+            }
+        });
+
+        li.addEventListener('click', function() {
+            var c = cities[cityKey];
+            if (c) map.flyTo([c.lat, c.lng], 13, { duration: 0.8 });
+        });
+    });
+
+    // Region label overlays
+    L.marker([42.35, -71.14], {
+        icon: L.divIcon({
+            className: 'region-label-icon',
+            html: '<span style="background:rgba(255,107,53,0.85);color:#fff;padding:4px 12px;border-radius:6px;font-size:12px;font-weight:700;letter-spacing:1px;white-space:nowrap;">BOSTON METRO</span>',
+            iconSize: [110, 24],
+            iconAnchor: [55, 12]
+        })
+    }).addTo(map);
+
+    L.marker([42.08, -70.92], {
+        icon: L.divIcon({
+            className: 'region-label-icon',
+            html: '<span style="background:rgba(33,150,243,0.85);color:#fff;padding:4px 12px;border-radius:6px;font-size:12px;font-weight:700;letter-spacing:1px;white-space:nowrap;">SOUTH SHORE</span>',
+            iconSize: [110, 24],
+            iconAnchor: [55, 12]
+        })
+    }).addTo(map);
+})();
+</script>
 </body>
 </html>
