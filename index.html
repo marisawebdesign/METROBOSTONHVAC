@@ -42,8 +42,12 @@
         .header-top {
             background: var(--white);
             border-bottom: 1px solid var(--gray-200);
-            position: relative;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
             z-index: 1001;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
         }
 
         .header-top-inner {
@@ -229,8 +233,10 @@
         /* ==================== NAVIGATION BAR ==================== */
         .header-nav {
             background: var(--navy-dark);
-            position: sticky;
-            top: 0;
+            position: fixed;
+            top: 106px;
+            left: 0;
+            right: 0;
             z-index: 1000;
             border-bottom: 3px solid var(--orange);
         }
@@ -517,12 +523,13 @@
 
         /* ==================== HERO ==================== */
         .hero {
-            min-height: 75vh;
+            min-height: 100vh;
             position: relative;
             display: flex;
             flex-direction: column;
             justify-content: center;
             overflow: hidden;
+            padding-top: 156px;
         }
 
         .hero-background {
@@ -673,94 +680,124 @@
             height: 20px;
         }
 
-        .cta-quote {
+        /* Google 5-Star Badge */
+        .google-badge {
             display: inline-flex;
             align-items: center;
             gap: 10px;
-            background: var(--white);
-            color: var(--navy-dark);
-            padding: 16px 36px;
-            font-size: 18px;
-            font-weight: 700;
-            text-decoration: none;
-            border-radius: 8px;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+            background: rgba(255,255,255,0.12);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 40px;
+            padding: 10px 22px;
+            margin-bottom: 24px;
         }
 
-        .cta-quote:hover {
-            background: var(--gray-100);
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
-        }
-
-        .cta-quote svg {
-            width: 20px;
-            height: 20px;
-            color: var(--orange);
-        }
-
-        /* Credentials Banner */
-        .credentials-banner {
-            background: var(--gray-light);
-            backdrop-filter: blur(10px);
-            border-radius: 12px;
-            padding: 20px 32px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 24px;
-            flex-wrap: wrap;
-            border: 1px solid rgba(255,255,255,0.1);
-        }
-
-        .credential-photo {
-            width: 56px;
-            height: 56px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--navy), var(--navy-dark));
-            border: 3px solid var(--orange);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-        }
-
-        .credential-photo svg {
-            width: 32px;
-            height: 32px;
-            color: var(--orange);
-        }
-
-        .credential-text {
-            font-size: 18px;
-            font-weight: 700;
-            color: var(--white);
-            letter-spacing: 0.5px;
-        }
-
-        .stars-rating {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .stars {
+        .google-badge-stars {
             display: flex;
             gap: 2px;
         }
 
-        .stars svg {
-            width: 20px;
-            height: 20px;
-            color: var(--gold);
+        .google-badge-stars svg {
+            width: 18px;
+            height: 18px;
             fill: var(--gold);
+            color: var(--gold);
         }
 
-        .rating-text {
-            font-size: 16px;
-            font-weight: 600;
+        .google-badge-text {
+            font-size: 14px;
+            font-weight: 700;
             color: var(--white);
+            letter-spacing: 0.3px;
+        }
+
+        /* Hero Tagline */
+        .hero-tagline {
+            font-size: clamp(15px, 2vw, 19px);
+            font-weight: 600;
+            color: rgba(255,255,255,0.75);
+            margin-bottom: 36px;
+            letter-spacing: 0.5px;
+        }
+
+        /* Contact Alternatives */
+        .contact-alternatives {
+            margin-top: 8px;
+        }
+
+        .contact-divider-text {
+            display: block;
+            font-size: 14px;
+            font-weight: 600;
+            color: rgba(255,255,255,0.5);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 16px;
+        }
+
+        .contact-options {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .contact-option {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            background: rgba(255,255,255,0.08);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 12px;
+            padding: 16px 28px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            min-width: 240px;
+        }
+
+        .contact-option:hover {
+            background: rgba(255,255,255,0.15);
+            border-color: var(--orange);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        .contact-option-icon {
+            width: 44px;
+            height: 44px;
+            background: var(--orange);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .contact-option-icon svg {
+            width: 22px;
+            height: 22px;
+            color: white;
+        }
+
+        .contact-option-info {
+            display: flex;
+            flex-direction: column;
+            text-align: left;
+        }
+
+        .contact-option-label {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--white);
+            line-height: 1.2;
+        }
+
+        .contact-option-detail {
+            font-size: 13px;
+            color: rgba(255,255,255,0.6);
+            line-height: 1.3;
         }
 
         /* ==================== LOCAL SERVICE SECTION ==================== */
@@ -1176,6 +1213,10 @@
                 display: none;
             }
 
+            .hero {
+                padding-top: 90px;
+            }
+
             .local-container {
                 grid-template-columns: 1fr;
                 gap: 40px;
@@ -1206,10 +1247,18 @@
                 font-size: 22px;
             }
 
-            .credentials-banner {
+            .contact-options {
                 flex-direction: column;
-                padding: 16px 20px;
-                gap: 12px;
+                align-items: center;
+            }
+
+            .contact-option {
+                min-width: 280px;
+                padding: 14px 22px;
+            }
+
+            .google-badge {
+                padding: 8px 16px;
             }
 
             .local-section {
@@ -1325,7 +1374,7 @@
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
                 </svg>
-                GET SERVICE
+                GET INSTANT SERVICE QUOTE
             </a>
 
             <!-- Mobile Toggle -->
@@ -1475,17 +1524,39 @@
         <div class="hero-overlay"></div>
 
         <div class="hero-content">
+            <!-- Google 5-Star Badge -->
+            <div class="google-badge">
+                <svg viewBox="0 0 272 92" height="20" style="opacity:0.9">
+                    <path fill="#4285F4" d="M115.75 47.18c0 12.77-9.99 22.18-22.25 22.18s-22.25-9.41-22.25-22.18C71.25 34.32 81.24 25 93.5 25s22.25 9.32 22.25 22.18zm-9.74 0c0-7.98-5.79-13.44-12.51-13.44S80.99 39.2 80.99 47.18c0 7.9 5.79 13.44 12.51 13.44s12.51-5.55 12.51-13.44z"/>
+                    <path fill="#EA4335" d="M163.75 47.18c0 12.77-9.99 22.18-22.25 22.18s-22.25-9.41-22.25-22.18c0-12.85 9.99-22.18 22.25-22.18s22.25 9.32 22.25 22.18zm-9.74 0c0-7.98-5.79-13.44-12.51-13.44s-12.51 5.46-12.51 13.44c0 7.9 5.79 13.44 12.51 13.44s12.51-5.55 12.51-13.44z"/>
+                    <path fill="#FBBC05" d="M209.75 26.34v39.82c0 16.38-9.66 23.07-21.08 23.07-10.75 0-17.22-7.19-19.66-13.07l8.48-3.53c1.51 3.61 5.21 7.87 11.17 7.87 7.31 0 11.84-4.51 11.84-13v-3.19h-.34c-2.18 2.69-6.38 5.04-11.68 5.04-11.09 0-21.25-9.66-21.25-22.09 0-12.52 10.16-22.26 21.25-22.26 5.29 0 9.49 2.35 11.68 4.96h.34v-3.61h9.25zm-8.56 20.92c0-7.81-5.21-13.52-11.84-13.52-6.72 0-12.35 5.71-12.35 13.52 0 7.73 5.63 13.36 12.35 13.36 6.63 0 11.84-5.63 11.84-13.36z"/>
+                    <path fill="#4285F4" d="M225 3v65h-9.5V3h9.5z"/>
+                    <path fill="#34A853" d="M262.02 54.48l7.56 5.04c-2.44 3.61-8.32 9.83-18.48 9.83-12.6 0-22.01-9.74-22.01-22.18 0-13.19 9.49-22.18 20.92-22.18 11.51 0 17.14 9.16 18.98 14.11l1.01 2.52-29.65 12.28c2.27 4.45 5.8 6.72 10.75 6.72 4.96 0 8.4-2.44 10.92-6.14zm-23.27-7.98l19.82-8.23c-1.09-2.77-4.37-4.7-8.23-4.7-4.95 0-11.84 4.37-11.59 12.93z"/>
+                    <path fill="#EA4335" d="M35.29 41.41V32H67c.31 1.64.47 3.58.47 5.68 0 7.06-1.93 15.79-8.15 22.01-6.05 6.3-13.78 9.66-24.02 9.66C16.32 69.35.36 53.89.36 34.91.36 15.93 16.32.47 35.3.47c10.5 0 17.98 4.12 23.6 9.49l-6.64 6.64c-4.03-3.78-9.49-6.72-16.97-6.72-13.86 0-24.7 11.17-24.7 25.03 0 13.86 10.84 25.03 24.7 25.03 8.99 0 14.11-3.61 17.39-6.89 2.66-2.66 4.41-6.46 5.1-11.65l-22.49.01z"/>
+                </svg>
+                <div class="google-badge-stars">
+                    <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                </div>
+                <span class="google-badge-text">5-Star Rated</span>
+            </div>
+
             <h1 class="headline">
-                <span class="accent">Furnace Failed?</span><br>
-                We're On Our Way
+                <span class="accent">Metro Boston HVAC</span>
             </h1>
 
             <p class="subheadline">
-                24/7 Emergency HVAC Service Across Greater Boston
-                <span class="separator">&bull;</span>
-                Most Appointments Within 1 Hour
+                <span class="accent">Furnace Failed?</span> We're On Our Way.
             </p>
 
+            <p class="hero-tagline">
+                Serving Homes Throughout the Greater Boston Community for Over 30 Years
+            </p>
+
+            <!-- Primary CTA — Call -->
             <div class="cta-section">
                 <a href="tel:7814082506" class="cta-primary">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
@@ -1493,44 +1564,35 @@
                     </svg>
                     Call Now: (781) 408-2506
                 </a>
-
-                <a href="/resources/instant-quote" class="cta-secondary">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
-                        <line x1="16" y1="2" x2="16" y2="6"/>
-                        <line x1="8" y1="2" x2="8" y2="6"/>
-                        <line x1="3" y1="10" x2="21" y2="10"/>
-                    </svg>
-                    Schedule Service Online
-                </a>
-
-                <a href="/resources/instant-quote" class="cta-quote">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
-                        <line x1="8" y1="21" x2="16" y2="21"/>
-                        <line x1="12" y1="17" x2="12" y2="21"/>
-                    </svg>
-                    Get an Instant Job Quote
-                </a>
             </div>
 
-            <div class="credentials-banner">
-                <div class="credential-photo">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
-                        <circle cx="12" cy="7" r="4"/>
-                    </svg>
-                </div>
-                <span class="credential-text">Licensed MA Contractor | 30+ Years Experience</span>
-                <div class="stars-rating">
-                    <div class="stars">
-                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                    </div>
-                    <span class="rating-text">100s of 5-Star Reviews</span>
+            <!-- Alternative Contact Options -->
+            <div class="contact-alternatives">
+                <span class="contact-divider-text">Or reach us another way</span>
+                <div class="contact-options">
+                    <a href="sms:7814082506" class="contact-option">
+                        <div class="contact-option-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                            </svg>
+                        </div>
+                        <div class="contact-option-info">
+                            <span class="contact-option-label">Text Us Instead</span>
+                            <span class="contact-option-detail">(781) 408-2506</span>
+                        </div>
+                    </a>
+                    <a href="mailto:service@metrobostonhvac.com" class="contact-option">
+                        <div class="contact-option-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="2" y="4" width="20" height="16" rx="2"/>
+                                <path d="M22 7l-10 7L2 7"/>
+                            </svg>
+                        </div>
+                        <div class="contact-option-info">
+                            <span class="contact-option-label">Contact Us by Email</span>
+                            <span class="contact-option-detail">Quick response guaranteed</span>
+                        </div>
+                    </a>
                 </div>
             </div>
         </div>
