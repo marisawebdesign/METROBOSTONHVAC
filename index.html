@@ -968,22 +968,6 @@
             display: block;
         }
 
-        .local-image-badge {
-            position: absolute;
-            bottom: 20px;
-            left: 20px;
-            background: var(--navy);
-            color: white;
-            padding: 14px 20px;
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-weight: 700;
-            font-size: 15px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-        }
-
         /* Service Area Map */
         .service-area-section {
             max-width: 1200px;
@@ -1163,12 +1147,6 @@
 
         .map-city-list.south-shore li:hover .city-pin,
         .map-city-list.south-shore li.active .city-pin { color: var(--navy); filter: drop-shadow(0 0 3px rgba(26,58,82,0.4)); }
-
-        .local-image-badge svg {
-            width: 22px;
-            height: 22px;
-            color: var(--orange);
-        }
 
         /* ==================== REVIEWS SECTION ==================== */
         .reviews-section {
@@ -1581,6 +1559,67 @@
                 height: 14px;
             }
         }
+        /* ==================== SCROLL ANIMATIONS ==================== */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .scroll-reveal {
+            opacity: 0;
+        }
+
+        .scroll-reveal.revealed {
+            animation-fill-mode: forwards;
+            animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .scroll-reveal.revealed.fade-up {
+            animation-name: fadeInUp;
+            animation-duration: 0.7s;
+        }
+
+        .scroll-reveal.revealed.fade-left {
+            animation-name: fadeInLeft;
+            animation-duration: 0.8s;
+        }
+
+        .scroll-reveal.revealed.fade-right {
+            animation-name: fadeInRight;
+            animation-duration: 0.8s;
+        }
+
+        .scroll-reveal.delay-1 { animation-delay: 0.15s; }
+        .scroll-reveal.delay-2 { animation-delay: 0.3s; }
+
     </style>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 </head>
@@ -1940,7 +1979,7 @@
     <!-- ==================== LOCAL SERVICE SECTION ==================== -->
     <section class="local-section">
         <div class="local-container">
-            <div class="local-content">
+            <div class="local-content scroll-reveal fade-left">
                 <div class="section-label">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <circle cx="12" cy="10" r="3"/>
@@ -2000,14 +2039,8 @@
                 </div>
             </div>
 
-            <div class="local-image">
+            <div class="local-image scroll-reveal fade-right delay-1">
                 <img src="van.jpg" alt="Metro Boston HVAC service van">
-                <div class="local-image-badge">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-                    </svg>
-                    30+ Years Serving MA
-                </div>
             </div>
         </div>
 
@@ -2459,6 +2492,29 @@
         })
     }).addTo(map);
 })();
+</script>
+<script>
+    // Scroll-triggered reveal animations
+    (function() {
+        var revealElements = document.querySelectorAll('.scroll-reveal');
+        if (!revealElements.length) return;
+
+        var observer = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('revealed');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.15,
+            rootMargin: '0px 0px -40px 0px'
+        });
+
+        revealElements.forEach(function(el) {
+            observer.observe(el);
+        });
+    })();
 </script>
 </body>
 </html>
