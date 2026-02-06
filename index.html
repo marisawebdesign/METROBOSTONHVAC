@@ -488,6 +488,34 @@
             height: 22px;
         }
 
+        /* Mobile Quote Button */
+        .mobile-quote-btn-wrap {
+            padding: 16px 24px 0;
+        }
+
+        .mobile-quote-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            padding: 14px 24px;
+            background: linear-gradient(135deg, var(--orange), #e85d2a);
+            color: white;
+            font-size: 17px;
+            font-weight: 700;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
+        }
+
+        .mobile-quote-btn svg {
+            width: 20px;
+            height: 20px;
+        }
+
         /* Mobile trust badges */
         .mobile-trust-strip {
             display: flex;
@@ -1714,7 +1742,7 @@
                         <path d="M9 12l2 2 4-4" stroke="#ff6b35" stroke-width="2.5"/>
                     </svg>
                 </div>
-                <span>Licensed & Insured</span>
+                <span>Licensed & Insured #081600137</span>
             </div>
             <div class="mobile-trust-item">
                 <div class="mobile-trust-icon reviews">
@@ -1744,13 +1772,23 @@
             </div>
         </div>
 
+        <div class="mobile-quote-btn-wrap">
+            <a href="/resources/instant-quote" class="mobile-quote-btn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+                    <line x1="8" y1="21" x2="16" y2="21"/>
+                    <line x1="12" y1="17" x2="12" y2="21"/>
+                </svg>
+                Get Instant Quote
+            </a>
+        </div>
+
         <div class="mobile-menu-links">
             <span class="mobile-section-label">Services</span>
             <a href="/services/emergency">Emergency Services</a>
             <a href="/services/maintenance">Ongoing Maintenance</a>
 
             <span class="mobile-section-label">Resources</span>
-            <a href="/resources/instant-quote">Instant Quote</a>
             <a href="/resources/service-area">Service Area</a>
             <a href="/resources/faq">FAQ</a>
             <a href="/resources/loyalty-program">Loyalty Program</a>
@@ -1799,9 +1837,9 @@
             </h1>
 
             <p class="subheadline">
-                24/7 On-Demand Emergency Service
+                <span>24/7 On-Demand Emergency Service</span>
                 <span class="separator">&bull;</span>
-                Most Appointments Within 1 Hour
+                <span>Most Appointments Within 1 Hour</span>
             </p>
 
             <!-- Primary CTA — Call -->
