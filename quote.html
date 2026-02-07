@@ -1,0 +1,2621 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instant Quote Calculator | Metro Boston HVAC | Stoughton MA</title>
+    <meta name="description" content="Get an instant HVAC service quote in 60 seconds. Emergency repair, installation, and maintenance pricing for Stoughton MA and surrounding areas.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --navy: #1a3a52;
+            --navy-dark: #0f2536;
+            --navy-light: #2a5070;
+            --orange: #ff6b35;
+            --orange-glow: #ff8855;
+            --gold: #ffd700;
+            --white: #ffffff;
+            --gray-50: #f9fafb;
+            --gray-100: #f3f4f6;
+            --gray-200: #e5e7eb;
+            --gray-400: #9ca3af;
+            --gray-600: #4b5563;
+            --gray-800: #1f2937;
+            --gray-light: rgba(255,255,255,0.15);
+        }
+
+        body {
+            font-family: 'Source Sans 3', sans-serif;
+            background: var(--white);
+            color: var(--gray-800);
+            line-height: 1.6;
+        }
+
+        /* ==================== HEADER TOP BAR ==================== */
+        .header-top {
+            background: var(--white);
+            border-bottom: 1px solid var(--gray-200);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1001;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+        }
+
+        .header-top-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 16px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        /* Logo */
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            flex-shrink: 0;
+        }
+
+        .logo img {
+            height: 72px;
+            width: auto;
+            display: block;
+            object-fit: contain;
+        }
+
+        .logo-text {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 30px;
+            color: var(--white);
+            letter-spacing: 1px;
+            line-height: 1;
+        }
+
+        .logo-text span {
+            color: var(--orange);
+        }
+
+        /* Mobile header company name (hidden on desktop) */
+        .header-mobile-name {
+            display: none;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 28px;
+            color: var(--white);
+            letter-spacing: 1.5px;
+            line-height: 1;
+            -webkit-text-stroke: 1.2px var(--navy);
+            text-stroke: 1.2px var(--navy);
+            paint-order: stroke fill;
+        }
+
+        .header-mobile-name span {
+            color: var(--orange);
+            -webkit-text-stroke: 1.2px var(--navy);
+            text-stroke: 1.2px var(--navy);
+        }
+
+        /* Phone Block */
+        .header-phone {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-shrink: 0;
+        }
+
+        .header-phone-icon {
+            width: 44px;
+            height: 44px;
+            background: var(--navy-dark);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .header-phone-icon svg {
+            width: 22px;
+            height: 22px;
+            color: white;
+        }
+
+        .header-phone-info {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .header-phone-number {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 24px;
+            color: var(--navy-dark);
+            letter-spacing: 1px;
+            line-height: 1.1;
+            text-decoration: none;
+        }
+
+        .header-phone-number:hover {
+            color: var(--orange);
+        }
+
+        .header-phone-label {
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--orange);
+            line-height: 1.2;
+        }
+
+        /* Trust Badges */
+        .header-trust-badges {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            flex-shrink: 0;
+        }
+
+        .trust-badge {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+            width: 110px;
+            text-align: center;
+        }
+
+        .trust-badge-icon {
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .trust-badge-icon svg {
+            width: 28px;
+            height: 28px;
+        }
+
+        .trust-badge-icon.emergency {
+            background: var(--orange);
+        }
+
+        .trust-badge-icon.licensed {
+            background: var(--navy-dark);
+        }
+
+        .trust-badge-icon.reviews {
+            background: var(--orange);
+        }
+
+        .trust-badge-icon.local {
+            background: var(--navy-dark);
+        }
+
+        .trust-badge-icon.price {
+            background: #1a8a5c;
+        }
+
+        .trust-badge-label {
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--navy-dark);
+            line-height: 1.25;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+        }
+
+        /* Get Service Button */
+        .get-service-btn {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: var(--orange);
+            color: var(--white);
+            padding: 18px 32px;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 24px;
+            letter-spacing: 2px;
+            text-decoration: none;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 107, 53, 0.4);
+            flex-shrink: 0;
+            white-space: nowrap;
+        }
+
+        .get-service-btn:hover {
+            background: var(--orange-glow);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(255, 107, 53, 0.5);
+        }
+
+        .get-service-btn svg {
+            width: 26px;
+            height: 26px;
+        }
+
+        /* ==================== NAVIGATION BAR ==================== */
+        .header-nav {
+            background: var(--navy-dark);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            margin-top: 106px;
+            border-bottom: 3px solid var(--orange);
+        }
+
+        .header-nav-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            height: 56px;
+        }
+
+        .main-nav {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .nav-item {
+            position: relative;
+        }
+
+        .nav-link {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 16px 22px;
+            color: rgba(255,255,255,0.9);
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: all 0.2s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--white);
+            background: rgba(255,255,255,0.1);
+        }
+
+        .nav-link svg {
+            width: 12px;
+            height: 12px;
+            transition: transform 0.2s ease;
+        }
+
+        .nav-item:hover .nav-link svg {
+            transform: rotate(180deg);
+        }
+
+        /* Dropdown */
+        .dropdown {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            min-width: 220px;
+            background: var(--white);
+            border-radius: 0 0 10px 10px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(5px);
+            transition: all 0.25s ease;
+            padding: 8px;
+            z-index: 100;
+        }
+
+        .nav-item:hover .dropdown {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-link {
+            display: block;
+            padding: 12px 16px;
+            color: var(--gray-800);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            border-radius: 6px;
+            transition: all 0.2s ease;
+            text-transform: none;
+            letter-spacing: 0;
+        }
+
+        .dropdown-link:hover {
+            background: var(--gray-100);
+            color: var(--navy);
+        }
+
+        /* Mobile toggle */
+        .mobile-toggle {
+            display: none;
+            background: none;
+            border: none;
+            padding: 8px;
+            cursor: pointer;
+        }
+
+        .mobile-toggle svg {
+            width: 28px;
+            height: 28px;
+            color: var(--navy-dark);
+        }
+
+        /* Mobile Menu Overlay */
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--navy-dark);
+            z-index: 2000;
+            flex-direction: column;
+            padding: 0;
+            overflow-y: auto;
+        }
+
+        .mobile-menu.active {
+            display: flex;
+        }
+
+        .mobile-menu-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px 24px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .mobile-menu-header .logo-text {
+            color: var(--white);
+        }
+
+        .mobile-menu-close {
+            background: none;
+            border: none;
+            padding: 8px;
+            cursor: pointer;
+        }
+
+        .mobile-menu-close svg {
+            width: 28px;
+            height: 28px;
+            color: white;
+        }
+
+        .mobile-menu-links {
+            display: flex;
+            flex-direction: column;
+            padding: 16px 0;
+        }
+
+        .mobile-menu-links a {
+            display: block;
+            padding: 16px 24px;
+            color: rgba(255,255,255,0.9);
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: 600;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            transition: all 0.2s ease;
+        }
+
+        .mobile-menu-links a:hover {
+            background: rgba(255,255,255,0.05);
+            color: var(--orange);
+        }
+
+        .mobile-menu-links .mobile-section-label {
+            padding: 12px 24px 6px;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--orange);
+            border-bottom: none;
+        }
+
+        .mobile-menu-links .mobile-section-label:hover {
+            background: none;
+            cursor: default;
+        }
+
+        .mobile-menu-cta {
+            margin: 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .mobile-menu-cta a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 16px 24px;
+            border-radius: 10px;
+            font-size: 18px;
+            font-weight: 700;
+            text-decoration: none;
+            text-align: center;
+        }
+
+        .mobile-menu-cta .mobile-call-btn {
+            background: var(--orange);
+            color: white;
+        }
+
+        .mobile-menu-cta .mobile-service-btn {
+            background: rgba(255,255,255,0.1);
+            color: white;
+            border: 2px solid rgba(255,255,255,0.3);
+        }
+
+        .mobile-menu-cta a svg {
+            width: 22px;
+            height: 22px;
+        }
+
+        /* Mobile Quote Button */
+        .mobile-quote-btn-wrap {
+            padding: 16px 24px 0;
+        }
+
+        .mobile-quote-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            padding: 14px 24px;
+            background: linear-gradient(135deg, var(--orange), #e85d2a);
+            color: white;
+            font-size: 17px;
+            font-weight: 700;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
+        }
+
+        .mobile-quote-btn svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        /* Mobile trust badges */
+        .mobile-trust-strip {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 16px;
+            padding: 20px 24px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .mobile-trust-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            width: 72px;
+            text-align: center;
+        }
+
+        .mobile-trust-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .mobile-trust-icon svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        .mobile-trust-icon.emergency { background: var(--orange); }
+        .mobile-trust-icon.licensed { background: var(--navy-dark); }
+        .mobile-trust-icon.reviews { background: var(--orange); }
+        .mobile-trust-icon.local { background: var(--navy-dark); }
+        .mobile-trust-icon.price { background: #1a8a5c; }
+
+        .mobile-trust-item span {
+            font-size: 10px;
+            font-weight: 700;
+            color: rgba(255,255,255,0.85);
+            line-height: 1.25;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+        }
+
+        /* ==================== QUOTE PAGE HERO ==================== */
+        .quote-hero {
+            background: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy) 50%, var(--navy-light) 100%);
+            padding: 60px 24px 48px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .quote-hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at 30% 50%, rgba(255,107,53,0.08) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .quote-hero-content {
+            max-width: 700px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .quote-hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 30px;
+            padding: 8px 20px;
+            margin-bottom: 20px;
+        }
+
+        .quote-hero-badge svg {
+            width: 18px;
+            height: 18px;
+            color: var(--orange);
+        }
+
+        .quote-hero-badge span {
+            font-size: 13px;
+            font-weight: 700;
+            color: rgba(255,255,255,0.9);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
+        .quote-hero h1 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(36px, 6vw, 56px);
+            color: var(--white);
+            line-height: 1.05;
+            letter-spacing: 2px;
+            margin-bottom: 12px;
+        }
+
+        .quote-hero h1 .accent {
+            color: var(--orange);
+        }
+
+        .quote-hero p {
+            font-size: 18px;
+            color: rgba(255,255,255,0.8);
+            line-height: 1.5;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        /* Trust strip below hero */
+        .quote-trust-strip {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 32px;
+            padding: 20px 24px;
+            background: var(--gray-50);
+            border-bottom: 1px solid var(--gray-200);
+        }
+
+        .quote-trust-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--gray-600);
+        }
+
+        .quote-trust-item svg {
+            width: 20px;
+            height: 20px;
+            color: #1a8a5c;
+            flex-shrink: 0;
+        }
+
+        /* ==================== CALCULATOR ==================== */
+        .calculator-section {
+            max-width: 780px;
+            margin: 0 auto;
+            padding: 40px 24px 80px;
+        }
+
+        /* Progress Bar */
+        .progress-bar {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0;
+            margin-bottom: 40px;
+        }
+
+        .progress-step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .progress-circle {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 18px;
+            letter-spacing: 0.5px;
+            border: 3px solid var(--gray-200);
+            background: var(--white);
+            color: var(--gray-400);
+            transition: all 0.3s ease;
+        }
+
+        .progress-step.active .progress-circle {
+            border-color: var(--orange);
+            background: var(--orange);
+            color: var(--white);
+        }
+
+        .progress-step.completed .progress-circle {
+            border-color: #1a8a5c;
+            background: #1a8a5c;
+            color: var(--white);
+        }
+
+        .progress-label {
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--gray-400);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            white-space: nowrap;
+        }
+
+        .progress-step.active .progress-label {
+            color: var(--navy-dark);
+        }
+
+        .progress-step.completed .progress-label {
+            color: #1a8a5c;
+        }
+
+        .progress-line {
+            width: 60px;
+            height: 3px;
+            background: var(--gray-200);
+            margin: 0 -4px;
+            margin-bottom: 22px;
+            transition: background 0.3s ease;
+        }
+
+        .progress-line.completed {
+            background: #1a8a5c;
+        }
+
+        /* Step Cards */
+        .step-card {
+            display: none;
+            background: var(--white);
+            border-radius: 16px;
+            border: 1px solid var(--gray-200);
+            box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+            padding: 40px;
+            animation: fadeIn 0.4s ease;
+        }
+
+        .step-card.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(16px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .step-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 32px;
+            color: var(--navy-dark);
+            letter-spacing: 1px;
+            margin-bottom: 6px;
+        }
+
+        .step-subtitle {
+            font-size: 16px;
+            color: var(--gray-600);
+            margin-bottom: 28px;
+        }
+
+        /* Option Cards (radio buttons styled as cards) */
+        .option-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+            margin-bottom: 0;
+        }
+
+        .option-card {
+            position: relative;
+            cursor: pointer;
+        }
+
+        .option-card input {
+            position: absolute;
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .option-card-inner {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            padding: 24px 16px;
+            border: 2px solid var(--gray-200);
+            border-radius: 12px;
+            transition: all 0.25s ease;
+            text-align: center;
+            background: var(--white);
+        }
+
+        .option-card input:checked + .option-card-inner {
+            border-color: var(--orange);
+            background: rgba(255, 107, 53, 0.04);
+            box-shadow: 0 0 0 3px rgba(255,107,53,0.12);
+        }
+
+        .option-card-inner:hover {
+            border-color: var(--orange);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+        }
+
+        .option-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--gray-100);
+            transition: background 0.25s ease;
+        }
+
+        .option-card input:checked + .option-card-inner .option-icon {
+            background: var(--orange);
+        }
+
+        .option-icon svg {
+            width: 24px;
+            height: 24px;
+            color: var(--navy-dark);
+            transition: color 0.25s ease;
+        }
+
+        .option-card input:checked + .option-card-inner .option-icon svg {
+            color: var(--white);
+        }
+
+        .option-label {
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--navy-dark);
+            line-height: 1.3;
+        }
+
+        .option-desc {
+            font-size: 13px;
+            color: var(--gray-600);
+            line-height: 1.4;
+        }
+
+        /* Form Inputs */
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .form-group.full-width {
+            grid-column: 1 / -1;
+        }
+
+        .form-label {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--navy-dark);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .form-input {
+            padding: 14px 16px;
+            border: 2px solid var(--gray-200);
+            border-radius: 10px;
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 16px;
+            color: var(--gray-800);
+            transition: border-color 0.2s ease;
+            background: var(--white);
+            width: 100%;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--orange);
+            box-shadow: 0 0 0 3px rgba(255,107,53,0.1);
+        }
+
+        .form-input::placeholder {
+            color: var(--gray-400);
+        }
+
+        /* Navigation Buttons */
+        .step-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 32px;
+            gap: 16px;
+        }
+
+        .btn-back {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 28px;
+            background: var(--white);
+            color: var(--gray-600);
+            border: 2px solid var(--gray-200);
+            border-radius: 10px;
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn-back:hover {
+            border-color: var(--gray-400);
+            color: var(--navy-dark);
+        }
+
+        .btn-back svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        .btn-next {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 36px;
+            background: var(--orange);
+            color: var(--white);
+            border: none;
+            border-radius: 10px;
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255,107,53,0.3);
+            margin-left: auto;
+        }
+
+        .btn-next:hover {
+            background: var(--orange-glow);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255,107,53,0.4);
+        }
+
+        .btn-next:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .btn-next svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        /* ==================== RESULTS PAGE ==================== */
+        .results-header {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .results-header h2 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 36px;
+            color: var(--navy-dark);
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+
+        .results-header p {
+            font-size: 16px;
+            color: var(--gray-600);
+        }
+
+        .results-name {
+            color: var(--orange);
+        }
+
+        /* Pricing Tiers */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-bottom: 32px;
+        }
+
+        .pricing-card {
+            border: 2px solid var(--gray-200);
+            border-radius: 16px;
+            padding: 28px 20px;
+            text-align: center;
+            position: relative;
+            background: var(--white);
+            transition: all 0.3s ease;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+        }
+
+        .pricing-card.popular {
+            border-color: var(--orange);
+            box-shadow: 0 4px 24px rgba(255,107,53,0.15);
+            transform: scale(1.03);
+        }
+
+        .pricing-card.popular:hover {
+            transform: scale(1.03) translateY(-4px);
+            box-shadow: 0 8px 30px rgba(255,107,53,0.2);
+        }
+
+        .popular-badge {
+            position: absolute;
+            top: -14px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--orange);
+            color: var(--white);
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            padding: 5px 18px;
+            border-radius: 20px;
+            white-space: nowrap;
+        }
+
+        .pricing-tier-name {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 24px;
+            color: var(--navy-dark);
+            letter-spacing: 1px;
+            margin-bottom: 4px;
+        }
+
+        .pricing-shield {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            margin-bottom: 12px;
+        }
+
+        .pricing-shield svg {
+            width: 20px;
+            height: 20px;
+            color: #1a8a5c;
+        }
+
+        .pricing-shield span {
+            font-size: 12px;
+            font-weight: 700;
+            color: #1a8a5c;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .pricing-range {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 36px;
+            color: var(--navy-dark);
+            letter-spacing: 0.5px;
+            margin-bottom: 16px;
+            line-height: 1.1;
+        }
+
+        .pricing-range .dollar {
+            font-size: 22px;
+            vertical-align: top;
+            margin-right: 2px;
+        }
+
+        .pricing-features {
+            list-style: none;
+            text-align: left;
+            margin-bottom: 20px;
+        }
+
+        .pricing-features li {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            padding: 6px 0;
+            font-size: 14px;
+            color: var(--gray-600);
+            line-height: 1.4;
+        }
+
+        .pricing-features li svg {
+            width: 18px;
+            height: 18px;
+            color: #1a8a5c;
+            flex-shrink: 0;
+            margin-top: 1px;
+        }
+
+        .pricing-select-btn {
+            display: block;
+            width: 100%;
+            padding: 12px 16px;
+            border-radius: 10px;
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 15px;
+            font-weight: 700;
+            text-decoration: none;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+        }
+
+        .pricing-select-btn.outline {
+            background: var(--white);
+            color: var(--navy-dark);
+            border: 2px solid var(--gray-200);
+        }
+
+        .pricing-select-btn.outline:hover {
+            border-color: var(--orange);
+            color: var(--orange);
+        }
+
+        .pricing-select-btn.primary {
+            background: var(--orange);
+            color: var(--white);
+            box-shadow: 0 4px 12px rgba(255,107,53,0.3);
+        }
+
+        .pricing-select-btn.primary:hover {
+            background: var(--orange-glow);
+            transform: translateY(-2px);
+        }
+
+        /* Financing Note */
+        .financing-note {
+            background: var(--gray-50);
+            border: 1px solid var(--gray-200);
+            border-radius: 12px;
+            padding: 20px 24px;
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .financing-note p {
+            font-size: 15px;
+            color: var(--gray-600);
+            line-height: 1.5;
+        }
+
+        .financing-note strong {
+            color: var(--navy-dark);
+        }
+
+        /* Next Steps */
+        .next-steps {
+            background: linear-gradient(135deg, var(--navy-dark), var(--navy));
+            border-radius: 16px;
+            padding: 32px;
+            text-align: center;
+            color: var(--white);
+        }
+
+        .next-steps h3 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 28px;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+        }
+
+        .next-steps p {
+            font-size: 16px;
+            color: rgba(255,255,255,0.8);
+            margin-bottom: 24px;
+            line-height: 1.5;
+        }
+
+        .next-steps-ctas {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .next-steps-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 16px 32px;
+            border-radius: 10px;
+            font-size: 18px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .next-steps-cta.call {
+            background: var(--orange);
+            color: var(--white);
+            box-shadow: 0 4px 15px rgba(255,107,53,0.4);
+        }
+
+        .next-steps-cta.call:hover {
+            background: var(--orange-glow);
+            transform: translateY(-2px);
+        }
+
+        .next-steps-cta.restart {
+            background: rgba(255,255,255,0.1);
+            color: var(--white);
+            border: 2px solid rgba(255,255,255,0.3);
+        }
+
+        .next-steps-cta.restart:hover {
+            background: rgba(255,255,255,0.15);
+            border-color: rgba(255,255,255,0.5);
+        }
+
+        .next-steps-cta svg {
+            width: 22px;
+            height: 22px;
+        }
+
+        /* Disclaimer */
+        .quote-disclaimer {
+            text-align: center;
+            padding: 24px;
+            font-size: 13px;
+            color: var(--gray-400);
+            line-height: 1.5;
+        }
+
+        /* ==================== RESPONSIVE ==================== */
+        @media (max-width: 1200px) {
+            .header-trust-badges {
+                gap: 10px;
+            }
+
+            .trust-badge {
+                width: 95px;
+            }
+
+            .trust-badge-icon {
+                width: 46px;
+                height: 46px;
+            }
+
+            .trust-badge-icon svg {
+                width: 24px;
+                height: 24px;
+            }
+
+            .trust-badge-label {
+                font-size: 10px;
+            }
+
+            .get-service-btn {
+                padding: 14px 24px;
+                font-size: 20px;
+            }
+        }
+
+        @media (max-width: 1024px) {
+            .header-trust-badges {
+                display: none;
+            }
+
+            .header-phone {
+                display: none;
+            }
+
+            .get-service-btn {
+                display: none;
+            }
+
+            .mobile-toggle {
+                display: block;
+            }
+
+            .header-mobile-name {
+                display: block;
+            }
+
+            .header-top-inner {
+                padding: 12px 20px;
+            }
+
+            .main-nav {
+                display: none;
+            }
+
+            .header-nav {
+                display: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .quote-hero {
+                padding: 40px 20px 36px;
+            }
+
+            .quote-trust-strip {
+                gap: 16px;
+                padding: 16px 20px;
+            }
+
+            .quote-trust-item {
+                font-size: 12px;
+            }
+
+            .calculator-section {
+                padding: 28px 16px 60px;
+            }
+
+            .step-card {
+                padding: 28px 20px;
+            }
+
+            .option-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .form-group.full-width {
+                grid-column: 1;
+            }
+
+            .pricing-grid {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+
+            .pricing-card.popular {
+                transform: none;
+                order: -1;
+            }
+
+            .pricing-card.popular:hover {
+                transform: translateY(-4px);
+            }
+
+            .progress-label {
+                font-size: 9px;
+            }
+
+            .progress-circle {
+                width: 34px;
+                height: 34px;
+                font-size: 16px;
+            }
+
+            .progress-line {
+                width: 36px;
+            }
+
+            .next-steps {
+                padding: 24px 20px;
+            }
+
+            .next-steps-ctas {
+                flex-direction: column;
+            }
+
+            .next-steps-cta {
+                justify-content: center;
+            }
+
+            .step-nav {
+                flex-direction: column-reverse;
+                gap: 12px;
+            }
+
+            .btn-next {
+                width: 100%;
+                justify-content: center;
+                margin-left: 0;
+            }
+
+            .btn-back {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .mobile-trust-item {
+                width: 60px;
+            }
+
+            .mobile-trust-icon {
+                width: 42px;
+                height: 42px;
+            }
+
+            .mobile-trust-icon svg {
+                width: 20px;
+                height: 20px;
+            }
+
+            .step-title {
+                font-size: 26px;
+            }
+
+            .option-card-inner {
+                padding: 18px 14px;
+            }
+
+            .quote-hero h1 {
+                font-size: 32px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ==================== HEADER TOP BAR ==================== -->
+    <header class="header-top">
+        <div class="header-top-inner">
+            <a href="index.html" class="logo">
+                <img src="logo.jpg" alt="Metro Boston HVAC - 24/7 Service">
+            </a>
+
+            <!-- Mobile company name (visible only on mobile) -->
+            <span class="header-mobile-name">METRO <span>BOSTON</span> HVAC</span>
+
+            <!-- Phone Block -->
+            <div class="header-phone">
+                <div class="header-phone-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                    </svg>
+                </div>
+                <div class="header-phone-info">
+                    <a href="tel:7814082506" class="header-phone-number">(781) 408-2506</a>
+                    <span class="header-phone-label">Emergency Services Available</span>
+                </div>
+            </div>
+
+            <!-- Trust Badges -->
+            <div class="header-trust-badges">
+                <!-- Emergency Service Repair Specialists -->
+                <div class="trust-badge">
+                    <div class="trust-badge-icon emergency">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+                        </svg>
+                    </div>
+                    <span class="trust-badge-label">Emergency Service Repair Specialists</span>
+                </div>
+
+                <!-- Licensed & Insured -->
+                <div class="trust-badge">
+                    <div class="trust-badge-icon licensed">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 2L4 6v6c0 5.5 3.4 10.7 8 12 4.6-1.3 8-6.5 8-12V6l-8-4z"/>
+                            <path d="M9 12l2 2 4-4" stroke="#ff6b35" stroke-width="2.5"/>
+                        </svg>
+                    </div>
+                    <span class="trust-badge-label">Licensed & Insured #081600137</span>
+                </div>
+
+                <!-- Excellent Customer Reviews -->
+                <div class="trust-badge">
+                    <div class="trust-badge-icon reviews">
+                        <svg viewBox="0 0 24 24" fill="white" stroke="none">
+                            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                        </svg>
+                    </div>
+                    <span class="trust-badge-label">Excellent Customer Reviews</span>
+                </div>
+
+                <!-- Locally Owned -->
+                <div class="trust-badge">
+                    <div class="trust-badge-icon local">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                            <path d="M12 11c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2z" fill="#ff6b35" stroke="#ff6b35"/>
+                        </svg>
+                    </div>
+                    <span class="trust-badge-label">Locally Owned & Operated</span>
+                </div>
+
+                <!-- Price Match Guarantee -->
+                <div class="trust-badge">
+                    <div class="trust-badge-icon price">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 2L4 6v6c0 5.5 3.4 10.7 8 12 4.6-1.3 8-6.5 8-12V6l-8-4z"/>
+                            <text x="12" y="16" text-anchor="middle" font-family="Arial" font-weight="800" font-size="10" fill="white" stroke="none">$</text>
+                        </svg>
+                    </div>
+                    <span class="trust-badge-label">Price Match Guarantee</span>
+                </div>
+            </div>
+
+            <!-- Get Service Button -->
+            <a href="#" class="get-service-btn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+                </svg>
+                GET INSTANT SERVICE QUOTE
+            </a>
+
+            <!-- Mobile Toggle -->
+            <button class="mobile-toggle" aria-label="Menu" onclick="document.getElementById('mobileMenu').classList.add('active')">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="3" y1="12" x2="21" y2="12"/>
+                    <line x1="3" y1="6" x2="21" y2="6"/>
+                    <line x1="3" y1="18" x2="21" y2="18"/>
+                </svg>
+            </button>
+        </div>
+    </header>
+
+    <!-- ==================== NAVIGATION BAR ==================== -->
+    <nav class="header-nav">
+        <div class="header-nav-inner">
+            <div class="main-nav">
+                <!-- Services -->
+                <div class="nav-item">
+                    <a href="#" class="nav-link">
+                        Services
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9"/>
+                        </svg>
+                    </a>
+                    <div class="dropdown">
+                        <a href="/services/emergency" class="dropdown-link">Emergency Services</a>
+                        <a href="/services/maintenance" class="dropdown-link">Ongoing Maintenance</a>
+                    </div>
+                </div>
+
+                <!-- Resources -->
+                <div class="nav-item">
+                    <a href="#" class="nav-link">
+                        Resources
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9"/>
+                        </svg>
+                    </a>
+                    <div class="dropdown">
+                        <a href="quote.html" class="dropdown-link">Instant Quote</a>
+                        <a href="/resources/service-area" class="dropdown-link">Service Area</a>
+                        <a href="/resources/faq" class="dropdown-link">FAQ</a>
+                        <a href="/resources/loyalty-program" class="dropdown-link">Loyalty Program</a>
+                    </div>
+                </div>
+
+                <!-- About Us -->
+                <div class="nav-item">
+                    <a href="#" class="nav-link">
+                        About Us
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9"/>
+                        </svg>
+                    </a>
+                    <div class="dropdown">
+                        <a href="/about/faq" class="dropdown-link">FAQ</a>
+                        <a href="/about/mission" class="dropdown-link">Our Mission</a>
+                    </div>
+                </div>
+
+                <!-- Offers -->
+                <div class="nav-item">
+                    <a href="/offers" class="nav-link">Offers</a>
+                </div>
+
+                <!-- Contact Us -->
+                <div class="nav-item">
+                    <a href="/contact" class="nav-link">Contact Us</a>
+                </div>
+            </div>
+
+        </div>
+    </nav>
+
+    <!-- ==================== MOBILE MENU ==================== -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu-header">
+            <span class="logo-text">METRO <span>BOSTON</span> HVAC</span>
+            <button class="mobile-menu-close" aria-label="Close menu" onclick="document.getElementById('mobileMenu').classList.remove('active')">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="18" y1="6" x2="6" y2="18"/>
+                    <line x1="6" y1="6" x2="18" y2="18"/>
+                </svg>
+            </button>
+        </div>
+
+        <div class="mobile-trust-strip">
+            <div class="mobile-trust-item">
+                <div class="mobile-trust-icon emergency">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+                    </svg>
+                </div>
+                <span>Emergency Service Repair Specialists</span>
+            </div>
+            <div class="mobile-trust-item">
+                <div class="mobile-trust-icon licensed">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 2L4 6v6c0 5.5 3.4 10.7 8 12 4.6-1.3 8-6.5 8-12V6l-8-4z"/>
+                        <path d="M9 12l2 2 4-4" stroke="#ff6b35" stroke-width="2.5"/>
+                    </svg>
+                </div>
+                <span>Licensed & Insured #081600137</span>
+            </div>
+            <div class="mobile-trust-item">
+                <div class="mobile-trust-icon reviews">
+                    <svg viewBox="0 0 24 24" fill="white" stroke="none">
+                        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                    </svg>
+                </div>
+                <span>Excellent Reviews</span>
+            </div>
+            <div class="mobile-trust-item">
+                <div class="mobile-trust-icon local">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                        <path d="M12 11c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2z" fill="#ff6b35" stroke="#ff6b35"/>
+                    </svg>
+                </div>
+                <span>Locally Owned</span>
+            </div>
+            <div class="mobile-trust-item">
+                <div class="mobile-trust-icon price">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 2L4 6v6c0 5.5 3.4 10.7 8 12 4.6-1.3 8-6.5 8-12V6l-8-4z"/>
+                        <text x="12" y="16" text-anchor="middle" font-family="Arial" font-weight="800" font-size="10" fill="white" stroke="none">$</text>
+                    </svg>
+                </div>
+                <span>Price Match Guarantee</span>
+            </div>
+        </div>
+
+        <div class="mobile-quote-btn-wrap">
+            <a href="#" class="mobile-quote-btn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+                    <line x1="8" y1="21" x2="16" y2="21"/>
+                    <line x1="12" y1="17" x2="12" y2="21"/>
+                </svg>
+                Get Instant Quote
+            </a>
+        </div>
+
+        <div class="mobile-menu-links">
+            <span class="mobile-section-label">Services</span>
+            <a href="/services/emergency">Emergency Services</a>
+            <a href="/services/maintenance">Ongoing Maintenance</a>
+
+            <span class="mobile-section-label">Resources</span>
+            <a href="/resources/service-area">Service Area</a>
+            <a href="/resources/faq">FAQ</a>
+            <a href="/resources/loyalty-program">Loyalty Program</a>
+
+            <span class="mobile-section-label">About Us</span>
+            <a href="/about/faq">FAQ</a>
+            <a href="/about/mission">Our Mission</a>
+
+            <a href="/offers">Offers</a>
+            <a href="/contact">Contact Us</a>
+        </div>
+
+        <div class="mobile-menu-cta">
+            <a href="tel:7814082506" class="mobile-call-btn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                </svg>
+                Call (781) 408-2506
+            </a>
+            <a href="#" class="mobile-service-btn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+                </svg>
+                Get Service
+            </a>
+        </div>
+
+    </div>
+
+    <!-- ==================== QUOTE HERO ==================== -->
+    <section class="quote-hero">
+        <div class="quote-hero-content">
+            <div class="quote-hero-badge">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"/>
+                    <polyline points="12 6 12 12 16 14"/>
+                </svg>
+                <span>Takes about 60 seconds</span>
+            </div>
+            <h1>Get Your <span class="accent">Estimate</span> in 60 Seconds</h1>
+            <p>Answer a few quick questions and get an instant price range for your HVAC service needs. No obligation, no pressure.</p>
+        </div>
+    </section>
+
+    <!-- Trust Strip -->
+    <div class="quote-trust-strip">
+        <div class="quote-trust-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 2L4 6v6c0 5.5 3.4 10.7 8 12 4.6-1.3 8-6.5 8-12V6l-8-4z"/>
+                <path d="M9 12l2 2 4-4"/>
+            </svg>
+            Licensed MA Contractor #081600137
+        </div>
+        <div class="quote-trust-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+            </svg>
+            30+ Years Experience
+        </div>
+        <div class="quote-trust-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="12" y1="1" x2="12" y2="23"/>
+                <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+            </svg>
+            Price Match Guarantee
+        </div>
+    </div>
+
+    <!-- ==================== CALCULATOR ==================== -->
+    <div class="calculator-section">
+
+        <!-- Progress Bar -->
+        <div class="progress-bar" id="progressBar">
+            <div class="progress-step active" data-step="1">
+                <div class="progress-circle">1</div>
+                <span class="progress-label">Service</span>
+            </div>
+            <div class="progress-line" data-line="1"></div>
+            <div class="progress-step" data-step="2">
+                <div class="progress-circle">2</div>
+                <span class="progress-label">Details</span>
+            </div>
+            <div class="progress-line" data-line="2"></div>
+            <div class="progress-step" data-step="3">
+                <div class="progress-circle">3</div>
+                <span class="progress-label">Home</span>
+            </div>
+            <div class="progress-line" data-line="3"></div>
+            <div class="progress-step" data-step="4">
+                <div class="progress-circle">4</div>
+                <span class="progress-label">Contact</span>
+            </div>
+            <div class="progress-line" data-line="4"></div>
+            <div class="progress-step" data-step="5">
+                <div class="progress-circle">5</div>
+                <span class="progress-label">Quote</span>
+            </div>
+        </div>
+
+        <!-- STEP 1: Service Type -->
+        <div class="step-card active" id="step1">
+            <h2 class="step-title">What Service Do You Need?</h2>
+            <p class="step-subtitle">Select the option that best describes your situation.</p>
+            <div class="option-grid">
+                <label class="option-card">
+                    <input type="radio" name="serviceType" value="repair">
+                    <div class="option-card-inner">
+                        <div class="option-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+                            </svg>
+                        </div>
+                        <span class="option-label">Emergency Repair</span>
+                        <span class="option-desc">My system is broken or not working properly</span>
+                    </div>
+                </label>
+                <label class="option-card">
+                    <input type="radio" name="serviceType" value="install">
+                    <div class="option-card-inner">
+                        <div class="option-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+                            </svg>
+                        </div>
+                        <span class="option-label">New System Installation</span>
+                        <span class="option-desc">I need a new HVAC system installed</span>
+                    </div>
+                </label>
+                <label class="option-card">
+                    <input type="radio" name="serviceType" value="maintenance">
+                    <div class="option-card-inner">
+                        <div class="option-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="3"/>
+                                <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+                            </svg>
+                        </div>
+                        <span class="option-label">Ongoing Maintenance</span>
+                        <span class="option-desc">I want regular preventive service</span>
+                    </div>
+                </label>
+                <label class="option-card">
+                    <input type="radio" name="serviceType" value="unsure">
+                    <div class="option-card-inner">
+                        <div class="option-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="10"/>
+                                <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
+                                <line x1="12" y1="17" x2="12.01" y2="17"/>
+                            </svg>
+                        </div>
+                        <span class="option-label">Not Sure</span>
+                        <span class="option-desc">I need help figuring out what I need</span>
+                    </div>
+                </label>
+            </div>
+            <div class="step-nav">
+                <button class="btn-next" id="btn1Next" disabled onclick="goToStep(2)">
+                    Continue
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- STEP 2: Details (dynamic based on service type) -->
+        <div class="step-card" id="step2">
+            <div id="step2Content">
+                <!-- Content injected by JS -->
+            </div>
+            <div class="step-nav">
+                <button class="btn-back" onclick="goToStep(1)">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+                    Back
+                </button>
+                <button class="btn-next" id="btn2Next" disabled onclick="goToStep(3)">
+                    Continue
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- STEP 3: Home Information -->
+        <div class="step-card" id="step3">
+            <h2 class="step-title">Tell Us About Your Home</h2>
+            <p class="step-subtitle">This helps us provide a more accurate estimate.</p>
+
+            <div style="margin-bottom: 24px;">
+                <p class="step-subtitle" style="margin-bottom: 12px; font-weight: 700; color: var(--navy-dark);">Home Square Footage</p>
+                <div class="option-grid">
+                    <label class="option-card">
+                        <input type="radio" name="sqft" value="small">
+                        <div class="option-card-inner">
+                            <div class="option-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+                            </div>
+                            <span class="option-label">Under 1,200 sq ft</span>
+                            <span class="option-desc">Small home or condo</span>
+                        </div>
+                    </label>
+                    <label class="option-card">
+                        <input type="radio" name="sqft" value="medium">
+                        <div class="option-card-inner">
+                            <div class="option-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+                            </div>
+                            <span class="option-label">1,200 - 2,000 sq ft</span>
+                            <span class="option-desc">Average home</span>
+                        </div>
+                    </label>
+                    <label class="option-card">
+                        <input type="radio" name="sqft" value="large">
+                        <div class="option-card-inner">
+                            <div class="option-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+                            </div>
+                            <span class="option-label">2,000 - 3,500 sq ft</span>
+                            <span class="option-desc">Larger home</span>
+                        </div>
+                    </label>
+                    <label class="option-card">
+                        <input type="radio" name="sqft" value="xlarge">
+                        <div class="option-card-inner">
+                            <div class="option-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+                            </div>
+                            <span class="option-label">Over 3,500 sq ft</span>
+                            <span class="option-desc">Large or multi-level home</span>
+                        </div>
+                    </label>
+                </div>
+            </div>
+
+            <div style="margin-bottom: 24px;">
+                <p class="step-subtitle" style="margin-bottom: 12px; font-weight: 700; color: var(--navy-dark);">System Age</p>
+                <div class="option-grid">
+                    <label class="option-card">
+                        <input type="radio" name="systemAge" value="new">
+                        <div class="option-card-inner">
+                            <div class="option-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                            </div>
+                            <span class="option-label">0 - 5 Years</span>
+                            <span class="option-desc">Relatively new</span>
+                        </div>
+                    </label>
+                    <label class="option-card">
+                        <input type="radio" name="systemAge" value="mid">
+                        <div class="option-card-inner">
+                            <div class="option-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                            </div>
+                            <span class="option-label">6 - 12 Years</span>
+                            <span class="option-desc">Mid-life system</span>
+                        </div>
+                    </label>
+                    <label class="option-card">
+                        <input type="radio" name="systemAge" value="old">
+                        <div class="option-card-inner">
+                            <div class="option-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                            </div>
+                            <span class="option-label">13 - 20 Years</span>
+                            <span class="option-desc">Aging system</span>
+                        </div>
+                    </label>
+                    <label class="option-card">
+                        <input type="radio" name="systemAge" value="ancient">
+                        <div class="option-card-inner">
+                            <div class="option-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                            </div>
+                            <span class="option-label">20+ Years</span>
+                            <span class="option-desc">Very old / unknown</span>
+                        </div>
+                    </label>
+                </div>
+            </div>
+
+            <div>
+                <p class="step-subtitle" style="margin-bottom: 12px; font-weight: 700; color: var(--navy-dark);">Equipment Accessibility</p>
+                <div class="option-grid" style="grid-template-columns: 1fr 1fr 1fr;">
+                    <label class="option-card">
+                        <input type="radio" name="accessibility" value="easy">
+                        <div class="option-card-inner">
+                            <div class="option-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                            </div>
+                            <span class="option-label">Easy Access</span>
+                            <span class="option-desc">Ground floor, open area</span>
+                        </div>
+                    </label>
+                    <label class="option-card">
+                        <input type="radio" name="accessibility" value="moderate">
+                        <div class="option-card-inner">
+                            <div class="option-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                            </div>
+                            <span class="option-label">Moderate</span>
+                            <span class="option-desc">Basement or utility closet</span>
+                        </div>
+                    </label>
+                    <label class="option-card">
+                        <input type="radio" name="accessibility" value="difficult">
+                        <div class="option-card-inner">
+                            <div class="option-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                            </div>
+                            <span class="option-label">Difficult</span>
+                            <span class="option-desc">Attic, crawlspace, rooftop</span>
+                        </div>
+                    </label>
+                </div>
+            </div>
+
+            <div class="step-nav">
+                <button class="btn-back" onclick="goToStep(2)">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+                    Back
+                </button>
+                <button class="btn-next" id="btn3Next" disabled onclick="goToStep(4)">
+                    Continue
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- STEP 4: Contact Information -->
+        <div class="step-card" id="step4">
+            <h2 class="step-title">Your Contact Information</h2>
+            <p class="step-subtitle">We'll use this to send your detailed quote and schedule service.</p>
+
+            <div class="form-grid">
+                <div class="form-group">
+                    <label class="form-label" for="firstName">First Name *</label>
+                    <input type="text" class="form-input" id="firstName" placeholder="John" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="lastName">Last Name *</label>
+                    <input type="text" class="form-input" id="lastName" placeholder="Smith" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="phone">Phone Number *</label>
+                    <input type="tel" class="form-input" id="phone" placeholder="(781) 555-1234" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="email">Email Address *</label>
+                    <input type="email" class="form-input" id="email" placeholder="john@example.com" required>
+                </div>
+                <div class="form-group full-width">
+                    <label class="form-label" for="address">Street Address</label>
+                    <input type="text" class="form-input" id="address" placeholder="123 Main Street">
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="city">City</label>
+                    <input type="text" class="form-input" id="city" placeholder="Stoughton" value="Stoughton">
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="zip">ZIP Code</label>
+                    <input type="text" class="form-input" id="zip" placeholder="02072" maxlength="5">
+                </div>
+            </div>
+
+            <div class="step-nav">
+                <button class="btn-back" onclick="goToStep(3)">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+                    Back
+                </button>
+                <button class="btn-next" id="btn4Next" onclick="calculateAndShow()">
+                    Get My Quote
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- STEP 5: Results -->
+        <div class="step-card" id="step5">
+            <div id="resultsContent">
+                <!-- Injected by JS -->
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Disclaimer -->
+    <div class="quote-disclaimer">
+        Estimates are approximate and based on typical service costs in the Greater Boston area. Final pricing may vary based on on-site inspection. All work performed by licensed MA technicians. Contractor License #081600137.
+    </div>
+
+    <script>
+    (function() {
+        // ========== STATE ==========
+        var currentStep = 1;
+        var formData = {};
+
+        // ========== PRICING DATA ==========
+        var basePrices = {
+            repair: {
+                noHeat:       { label: 'No Heat / No Cooling', base: 350 },
+                weirdNoise:   { label: 'Strange Noises',       base: 275 },
+                leaking:      { label: 'Water Leak / Refrigerant Leak', base: 400 },
+                shortCycling: { label: 'System Short Cycling',  base: 300 },
+                poorAirflow:  { label: 'Poor Airflow / Weak Output', base: 250 },
+                thermostat:   { label: 'Thermostat Issues',     base: 200 },
+                other:        { label: 'Other / Not Sure',      base: 300 }
+            },
+            install: {
+                furnace:   { label: 'Furnace',          base: 4500 },
+                ac:        { label: 'Central AC',       base: 5000 },
+                heatpump:  { label: 'Heat Pump',        base: 6500 },
+                boiler:    { label: 'Boiler',           base: 5500 },
+                ductless:  { label: 'Ductless Mini-Split', base: 3800 },
+                full:      { label: 'Full HVAC System', base: 9500 },
+                other:     { label: 'Other / Not Sure', base: 5000 }
+            },
+            maintenance: {
+                single:  { label: 'One-Time Tune-Up',    base: 150 },
+                annual:  { label: 'Annual Plan',          base: 250 },
+                premium: { label: 'Premium Annual Plan',  base: 450 }
+            },
+            unsure: {
+                general: { label: 'General Assessment', base: 300 }
+            }
+        };
+
+        var multipliers = {
+            sqft: { small: 1.0, medium: 1.15, large: 1.3, xlarge: 1.5 },
+            systemAge: { 'new': 1.0, mid: 1.1, old: 1.2, ancient: 1.3 },
+            accessibility: { easy: 1.0, moderate: 1.15, difficult: 1.3 },
+            urgency: { emergency: 1.2, today: 1.1, thisWeek: 1.0, flexible: 0.95 }
+        };
+
+        // ========== STEP 2 DYNAMIC CONTENT ==========
+        function buildStep2() {
+            var type = formData.serviceType;
+            var html = '';
+
+            if (type === 'repair') {
+                html += '<h2 class="step-title">Describe Your Problem</h2>';
+                html += '<p class="step-subtitle">Select the issue closest to what you\'re experiencing.</p>';
+                html += '<div class="option-grid" style="margin-bottom: 24px;">';
+                html += makeRadio('repairProblem', 'noHeat', 'No Heat / No Cooling', 'System won\'t turn on or produce air', '<polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>');
+                html += makeRadio('repairProblem', 'weirdNoise', 'Strange Noises', 'Banging, clanking, or squealing', '<path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/>');
+                html += makeRadio('repairProblem', 'leaking', 'Water or Refrigerant Leak', 'Puddles or moisture around system', '<path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/>');
+                html += makeRadio('repairProblem', 'shortCycling', 'System Short Cycling', 'Turns on and off repeatedly', '<polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/>');
+                html += makeRadio('repairProblem', 'poorAirflow', 'Weak Airflow', 'Low output or uneven temperatures', '<path d="M9.59 4.59A2 2 0 1 1 11 8H2m10.59 11.41A2 2 0 1 0 14 16H2m15.73-8.27A2.5 2.5 0 1 1 19.5 12H2"/>');
+                html += makeRadio('repairProblem', 'thermostat', 'Thermostat Issues', 'Temperature doesn\'t match settings', '<path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"/>');
+                html += makeRadio('repairProblem', 'other', 'Other / Not Sure', 'Something else or need diagnosis', '<circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/>');
+                html += '</div>';
+
+                html += '<p class="step-subtitle" style="margin-bottom: 12px; font-weight: 700; color: var(--navy-dark);">How Urgent Is This?</p>';
+                html += '<div class="option-grid">';
+                html += makeRadio('urgency', 'emergency', 'Emergency - Right Now', 'System down, need immediate help', '<polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>');
+                html += makeRadio('urgency', 'today', 'Today If Possible', 'Need service today', '<circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>');
+                html += makeRadio('urgency', 'thisWeek', 'This Week', 'Can wait a day or two', '<rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>');
+                html += makeRadio('urgency', 'flexible', 'Flexible', 'No rush, schedule at convenience', '<circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>');
+                html += '</div>';
+
+            } else if (type === 'install') {
+                html += '<h2 class="step-title">What System Do You Need?</h2>';
+                html += '<p class="step-subtitle">Select the type of installation you\'re looking for.</p>';
+                html += '<div class="option-grid" style="margin-bottom: 24px;">';
+                html += makeRadio('installType', 'furnace', 'Furnace', 'Gas or oil furnace', '<path d="M12 2v8m-4 4h8m-8 4h8M8 6h8"/><rect x="6" y="2" width="12" height="20" rx="2"/>');
+                html += makeRadio('installType', 'ac', 'Central AC', 'Whole-home air conditioning', '<path d="M9.59 4.59A2 2 0 1 1 11 8H2m10.59 11.41A2 2 0 1 0 14 16H2m15.73-8.27A2.5 2.5 0 1 1 19.5 12H2"/>');
+                html += makeRadio('installType', 'heatpump', 'Heat Pump', 'Year-round heating and cooling', '<polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/>');
+                html += makeRadio('installType', 'boiler', 'Boiler', 'Hot water or steam heating', '<path d="M12 2v8m-4 4h8m-8 4h8M8 6h8"/><rect x="6" y="2" width="12" height="20" rx="2"/>');
+                html += makeRadio('installType', 'ductless', 'Ductless Mini-Split', 'Individual room or zone control', '<rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/>');
+                html += makeRadio('installType', 'full', 'Full HVAC System', 'Complete heating and cooling', '<path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>');
+                html += makeRadio('installType', 'other', 'Other / Not Sure', 'Need guidance on options', '<circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/>');
+                html += '</div>';
+
+                html += '<p class="step-subtitle" style="margin-bottom: 12px; font-weight: 700; color: var(--navy-dark);">What\'s Your Priority?</p>';
+                html += '<div class="option-grid">';
+                html += makeRadio('urgency', 'emergency', 'ASAP', 'System failed, need replacement now', '<polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>');
+                html += makeRadio('urgency', 'today', 'Within a Week', 'Planning ahead but soon', '<circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>');
+                html += makeRadio('urgency', 'thisWeek', 'Within a Month', 'Researching my options', '<rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>');
+                html += makeRadio('urgency', 'flexible', 'No Rush', 'Just getting estimates', '<circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>');
+                html += '</div>';
+
+            } else if (type === 'maintenance') {
+                html += '<h2 class="step-title">Choose Your Maintenance Plan</h2>';
+                html += '<p class="step-subtitle">Regular maintenance extends system life and prevents breakdowns.</p>';
+                html += '<div class="option-grid" style="grid-template-columns: 1fr;">';
+                html += makeRadio('maintenancePlan', 'single', 'One-Time Tune-Up', 'Single visit: inspection, cleaning, and performance check', '<polyline points="20 6 9 17 4 12"/>');
+                html += makeRadio('maintenancePlan', 'annual', 'Annual Maintenance Plan', '2 visits per year with priority scheduling and 10% parts discount', '<rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>');
+                html += makeRadio('maintenancePlan', 'premium', 'Premium Annual Plan', '2 visits per year, priority emergency service, 15% parts discount, no overtime charges', '<path d="M12 2L4 6v6c0 5.5 3.4 10.7 8 12 4.6-1.3 8-6.5 8-12V6l-8-4z"/>');
+                html += '</div>';
+
+                // Maintenance doesn't need urgency, default to flexible
+                formData.urgency = 'flexible';
+
+            } else {
+                // unsure
+                html += '<h2 class="step-title">No Problem! Let\'s Figure It Out</h2>';
+                html += '<p class="step-subtitle">We\'ll provide a general assessment estimate. Tell us your main concern.</p>';
+                html += '<div class="option-grid" style="grid-template-columns: 1fr;">';
+                html += makeRadio('unsureProblem', 'general', 'General System Check', 'Our technician will inspect your system and provide recommendations', '<circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/>');
+                html += '</div>';
+                formData.urgency = 'thisWeek';
+            }
+
+            document.getElementById('step2Content').innerHTML = html;
+            attachRadioListeners();
+        }
+
+        function makeRadio(name, value, label, desc, iconSvg) {
+            return '<label class="option-card">' +
+                '<input type="radio" name="' + name + '" value="' + value + '">' +
+                '<div class="option-card-inner">' +
+                '<div class="option-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">' + iconSvg + '</svg></div>' +
+                '<span class="option-label">' + label + '</span>' +
+                '<span class="option-desc">' + desc + '</span>' +
+                '</div></label>';
+        }
+
+        // ========== NAVIGATION ==========
+        window.goToStep = function(step) {
+            // Validate before proceeding forward
+            if (step > currentStep) {
+                if (!validateStep(currentStep)) return;
+            }
+
+            // If going to step 2, build dynamic content
+            if (step === 2 && currentStep === 1) {
+                buildStep2();
+            }
+
+            currentStep = step;
+            updateUI();
+            window.scrollTo({ top: document.querySelector('.calculator-section').offsetTop - 120, behavior: 'smooth' });
+        };
+
+        function validateStep(step) {
+            if (step === 1) {
+                var sel = document.querySelector('input[name="serviceType"]:checked');
+                if (!sel) return false;
+                formData.serviceType = sel.value;
+                return true;
+            }
+            if (step === 2) {
+                var type = formData.serviceType;
+                if (type === 'repair') {
+                    var p = document.querySelector('input[name="repairProblem"]:checked');
+                    var u = document.querySelector('input[name="urgency"]:checked');
+                    if (!p || !u) return false;
+                    formData.repairProblem = p.value;
+                    formData.urgency = u.value;
+                } else if (type === 'install') {
+                    var it = document.querySelector('input[name="installType"]:checked');
+                    var u2 = document.querySelector('input[name="urgency"]:checked');
+                    if (!it || !u2) return false;
+                    formData.installType = it.value;
+                    formData.urgency = u2.value;
+                } else if (type === 'maintenance') {
+                    var mp = document.querySelector('input[name="maintenancePlan"]:checked');
+                    if (!mp) return false;
+                    formData.maintenancePlan = mp.value;
+                } else {
+                    var up = document.querySelector('input[name="unsureProblem"]:checked');
+                    if (!up) return false;
+                    formData.unsureProblem = up.value;
+                }
+                return true;
+            }
+            if (step === 3) {
+                var sq = document.querySelector('input[name="sqft"]:checked');
+                var sa = document.querySelector('input[name="systemAge"]:checked');
+                var ac = document.querySelector('input[name="accessibility"]:checked');
+                if (!sq || !sa || !ac) return false;
+                formData.sqft = sq.value;
+                formData.systemAge = sa.value;
+                formData.accessibility = ac.value;
+                return true;
+            }
+            if (step === 4) {
+                var fn = document.getElementById('firstName').value.trim();
+                var ln = document.getElementById('lastName').value.trim();
+                var ph = document.getElementById('phone').value.trim();
+                var em = document.getElementById('email').value.trim();
+                if (!fn || !ln || !ph || !em) return false;
+                formData.firstName = fn;
+                formData.lastName = ln;
+                formData.phone = ph;
+                formData.email = em;
+                formData.address = document.getElementById('address').value.trim();
+                formData.city = document.getElementById('city').value.trim();
+                formData.zip = document.getElementById('zip').value.trim();
+                return true;
+            }
+            return true;
+        }
+
+        function updateUI() {
+            // Update step cards
+            for (var i = 1; i <= 5; i++) {
+                var card = document.getElementById('step' + i);
+                if (card) {
+                    card.classList.toggle('active', i === currentStep);
+                }
+            }
+
+            // Update progress bar
+            var steps = document.querySelectorAll('.progress-step');
+            var lines = document.querySelectorAll('.progress-line');
+            steps.forEach(function(s) {
+                var sNum = parseInt(s.getAttribute('data-step'));
+                s.classList.remove('active', 'completed');
+                if (sNum === currentStep) s.classList.add('active');
+                else if (sNum < currentStep) s.classList.add('completed');
+            });
+            lines.forEach(function(l) {
+                var lNum = parseInt(l.getAttribute('data-line'));
+                l.classList.toggle('completed', lNum < currentStep);
+            });
+
+            // Update completed step circles with checkmark
+            steps.forEach(function(s) {
+                var circle = s.querySelector('.progress-circle');
+                var sNum = parseInt(s.getAttribute('data-step'));
+                if (s.classList.contains('completed')) {
+                    circle.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" width="18" height="18"><polyline points="20 6 9 17 4 12"/></svg>';
+                } else {
+                    circle.textContent = sNum;
+                }
+            });
+        }
+
+        // ========== RADIO LISTENER SETUP ==========
+        function attachRadioListeners() {
+            document.querySelectorAll('input[type="radio"]').forEach(function(r) {
+                r.addEventListener('change', checkButtons);
+            });
+        }
+
+        function checkButtons() {
+            // Step 1
+            var s1 = document.querySelector('input[name="serviceType"]:checked');
+            var b1 = document.getElementById('btn1Next');
+            if (b1) b1.disabled = !s1;
+
+            // Step 2
+            var b2 = document.getElementById('btn2Next');
+            if (b2) {
+                var type = formData.serviceType || (s1 ? s1.value : '');
+                var valid2 = false;
+                if (type === 'repair') {
+                    valid2 = !!document.querySelector('input[name="repairProblem"]:checked') && !!document.querySelector('input[name="urgency"]:checked');
+                } else if (type === 'install') {
+                    valid2 = !!document.querySelector('input[name="installType"]:checked') && !!document.querySelector('input[name="urgency"]:checked');
+                } else if (type === 'maintenance') {
+                    valid2 = !!document.querySelector('input[name="maintenancePlan"]:checked');
+                } else {
+                    valid2 = !!document.querySelector('input[name="unsureProblem"]:checked');
+                }
+                b2.disabled = !valid2;
+            }
+
+            // Step 3
+            var b3 = document.getElementById('btn3Next');
+            if (b3) {
+                b3.disabled = !(
+                    document.querySelector('input[name="sqft"]:checked') &&
+                    document.querySelector('input[name="systemAge"]:checked') &&
+                    document.querySelector('input[name="accessibility"]:checked')
+                );
+            }
+        }
+
+        // ========== CALCULATE ==========
+        window.calculateAndShow = function() {
+            if (!validateStep(4)) {
+                alert('Please fill in all required fields (First Name, Last Name, Phone, Email).');
+                return;
+            }
+
+            // Determine base price
+            var basePrice = 300;
+            var serviceLabel = '';
+            var type = formData.serviceType;
+
+            if (type === 'repair' && basePrices.repair[formData.repairProblem]) {
+                basePrice = basePrices.repair[formData.repairProblem].base;
+                serviceLabel = 'Emergency Repair: ' + basePrices.repair[formData.repairProblem].label;
+            } else if (type === 'install' && basePrices.install[formData.installType]) {
+                basePrice = basePrices.install[formData.installType].base;
+                serviceLabel = 'New Installation: ' + basePrices.install[formData.installType].label;
+            } else if (type === 'maintenance' && basePrices.maintenance[formData.maintenancePlan]) {
+                basePrice = basePrices.maintenance[formData.maintenancePlan].base;
+                serviceLabel = 'Maintenance: ' + basePrices.maintenance[formData.maintenancePlan].label;
+            } else {
+                basePrice = basePrices.unsure.general.base;
+                serviceLabel = 'General Assessment';
+            }
+
+            // Apply multipliers
+            var price = basePrice;
+            price *= multipliers.sqft[formData.sqft] || 1.0;
+            price *= multipliers.systemAge[formData.systemAge] || 1.0;
+            price *= multipliers.accessibility[formData.accessibility] || 1.0;
+            price *= multipliers.urgency[formData.urgency] || 1.0;
+
+            // Calculate tiers
+            var essentialLow  = Math.round(price * 0.85);
+            var essentialHigh = Math.round(price * 1.0);
+            var standardLow   = Math.round(price * 1.0);
+            var standardHigh  = Math.round(price * 1.25);
+            var premiumLow    = Math.round(price * 1.3);
+            var premiumHigh   = Math.round(price * 1.6);
+
+            // Build features by tier and type
+            var essentialFeatures, standardFeatures, premiumFeatures;
+
+            if (type === 'repair') {
+                essentialFeatures = [
+                    'Diagnostic inspection',
+                    'Basic repair with standard parts',
+                    '30-day labor warranty',
+                    'Same-day service (if available)'
+                ];
+                standardFeatures = [
+                    'Full diagnostic inspection',
+                    'Repair with OEM-quality parts',
+                    '1-year labor warranty',
+                    'Priority scheduling',
+                    'System performance test'
+                ];
+                premiumFeatures = [
+                    'Comprehensive diagnostic',
+                    'Premium OEM parts',
+                    '2-year labor warranty',
+                    'Emergency priority service',
+                    'Full system performance optimization',
+                    'Follow-up inspection included'
+                ];
+            } else if (type === 'install') {
+                essentialFeatures = [
+                    'Standard equipment installation',
+                    'Basic thermostat included',
+                    'Manufacturer warranty',
+                    'Code-compliant installation',
+                    'Debris removal'
+                ];
+                standardFeatures = [
+                    'High-efficiency equipment',
+                    'Programmable thermostat',
+                    'Extended manufacturer warranty',
+                    'Ductwork inspection',
+                    'Code-compliant installation',
+                    '1-year maintenance included'
+                ];
+                premiumFeatures = [
+                    'Top-tier high-efficiency equipment',
+                    'Smart thermostat (Nest/Ecobee)',
+                    'Maximum manufacturer warranty',
+                    'Full ductwork inspection & sealing',
+                    'Indoor air quality assessment',
+                    '2-year maintenance plan included',
+                    'Lifetime labor guarantee'
+                ];
+            } else if (type === 'maintenance') {
+                essentialFeatures = [
+                    'System inspection',
+                    'Filter replacement',
+                    'Basic cleaning',
+                    'Performance report'
+                ];
+                standardFeatures = [
+                    'Complete system inspection',
+                    'Filter replacement',
+                    'Thorough cleaning',
+                    '10% parts discount',
+                    'Priority scheduling',
+                    'Performance report'
+                ];
+                premiumFeatures = [
+                    'Comprehensive system inspection',
+                    'Filter replacement',
+                    'Deep cleaning & calibration',
+                    '15% parts discount',
+                    'Priority emergency service',
+                    'No overtime charges',
+                    'Annual efficiency report'
+                ];
+            } else {
+                essentialFeatures = [
+                    'Visual system inspection',
+                    'Basic diagnostic',
+                    'Written recommendation',
+                    'Cost estimate for repairs'
+                ];
+                standardFeatures = [
+                    'Full system diagnostic',
+                    'Performance testing',
+                    'Detailed written report',
+                    'Prioritized repair recommendations',
+                    'Cost estimates for all options'
+                ];
+                premiumFeatures = [
+                    'Comprehensive system audit',
+                    'Advanced diagnostic testing',
+                    'Energy efficiency analysis',
+                    'Detailed report with photos',
+                    'Prioritized action plan',
+                    'Repair cost estimates',
+                    'Follow-up consultation'
+                ];
+            }
+
+            // Render results
+            var checkSvg = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>';
+
+            var html = '';
+            html += '<div class="results-header">';
+            html += '<h2>Your Estimate Is Ready, <span class="results-name">' + escapeHtml(formData.firstName) + '</span>!</h2>';
+            html += '<p>' + serviceLabel + '</p>';
+            html += '</div>';
+
+            html += '<div class="pricing-grid">';
+
+            // Essential
+            html += '<div class="pricing-card">';
+            html += '<div class="pricing-tier-name">Essential</div>';
+            html += '<div class="pricing-range"><span class="dollar">$</span>' + formatNum(essentialLow) + ' - <span class="dollar">$</span>' + formatNum(essentialHigh) + '</div>';
+            html += '<ul class="pricing-features">';
+            essentialFeatures.forEach(function(f) { html += '<li>' + checkSvg + f + '</li>'; });
+            html += '</ul>';
+            html += '<a href="tel:7814082506" class="pricing-select-btn outline">Call to Book</a>';
+            html += '</div>';
+
+            // Standard (Popular)
+            html += '<div class="pricing-card popular">';
+            html += '<div class="popular-badge">POPULAR</div>';
+            html += '<div class="pricing-tier-name">Standard</div>';
+            html += '<div class="pricing-shield"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L4 6v6c0 5.5 3.4 10.7 8 12 4.6-1.3 8-6.5 8-12V6l-8-4z"/><path d="M9 12l2 2 4-4"/></svg><span>Best Value</span></div>';
+            html += '<div class="pricing-range"><span class="dollar">$</span>' + formatNum(standardLow) + ' - <span class="dollar">$</span>' + formatNum(standardHigh) + '</div>';
+            html += '<ul class="pricing-features">';
+            standardFeatures.forEach(function(f) { html += '<li>' + checkSvg + f + '</li>'; });
+            html += '</ul>';
+            html += '<a href="tel:7814082506" class="pricing-select-btn primary">Call to Book</a>';
+            html += '</div>';
+
+            // Premium
+            html += '<div class="pricing-card">';
+            html += '<div class="pricing-tier-name">Premium</div>';
+            html += '<div class="pricing-range"><span class="dollar">$</span>' + formatNum(premiumLow) + ' - <span class="dollar">$</span>' + formatNum(premiumHigh) + '</div>';
+            html += '<ul class="pricing-features">';
+            premiumFeatures.forEach(function(f) { html += '<li>' + checkSvg + f + '</li>'; });
+            html += '</ul>';
+            html += '<a href="tel:7814082506" class="pricing-select-btn outline">Call to Book</a>';
+            html += '</div>';
+
+            html += '</div>';
+
+            // Financing note
+            html += '<div class="financing-note">';
+            html += '<p><strong>Financing Available!</strong> We offer flexible payment plans for qualifying installations. Ask about 0% APR financing options when you call.</p>';
+            html += '</div>';
+
+            // Next Steps
+            html += '<div class="next-steps">';
+            html += '<h3>Ready to Get Started?</h3>';
+            html += '<p>Call us now to lock in your estimate and schedule your service. Our team is standing by to help.</p>';
+            html += '<div class="next-steps-ctas">';
+            html += '<a href="tel:7814082506" class="next-steps-cta call">';
+            html += '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>';
+            html += 'Call (781) 408-2506';
+            html += '</a>';
+            html += '<a href="#" class="next-steps-cta restart" onclick="restartQuote(); return false;">';
+            html += '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>';
+            html += 'Get Another Quote';
+            html += '</a>';
+            html += '</div>';
+            html += '</div>';
+
+            document.getElementById('resultsContent').innerHTML = html;
+            currentStep = 5;
+            updateUI();
+            window.scrollTo({ top: document.querySelector('.calculator-section').offsetTop - 120, behavior: 'smooth' });
+        };
+
+        window.restartQuote = function() {
+            formData = {};
+            currentStep = 1;
+
+            // Reset all radios
+            document.querySelectorAll('input[type="radio"]').forEach(function(r) { r.checked = false; });
+
+            // Reset text inputs
+            document.getElementById('firstName').value = '';
+            document.getElementById('lastName').value = '';
+            document.getElementById('phone').value = '';
+            document.getElementById('email').value = '';
+            document.getElementById('address').value = '';
+            document.getElementById('city').value = 'Stoughton';
+            document.getElementById('zip').value = '';
+
+            // Disable all next buttons
+            var btns = ['btn1Next', 'btn2Next', 'btn3Next'];
+            btns.forEach(function(id) {
+                var b = document.getElementById(id);
+                if (b) b.disabled = true;
+            });
+
+            updateUI();
+            window.scrollTo({ top: document.querySelector('.calculator-section').offsetTop - 120, behavior: 'smooth' });
+        };
+
+        // ========== HELPERS ==========
+        function escapeHtml(str) {
+            var div = document.createElement('div');
+            div.textContent = str;
+            return div.innerHTML;
+        }
+
+        function formatNum(n) {
+            return n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+        }
+
+        // ========== INIT ==========
+        attachRadioListeners();
+
+        // Listen for form input changes on step 4
+        ['firstName', 'lastName', 'phone', 'email'].forEach(function(id) {
+            var el = document.getElementById(id);
+            if (el) {
+                el.addEventListener('input', function() {
+                    var fn = document.getElementById('firstName').value.trim();
+                    var ln = document.getElementById('lastName').value.trim();
+                    var ph = document.getElementById('phone').value.trim();
+                    var em = document.getElementById('email').value.trim();
+                    var b4 = document.getElementById('btn4Next');
+                    if (b4) b4.disabled = !(fn && ln && ph && em);
+                });
+            }
+        });
+
+        // Enable btn4Next by default since we won't disable it initially (different pattern - validates on click)
+        var b4Init = document.getElementById('btn4Next');
+        if (b4Init) b4Init.disabled = false;
+
+    })();
+    </script>
+
+</body>
+</html>
