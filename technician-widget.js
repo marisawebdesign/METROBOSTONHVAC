@@ -8,10 +8,26 @@
     var HQ_LAT = 42.1251;
     var HQ_LNG = -71.0995;
     var MAX_RADIUS_MILES = 30;
-    var TECH_MIN_DISTANCE = 5;
-    var TECH_MAX_DISTANCE = 10;
+    var TECH_MIN_DISTANCE = 4;
+    var TECH_MAX_DISTANCE = 12;
+    var TECH_RADIUS_MILES = 1.5; // approximate area radius for each tech
     var POPUP_DELAY = 3000;
     var POPUP_DURATION = 12000;
+    var UPDATE_INTERVAL_MS = 30 * 60 * 1000; // 30 minutes
+
+    // ── Seeded PRNG (consistent within 30-min windows) ──
+    function createSeededRandom(userLat, userLng) {
+        // Round time to nearest 30-min block, round coords to ~1mi grid
+        var timeBlock = Math.floor(Date.now() / UPDATE_INTERVAL_MS);
+        var latBlock = Math.round(userLat * 10);
+        var lngBlock = Math.round(userLng * 10);
+        var seed = timeBlock * 73856093 + latBlock * 19349663 + lngBlock * 83492791;
+
+        return function() {
+            seed = (seed * 16807 + 0) % 2147483647;
+            return (seed & 0x7fffffff) / 2147483647;
+        };
+    }
 
     // ── Haversine Distance (miles) ──
     function haversine(lat1, lon1, lat2, lon2) {
@@ -25,24 +41,22 @@
         return R * c;
     }
 
-    // ── Generate Random Technician Locations ──
-    function generateTechLocations(userLat, userLng) {
-        var count = Math.floor(Math.random() * 3) + 2; // 2-4 technicians
+    // ── Generate Technician Locations (seeded for consistency) ──
+    function generateTechLocations(userLat, userLng, rng) {
+        var count = Math.floor(rng() * 3) + 2; // 2-4 technicians
         var techs = [];
-        var names = ['Mike R.', 'Dave S.', 'Chris M.', 'Tom K.'];
-        var vehicles = ['Service Van #12', 'Service Van #07', 'Service Van #19', 'Service Van #03'];
+        var labels = ['Technician Area A', 'Technician Area B', 'Technician Area C', 'Technician Area D'];
 
         for (var i = 0; i < count; i++) {
-            var angle = Math.random() * 2 * Math.PI;
-            var dist = TECH_MIN_DISTANCE + Math.random() * (TECH_MAX_DISTANCE - TECH_MIN_DISTANCE);
+            var angle = rng() * 2 * Math.PI;
+            var dist = TECH_MIN_DISTANCE + rng() * (TECH_MAX_DISTANCE - TECH_MIN_DISTANCE);
             var dLat = (dist / 69.0) * Math.cos(angle);
             var dLng = (dist / (69.0 * Math.cos(userLat * Math.PI / 180))) * Math.sin(angle);
 
             techs.push({
                 lat: userLat + dLat,
                 lng: userLng + dLng,
-                name: names[i],
-                vehicle: vehicles[i],
+                label: labels[i],
                 distance: dist.toFixed(1)
             });
         }
@@ -104,8 +118,16 @@
                     '</div>' +
                     '<div class="tech-legend-item">' +
                         '<div class="tech-legend-dot tech"></div>' +
-                        'Available Technician' +
+                        'Technician Area' +
                     '</div>' +
+                '</div>' +
+                '<div class="tech-map-disclaimer">' +
+                    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14">' +
+                        '<circle cx="12" cy="12" r="10"></circle>' +
+                        '<line x1="12" y1="16" x2="12" y2="12"></line>' +
+                        '<line x1="12" y1="8" x2="12.01" y2="8"></line>' +
+                    '</svg>' +
+                    'Map is updated every 30 minutes and shows approximate technician locations.' +
                 '</div>' +
             '</div>' +
         '</div>';
@@ -139,28 +161,28 @@
             .addTo(map)
             .bindPopup('<strong>Your Location</strong>');
 
-        // Technician markers
-        var techIcon = L.divIcon({
-            className: 'tech-marker',
-            html: '<div class="tech-marker-inner"></div>',
-            iconSize: [20, 20],
-            iconAnchor: [10, 10]
-        });
-
+        // Technician radius circles (approximate areas)
+        var radiusMeters = TECH_RADIUS_MILES * 1609.34;
         var bounds = L.latLngBounds([[userLat, userLng]]);
 
         techs.forEach(function(tech) {
-            L.marker([tech.lat, tech.lng], { icon: techIcon })
-                .addTo(map)
-                .bindPopup(
-                    '<strong>' + tech.name + '</strong><br>' +
-                    tech.vehicle + '<br>' +
-                    '<span style="color:#ff6b35;font-weight:600;">' + tech.distance + ' mi away</span>'
-                );
-            bounds.extend([tech.lat, tech.lng]);
+            L.circle([tech.lat, tech.lng], {
+                radius: radiusMeters,
+                color: '#ff6b35',
+                weight: 2,
+                opacity: 0.7,
+                fillColor: '#ff6b35',
+                fillOpacity: 0.15
+            }).addTo(map).bindPopup(
+                '<strong>' + tech.label + '</strong><br>' +
+                '<span style="color:#ff6b35;font-weight:600;">~' + tech.distance + ' mi from you</span>'
+            );
+            // Extend bounds to include full circle
+            var techLatLng = L.latLng(tech.lat, tech.lng);
+            bounds.extend(techLatLng.toBounds(radiusMeters * 2));
         });
 
-        map.fitBounds(bounds.pad(0.3));
+        map.fitBounds(bounds.pad(0.15));
 
         return map;
     }
@@ -178,8 +200,9 @@
                 var distance = haversine(userLat, userLng, HQ_LAT, HQ_LNG);
                 if (distance > MAX_RADIUS_MILES) return;
 
-                // Generate technician locations
-                var techs = generateTechLocations(userLat, userLng);
+                // Generate technician locations (seeded for 30-min consistency)
+                var rng = createSeededRandom(userLat, userLng);
+                var techs = generateTechLocations(userLat, userLng, rng);
                 var techCount = techs.length;
 
                 // Build fab button HTML
