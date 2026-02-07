@@ -1,0 +1,1484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Special Offers | Metro Boston HVAC | Stoughton MA</title>
+    <meta name="description" content="Exclusive HVAC deals for Boston area homeowners. Save on emergency repairs, maintenance, and installations. Price match guarantee. Call (781) 408-2506.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --navy: #1a3a52;
+            --navy-dark: #0f2536;
+            --navy-light: #2a5070;
+            --orange: #ff6b35;
+            --orange-glow: #ff8855;
+            --gold: #ffd700;
+            --white: #ffffff;
+            --gray-50: #f9fafb;
+            --gray-100: #f3f4f6;
+            --gray-200: #e5e7eb;
+            --gray-400: #9ca3af;
+            --gray-600: #4b5563;
+            --gray-800: #1f2937;
+            --gray-light: rgba(255,255,255,0.15);
+            --green: #10b981;
+        }
+
+        body {
+            font-family: 'Source Sans 3', sans-serif;
+            background: var(--white);
+            color: var(--gray-800);
+            line-height: 1.6;
+        }
+
+        /* ==================== HEADER TOP BAR ==================== */
+        .header-top {
+            background: var(--white);
+            border-bottom: 1px solid var(--gray-200);
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 1001;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+        }
+
+        .header-top-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 16px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            flex-shrink: 0;
+        }
+
+        .logo img {
+            height: 72px;
+            width: auto;
+            display: block;
+            object-fit: contain;
+        }
+
+        .logo-text {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 30px;
+            color: var(--white);
+            letter-spacing: 1px;
+            line-height: 1;
+        }
+
+        .logo-text span { color: var(--orange); }
+
+        .header-mobile-name {
+            display: none;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 28px;
+            color: var(--white);
+            letter-spacing: 1.5px;
+            line-height: 1;
+            -webkit-text-stroke: 1.2px var(--navy);
+            text-stroke: 1.2px var(--navy);
+            paint-order: stroke fill;
+        }
+
+        .header-mobile-name span {
+            color: var(--orange);
+            -webkit-text-stroke: 1.2px var(--navy);
+            text-stroke: 1.2px var(--navy);
+        }
+
+        .header-phone {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-shrink: 0;
+        }
+
+        .header-phone-icon {
+            width: 44px; height: 44px;
+            background: var(--navy-dark);
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .header-phone-icon svg { width: 22px; height: 22px; color: white; }
+
+        .header-phone-info { display: flex; flex-direction: column; }
+
+        .header-phone-number {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 24px;
+            color: var(--navy-dark);
+            letter-spacing: 1px;
+            line-height: 1.1;
+            text-decoration: none;
+        }
+
+        .header-phone-number:hover { color: var(--orange); }
+
+        .header-phone-label {
+            font-size: 11px; font-weight: 700;
+            text-transform: uppercase; letter-spacing: 1.5px;
+            color: var(--orange); line-height: 1.2;
+        }
+
+        .header-trust-badges {
+            display: flex; align-items: center; gap: 16px; flex-shrink: 0;
+        }
+
+        .trust-badge {
+            display: flex; flex-direction: column; align-items: center;
+            gap: 6px; width: 110px; text-align: center;
+        }
+
+        .trust-badge-icon {
+            width: 52px; height: 52px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+        }
+
+        .trust-badge-icon svg { width: 28px; height: 28px; }
+        .trust-badge-icon.emergency { background: var(--orange); }
+        .trust-badge-icon.licensed { background: var(--navy-dark); }
+        .trust-badge-icon.reviews { background: var(--orange); }
+        .trust-badge-icon.local { background: var(--navy-dark); }
+        .trust-badge-icon.price { background: #1a8a5c; }
+
+        .trust-badge-label {
+            font-size: 11px; font-weight: 700; color: var(--navy-dark);
+            line-height: 1.25; text-transform: uppercase; letter-spacing: 0.3px;
+        }
+
+        .get-service-btn {
+            display: flex; align-items: center; gap: 12px;
+            background: var(--orange); color: var(--white);
+            padding: 18px 32px;
+            font-family: 'Bebas Neue', sans-serif; font-size: 24px;
+            letter-spacing: 2px; text-decoration: none; border-radius: 10px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255,107,53,0.4);
+            flex-shrink: 0; white-space: nowrap;
+        }
+
+        .get-service-btn:hover {
+            background: var(--orange-glow);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(255,107,53,0.5);
+        }
+
+        .get-service-btn svg { width: 26px; height: 26px; }
+
+        /* ==================== NAVIGATION BAR ==================== */
+        .header-nav {
+            background: var(--navy-dark);
+            position: sticky; top: 0; z-index: 1000;
+            margin-top: 106px;
+            border-bottom: 3px solid var(--orange);
+        }
+
+        .header-nav-inner {
+            max-width: 1400px; margin: 0 auto; padding: 0 24px;
+            display: flex; align-items: center; justify-content: flex-start; height: 56px;
+        }
+
+        .main-nav { display: flex; align-items: center; gap: 4px; }
+        .nav-item { position: relative; }
+
+        .nav-link {
+            display: flex; align-items: center; gap: 6px;
+            padding: 16px 22px;
+            color: rgba(255,255,255,0.9); text-decoration: none;
+            font-size: 15px; font-weight: 700;
+            text-transform: uppercase; letter-spacing: 0.5px;
+            transition: all 0.2s ease;
+        }
+
+        .nav-link:hover { color: var(--white); background: rgba(255,255,255,0.1); }
+        .nav-link.active { color: var(--orange); background: rgba(255,255,255,0.05); }
+
+        .nav-link svg { width: 12px; height: 12px; transition: transform 0.2s ease; }
+        .nav-item:hover .nav-link svg { transform: rotate(180deg); }
+
+        .dropdown {
+            position: absolute; top: 100%; left: 0; min-width: 220px;
+            background: var(--white); border-radius: 0 0 10px 10px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+            opacity: 0; visibility: hidden; transform: translateY(5px);
+            transition: all 0.25s ease; padding: 8px; z-index: 100;
+        }
+
+        .nav-item:hover .dropdown { opacity: 1; visibility: visible; transform: translateY(0); }
+
+        .dropdown-link {
+            display: block; padding: 12px 16px;
+            color: var(--gray-800); text-decoration: none;
+            font-size: 14px; font-weight: 500; border-radius: 6px;
+            transition: all 0.2s ease; text-transform: none; letter-spacing: 0;
+        }
+
+        .dropdown-link:hover { background: var(--gray-100); color: var(--navy); }
+
+        .mobile-toggle {
+            display: none; background: none; border: none; padding: 8px; cursor: pointer;
+        }
+
+        .mobile-toggle svg { width: 28px; height: 28px; color: var(--navy-dark); }
+
+        /* ==================== MOBILE MENU ==================== */
+        .mobile-menu {
+            display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+            background: var(--navy-dark); z-index: 2000;
+            flex-direction: column; padding: 0; overflow-y: auto;
+        }
+
+        .mobile-menu.active { display: flex; }
+
+        .mobile-menu-header {
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 16px 24px; border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .mobile-menu-header .logo-text { color: var(--white); }
+
+        .mobile-menu-close { background: none; border: none; padding: 8px; cursor: pointer; }
+        .mobile-menu-close svg { width: 28px; height: 28px; color: white; }
+
+        .mobile-menu-links { display: flex; flex-direction: column; padding: 16px 0; }
+
+        .mobile-menu-links a {
+            display: block; padding: 16px 24px;
+            color: rgba(255,255,255,0.9); text-decoration: none;
+            font-size: 18px; font-weight: 600;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            transition: all 0.2s ease;
+        }
+
+        .mobile-menu-links a:hover { background: rgba(255,255,255,0.05); color: var(--orange); }
+
+        .mobile-menu-links .mobile-section-label {
+            padding: 12px 24px 6px; font-size: 12px; font-weight: 700;
+            text-transform: uppercase; letter-spacing: 2px;
+            color: var(--orange); border-bottom: none;
+        }
+
+        .mobile-menu-links .mobile-section-label:hover { background: none; cursor: default; }
+
+        .mobile-menu-cta {
+            margin: 24px; display: flex; flex-direction: column; gap: 12px;
+        }
+
+        .mobile-menu-cta a {
+            display: flex; align-items: center; justify-content: center; gap: 10px;
+            padding: 16px 24px; border-radius: 10px;
+            font-size: 18px; font-weight: 700; text-decoration: none; text-align: center;
+        }
+
+        .mobile-menu-cta .mobile-call-btn { background: var(--orange); color: white; }
+
+        .mobile-menu-cta .mobile-service-btn {
+            background: rgba(255,255,255,0.1); color: white;
+            border: 2px solid rgba(255,255,255,0.3);
+        }
+
+        .mobile-menu-cta a svg { width: 22px; height: 22px; }
+
+        .mobile-quote-btn-wrap { padding: 16px 24px 0; }
+
+        .mobile-quote-btn {
+            display: flex; align-items: center; justify-content: center; gap: 10px;
+            width: 100%; padding: 14px 24px;
+            background: linear-gradient(135deg, var(--orange), #e85d2a);
+            color: white; font-size: 17px; font-weight: 700;
+            text-decoration: none; text-transform: uppercase; letter-spacing: 1px;
+            border-radius: 10px; box-shadow: 0 4px 15px rgba(255,107,53,0.3);
+        }
+
+        .mobile-quote-btn svg { width: 20px; height: 20px; }
+
+        .mobile-trust-strip {
+            display: flex; justify-content: center; flex-wrap: wrap;
+            gap: 16px; padding: 20px 24px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .mobile-trust-item {
+            display: flex; flex-direction: column; align-items: center;
+            gap: 8px; width: 72px; text-align: center;
+        }
+
+        .mobile-trust-icon {
+            width: 48px; height: 48px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+        }
+
+        .mobile-trust-icon svg { width: 24px; height: 24px; }
+        .mobile-trust-icon.emergency { background: var(--orange); }
+        .mobile-trust-icon.licensed { background: var(--navy-dark); }
+        .mobile-trust-icon.reviews { background: var(--orange); }
+        .mobile-trust-icon.local { background: var(--navy-dark); }
+        .mobile-trust-icon.price { background: #1a8a5c; }
+
+        .mobile-trust-item span {
+            font-size: 10px; font-weight: 700; color: rgba(255,255,255,0.85);
+            line-height: 1.25; text-transform: uppercase; letter-spacing: 0.3px;
+        }
+
+        /* ==================== OFFERS HERO ==================== */
+        .offers-hero {
+            min-height: 60vh;
+            position: relative;
+            display: flex; flex-direction: column; justify-content: center;
+            overflow: hidden; padding-top: 0;
+        }
+
+        .offers-hero-bg {
+            position: absolute; inset: 0; z-index: 0;
+        }
+
+        .offers-hero-bg img {
+            width: 100%; height: 100%; object-fit: cover; object-position: center 40%;
+        }
+
+        .offers-hero-overlay {
+            position: absolute; inset: 0;
+            background: linear-gradient(135deg, rgba(15,37,54,0.92) 0%, rgba(26,58,82,0.82) 50%, rgba(26,58,82,0.72) 100%);
+            z-index: 1;
+        }
+
+        .offers-hero-content {
+            position: relative; z-index: 2;
+            max-width: 1000px; margin: 0 auto;
+            padding: 80px 24px 60px; text-align: center;
+        }
+
+        .offers-hero-content h1 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(36px, 7vw, 64px);
+            color: var(--white); line-height: 1.05;
+            letter-spacing: 2px; text-transform: uppercase;
+            margin-bottom: 16px;
+            text-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        }
+
+        .offers-hero-content h1 .accent { color: var(--orange); }
+
+        .offers-hero-sub {
+            font-size: clamp(16px, 2.2vw, 22px);
+            font-weight: 600; color: rgba(255,255,255,0.95);
+            margin-bottom: 32px; line-height: 1.4;
+        }
+
+        .offers-hero-sub .sep { color: var(--orange); margin: 0 8px; }
+
+        .offers-hero-trust {
+            display: flex; justify-content: center; flex-wrap: wrap;
+            gap: 24px;
+        }
+
+        .hero-trust-item {
+            display: flex; align-items: center; gap: 8px;
+            font-size: 14px; font-weight: 600; color: rgba(255,255,255,0.9);
+        }
+
+        .hero-trust-item svg { width: 20px; height: 20px; color: var(--orange); }
+
+        /* ==================== OFFERS GRID ==================== */
+        .offers-section {
+            padding: 80px 24px;
+            background: var(--white);
+        }
+
+        .offers-container {
+            max-width: 1100px; margin: 0 auto;
+        }
+
+        .offers-section-header {
+            text-align: center; margin-bottom: 48px;
+        }
+
+        .offers-section-header h2 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(32px, 4vw, 48px);
+            color: var(--navy); letter-spacing: 1px;
+            line-height: 1.1; margin-bottom: 12px;
+        }
+
+        .offers-section-header p {
+            font-size: 17px; color: var(--gray-600); line-height: 1.6;
+            max-width: 600px; margin: 0 auto;
+        }
+
+        .offers-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 28px;
+        }
+
+        /* Offer Card */
+        .offer-card {
+            background: var(--white);
+            border: 2px solid var(--navy);
+            border-radius: 14px;
+            padding: 32px;
+            position: relative;
+            border-left: 6px solid var(--orange);
+            transition: all 0.3s ease;
+        }
+
+        .offer-card:hover {
+            border-color: var(--orange);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 36px rgba(0,0,0,0.1);
+        }
+
+        .offer-card.featured {
+            grid-column: 1;
+        }
+
+        .offer-badge {
+            position: absolute; top: -14px; right: 20px;
+            padding: 6px 18px; border-radius: 20px;
+            font-size: 11px; font-weight: 700;
+            text-transform: uppercase; letter-spacing: 1.5px;
+            white-space: nowrap;
+        }
+
+        .offer-badge.popular { background: var(--orange); color: var(--white); }
+        .offer-badge.value { background: var(--navy); color: var(--white); }
+
+        .offer-icon {
+            width: 48px; height: 48px; border-radius: 50%;
+            background: rgba(255,107,53,0.1);
+            display: flex; align-items: center; justify-content: center;
+            margin-bottom: 16px;
+        }
+
+        .offer-icon svg { width: 26px; height: 26px; color: var(--orange); }
+
+        .offer-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 28px; color: var(--navy-dark);
+            letter-spacing: 1px; line-height: 1.1; margin-bottom: 4px;
+        }
+
+        .offer-subtitle {
+            font-size: 14px; font-weight: 700;
+            color: var(--orange); text-transform: uppercase;
+            letter-spacing: 1px; margin-bottom: 14px;
+        }
+
+        .offer-desc {
+            font-size: 15px; color: var(--gray-600); line-height: 1.7;
+            margin-bottom: 16px;
+        }
+
+        .offer-value-box {
+            background: var(--gray-50); border: 1px solid var(--gray-200);
+            border-radius: 10px; padding: 14px 18px; margin-bottom: 18px;
+        }
+
+        .offer-value-row {
+            display: flex; justify-content: space-between;
+            font-size: 14px; padding: 3px 0;
+        }
+
+        .offer-value-row .label { color: var(--gray-600); }
+        .offer-value-row .val { font-weight: 700; color: var(--navy-dark); }
+        .offer-value-row .val.save { color: var(--green); }
+        .offer-value-row .val.strike { text-decoration: line-through; color: var(--gray-400); }
+
+        .offer-clip-btn {
+            display: flex; align-items: center; justify-content: center; gap: 10px;
+            width: 100%; padding: 14px 24px;
+            background: var(--orange); color: var(--white); border: none;
+            border-radius: 10px;
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 16px; font-weight: 700; cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(255,107,53,0.3);
+        }
+
+        .offer-clip-btn:hover {
+            background: var(--orange-glow);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(255,107,53,0.4);
+        }
+
+        .offer-clip-btn svg { width: 18px; height: 18px; }
+
+        .offer-clip-btn.clipped {
+            background: var(--green);
+            box-shadow: 0 4px 12px rgba(16,185,129,0.3);
+            cursor: default;
+            animation: clipPulse 0.4s ease;
+        }
+
+        .offer-clip-btn.clipped:hover {
+            transform: none;
+            box-shadow: 0 4px 12px rgba(16,185,129,0.3);
+        }
+
+        @keyframes clipPulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .offer-fine-print {
+            font-size: 12px; color: var(--gray-400); line-height: 1.5;
+            margin-top: 14px;
+        }
+
+        /* ==================== URGENCY SECTION ==================== */
+        .urgency-section {
+            padding: 80px 24px;
+            background: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy) 50%, var(--navy-light) 100%);
+            position: relative; overflow: hidden;
+        }
+
+        .urgency-section::before {
+            content: '';
+            position: absolute; inset: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        .urgency-container {
+            max-width: 900px; margin: 0 auto;
+            position: relative; z-index: 1; text-align: center;
+        }
+
+        .urgency-container h2 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(32px, 5vw, 52px);
+            color: var(--white); letter-spacing: 1px;
+            line-height: 1.1; margin-bottom: 16px;
+        }
+
+        .urgency-container h2 .accent { color: var(--orange); }
+
+        .urgency-sub {
+            font-size: 18px; color: rgba(255,255,255,0.8);
+            line-height: 1.5; margin-bottom: 24px;
+        }
+
+        .urgency-date {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(28px, 4vw, 42px);
+            color: var(--orange); letter-spacing: 2px;
+            margin-bottom: 32px;
+        }
+
+        .urgency-trust {
+            display: flex; justify-content: center; flex-wrap: wrap;
+            gap: 28px; margin-bottom: 40px;
+        }
+
+        .urgency-trust-item {
+            display: flex; align-items: center; gap: 8px;
+            font-size: 15px; font-weight: 600; color: rgba(255,255,255,0.9);
+        }
+
+        .urgency-trust-item svg { width: 20px; height: 20px; color: var(--orange); }
+
+        .urgency-ctas {
+            display: flex; justify-content: center; gap: 16px; flex-wrap: wrap;
+        }
+
+        .urgency-cta {
+            display: inline-flex; align-items: center; gap: 10px;
+            padding: 18px 36px; border-radius: 10px;
+            font-size: 18px; font-weight: 700;
+            text-decoration: none; transition: all 0.3s ease;
+        }
+
+        .urgency-cta svg { width: 22px; height: 22px; }
+
+        .urgency-cta.primary {
+            background: var(--orange); color: var(--white);
+            box-shadow: 0 4px 15px rgba(255,107,53,0.4);
+        }
+
+        .urgency-cta.primary:hover {
+            background: var(--orange-glow);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(255,107,53,0.5);
+        }
+
+        .urgency-cta.secondary {
+            background: transparent; color: var(--white);
+            border: 2px solid rgba(255,255,255,0.5);
+        }
+
+        .urgency-cta.secondary:hover {
+            background: rgba(255,255,255,0.1);
+            border-color: var(--white);
+            transform: translateY(-2px);
+        }
+
+        /* ==================== FAQ SECTION ==================== */
+        .faq-section {
+            padding: 80px 24px;
+            background: var(--white);
+        }
+
+        .faq-container {
+            max-width: 780px; margin: 0 auto;
+        }
+
+        .faq-container h2 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(32px, 4vw, 48px);
+            color: var(--navy); letter-spacing: 1px;
+            text-align: center; margin-bottom: 40px;
+        }
+
+        .faq-item {
+            border: 1px solid var(--gray-200);
+            border-radius: 12px;
+            margin-bottom: 12px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .faq-item:hover { border-color: var(--orange); }
+
+        .faq-question {
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 20px 24px; cursor: pointer;
+            background: var(--white);
+            font-size: 16px; font-weight: 700; color: var(--navy-dark);
+            transition: background 0.2s ease;
+            border: none; width: 100%; text-align: left;
+            font-family: 'Source Sans 3', sans-serif;
+        }
+
+        .faq-question:hover { background: var(--gray-50); }
+
+        .faq-question svg {
+            width: 20px; height: 20px; color: var(--orange);
+            transition: transform 0.3s ease; flex-shrink: 0;
+        }
+
+        .faq-item.open .faq-question svg { transform: rotate(180deg); }
+
+        .faq-answer {
+            max-height: 0; overflow: hidden;
+            transition: max-height 0.35s ease, padding 0.35s ease;
+        }
+
+        .faq-item.open .faq-answer {
+            max-height: 200px;
+        }
+
+        .faq-answer-inner {
+            padding: 0 24px 20px;
+            font-size: 15px; color: var(--gray-600); line-height: 1.7;
+        }
+
+        /* ==================== STICKY BOTTOM BAR ==================== */
+        .sticky-bar {
+            position: fixed; bottom: 0; left: 0; right: 0;
+            background: var(--navy-dark);
+            padding: 14px 24px;
+            display: flex; align-items: center; justify-content: center; gap: 20px;
+            z-index: 999;
+            transform: translateY(100%);
+            transition: transform 0.4s cubic-bezier(0.22,1,0.36,1);
+            box-shadow: 0 -4px 20px rgba(0,0,0,0.2);
+        }
+
+        .sticky-bar.visible { transform: translateY(0); }
+
+        .sticky-bar-text {
+            font-size: 16px; font-weight: 700; color: var(--white);
+        }
+
+        .sticky-bar-text .count { color: var(--orange); }
+
+        .sticky-bar-btn {
+            display: inline-flex; align-items: center; gap: 8px;
+            padding: 10px 20px; border-radius: 8px;
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 14px; font-weight: 700;
+            cursor: pointer; transition: all 0.2s ease;
+            text-decoration: none; border: none;
+        }
+
+        .sticky-bar-btn svg { width: 16px; height: 16px; }
+
+        .sticky-bar-btn.view {
+            background: var(--orange); color: var(--white);
+        }
+
+        .sticky-bar-btn.view:hover { background: var(--orange-glow); }
+
+        .sticky-bar-btn.print {
+            background: rgba(255,255,255,0.1); color: var(--white);
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+
+        .sticky-bar-btn.print:hover { background: rgba(255,255,255,0.2); }
+
+        /* ==================== MODAL ==================== */
+        .modal-overlay {
+            display: none; position: fixed; inset: 0;
+            background: rgba(0,0,0,0.7); z-index: 2001;
+            align-items: center; justify-content: center; padding: 24px;
+        }
+
+        .modal-overlay.active { display: flex; }
+
+        .modal-card {
+            background: var(--white);
+            border-radius: 16px;
+            max-width: 520px; width: 100%;
+            max-height: 80vh; overflow-y: auto;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            animation: modalIn 0.3s ease;
+        }
+
+        @keyframes modalIn {
+            from { opacity: 0; transform: scale(0.95) translateY(10px); }
+            to { opacity: 1; transform: scale(1) translateY(0); }
+        }
+
+        .modal-header {
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 24px 28px 16px;
+            border-bottom: 1px solid var(--gray-200);
+        }
+
+        .modal-header h3 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 26px; color: var(--navy-dark); letter-spacing: 1px;
+        }
+
+        .modal-close {
+            background: none; border: none; cursor: pointer; padding: 4px;
+        }
+
+        .modal-close svg { width: 24px; height: 24px; color: var(--gray-400); }
+        .modal-close:hover svg { color: var(--navy-dark); }
+
+        .modal-body { padding: 20px 28px; }
+
+        .modal-offer {
+            display: flex; align-items: center; gap: 14px;
+            padding: 14px 0;
+            border-bottom: 1px solid var(--gray-100);
+        }
+
+        .modal-offer:last-child { border-bottom: none; }
+
+        .modal-offer-icon {
+            width: 40px; height: 40px; border-radius: 50%;
+            background: rgba(16,185,129,0.1);
+            display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+        }
+
+        .modal-offer-icon svg { width: 20px; height: 20px; color: var(--green); }
+
+        .modal-offer-info { flex: 1; }
+
+        .modal-offer-title {
+            font-size: 15px; font-weight: 700; color: var(--navy-dark);
+        }
+
+        .modal-offer-meta {
+            font-size: 12px; color: var(--gray-400);
+        }
+
+        .modal-empty {
+            text-align: center; padding: 32px 0;
+            font-size: 15px; color: var(--gray-400);
+        }
+
+        .modal-footer {
+            display: flex; gap: 12px; padding: 16px 28px 24px;
+        }
+
+        .modal-footer-btn {
+            flex: 1; display: flex; align-items: center; justify-content: center; gap: 8px;
+            padding: 12px 20px; border-radius: 10px; border: none;
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 15px; font-weight: 700; cursor: pointer;
+            transition: all 0.2s ease; text-decoration: none;
+        }
+
+        .modal-footer-btn svg { width: 18px; height: 18px; }
+
+        .modal-footer-btn.print-btn {
+            background: var(--navy); color: var(--white);
+        }
+
+        .modal-footer-btn.print-btn:hover { background: var(--navy-dark); }
+
+        .modal-footer-btn.email-btn {
+            background: var(--gray-100); color: var(--navy-dark);
+        }
+
+        .modal-footer-btn.email-btn:hover { background: var(--gray-200); }
+
+        /* Disclaimer */
+        .page-disclaimer {
+            text-align: center; padding: 24px;
+            font-size: 13px; color: var(--gray-400); line-height: 1.5;
+            padding-bottom: 80px;
+        }
+
+        /* ==================== RESPONSIVE ==================== */
+        @media (max-width: 1200px) {
+            .header-trust-badges { gap: 10px; }
+            .trust-badge { width: 95px; }
+            .trust-badge-icon { width: 46px; height: 46px; }
+            .trust-badge-icon svg { width: 24px; height: 24px; }
+            .trust-badge-label { font-size: 10px; }
+            .get-service-btn { padding: 14px 24px; font-size: 20px; }
+        }
+
+        @media (max-width: 1024px) {
+            .header-trust-badges { display: none; }
+            .header-phone { display: none; }
+            .get-service-btn { display: none; }
+            .mobile-toggle { display: block; }
+            .header-mobile-name { display: block; }
+            .header-top-inner { padding: 12px 20px; }
+            .main-nav { display: none; }
+            .header-nav { display: none; }
+            .offers-hero { min-height: 50vh; }
+            .offers-grid { gap: 24px; }
+        }
+
+        @media (max-width: 768px) {
+            .offers-hero-content { padding: 60px 20px 40px; }
+            .offers-hero-sub .sep { display: none; }
+            .offers-hero-sub { display: flex; flex-direction: column; align-items: center; gap: 4px; }
+            .offers-hero-trust { gap: 16px; }
+            .hero-trust-item { font-size: 12px; }
+            .offers-section { padding: 50px 20px; }
+            .offers-grid { grid-template-columns: 1fr; gap: 24px; }
+            .offer-card { padding: 28px 22px; }
+            .urgency-section { padding: 50px 20px; }
+            .urgency-ctas { flex-direction: column; align-items: center; }
+            .urgency-cta { width: 100%; max-width: 340px; justify-content: center; }
+            .urgency-trust { gap: 16px; }
+            .faq-section { padding: 50px 20px; }
+            .sticky-bar { flex-wrap: wrap; gap: 10px; padding: 12px 16px; }
+            .sticky-bar-text { width: 100%; text-align: center; font-size: 14px; }
+        }
+
+        @media (max-width: 480px) {
+            .mobile-trust-item { width: 60px; }
+            .mobile-trust-icon { width: 42px; height: 42px; }
+            .mobile-trust-icon svg { width: 20px; height: 20px; }
+            .offers-hero-content h1 { font-size: 32px; }
+            .offer-title { font-size: 24px; }
+            .offer-card { padding: 24px 18px; }
+            .urgency-date { font-size: 24px; }
+        }
+
+        /* ==================== PRINT ==================== */
+        @media print {
+            .header-top, .header-nav, .mobile-menu, .mobile-toggle,
+            .offers-hero, .urgency-section, .faq-section, .sticky-bar,
+            .page-disclaimer, .offer-clip-btn, .offer-fine-print { display: none !important; }
+
+            body { background: white; color: black; font-size: 12pt; }
+
+            .offers-section { padding: 0; }
+            .offers-grid { grid-template-columns: 1fr 1fr; gap: 16px; }
+
+            .offer-card {
+                border: 1px solid #ccc; box-shadow: none;
+                page-break-inside: avoid;
+                transform: none !important;
+            }
+
+            .offer-badge { position: static; display: inline-block; margin-bottom: 8px; }
+
+            .offers-section-header { margin-bottom: 24px; }
+            .offers-section-header h2 { font-size: 24pt; }
+
+            .print-header {
+                display: block !important;
+                text-align: center; margin-bottom: 20px;
+                padding-bottom: 16px; border-bottom: 2px solid #333;
+            }
+
+            .print-header h2 { font-size: 20pt; margin-bottom: 4px; }
+            .print-header p { font-size: 11pt; color: #666; }
+        }
+
+        .print-header { display: none; }
+    </style>
+</head>
+<body>
+
+    <!-- ==================== HEADER TOP BAR ==================== -->
+    <header class="header-top">
+        <div class="header-top-inner">
+            <a href="index.html" class="logo">
+                <img src="logo.jpg" alt="Metro Boston HVAC - 24/7 Service">
+            </a>
+
+            <span class="header-mobile-name">METRO <span>BOSTON</span> HVAC</span>
+
+            <div class="header-phone">
+                <div class="header-phone-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                    </svg>
+                </div>
+                <div class="header-phone-info">
+                    <a href="tel:7814082506" class="header-phone-number">(781) 408-2506</a>
+                    <span class="header-phone-label">Emergency Services Available</span>
+                </div>
+            </div>
+
+            <div class="header-trust-badges">
+                <div class="trust-badge">
+                    <div class="trust-badge-icon emergency">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                    </div>
+                    <span class="trust-badge-label">Emergency Service Repair Specialists</span>
+                </div>
+                <div class="trust-badge">
+                    <div class="trust-badge-icon licensed">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L4 6v6c0 5.5 3.4 10.7 8 12 4.6-1.3 8-6.5 8-12V6l-8-4z"/><path d="M9 12l2 2 4-4" stroke="#ff6b35" stroke-width="2.5"/></svg>
+                    </div>
+                    <span class="trust-badge-label">Licensed & Insured #081600137</span>
+                </div>
+                <div class="trust-badge">
+                    <div class="trust-badge-icon reviews">
+                        <svg viewBox="0 0 24 24" fill="white" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    </div>
+                    <span class="trust-badge-label">Excellent Customer Reviews</span>
+                </div>
+                <div class="trust-badge">
+                    <div class="trust-badge-icon local">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M12 11c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2z" fill="#ff6b35" stroke="#ff6b35"/></svg>
+                    </div>
+                    <span class="trust-badge-label">Locally Owned & Operated</span>
+                </div>
+                <div class="trust-badge">
+                    <div class="trust-badge-icon price">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L4 6v6c0 5.5 3.4 10.7 8 12 4.6-1.3 8-6.5 8-12V6l-8-4z"/><text x="12" y="16" text-anchor="middle" font-family="Arial" font-weight="800" font-size="10" fill="white" stroke="none">$</text></svg>
+                    </div>
+                    <span class="trust-badge-label">Price Match Guarantee</span>
+                </div>
+            </div>
+
+            <a href="quote.html" class="get-service-btn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+                GET INSTANT SERVICE QUOTE
+            </a>
+
+            <button class="mobile-toggle" aria-label="Menu" onclick="document.getElementById('mobileMenu').classList.add('active')">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+            </button>
+        </div>
+    </header>
+
+    <!-- ==================== NAVIGATION BAR ==================== -->
+    <nav class="header-nav">
+        <div class="header-nav-inner">
+            <div class="main-nav">
+                <div class="nav-item">
+                    <a href="#" class="nav-link">Services <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></a>
+                    <div class="dropdown">
+                        <a href="/services/emergency" class="dropdown-link">Emergency Services</a>
+                        <a href="/services/maintenance" class="dropdown-link">Ongoing Maintenance</a>
+                    </div>
+                </div>
+                <div class="nav-item">
+                    <a href="#" class="nav-link">Resources <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></a>
+                    <div class="dropdown">
+                        <a href="quote.html" class="dropdown-link">Instant Quote</a>
+                        <a href="/resources/service-area" class="dropdown-link">Service Area</a>
+                        <a href="/resources/faq" class="dropdown-link">FAQ</a>
+                        <a href="/resources/loyalty-program" class="dropdown-link">Loyalty Program</a>
+                    </div>
+                </div>
+                <div class="nav-item">
+                    <a href="#" class="nav-link">About Us <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></a>
+                    <div class="dropdown">
+                        <a href="/about/faq" class="dropdown-link">FAQ</a>
+                        <a href="/about/mission" class="dropdown-link">Our Mission</a>
+                    </div>
+                </div>
+                <div class="nav-item">
+                    <a href="offers.html" class="nav-link active">Offers</a>
+                </div>
+                <div class="nav-item">
+                    <a href="contact.html" class="nav-link">Contact Us</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ==================== MOBILE MENU ==================== -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu-header">
+            <span class="logo-text">METRO <span>BOSTON</span> HVAC</span>
+            <button class="mobile-menu-close" aria-label="Close menu" onclick="document.getElementById('mobileMenu').classList.remove('active')">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+        </div>
+
+        <div class="mobile-trust-strip">
+            <div class="mobile-trust-item">
+                <div class="mobile-trust-icon emergency"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
+                <span>Emergency Service Repair Specialists</span>
+            </div>
+            <div class="mobile-trust-item">
+                <div class="mobile-trust-icon licensed"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L4 6v6c0 5.5 3.4 10.7 8 12 4.6-1.3 8-6.5 8-12V6l-8-4z"/><path d="M9 12l2 2 4-4" stroke="#ff6b35" stroke-width="2.5"/></svg></div>
+                <span>Licensed & Insured #081600137</span>
+            </div>
+            <div class="mobile-trust-item">
+                <div class="mobile-trust-icon reviews"><svg viewBox="0 0 24 24" fill="white" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+                <span>Excellent Reviews</span>
+            </div>
+            <div class="mobile-trust-item">
+                <div class="mobile-trust-icon local"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M12 11c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2z" fill="#ff6b35" stroke="#ff6b35"/></svg></div>
+                <span>Locally Owned</span>
+            </div>
+            <div class="mobile-trust-item">
+                <div class="mobile-trust-icon price"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L4 6v6c0 5.5 3.4 10.7 8 12 4.6-1.3 8-6.5 8-12V6l-8-4z"/><text x="12" y="16" text-anchor="middle" font-family="Arial" font-weight="800" font-size="10" fill="white" stroke="none">$</text></svg></div>
+                <span>Price Match Guarantee</span>
+            </div>
+        </div>
+
+        <div class="mobile-quote-btn-wrap">
+            <a href="quote.html" class="mobile-quote-btn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                Get Instant Quote
+            </a>
+        </div>
+
+        <div class="mobile-menu-links">
+            <span class="mobile-section-label">Services</span>
+            <a href="/services/emergency">Emergency Services</a>
+            <a href="/services/maintenance">Ongoing Maintenance</a>
+            <span class="mobile-section-label">Resources</span>
+            <a href="/resources/service-area">Service Area</a>
+            <a href="/resources/faq">FAQ</a>
+            <a href="/resources/loyalty-program">Loyalty Program</a>
+            <span class="mobile-section-label">About Us</span>
+            <a href="/about/faq">FAQ</a>
+            <a href="/about/mission">Our Mission</a>
+            <a href="offers.html">Offers</a>
+            <a href="contact.html">Contact Us</a>
+        </div>
+
+        <div class="mobile-menu-cta">
+            <a href="tel:7814082506" class="mobile-call-btn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                Call (781) 408-2506
+            </a>
+            <a href="quote.html" class="mobile-service-btn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+                Get Service
+            </a>
+        </div>
+    </div>
+
+    <!-- ==================== OFFERS HERO ==================== -->
+    <section class="offers-hero">
+        <div class="offers-hero-bg">
+            <img src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=1920&q=80" alt="HVAC technician tools and equipment">
+        </div>
+        <div class="offers-hero-overlay"></div>
+        <div class="offers-hero-content">
+            <h1>EXCLUSIVE <span class="accent">OFFERS</span> FOR BOSTON AREA HOMEOWNERS</h1>
+            <p class="offers-hero-sub">
+                <span>Save Big On Emergency Repairs & Maintenance</span>
+                <span class="sep">&bull;</span>
+                <span>Limited Time Deals</span>
+            </p>
+            <div class="offers-hero-trust">
+                <div class="hero-trust-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L4 6v6c0 5.5 3.4 10.7 8 12 4.6-1.3 8-6.5 8-12V6l-8-4z"/><path d="M9 12l2 2 4-4"/></svg>
+                    Price Match Guarantee
+                </div>
+                <div class="hero-trust-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                    100% Satisfaction Guaranteed
+                </div>
+                <div class="hero-trust-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L4 6v6c0 5.5 3.4 10.7 8 12 4.6-1.3 8-6.5 8-12V6l-8-4z"/></svg>
+                    Licensed & Insured
+                </div>
+                <div class="hero-trust-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="10" r="3"/><path d="M12 21.7C17.3 17 20 13 20 10a8 8 0 1 0-16 0c0 3 2.7 7 8 11.7z"/></svg>
+                    30-Mile Service Radius
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== OFFERS GRID ==================== -->
+    <section class="offers-section">
+        <div class="print-header">
+            <h2>Metro Boston HVAC - Your Saved Offers</h2>
+            <p>Present these offers to your technician at time of service. Call (781) 408-2506 to book.</p>
+        </div>
+        <div class="offers-container">
+            <div class="offers-section-header">
+                <h2>Claim Your Savings Today</h2>
+                <p>Click any offer below to save it. Show to your technician at time of service.</p>
+            </div>
+
+            <div class="offers-grid">
+                <!-- OFFER 1: Featured -->
+                <div class="offer-card featured" data-offer-id="diagnostic-waived" data-offer-title="$79 Diagnostic Fee" data-offer-code="DIAG79">
+                    <div class="offer-badge popular">MOST POPULAR</div>
+                    <div class="offer-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+                    </div>
+                    <h3 class="offer-title">$79 Diagnostic Fee</h3>
+                    <p class="offer-subtitle">Waived With Completed Repair</p>
+                    <p class="offer-desc">Our expert technicians will diagnose your HVAC issue for just $79. When you approve the repair, the diagnostic fee is 100% waived.</p>
+                    <div class="offer-value-box">
+                        <div class="offer-value-row"><span class="label">Regular diagnostic:</span><span class="val strike">$125</span></div>
+                        <div class="offer-value-row"><span class="label">You save:</span><span class="val save">$46</span></div>
+                    </div>
+                    <button class="offer-clip-btn" aria-label="Clip this offer">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="2" width="6" height="6" rx="1"/><path d="M4 8h16v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8z"/><path d="M8 2h8"/></svg>
+                        Clip This Offer
+                    </button>
+                    <p class="offer-fine-print">Valid for new customers. Cannot be combined with other offers. Must mention at time of booking.</p>
+                </div>
+
+                <!-- OFFER 2 -->
+                <div class="offer-card" data-offer-id="first-service-25" data-offer-title="$25 Off First Service" data-offer-code="WELCOME25">
+                    <div class="offer-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    </div>
+                    <h3 class="offer-title">$25 Off First Service</h3>
+                    <p class="offer-subtitle">New Customer Welcome</p>
+                    <p class="offer-desc">Save $25 on any repair service over $200. Our way of saying thanks for trusting us with your comfort.</p>
+                    <button class="offer-clip-btn" aria-label="Claim discount">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="2" width="6" height="6" rx="1"/><path d="M4 8h16v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8z"/><path d="M8 2h8"/></svg>
+                        Claim Discount
+                    </button>
+                    <p class="offer-fine-print">Minimum $200 repair required. New customers only. Expires <span class="auto-expire"></span>.</p>
+                </div>
+
+                <!-- OFFER 3 -->
+                <div class="offer-card" data-offer-id="no-afterhours" data-offer-title="No After-Hours Fees" data-offer-code="NOFEE247">
+                    <div class="offer-badge value">BEST VALUE</div>
+                    <div class="offer-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                    </div>
+                    <h3 class="offer-title">No After-Hours Fees</h3>
+                    <p class="offer-subtitle">24/7 Emergency Service</p>
+                    <p class="offer-desc">Unlike other companies that charge 50-100% premium rates, we don't add emergency fees for nights, weekends, or holidays.</p>
+                    <div class="offer-value-box">
+                        <div class="offer-value-row"><span class="label">Competitor after-hours:</span><span class="val strike">$150-$200+</span></div>
+                        <div class="offer-value-row"><span class="label">Our price:</span><span class="val save">Standard Rate</span></div>
+                    </div>
+                    <button class="offer-clip-btn" aria-label="Save this offer">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="2" width="6" height="6" rx="1"/><path d="M4 8h16v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8z"/><path d="M8 2h8"/></svg>
+                        Save This Offer
+                    </button>
+                    <p class="offer-fine-print">Standard diagnostic and repair rates apply. Available 24/7/365.</p>
+                </div>
+
+                <!-- OFFER 4 -->
+                <div class="offer-card" data-offer-id="senior-veteran" data-offer-title="10% Off All Services" data-offer-code="HONOR10">
+                    <div class="offer-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L4 6v6c0 5.5 3.4 10.7 8 12 4.6-1.3 8-6.5 8-12V6l-8-4z"/></svg>
+                    </div>
+                    <h3 class="offer-title">10% Off All Services</h3>
+                    <p class="offer-subtitle">Seniors & Veterans</p>
+                    <p class="offer-desc">Thank you for your service to our community and country. We're honored to offer 10% off all repairs.</p>
+                    <button class="offer-clip-btn" aria-label="Get discount">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="2" width="6" height="6" rx="1"/><path d="M4 8h16v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8z"/><path d="M8 2h8"/></svg>
+                        Get Discount
+                    </button>
+                    <p class="offer-fine-print">Valid ID required. Seniors 65+, active military, veterans. Cannot be combined with other discounts.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== URGENCY SECTION ==================== -->
+    <section class="urgency-section">
+        <div class="urgency-container">
+            <h2>THESE OFFERS <span class="accent">WON'T LAST</span> FOREVER</h2>
+            <p class="urgency-sub">Claim your savings now and keep them for 90 days from today</p>
+            <div class="urgency-date" id="expiryDate"></div>
+            <div class="urgency-trust">
+                <div class="urgency-trust-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                    No obligation to use
+                </div>
+                <div class="urgency-trust-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                    Stack multiple offers where applicable
+                </div>
+                <div class="urgency-trust-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                    Honored by all our technicians
+                </div>
+            </div>
+            <div class="urgency-ctas">
+                <a href="tel:7814082506" class="urgency-cta primary">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                    Call Now: (781) 408-2506
+                </a>
+                <a href="quote.html" class="urgency-cta secondary">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                    Schedule Online
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== FAQ SECTION ==================== -->
+    <section class="faq-section">
+        <div class="faq-container">
+            <h2>Offer Questions?</h2>
+            <div class="faq-item">
+                <button class="faq-question" aria-expanded="false">
+                    Can I combine multiple offers?
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                </button>
+                <div class="faq-answer"><div class="faq-answer-inner">Most offers cannot be combined unless specifically stated. Our dispatcher will apply the best discount for your situation.</div></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" aria-expanded="false">
+                    How do I redeem my saved offers?
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                </button>
+                <div class="faq-answer"><div class="faq-answer-inner">Simply mention the offer when you call to book, or show your "clipped offers" to the technician when they arrive.</div></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" aria-expanded="false">
+                    Do these offers expire?
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                </button>
+                <div class="faq-answer"><div class="faq-answer-inner">Once claimed, offers are valid for 90 days. We'll send you a reminder email before expiration.</div></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" aria-expanded="false">
+                    Are there any hidden fees?
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                </button>
+                <div class="faq-answer"><div class="faq-answer-inner">Never. We provide upfront, transparent pricing. The price we quote is the price you pay.</div></div>
+            </div>
+        </div>
+    </section>
+
+    <p class="page-disclaimer">Metro Boston HVAC | Licensed MA Contractor #081600137 | Serving Stoughton, Brockton, Quincy, and the Greater Boston Area.</p>
+
+    <!-- ==================== STICKY BAR ==================== -->
+    <div class="sticky-bar" id="stickyBar">
+        <span class="sticky-bar-text"><span class="count" id="clipCount">0</span> Offers Saved</span>
+        <button class="sticky-bar-btn view" onclick="openModal()" aria-label="View my offers">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+            View My Offers
+        </button>
+        <button class="sticky-bar-btn print" onclick="window.print()" aria-label="Print all offers">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+            Print All
+        </button>
+    </div>
+
+    <!-- ==================== MODAL ==================== -->
+    <div class="modal-overlay" id="modalOverlay" role="dialog" aria-modal="true" aria-label="Saved offers">
+        <div class="modal-card">
+            <div class="modal-header">
+                <h3>Your Saved Offers</h3>
+                <button class="modal-close" onclick="closeModal()" aria-label="Close">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                </button>
+            </div>
+            <div class="modal-body" id="modalBody"></div>
+            <div class="modal-footer">
+                <button class="modal-footer-btn print-btn" onclick="window.print()">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+                    Print
+                </button>
+                <a class="modal-footer-btn email-btn" id="emailBtn" href="#">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 7L2 7"/></svg>
+                    Email to Me
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+    (function() {
+        // ===== DATE HELPERS =====
+        var now = new Date();
+        var expiry = new Date(now.getTime() + 90 * 24 * 60 * 60 * 1000);
+        var months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+
+        function formatDate(d) {
+            return months[d.getMonth()] + ' ' + d.getDate() + ', ' + d.getFullYear();
+        }
+
+        function shortDate(d) {
+            return (d.getMonth()+1) + '/' + d.getDate() + '/' + d.getFullYear();
+        }
+
+        // Set expiry date display
+        var expiryEl = document.getElementById('expiryDate');
+        if (expiryEl) expiryEl.textContent = 'Offers valid through: ' + formatDate(expiry);
+
+        // Set auto-expire spans
+        document.querySelectorAll('.auto-expire').forEach(function(el) {
+            el.textContent = formatDate(expiry);
+        });
+
+        // ===== LOCALSTORAGE =====
+        var STORAGE_KEY = 'mbhvac_clipped_offers';
+
+        function getClipped() {
+            try {
+                return JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
+            } catch(e) { return []; }
+        }
+
+        function saveClipped(arr) {
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(arr));
+        }
+
+        function isClipped(id) {
+            return getClipped().some(function(o) { return o.id === id; });
+        }
+
+        // ===== INIT CLIPPED STATE =====
+        var clipped = getClipped();
+
+        function updateStickyBar() {
+            var count = getClipped().length;
+            var bar = document.getElementById('stickyBar');
+            var countEl = document.getElementById('clipCount');
+            countEl.textContent = count;
+            if (count > 0) {
+                bar.classList.add('visible');
+            } else {
+                bar.classList.remove('visible');
+            }
+        }
+
+        function markButtonClipped(btn) {
+            btn.classList.add('clipped');
+            btn.disabled = true;
+            btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="18" height="18"><polyline points="20 6 9 17 4 12"/></svg> Offer Saved!';
+        }
+
+        // Restore clipped buttons on page load
+        document.querySelectorAll('.offer-card').forEach(function(card) {
+            var id = card.getAttribute('data-offer-id');
+            if (isClipped(id)) {
+                markButtonClipped(card.querySelector('.offer-clip-btn'));
+            }
+        });
+
+        updateStickyBar();
+
+        // ===== CLIP BUTTONS =====
+        document.querySelectorAll('.offer-clip-btn').forEach(function(btn) {
+            btn.addEventListener('click', function() {
+                if (btn.classList.contains('clipped')) return;
+
+                var card = btn.closest('.offer-card');
+                var id = card.getAttribute('data-offer-id');
+                var title = card.getAttribute('data-offer-title');
+                var code = card.getAttribute('data-offer-code');
+
+                var arr = getClipped();
+                arr.push({
+                    id: id,
+                    title: title,
+                    code: code,
+                    clippedDate: shortDate(now),
+                    expiresDate: shortDate(expiry)
+                });
+                saveClipped(arr);
+
+                markButtonClipped(btn);
+                updateStickyBar();
+            });
+        });
+
+        // ===== MODAL =====
+        window.openModal = function() {
+            var arr = getClipped();
+            var body = document.getElementById('modalBody');
+            var emailBtn = document.getElementById('emailBtn');
+
+            if (arr.length === 0) {
+                body.innerHTML = '<div class="modal-empty">No offers saved yet. Clip an offer to get started!</div>';
+                emailBtn.href = '#';
+            } else {
+                var html = '';
+                var emailBody = 'My Saved Metro Boston HVAC Offers:%0A%0A';
+                arr.forEach(function(o) {
+                    html += '<div class="modal-offer">';
+                    html += '<div class="modal-offer-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>';
+                    html += '<div class="modal-offer-info">';
+                    html += '<div class="modal-offer-title">' + o.title + ' <span style="color:var(--orange);font-size:12px;">(Code: ' + o.code + ')</span></div>';
+                    html += '<div class="modal-offer-meta">Clipped: ' + o.clippedDate + ' · Expires: ' + o.expiresDate + '</div>';
+                    html += '</div></div>';
+                    emailBody += '- ' + o.title + ' (Code: ' + o.code + ') Expires: ' + o.expiresDate + '%0A';
+                });
+                body.innerHTML = html;
+                emailBody += '%0ACall (781) 408-2506 to book!';
+                emailBtn.href = 'mailto:?subject=My Metro Boston HVAC Offers&body=' + emailBody;
+            }
+
+            document.getElementById('modalOverlay').classList.add('active');
+        };
+
+        window.closeModal = function() {
+            document.getElementById('modalOverlay').classList.remove('active');
+        };
+
+        // Close on overlay click
+        document.getElementById('modalOverlay').addEventListener('click', function(e) {
+            if (e.target === this) closeModal();
+        });
+
+        // Close on ESC
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') closeModal();
+        });
+
+        // ===== FAQ ACCORDION =====
+        document.querySelectorAll('.faq-question').forEach(function(btn) {
+            btn.addEventListener('click', function() {
+                var item = btn.closest('.faq-item');
+                var isOpen = item.classList.contains('open');
+
+                // Close all
+                document.querySelectorAll('.faq-item').forEach(function(fi) {
+                    fi.classList.remove('open');
+                    fi.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+                });
+
+                if (!isOpen) {
+                    item.classList.add('open');
+                    btn.setAttribute('aria-expanded', 'true');
+                }
+            });
+        });
+
+    })();
+    </script>
+
+</body>
+</html>
