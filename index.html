@@ -1463,6 +1463,11 @@
             .payment-image {
                 order: 1;
                 max-height: 360px;
+                margin-bottom: 20px;
+            }
+
+            .payment-image img {
+                max-height: 360px;
             }
         }
 
@@ -1513,33 +1518,90 @@
                 padding: 60px 20px;
             }
 
-            .payment-methods {
-                gap: 8px;
+            .payment-container {
+                gap: 28px;
             }
 
-            .pay-pill {
-                padding: 10px 14px;
-                font-size: 13px;
-                gap: 8px;
+            .payment-text {
+                font-size: 16px;
+                line-height: 1.7;
+                margin-bottom: 16px;
             }
 
-            .pay-pill svg {
-                width: 18px;
-                height: 18px;
+            .payment-trust-row {
+                gap: 12px;
+                justify-content: center;
+            }
+
+            .payment-trust-item {
+                width: 72px;
+                gap: 6px;
+            }
+
+            .payment-trust-icon {
+                width: 48px;
+                height: 48px;
+            }
+
+            .payment-trust-icon svg {
+                width: 22px;
+                height: 22px;
+            }
+
+            .payment-trust-label {
+                font-size: 9px;
             }
 
             .price-match-banner {
-                padding: 16px 18px;
+                padding: 14px 16px;
                 gap: 12px;
+                margin-top: 20px;
+                margin-bottom: 24px;
+                flex-direction: column;
+                text-align: center;
             }
 
             .price-match-banner svg {
-                width: 26px;
-                height: 26px;
+                width: 28px;
+                height: 28px;
             }
 
             .price-match-banner p {
+                font-size: 13px;
+                line-height: 1.5;
+            }
+
+            .price-match-banner strong {
                 font-size: 14px;
+            }
+
+            .price-shield {
+                width: 100px;
+                bottom: -10px;
+                right: 12px;
+            }
+
+            .price-shield svg {
+                width: 100px;
+                height: 116px;
+            }
+
+            .price-shield-text .shield-line1 {
+                font-size: 11px;
+                letter-spacing: 1.5px;
+            }
+
+            .price-shield-text .shield-line2 {
+                font-size: 17px;
+            }
+
+            .price-shield-text .shield-line3 {
+                font-size: 9px;
+            }
+
+            .price-shield-check {
+                width: 16px;
+                height: 16px;
             }
 
             .service-area-map-wrapper {
@@ -1606,6 +1668,100 @@
                 width: 14px;
                 height: 14px;
             }
+
+            .payment-section {
+                padding: 48px 16px;
+            }
+
+            .payment-container {
+                gap: 24px;
+            }
+
+            .payment-title {
+                font-size: 28px;
+                margin-bottom: 16px;
+            }
+
+            .payment-text {
+                font-size: 15px;
+                line-height: 1.65;
+                margin-bottom: 14px;
+            }
+
+            .payment-trust-row {
+                gap: 8px;
+            }
+
+            .payment-trust-item {
+                width: 62px;
+                gap: 5px;
+            }
+
+            .payment-trust-icon {
+                width: 42px;
+                height: 42px;
+            }
+
+            .payment-trust-icon svg {
+                width: 20px;
+                height: 20px;
+            }
+
+            .payment-trust-label {
+                font-size: 8px;
+                letter-spacing: 0;
+            }
+
+            .price-match-banner {
+                padding: 12px 14px;
+                margin-top: 16px;
+                margin-bottom: 20px;
+                border-radius: 10px;
+            }
+
+            .price-match-banner p {
+                font-size: 12px;
+            }
+
+            .price-match-banner strong {
+                font-size: 13px;
+            }
+
+            .price-match-banner svg {
+                width: 22px;
+                height: 22px;
+            }
+
+            .price-shield {
+                width: 85px;
+                bottom: -8px;
+                right: 10px;
+            }
+
+            .price-shield svg {
+                width: 85px;
+                height: 98px;
+            }
+
+            .price-shield-text .shield-line1 {
+                font-size: 9px;
+                letter-spacing: 1px;
+            }
+
+            .price-shield-text .shield-line2 {
+                font-size: 14px;
+            }
+
+            .price-shield-text .shield-line3 {
+                font-size: 8px;
+                letter-spacing: 1px;
+            }
+
+            .price-shield-check {
+                width: 13px;
+                height: 13px;
+                margin: 1px auto 2px;
+            }
         }
         /* ==================== PAYMENT & FINANCING SECTION ==================== */
         .payment-section {
@@ -1649,8 +1805,7 @@
         .payment-image {
             position: relative;
             border-radius: 16px;
-            overflow: hidden;
-            box-shadow: 0 20px 50px rgba(26, 58, 82, 0.15);
+            overflow: visible;
         }
 
         .payment-image img {
@@ -1658,6 +1813,66 @@
             height: 100%;
             object-fit: cover;
             display: block;
+            border-radius: 16px;
+            box-shadow: 0 20px 50px rgba(26, 58, 82, 0.15);
+        }
+
+        /* Price match shield badge */
+        .price-shield {
+            position: absolute;
+            bottom: -16px;
+            right: 20px;
+            width: 130px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            z-index: 2;
+            filter: drop-shadow(0 8px 20px rgba(0,0,0,0.25));
+        }
+
+        .price-shield svg {
+            width: 130px;
+            height: 150px;
+        }
+
+        .price-shield-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -55%);
+            text-align: center;
+            color: white;
+            font-family: 'Bebas Neue', sans-serif;
+            line-height: 1.15;
+            pointer-events: none;
+        }
+
+        .price-shield-text .shield-line1 {
+            font-size: 14px;
+            letter-spacing: 2.5px;
+            opacity: 0.9;
+            display: block;
+        }
+
+        .price-shield-text .shield-line2 {
+            font-size: 22px;
+            letter-spacing: 1.5px;
+            display: block;
+            font-weight: 700;
+        }
+
+        .price-shield-text .shield-line3 {
+            font-size: 12px;
+            letter-spacing: 2px;
+            opacity: 0.9;
+            display: block;
+        }
+
+        .price-shield-check {
+            display: block;
+            width: 22px;
+            height: 22px;
+            margin: 2px auto 4px;
         }
 
         /* Price match banner */
@@ -1717,45 +1932,57 @@
             font-size: 16px;
         }
 
-        /* Payment method pills */
-        .payment-methods {
+        /* Payment trust badges */
+        .payment-trust-row {
             display: flex;
+            align-items: flex-start;
+            gap: 20px;
             flex-wrap: wrap;
-            gap: 12px;
         }
 
-        .pay-pill {
-            display: inline-flex;
+        .payment-trust-item {
+            display: flex;
+            flex-direction: column;
             align-items: center;
-            gap: 10px;
-            padding: 12px 18px;
-            background: var(--white);
-            border: 1.5px solid #e2e8f0;
-            border-radius: 50px;
-            font-size: 14px;
-            font-weight: 600;
-            color: var(--navy);
-            transition: all 0.25s ease;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+            gap: 8px;
+            width: 90px;
+            text-align: center;
         }
 
-        .pay-pill:hover {
-            border-color: var(--orange);
-            box-shadow: 0 4px 12px rgba(255, 107, 53, 0.1);
-            transform: translateY(-1px);
-        }
-
-        .pay-pill svg {
-            width: 20px;
-            height: 20px;
+        .payment-trust-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             flex-shrink: 0;
+            transition: transform 0.2s ease;
         }
 
-        .pay-pill .pill-sub {
-            font-weight: 400;
-            color: var(--gray-600);
-            font-size: 12px;
-            margin-left: -4px;
+        .payment-trust-item:hover .payment-trust-icon {
+            transform: scale(1.08);
+        }
+
+        .payment-trust-icon svg {
+            width: 26px;
+            height: 26px;
+            color: white;
+        }
+
+        .payment-trust-icon.pt-square { background: #000; }
+        .payment-trust-icon.pt-cards { background: var(--navy); }
+        .payment-trust-icon.pt-contactless { background: var(--navy-dark); }
+        .payment-trust-icon.pt-financing { background: var(--orange); }
+        .payment-trust-icon.pt-guarantee { background: #1a8a5c; }
+
+        .payment-trust-label {
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--navy-dark);
+            line-height: 1.3;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
         }
 
         /* ==================== SCROLL ANIMATIONS ==================== */
@@ -2353,32 +2580,63 @@
                     <p><strong>Price Match Guarantee</strong> — Got a written quote from another licensed professional? We'll match or beat it. We're confident in our value, and we want you to feel confident choosing us.</p>
                 </div>
 
-                <div class="payment-methods">
-                    <span class="pay-pill">
-                        <svg viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="3" fill="#000"/><rect x="7" y="7" width="10" height="10" rx="1.5" fill="#fff"/></svg>
-                        Square
-                    </span>
-                    <span class="pay-pill">
-                        <svg viewBox="0 0 24 24" fill="none"><rect x="1" y="5" width="22" height="14" rx="2" stroke="var(--navy)" stroke-width="1.5"/><circle cx="9" cy="12" r="4" fill="#EB001B" opacity="0.85"/><circle cx="15" cy="12" r="4" fill="#F79E1B" opacity="0.85"/></svg>
-                        Visa / MC / Amex
-                    </span>
-                    <span class="pay-pill">
-                        <svg viewBox="0 0 24 24" fill="none"><rect x="2" y="6" width="20" height="12" rx="2" stroke="var(--navy)" stroke-width="1.5"/><path d="M7 12h4M12 15c1.7 0 3-1.3 3-3s-1.3-3-3-3" stroke="var(--navy)" stroke-width="1.5" stroke-linecap="round"/></svg>
-                        Apple Pay
-                    </span>
-                    <span class="pay-pill">
-                        <svg viewBox="0 0 24 24" fill="none"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2z" stroke="var(--orange)" stroke-width="1.5"/><path d="M12 6v6l4 2" stroke="var(--orange)" stroke-width="1.5" stroke-linecap="round"/></svg>
-                        Financing <span class="pill-sub">case-by-case</span>
-                    </span>
-                    <span class="pay-pill">
-                        <svg viewBox="0 0 24 24" fill="none"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="var(--navy)" stroke-width="1.5"/><polyline points="9 12 11 14 15 10" stroke="var(--navy)" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                        Price Match
-                    </span>
+                <div class="payment-trust-row">
+                    <div class="payment-trust-item">
+                        <div class="payment-trust-icon pt-square">
+                            <svg viewBox="0 0 24 24" fill="white"><rect x="6" y="6" width="12" height="12" rx="2"/></svg>
+                        </div>
+                        <span class="payment-trust-label">Square Payments</span>
+                    </div>
+                    <div class="payment-trust-item">
+                        <div class="payment-trust-icon pt-cards">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
+                        </div>
+                        <span class="payment-trust-label">All Major Cards</span>
+                    </div>
+                    <div class="payment-trust-item">
+                        <div class="payment-trust-icon pt-contactless">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round"><path d="M8.5 16.5a5 5 0 0 1 0-9"/><path d="M5 19a9 9 0 0 1 0-14"/><path d="M12 12h.01"/><rect x="11" y="6" width="9" height="12" rx="2"/></svg>
+                        </div>
+                        <span class="payment-trust-label">Apple Pay</span>
+                    </div>
+                    <div class="payment-trust-item">
+                        <div class="payment-trust-icon pt-financing">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2" stroke-linecap="round"/></svg>
+                        </div>
+                        <span class="payment-trust-label">Flexible Financing</span>
+                    </div>
+                    <div class="payment-trust-item">
+                        <div class="payment-trust-icon pt-guarantee">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        </div>
+                        <span class="payment-trust-label">Price Match</span>
+                    </div>
                 </div>
             </div>
 
             <div class="payment-image scroll-reveal fade-right delay-1">
                 <img src="https://media.istockphoto.com/id/2172868819/photo/a-homeowner-and-a-technician-shake-hands-in-front-of-a-house-near-an-external-heat-pump-unit.jpg?s=612x612&w=0&k=20&c=ANGz3ns6p3AK3nN2OqGTX3PR6SBQqrLlu4CjEt93qYI=" alt="HVAC technician shaking hands with satisfied homeowner">
+                <div class="price-shield">
+                    <svg viewBox="0 0 120 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <linearGradient id="shieldGrad" x1="0" y1="0" x2="1" y2="1">
+                                <stop offset="0%" stop-color="#22a865"/>
+                                <stop offset="100%" stop-color="#178a4f"/>
+                            </linearGradient>
+                            <filter id="shieldInner" x="-2%" y="-2%" width="104%" height="104%">
+                                <feDropShadow dx="0" dy="1" stdDeviation="1" flood-color="#000" flood-opacity="0.1"/>
+                            </filter>
+                        </defs>
+                        <path d="M60 4L10 28v40c0 36 50 64 50 64s50-28 50-64V28L60 4z" fill="url(#shieldGrad)" filter="url(#shieldInner)"/>
+                        <path d="M60 12L18 32v34c0 31 42 55 42 55s42-24 42-55V32L60 12z" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="1.5"/>
+                    </svg>
+                    <div class="price-shield-text">
+                        <svg class="price-shield-check" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 12 10 16 18 8"/></svg>
+                        <span class="shield-line1">PRICE</span>
+                        <span class="shield-line2">MATCH</span>
+                        <span class="shield-line3">GUARANTEE</span>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
