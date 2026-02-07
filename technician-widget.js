@@ -182,34 +182,72 @@
                 var techs = generateTechLocations(userLat, userLng);
                 var techCount = techs.length;
 
-                // Inject popup and map modal HTML
+                // Build fab button HTML
+                var fabHTML = '<button class="tech-fab" id="techFab" aria-label="View nearby technicians">' +
+                    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">' +
+                        '<path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>' +
+                        '<circle cx="12" cy="10" r="3"></circle>' +
+                    '</svg>' +
+                    '<span class="tech-fab-badge">' + techCount + '</span>' +
+                '</button>';
+
+                // Inject popup, fab, and map modal HTML
                 var widgetContainer = document.createElement('div');
                 widgetContainer.id = 'techWidgetRoot';
-                widgetContainer.innerHTML = buildPopupHTML(techCount) + buildMapHTML();
+                widgetContainer.innerHTML = buildPopupHTML(techCount) + fabHTML + buildMapHTML();
                 document.body.appendChild(widgetContainer);
 
                 var popup = document.getElementById('techPopup');
+                var fab = document.getElementById('techFab');
                 var overlay = document.getElementById('techMapOverlay');
                 var mapInstance = null;
                 var autoHideTimer = null;
+
+                function showFab() {
+                    setTimeout(function() {
+                        fab.classList.add('visible');
+                    }, 400);
+                }
+
+                function hideFab() {
+                    fab.classList.remove('visible');
+                }
 
                 // Show popup after delay
                 setTimeout(function() {
                     popup.classList.add('visible');
 
-                    // Auto-hide after duration
+                    // Auto-hide after duration, then show fab
                     autoHideTimer = setTimeout(function() {
                         popup.classList.remove('visible');
+                        showFab();
                     }, POPUP_DURATION);
                 }, POPUP_DELAY);
 
-                // Close popup
+                // Close popup → show fab
                 document.getElementById('techPopupClose').addEventListener('click', function() {
                     popup.classList.remove('visible');
                     if (autoHideTimer) clearTimeout(autoHideTimer);
+                    showFab();
                 });
 
-                // View Map
+                // Fab click → open map
+                fab.addEventListener('click', function() {
+                    hideFab();
+                    overlay.classList.add('active');
+
+                    if (!mapInstance) {
+                        setTimeout(function() {
+                            mapInstance = initMap(userLat, userLng, techs);
+                        }, 100);
+                    } else {
+                        setTimeout(function() {
+                            mapInstance.invalidateSize();
+                        }, 100);
+                    }
+                });
+
+                // View Map from popup
                 document.getElementById('techViewMap').addEventListener('click', function() {
                     popup.classList.remove('visible');
                     if (autoHideTimer) clearTimeout(autoHideTimer);
@@ -226,9 +264,10 @@
                     }
                 });
 
-                // Close map modal
+                // Close map modal → show fab
                 function closeMap() {
                     overlay.classList.remove('active');
+                    showFab();
                 }
 
                 document.getElementById('techMapClose').addEventListener('click', closeMap);
