@@ -87,6 +87,25 @@
             color: var(--orange);
         }
 
+        /* Mobile header company name (hidden on desktop) */
+        .header-mobile-name {
+            display: none;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 22px;
+            color: var(--white);
+            letter-spacing: 2px;
+            line-height: 1;
+            -webkit-text-stroke: 1px var(--navy-dark);
+            text-stroke: 1px var(--navy-dark);
+            paint-order: stroke fill;
+        }
+
+        .header-mobile-name span {
+            color: var(--orange);
+            -webkit-text-stroke: 1px rgba(15, 37, 54, 0.6);
+            text-stroke: 1px rgba(15, 37, 54, 0.6);
+        }
+
         /* Phone Block */
         .header-phone {
             display: flex;
@@ -1663,6 +1682,14 @@
                 display: block;
             }
 
+            .header-mobile-name {
+                display: block;
+            }
+
+            .hero-company-name {
+                display: none;
+            }
+
             .header-top-inner {
                 padding: 12px 20px;
             }
@@ -2041,6 +2068,9 @@
             <a href="/" class="logo">
                 <img src="logo.jpg" alt="Metro Boston HVAC - 24/7 Service">
             </a>
+
+            <!-- Mobile company name (visible only on mobile) -->
+            <span class="header-mobile-name">METRO <span>BOSTON</span> HVAC</span>
 
             <!-- Phone Block -->
             <div class="header-phone">
