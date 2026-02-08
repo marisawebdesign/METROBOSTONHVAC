@@ -1,0 +1,336 @@
+{
+  "welcome": {
+    "messages": [
+      "Hey there! Thanks for visiting Metro Boston HVAC. I'm here to help with whatever you've got going on with your heating or cooling. What can I help you with today?"
+    ],
+    "options": [
+      { "label": "My AC or heat isn't working", "next": "emergency", "icon": "alert" },
+      { "label": "I need maintenance", "next": "maintenance", "icon": "tool" },
+      { "label": "I'd like a quote", "next": "quote", "icon": "dollar" },
+      { "label": "General question", "next": "general", "icon": "question" }
+    ]
+  },
+
+  "emergency": {
+    "messages": [
+      "I'm sorry you're dealing with that — I know how stressful it can be, especially when the weather isn't cooperating.",
+      "Can you tell me a bit more about what's happening?"
+    ],
+    "options": [
+      { "label": "No cold air", "next": "no_cooling" },
+      { "label": "No heat", "next": "no_heat" },
+      { "label": "Strange noises", "next": "strange_noise" },
+      { "label": "Leaking or water", "next": "leaking" },
+      { "label": "System won't turn on", "next": "wont_start" }
+    ]
+  },
+
+  "no_cooling": {
+    "messages": [
+      "No cold air is really common, and sometimes it's a quick fix. Here are a few things worth checking first:",
+      "1. Make sure your thermostat is set to COOL and the temperature is set below room temp.\n2. Check if your air filter is clogged — a dirty filter can block airflow completely.\n3. Take a look at your circuit breaker panel to see if anything tripped.",
+      "Were you able to check those, or is your home getting uncomfortably warm right now?"
+    ],
+    "options": [
+      { "label": "It's really hot in here", "next": "urgent_yes" },
+      { "label": "I can manage for now", "next": "urgent_no" },
+      { "label": "I checked — still not working", "next": "urgent_yes" }
+    ]
+  },
+
+  "no_heat": {
+    "messages": [
+      "No heat can feel pretty urgent, especially during a New England winter. Let's see if we can narrow this down.",
+      "A couple things to check:\n1. Is your thermostat set to HEAT and above room temperature?\n2. If you have a furnace, check if the pilot light is on.\n3. Make sure your air filter isn't clogged — that's one of the most common culprits.\n4. Check your breaker panel for any tripped switches.",
+      "How are things feeling in the house right now?"
+    ],
+    "options": [
+      { "label": "It's getting really cold", "next": "urgent_yes" },
+      { "label": "We're okay for now", "next": "urgent_no" },
+      { "label": "Tried everything — still no heat", "next": "urgent_yes" }
+    ]
+  },
+
+  "strange_noise": {
+    "messages": [
+      "Strange noises from your HVAC system are never fun. The good news is that the type of sound usually tells us a lot about what's going on.",
+      "Here's a quick guide:\n• Banging or clanking — could be a loose or broken part inside the unit\n• Squealing or screeching — often a belt or motor bearing issue\n• Buzzing — may be an electrical component or a failing contactor\n• Rattling — sometimes it's just a loose panel or ductwork",
+      "Is the system still heating/cooling okay, or has performance dropped too?"
+    ],
+    "options": [
+      { "label": "It's not heating/cooling well either", "next": "urgent_yes" },
+      { "label": "Still working, just noisy", "next": "urgent_no" }
+    ]
+  },
+
+  "leaking": {
+    "messages": [
+      "Water or leaking around your HVAC system should definitely be looked at. Here's what might be going on:",
+      "• Clogged condensate drain line — this is the most common cause and usually a straightforward fix\n• Frozen evaporator coil — turn the system off and let it thaw, then check your filter\n• Cracked drain pan — especially common in older units",
+      "If you see a lot of water, it's a good idea to turn the system off to prevent damage. Is the leak significant?"
+    ],
+    "options": [
+      { "label": "Yes, there's a lot of water", "next": "urgent_yes" },
+      { "label": "It's a small drip", "next": "urgent_no" }
+    ]
+  },
+
+  "wont_start": {
+    "messages": [
+      "A system that won't start can be a few things. Let's work through the basics:",
+      "1. Check your thermostat — make sure it's on and set correctly (sometimes batteries die)\n2. Look at your circuit breaker panel for any tripped breakers\n3. Check your furnace power switch (usually looks like a light switch near the unit)\n4. If you have an outdoor unit, make sure nothing is blocking it",
+      "Any luck with those, or is it still not responding?"
+    ],
+    "options": [
+      { "label": "Still nothing — need help now", "next": "urgent_yes" },
+      { "label": "I'll try those first", "next": "urgent_no" }
+    ]
+  },
+
+  "urgent_yes": {
+    "messages": [
+      "Let's get someone out to you. Our technicians are available 24/7, and we serve Stoughton and the entire Metro Boston area.",
+      "With 30+ years of experience, we've seen just about everything — and we'll take good care of you. Give us a call and we can usually have someone on the way quickly."
+    ],
+    "phone_cta": true,
+    "options": [
+      { "label": "What will the visit cost?", "next": "faq_emergency_pricing" },
+      { "label": "Start over", "next": "welcome", "restart": true }
+    ]
+  },
+
+  "urgent_no": {
+    "messages": [
+      "Glad you're comfortable for now. When you're ready, we'd love to help get things sorted out.",
+      "You can give us a call anytime — we're here 24/7. Or if you'd prefer, you can schedule through our contact page at your convenience."
+    ],
+    "phone_cta": true,
+    "link_cta": { "label": "Contact Us Online", "url": "contact.html" },
+    "options": [
+      { "label": "Tell me about your pricing", "next": "faq_emergency_pricing" },
+      { "label": "Start over", "next": "welcome", "restart": true }
+    ]
+  },
+
+  "maintenance": {
+    "messages": [
+      "Great thinking — regular maintenance is honestly the best way to avoid surprise breakdowns and keep your energy bills in check.",
+      "Are you looking to maintain an existing system, or are you considering a new installation?"
+    ],
+    "options": [
+      { "label": "Maintain my existing system", "next": "maintenance_existing" },
+      { "label": "New installation", "next": "maintenance_new" }
+    ]
+  },
+
+  "maintenance_existing": {
+    "messages": [
+      "Keeping your system maintained is the single best thing you can do to extend its life and keep it running efficiently.",
+      "When was the last time your system had a professional tune-up?"
+    ],
+    "options": [
+      { "label": "Over a year ago", "next": "maintenance_overdue" },
+      { "label": "Never / Not sure", "next": "maintenance_overdue" },
+      { "label": "Within the last year", "next": "maintenance_recent" }
+    ]
+  },
+
+  "maintenance_overdue": {
+    "messages": [
+      "It's probably a good time to schedule a tune-up. Over time, dust buildup and normal wear can reduce efficiency by 5-10% per year — which shows up on your utility bills.",
+      "Our seasonal maintenance includes a full system inspection, cleaning, safety checks, and performance testing. It helps catch small issues before they turn into expensive repairs.",
+      "Give us a call or reach out online — we'll find a time that works for you."
+    ],
+    "phone_cta": true,
+    "link_cta": { "label": "Contact Us to Schedule", "url": "contact.html" },
+    "options": [
+      { "label": "What does maintenance cost?", "next": "quote_maintenance" },
+      { "label": "Start over", "next": "welcome", "restart": true }
+    ]
+  },
+
+  "maintenance_recent": {
+    "messages": [
+      "Good to hear you're staying on top of it! Is there something specific going on with your system, or just checking in?"
+    ],
+    "options": [
+      { "label": "Something seems off", "next": "emergency" },
+      { "label": "Just exploring my options", "next": "quote" },
+      { "label": "Start over", "next": "welcome", "restart": true }
+    ]
+  },
+
+  "maintenance_new": {
+    "messages": [
+      "If you're looking at a new system, heat pumps are definitely worth considering. They handle both heating and cooling in one unit, and they're incredibly efficient.",
+      "Plus, through Mass Save rebates, many homeowners in Massachusetts can offset a significant portion of the installation cost. We can walk you through all the options and what rebates you may qualify for.",
+      "Want to chat with one of our team members about what would work best for your home?"
+    ],
+    "phone_cta": true,
+    "link_cta": { "label": "Get an Instant Quote", "url": "quote.html" },
+    "options": [
+      { "label": "Tell me more about heat pumps", "next": "heat_pump_info" },
+      { "label": "Start over", "next": "welcome", "restart": true }
+    ]
+  },
+
+  "heat_pump_info": {
+    "messages": [
+      "Heat pumps are one of the smartest upgrades you can make for a New England home. Here's why folks love them:",
+      "• They heat AND cool — one system, year-round comfort\n• Up to 3x more efficient than traditional furnaces\n• Mass Save rebates can cover a significant portion of cost\n• They work great even in cold Massachusetts winters (modern units are rated down to -15°F)\n• Lower carbon footprint if that's important to you",
+      "We've installed hundreds of heat pump systems across the Metro Boston area. We'd be happy to do a free assessment of your home to recommend the right setup."
+    ],
+    "phone_cta": true,
+    "link_cta": { "label": "Get an Instant Quote", "url": "quote.html" },
+    "options": [
+      { "label": "What does installation cost?", "next": "quote_installation" },
+      { "label": "Start over", "next": "welcome", "restart": true }
+    ]
+  },
+
+  "quote": {
+    "messages": [
+      "Happy to help point you in the right direction. What type of service are you looking for?"
+    ],
+    "options": [
+      { "label": "Repair", "next": "quote_repair" },
+      { "label": "New installation", "next": "quote_installation" },
+      { "label": "Maintenance plan", "next": "quote_maintenance" }
+    ]
+  },
+
+  "quote_repair": {
+    "messages": [
+      "For repairs, the cost really depends on what's going on with the system. Our diagnostic fee is $79, and if you go ahead with the repair, we waive it completely.",
+      "What type of system are you working with?"
+    ],
+    "options": [
+      { "label": "Central AC", "next": "quote_system_selected" },
+      { "label": "Furnace", "next": "quote_system_selected" },
+      { "label": "Heat pump", "next": "quote_system_selected" },
+      { "label": "Boiler", "next": "quote_system_selected" },
+      { "label": "Not sure", "next": "quote_system_selected" }
+    ]
+  },
+
+  "quote_installation": {
+    "messages": [
+      "New installations vary quite a bit based on your home's size, existing ductwork, and the type of system. We provide free in-home assessments so there are no surprises.",
+      "What are you interested in?"
+    ],
+    "options": [
+      { "label": "Central AC", "next": "quote_system_selected" },
+      { "label": "Furnace", "next": "quote_system_selected" },
+      { "label": "Heat pump", "next": "quote_system_selected" },
+      { "label": "Boiler", "next": "quote_system_selected" },
+      { "label": "Not sure yet", "next": "quote_system_selected" }
+    ]
+  },
+
+  "quote_maintenance": {
+    "messages": [
+      "Our maintenance plans are designed to keep your system running smoothly and catch problems early. Regular tune-ups typically pay for themselves in lower energy bills and avoided repairs.",
+      "For accurate pricing based on your system, the best next step is to give us a call or try our instant quote tool."
+    ],
+    "phone_cta": true,
+    "link_cta": { "label": "Try Our Instant Quote Tool", "url": "quote.html" },
+    "options": [
+      { "label": "Check your offers page", "next": "offers_plug" },
+      { "label": "Start over", "next": "welcome", "restart": true }
+    ]
+  },
+
+  "quote_system_selected": {
+    "messages": [
+      "Thanks for sharing that. For the most accurate pricing, our team can give you a detailed estimate. You can call us directly, or try our instant quote tool for a quick ballpark.",
+      "We always provide upfront pricing — no hidden fees or surprises."
+    ],
+    "phone_cta": true,
+    "link_cta": { "label": "Get an Instant Quote", "url": "quote.html" },
+    "options": [
+      { "label": "Do you have any current offers?", "next": "offers_plug" },
+      { "label": "Start over", "next": "welcome", "restart": true }
+    ]
+  },
+
+  "offers_plug": {
+    "messages": [
+      "We do! Check out our current specials — including a $79 diagnostic fee (waived with repair), $25 off your first service, and no after-hours fees for emergencies."
+    ],
+    "link_cta": { "label": "View Current Offers", "url": "offers.html" },
+    "options": [
+      { "label": "Start over", "next": "welcome", "restart": true }
+    ]
+  },
+
+  "general": {
+    "messages": [
+      "Sure thing — what would you like to know?"
+    ],
+    "options": [
+      { "label": "Service area", "next": "faq_service_area" },
+      { "label": "Hours of operation", "next": "faq_hours" },
+      { "label": "Payment options", "next": "faq_payment" },
+      { "label": "Emergency pricing", "next": "faq_emergency_pricing" }
+    ]
+  },
+
+  "faq_service_area": {
+    "messages": [
+      "We're based in Stoughton, MA and serve the entire Metro Boston area — roughly a 30-mile radius. That includes towns like Brockton, Quincy, Canton, Norwood, Randolph, Milton, Weymouth, and many more.",
+      "Not sure if you're in our area? Just give us a call and we'll let you know right away."
+    ],
+    "phone_cta": true,
+    "options": [
+      { "label": "Ask another question", "next": "general" },
+      { "label": "Start over", "next": "welcome", "restart": true }
+    ]
+  },
+
+  "faq_hours": {
+    "messages": [
+      "We're available 24 hours a day, 7 days a week for emergency services — nights, weekends, holidays, you name it.",
+      "For non-emergency appointments, we typically schedule Monday through Saturday. But honestly, if you need us, we're here."
+    ],
+    "phone_cta": true,
+    "options": [
+      { "label": "Ask another question", "next": "general" },
+      { "label": "Start over", "next": "welcome", "restart": true }
+    ]
+  },
+
+  "faq_payment": {
+    "messages": [
+      "We try to make payment as easy as possible. We accept all major credit cards, cash, and checks.",
+      "We also offer financing options for larger jobs like installations, so cost doesn't have to be a barrier to getting comfortable. Just ask about it when you call."
+    ],
+    "phone_cta": true,
+    "options": [
+      { "label": "Ask another question", "next": "general" },
+      { "label": "Start over", "next": "welcome", "restart": true }
+    ]
+  },
+
+  "faq_emergency_pricing": {
+    "messages": [
+      "We believe in straightforward pricing. Our diagnostic fee is $79, and we waive it completely if you go ahead with the repair.",
+      "One thing that sets us apart — we don't charge extra for after-hours, weekends, or holiday calls. The price is the price, no matter when you need us. You can also check our offers page for current specials."
+    ],
+    "phone_cta": true,
+    "link_cta": { "label": "View Current Offers", "url": "offers.html" },
+    "options": [
+      { "label": "Ask another question", "next": "general" },
+      { "label": "Start over", "next": "welcome", "restart": true }
+    ]
+  },
+
+  "fallback": {
+    "messages": [
+      "Hmm, I'm not sure I can help with that one. But our team definitely can — give us a call at (781) 408-2506 and we'll get you sorted out. We're available 24/7."
+    ],
+    "phone_cta": true,
+    "options": [
+      { "label": "Start over", "next": "welcome", "restart": true }
+    ]
+  }
+}
