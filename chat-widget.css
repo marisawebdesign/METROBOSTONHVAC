@@ -223,6 +223,9 @@
     padding: 6px;
     border-radius: 6px;
     transition: background 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 4px;
 }
 
 .chat-header-actions button:hover {
@@ -237,6 +240,14 @@
 
 .chat-header-actions button:hover svg {
     color: white;
+}
+
+.chat-minimize-label {
+    display: none;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.6);
 }
 
 /* ── Chat Messages Area ── */
@@ -365,6 +376,141 @@
     color: white;
     transform: translateY(-1px);
     box-shadow: 0 4px 12px rgba(255,107,53,0.25);
+}
+
+/* ── Multi-Select Symptoms ── */
+.chat-multi-select {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 4px 0;
+    animation: msgFadeIn 0.3s ease;
+}
+
+.chat-multi-option {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 9px 14px;
+    background: white;
+    border: 2px solid #d1d5db;
+    border-radius: 10px;
+    color: #4b5563;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.chat-multi-option:hover {
+    border-color: #ff6b35;
+    color: #ff6b35;
+}
+
+.chat-multi-option.selected {
+    background: rgba(255,107,53,0.06);
+    border-color: #ff6b35;
+    color: #ff6b35;
+}
+
+.chat-multi-check {
+    width: 18px;
+    height: 18px;
+    border-radius: 4px;
+    border: 2px solid #d1d5db;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    flex-shrink: 0;
+}
+
+.chat-multi-option.selected .chat-multi-check {
+    background: #ff6b35;
+    border-color: #ff6b35;
+}
+
+.chat-multi-check svg {
+    width: 12px;
+    height: 12px;
+    color: white;
+    opacity: 0;
+    transition: opacity 0.15s ease;
+}
+
+.chat-multi-option.selected .chat-multi-check svg {
+    opacity: 1;
+}
+
+.chat-multi-continue {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    padding: 11px 20px;
+    margin-top: 4px;
+    background: #e5e7eb;
+    color: #9ca3af;
+    border: none;
+    border-radius: 10px;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: not-allowed;
+    transition: all 0.25s ease;
+}
+
+.chat-multi-continue.enabled {
+    background: #ff6b35;
+    color: white;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(255,107,53,0.3);
+}
+
+.chat-multi-continue.enabled:hover {
+    background: #ff8855;
+    transform: translateY(-1px);
+}
+
+.chat-multi-continue svg {
+    width: 16px;
+    height: 16px;
+}
+
+/* ── Safety Tip Box ── */
+.chat-safety-tip {
+    display: flex;
+    gap: 10px;
+    padding: 12px 14px;
+    background: #fef2f2;
+    border: 1px solid #fecaca;
+    border-radius: 10px;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: #991b1b;
+    line-height: 1.45;
+    animation: msgFadeIn 0.3s ease;
+}
+
+.chat-safety-tip svg {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+    margin-top: 1px;
+    color: #dc2626;
+}
+
+.chat-safety-tip.info {
+    background: #eff6ff;
+    border-color: #bfdbfe;
+    color: #1e40af;
+}
+
+.chat-safety-tip.info svg {
+    color: #2563eb;
 }
 
 /* ── Phone CTA Button ── */
@@ -530,6 +676,23 @@ body.chat-widget-loaded .tech-fab {
     .chat-window.open ~ .chat-toggle {
         opacity: 0;
         pointer-events: none;
+    }
+
+    .chat-header-actions button {
+        padding: 10px 14px;
+        border-radius: 8px;
+        background: rgba(255,255,255,0.08);
+        min-height: 44px;
+    }
+
+    .chat-header-actions svg {
+        width: 22px;
+        height: 22px;
+        color: rgba(255,255,255,0.8);
+    }
+
+    .chat-minimize-label {
+        display: inline;
     }
 
     /* Tech widget stacking on mobile */
