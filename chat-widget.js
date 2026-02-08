@@ -11,6 +11,7 @@
     var AUTO_OPEN_DELAY = 10000;
     var LS_KEY_STATE = 'mbhvac_chat_state';
     var LS_KEY_ANALYTICS = 'mbhvac_chat_analytics';
+    var RETURN_VISITOR_DAYS = 7;
 
     var chatData = null;
     var chatWindow = null;
@@ -19,7 +20,6 @@
     var chatUnread = null;
     var chatTooltip = null;
     var isOpen = false;
-    var hasAutoOpened = false;
 
     // ── Load Conversation Data ──
     function loadChatData(callback) {
@@ -51,15 +51,15 @@
         xhr.send();
     }
 
-    // ── Time Awareness ──
+    // ── Time & Season Context ──
     function getTimeContext() {
         var now = new Date();
         var hour = now.getHours();
         var day = now.getDay();
         var month = now.getMonth();
 
-        var timeLabel = '';
         var isOffHours = false;
+        var timeLabel = '';
 
         if (hour >= 21 || hour < 6) {
             timeLabel = 'late';
@@ -71,10 +71,7 @@
             timeLabel = 'early morning';
             isOffHours = true;
         }
-
-        if (day === 0 || day === 6) {
-            isOffHours = true;
-        }
+        if (day === 0 || day === 6) isOffHours = true;
 
         var season = 'general';
         if (month >= 5 && month <= 8) season = 'summer';
@@ -86,23 +83,15 @@
     function getTimeBannerText() {
         var ctx = getTimeContext();
         if (!ctx.isOffHours) return '';
-
-        var day = ctx.day;
-        if (ctx.timeLabel === 'late') {
-            return "It's late, but our emergency technicians are standing by right now.";
-        } else if (ctx.timeLabel === 'evening') {
-            return "Even though it's evening, our team is still available for emergencies.";
-        } else if (ctx.timeLabel === 'early morning') {
-            return "Early morning? No worries — our team is available 24/7.";
-        } else if (day === 0) {
-            return "Yes, we're available on Sundays! Our team is here if you need us.";
-        } else if (day === 6) {
-            return "Weekend? We're still here. Our technicians are available today.";
-        }
+        if (ctx.timeLabel === 'late') return "It's late, but our emergency technicians are standing by right now.";
+        if (ctx.timeLabel === 'evening') return "Even though it's evening, our team is still available for emergencies.";
+        if (ctx.timeLabel === 'early morning') return "Early morning? No worries — our team is available 24/7.";
+        if (ctx.day === 0) return "Yes, we're available on Sundays! Our team is here when you need us.";
+        if (ctx.day === 6) return "Weekend? We're still here. Our technicians are available today.";
         return '';
     }
 
-    // ── Analytics (simple localStorage counters) ──
+    // ── Analytics ──
     function trackPath(nodeId) {
         try {
             var data = JSON.parse(localStorage.getItem(LS_KEY_ANALYTICS) || '{}');
@@ -126,6 +115,23 @@
             var data = JSON.parse(localStorage.getItem(LS_KEY_STATE) || '{}');
             return data[key];
         } catch(e) { return undefined; }
+    }
+
+    // ── Return Visitor Detection ──
+    function getReturnVisitorContext() {
+        var lastVisit = getState('lastVisitPath');
+        var lastTimestamp = getState('lastVisitTimestamp');
+        if (!lastVisit || !lastTimestamp) return null;
+
+        var daysSince = (Date.now() - lastTimestamp) / (1000 * 60 * 60 * 24);
+        if (daysSince > RETURN_VISITOR_DAYS) return null;
+
+        return { path: lastVisit, daysSince: daysSince };
+    }
+
+    function saveVisitPath(path) {
+        saveState('lastVisitPath', path);
+        saveState('lastVisitTimestamp', Date.now());
     }
 
     // ── Build Widget HTML ──
@@ -161,7 +167,8 @@
                     '</div>' +
                     '<div class="chat-header-actions">' +
                         '<button id="chatMinimize" aria-label="Minimize chat">' +
-                            '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/></svg>' +
+                            '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="6" y1="18" x2="18" y2="6"/><line x1="6" y1="6" x2="18" y2="18"/></svg>' +
+                            '<span class="chat-minimize-label">Close</span>' +
                         '</button>' +
                     '</div>' +
                 '</div>' +
@@ -207,13 +214,23 @@
     function addTimeBanner() {
         var text = getTimeBannerText();
         if (!text) return;
-
         var banner = document.createElement('div');
         banner.className = 'chat-time-banner';
         banner.innerHTML =
             '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>' +
             escapeHTML(text);
         chatMessages.appendChild(banner);
+        scrollToBottom();
+    }
+
+    function addSafetyTip(text, isInfo) {
+        var el = document.createElement('div');
+        el.className = 'chat-safety-tip' + (isInfo ? ' info' : '');
+        var iconSvg = isInfo
+            ? '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>'
+            : '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>';
+        el.innerHTML = iconSvg + '<span>' + escapeHTML(text) + '</span>';
+        chatMessages.appendChild(el);
         scrollToBottom();
     }
 
@@ -257,7 +274,6 @@
     function addOptions(options) {
         var container = document.createElement('div');
         container.className = 'chat-options';
-
         options.forEach(function(opt) {
             var btn = document.createElement('button');
             btn.className = 'chat-option-btn';
@@ -267,16 +283,220 @@
             });
             container.appendChild(btn);
         });
-
         chatMessages.appendChild(container);
         scrollToBottom();
+    }
+
+    // ── Multi-Select Symptoms ──
+    function addMultiSelect(symptomKeys) {
+        var symptomData = chatData.symptom_data;
+        var container = document.createElement('div');
+        container.className = 'chat-multi-select';
+
+        var selected = {};
+
+        symptomKeys.forEach(function(key) {
+            var data = symptomData[key];
+            if (!data) return;
+
+            var btn = document.createElement('button');
+            btn.className = 'chat-multi-option';
+            btn.innerHTML =
+                '<span class="chat-multi-check">' +
+                    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>' +
+                '</span>' +
+                escapeHTML(data.label);
+
+            btn.addEventListener('click', function() {
+                if (selected[key]) {
+                    delete selected[key];
+                    btn.classList.remove('selected');
+                } else {
+                    selected[key] = true;
+                    btn.classList.add('selected');
+                }
+                var count = Object.keys(selected).length;
+                continueBtn.className = 'chat-multi-continue' + (count > 0 ? ' enabled' : '');
+                continueBtn.textContent = count > 0
+                    ? 'Continue with ' + count + ' issue' + (count > 1 ? 's' : '') + ' selected'
+                    : 'Select at least one issue';
+            });
+
+            container.appendChild(btn);
+        });
+
+        chatMessages.appendChild(container);
+
+        // Continue button
+        var continueBtn = document.createElement('button');
+        continueBtn.className = 'chat-multi-continue';
+        continueBtn.textContent = 'Select at least one issue';
+        continueBtn.addEventListener('click', function() {
+            var keys = Object.keys(selected);
+            if (keys.length === 0) return;
+
+            // Disable the multi-select
+            container.querySelectorAll('.chat-multi-option').forEach(function(b) {
+                b.style.pointerEvents = 'none';
+                b.style.opacity = '0.6';
+            });
+            continueBtn.style.pointerEvents = 'none';
+            continueBtn.style.opacity = '0.5';
+
+            // Show user's selection as message
+            var labels = keys.map(function(k) { return symptomData[k].label; });
+            addUserMessage(labels.join(', '));
+
+            // Track
+            keys.forEach(function(k) { trackPath('symptom_' + k); });
+            saveVisitPath('emergency');
+
+            // Process symptoms
+            processSymptoms(keys);
+        });
+        chatMessages.appendChild(continueBtn);
+        scrollToBottom();
+    }
+
+    // ── Process Multi-Selected Symptoms ──
+    function processSymptoms(keys) {
+        var symptomData = chatData.symptom_data;
+        var safetyTips = chatData.safety_tips;
+        var ctx = getTimeContext();
+        var count = keys.length;
+
+        var delay = 0;
+
+        // Empathy response based on count
+        showTyping();
+        delay += TYPING_DELAY;
+
+        setTimeout(function() {
+            hideTyping();
+            if (count >= 3) {
+                addBotMessage("That's a lot going on at once — your system definitely needs professional attention. Let me share some quick tips for each issue while we get you connected with a technician.");
+            } else if (count === 2) {
+                addBotMessage("Okay, a couple things happening. Let me give you some tips for each one.");
+            } else {
+                addBotMessage("Got it. Here are some things to check:");
+            }
+
+            // Show tips for each symptom
+            var tipDelay = 400;
+            keys.forEach(function(key, i) {
+                var data = symptomData[key];
+                setTimeout(function() {
+                    showTyping();
+                    setTimeout(function() {
+                        hideTyping();
+                        var tipText = '**' + data.label + ':**\n' + data.tips.map(function(t) { return '• ' + t; }).join('\n');
+                        addBotMessage(tipText);
+
+                        // Add seasonal tip if applicable
+                        var seasonKey = 'seasonal_' + ctx.season;
+                        if (data[seasonKey]) {
+                            setTimeout(function() {
+                                addSafetyTip(data[seasonKey], true);
+                            }, 300);
+                        }
+
+                        // After all tips shown, proceed to safety + urgency
+                        if (i === keys.length - 1) {
+                            setTimeout(function() {
+                                showSafetyAndUrgency(keys, count);
+                            }, 600);
+                        }
+                    }, TYPING_DELAY);
+                }, tipDelay);
+                tipDelay += TYPING_DELAY + 600;
+            });
+        }, delay);
+    }
+
+    // ── Safety Tips + Urgency Assessment ──
+    function showSafetyAndUrgency(keys, count) {
+        var safetyTips = chatData.safety_tips;
+        var ctx = getTimeContext();
+
+        // Show relevant safety tips
+        var shownSafety = false;
+        if (keys.indexOf('bad_smell') !== -1) {
+            addSafetyTip(safetyTips.gas_smell);
+            shownSafety = true;
+        }
+        if (keys.indexOf('leaking') !== -1) {
+            addSafetyTip(safetyTips.water_damage);
+            shownSafety = true;
+        }
+        if (keys.indexOf('strange_noise') !== -1 || keys.indexOf('wont_start') !== -1) {
+            addSafetyTip(safetyTips.electrical);
+            shownSafety = true;
+        }
+
+        var afterSafetyDelay = shownSafety ? 600 : 0;
+
+        setTimeout(function() {
+            // Smart urgency: 3+ symptoms or certain combos = auto-urgent
+            var autoUrgent = count >= 3 ||
+                (keys.indexOf('bad_smell') !== -1) ||
+                (keys.indexOf('wont_start') !== -1 && (keys.indexOf('strange_noise') !== -1 || keys.indexOf('leaking') !== -1));
+
+            if (autoUrgent) {
+                showTyping();
+                setTimeout(function() {
+                    hideTyping();
+                    addBotMessage("Based on what you've described, I'd recommend getting a technician out as soon as possible. Our team is available 24/7 and we serve the entire Metro Boston area.");
+
+                    // Show while-you-wait tip
+                    setTimeout(function() {
+                        showWhileYouWait(keys, ctx);
+                    }, 300);
+
+                    setTimeout(function() {
+                        addPhoneCTA();
+                    }, 500);
+
+                    setTimeout(function() {
+                        addOptions([
+                            { label: "How old is my system — does it matter?", next: "system_age" },
+                            { label: "What should I expect during the visit?", next: "what_to_expect" },
+                            { label: "Start over", next: "welcome", restart: true }
+                        ]);
+                    }, 700);
+                }, TYPING_DELAY);
+            } else {
+                // Ask urgency
+                showTyping();
+                setTimeout(function() {
+                    hideTyping();
+                    addBotMessage("Were you able to try any of those tips? How's things feeling right now?");
+                    addOptions([
+                        { label: "It's really uncomfortable — need help now", next: "_urgent_yes" },
+                        { label: "I can manage for now", next: "_urgent_no" },
+                        { label: "Tried everything — still not working", next: "_urgent_yes" }
+                    ]);
+                }, TYPING_DELAY);
+            }
+        }, afterSafetyDelay);
+    }
+
+    // ── While-You-Wait Tips ──
+    function showWhileYouWait(keys, ctx) {
+        var safetyTips = chatData.safety_tips;
+
+        if (keys.indexOf('no_heat') !== -1 && ctx.season === 'winter') {
+            addSafetyTip(safetyTips.no_heat_winter, true);
+        } else if (keys.indexOf('no_cooling') !== -1 && ctx.season === 'summer') {
+            addSafetyTip(safetyTips.no_cooling_summer, true);
+        } else {
+            addSafetyTip(safetyTips.general, true);
+        }
     }
 
     // ── Core Chat Logic ──
     function handleOptionClick(opt) {
         // Disable all option buttons
-        var allBtns = chatMessages.querySelectorAll('.chat-options');
-        allBtns.forEach(function(group) {
+        chatMessages.querySelectorAll('.chat-options').forEach(function(group) {
             group.querySelectorAll('.chat-option-btn').forEach(function(b) {
                 b.disabled = true;
                 b.style.opacity = '0.5';
@@ -285,32 +505,86 @@
             });
         });
 
-        // Show user's choice
         addUserMessage(opt.label);
-
-        // Track analytics
         trackPath(opt.next);
 
-        // Navigate to next node
+        // Handle special internal routes
+        if (opt.next === '_urgent_yes') {
+            handleUrgentYes();
+            return;
+        }
+        if (opt.next === '_urgent_no') {
+            handleUrgentNo();
+            return;
+        }
+
         if (opt.restart) {
-            setTimeout(function() {
-                startConversation();
-            }, 600);
+            setTimeout(function() { startConversation(); }, 600);
         } else {
+            // Save visit path for return visitor detection
+            if (['emergency', 'maintenance', 'quote', 'general'].indexOf(opt.next) !== -1) {
+                saveVisitPath(opt.next);
+            }
             renderNode(opt.next);
         }
     }
 
+    function handleUrgentYes() {
+        var ctx = getTimeContext();
+        var keys = getState('lastSymptomKeys') || [];
+
+        showTyping();
+        setTimeout(function() {
+            hideTyping();
+            addBotMessage("Let's get someone out to you. Our technicians are available 24/7, and with 30+ years of experience we've seen just about everything. We'll take good care of you.");
+
+            setTimeout(function() {
+                showWhileYouWait(keys, ctx);
+            }, 300);
+
+            setTimeout(function() {
+                addPhoneCTA();
+            }, 500);
+
+            setTimeout(function() {
+                addOptions([
+                    { label: "How old is my system — does it matter?", next: "system_age" },
+                    { label: "What will the visit cost?", next: "faq_emergency_pricing" },
+                    { label: "Start over", next: "welcome", restart: true }
+                ]);
+            }, 700);
+        }, TYPING_DELAY);
+    }
+
+    function handleUrgentNo() {
+        showTyping();
+        setTimeout(function() {
+            hideTyping();
+            addBotMessage("Glad you're comfortable for now. When you're ready, we'd love to help get things sorted out. You can call anytime — we're here 24/7. Or schedule through our contact page at your convenience.");
+
+            setTimeout(function() {
+                addPhoneCTA();
+            }, 300);
+            setTimeout(function() {
+                addLinkCTA('Contact Us Online', 'contact.html');
+            }, 500);
+            setTimeout(function() {
+                addOptions([
+                    { label: "How old is my system — does it matter?", next: "system_age" },
+                    { label: "Do you have any specials?", next: "offers_plug" },
+                    { label: "Start over", next: "welcome", restart: true }
+                ]);
+            }, 700);
+        }, TYPING_DELAY);
+    }
+
     function renderNode(nodeId) {
         var node = chatData[nodeId];
-        if (!node) {
-            node = chatData['fallback'];
-        }
+        if (!node) node = chatData['fallback'];
 
         var messages = node.messages || [];
         var delay = 0;
 
-        // Show typing, then messages sequentially
         showTyping();
         delay += messages.length > 1 ? TYPING_DELAY_LONG : TYPING_DELAY;
 
@@ -319,47 +593,81 @@
                 hideTyping();
                 addBotMessage(msg);
 
-                // After last message, show CTAs and options
                 if (i === messages.length - 1) {
+                    // After last message, show appropriate UI
                     var ctaDelay = 300;
 
+                    // Multi-select node
+                    if (node.type === 'multi_select' && node.symptom_keys) {
+                        setTimeout(function() {
+                            addMultiSelect(node.symptom_keys);
+                        }, ctaDelay);
+                        return;
+                    }
+
                     if (node.phone_cta) {
-                        setTimeout(function() {
-                            addPhoneCTA();
-                        }, ctaDelay);
+                        setTimeout(function() { addPhoneCTA(); }, ctaDelay);
                         ctaDelay += 200;
                     }
-
                     if (node.link_cta) {
-                        setTimeout(function() {
-                            addLinkCTA(node.link_cta.label, node.link_cta.url);
-                        }, ctaDelay);
+                        setTimeout(function() { addLinkCTA(node.link_cta.label, node.link_cta.url); }, ctaDelay);
                         ctaDelay += 200;
                     }
-
                     if (node.options && node.options.length > 0) {
-                        setTimeout(function() {
-                            addOptions(node.options);
-                        }, ctaDelay);
+                        setTimeout(function() { addOptions(node.options); }, ctaDelay);
                     }
                 } else {
-                    // More messages coming — show typing again
                     showTyping();
                 }
             }, delay);
-
             delay += TYPING_DELAY;
         });
     }
 
+    // ── Conversation Start ──
     function startConversation() {
         chatMessages.innerHTML = '';
-
-        // Time-awareness banner
         addTimeBanner();
 
-        // Render welcome node
-        renderNode('welcome');
+        var returnCtx = getReturnVisitorContext();
+        var ctx = getTimeContext();
+
+        // Return visitor who was on emergency path
+        if (returnCtx && returnCtx.path === 'emergency' && chatData['return_welcome_emergency']) {
+            renderNode('return_welcome_emergency');
+            return;
+        }
+
+        // Seasonal welcome
+        var welcomeNode = 'welcome';
+        if (ctx.season === 'winter' && chatData['welcome_winter']) {
+            welcomeNode = 'welcome_winter';
+        } else if (ctx.season === 'summer' && chatData['welcome_summer']) {
+            welcomeNode = 'welcome_summer';
+        }
+
+        // Use seasonal message but always use welcome's options
+        var seasonalNode = chatData[welcomeNode];
+        var welcomeOptions = chatData['welcome'].options;
+
+        var messages = seasonalNode.messages || chatData['welcome'].messages;
+        var delay = 0;
+
+        showTyping();
+        delay += TYPING_DELAY;
+
+        messages.forEach(function(msg, i) {
+            setTimeout(function() {
+                hideTyping();
+                addBotMessage(msg);
+                if (i === messages.length - 1) {
+                    setTimeout(function() { addOptions(welcomeOptions); }, 300);
+                } else {
+                    showTyping();
+                }
+            }, delay);
+            delay += TYPING_DELAY;
+        });
     }
 
     // ── Open / Close ──
@@ -372,11 +680,9 @@
         saveState('minimized', false);
         saveState('hasOpened', true);
 
-        // Start conversation if empty
         if (chatMessages.children.length === 0) {
             startConversation();
         }
-
         scrollToBottom();
     }
 
@@ -404,30 +710,19 @@
     function init() {
         buildWidget();
 
-        // Toggle button
         chatToggle.addEventListener('click', function() {
-            if (isOpen) {
-                closeChat();
-            } else {
-                openChat();
-            }
+            if (isOpen) closeChat();
+            else openChat();
         });
 
-        // Minimize button
-        document.getElementById('chatMinimize').addEventListener('click', function() {
-            closeChat();
-        });
+        document.getElementById('chatMinimize').addEventListener('click', closeChat);
 
-        // Start over button
         document.getElementById('chatStartOver').addEventListener('click', function() {
             startConversation();
         });
 
-        // ESC to close
         document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape' && isOpen) {
-                closeChat();
-            }
+            if (e.key === 'Escape' && isOpen) closeChat();
         });
 
         // Auto-open logic
@@ -435,22 +730,12 @@
         var hasOpened = getState('hasOpened');
 
         if (wasMinimized) {
-            // User explicitly closed it before — show unread badge
-            setTimeout(function() {
-                chatUnread.classList.add('visible');
-            }, 2000);
+            setTimeout(function() { chatUnread.classList.add('visible'); }, 2000);
         } else if (!hasOpened) {
-            // First visit — show tooltip, then auto-open
-            setTimeout(function() {
-                chatTooltip.classList.add('visible');
-            }, 3000);
-
+            setTimeout(function() { chatTooltip.classList.add('visible'); }, 3000);
             setTimeout(function() {
                 chatTooltip.classList.remove('visible');
-                if (!isOpen) {
-                    openChat();
-                    hasAutoOpened = true;
-                }
+                if (!isOpen) openChat();
             }, AUTO_OPEN_DELAY);
         }
     }
