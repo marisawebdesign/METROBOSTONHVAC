@@ -1171,6 +1171,7 @@
         .tools-section {
             padding: 100px 24px;
             background: var(--white);
+            overflow: hidden;
         }
 
         .tools-container {
@@ -1220,11 +1221,24 @@
             color: #1a8a5c;
         }
 
+        .tools-carousel-wrapper {
+            position: relative;
+        }
+
         .tools-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            display: flex;
             gap: 24px;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch;
+            padding: 8px 0 24px;
+            scrollbar-width: none;
             text-align: left;
+        }
+
+        .tools-grid::-webkit-scrollbar {
+            display: none;
         }
 
         .tool-card {
@@ -1232,14 +1246,16 @@
             border: 1px solid var(--gray-200);
             border-radius: 16px;
             padding: 36px 32px;
-            transition: all 0.3s ease;
+            transition: box-shadow 0.3s ease, border-color 0.3s ease;
             display: flex;
             flex-direction: column;
+            scroll-snap-align: start;
+            flex: 0 0 calc(50% - 12px);
+            min-width: 0;
         }
 
         .tool-card:hover {
             box-shadow: 0 12px 40px rgba(26,58,82,0.1);
-            transform: translateY(-4px);
             border-color: transparent;
         }
 
@@ -1302,6 +1318,30 @@
         .tool-card-cta svg {
             width: 16px;
             height: 16px;
+        }
+
+        /* Carousel scroll indicators */
+        .tools-dots {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 8px;
+        }
+
+        .tools-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--gray-200);
+            border: none;
+            padding: 0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .tools-dot.active {
+            background: var(--orange);
+            transform: scale(1.2);
         }
 
         /* ==================== REVIEWS SECTION ==================== */
@@ -1891,7 +1931,11 @@
             }
 
             .tools-grid {
-                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+
+            .tool-card {
+                flex: 0 0 calc(80% - 8px);
             }
 
         }
@@ -1899,11 +1943,17 @@
         @media (max-width: 768px) {
 
             .tools-section {
-                padding: 60px 20px;
+                padding: 60px 16px;
             }
 
             .tool-card {
+                flex: 0 0 calc(85% - 8px);
                 padding: 28px 22px;
+            }
+
+            .tools-grid {
+                gap: 14px;
+                padding: 8px 0 20px;
             }
             .hero-content {
                 padding: 50px 20px;
@@ -2855,10 +2905,11 @@
                 100% Free — No Email Required
             </span>
 
-            <div class="tools-grid">
+            <div class="tools-carousel-wrapper">
+            <div class="tools-grid" id="toolsCarousel">
 
                 <!-- BTU Calculator -->
-                <div class="tool-card scroll-reveal fade-up">
+                <div class="tool-card">
                     <div class="tool-card-icon">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <rect x="4" y="2" width="16" height="20" rx="2"/>
@@ -2877,7 +2928,7 @@
                 </div>
 
                 <!-- System Selector Quiz -->
-                <div class="tool-card scroll-reveal fade-up delay-1">
+                <div class="tool-card">
                     <div class="tool-card-icon">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <circle cx="12" cy="12" r="10"/>
@@ -2894,7 +2945,7 @@
                 </div>
 
                 <!-- Ductless Mini-Split Planner -->
-                <div class="tool-card scroll-reveal fade-up">
+                <div class="tool-card">
                     <div class="tool-card-icon">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
@@ -2912,7 +2963,7 @@
                 </div>
 
                 <!-- Heat Pump Savings Calculator -->
-                <div class="tool-card scroll-reveal fade-up delay-1">
+                <div class="tool-card">
                     <div class="tool-card-icon">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
@@ -2926,6 +2977,13 @@
                     </a>
                 </div>
 
+            </div>
+            <div class="tools-dots" id="toolsDots">
+                <button class="tools-dot active" aria-label="Card 1"></button>
+                <button class="tools-dot" aria-label="Card 2"></button>
+                <button class="tools-dot" aria-label="Card 3"></button>
+                <button class="tools-dot" aria-label="Card 4"></button>
+            </div>
             </div>
         </div>
     </section>
@@ -3320,6 +3378,62 @@
         revealElements.forEach(function(el) {
             observer.observe(el);
         });
+    })();
+</script>
+<script>
+    // Tools carousel dot indicators
+    (function() {
+        var carousel = document.getElementById('toolsCarousel');
+        var dots = document.querySelectorAll('#toolsDots .tools-dot');
+        if (!carousel || !dots.length) return;
+
+        function getActiveIndex() {
+            var cards = carousel.querySelectorAll('.tool-card');
+            var scrollLeft = carousel.scrollLeft;
+            var containerWidth = carousel.offsetWidth;
+            var bestIndex = 0;
+            var bestOverlap = 0;
+
+            for (var i = 0; i < cards.length; i++) {
+                var cardLeft = cards[i].offsetLeft - carousel.offsetLeft;
+                var cardRight = cardLeft + cards[i].offsetWidth;
+                var visibleLeft = Math.max(cardLeft, scrollLeft);
+                var visibleRight = Math.min(cardRight, scrollLeft + containerWidth);
+                var overlap = Math.max(0, visibleRight - visibleLeft);
+                if (overlap > bestOverlap) {
+                    bestOverlap = overlap;
+                    bestIndex = i;
+                }
+            }
+            return bestIndex;
+        }
+
+        function updateDots() {
+            var active = getActiveIndex();
+            for (var i = 0; i < dots.length; i++) {
+                dots[i].classList.toggle('active', i === active);
+            }
+        }
+
+        var scrollTimeout;
+        carousel.addEventListener('scroll', function() {
+            clearTimeout(scrollTimeout);
+            scrollTimeout = setTimeout(updateDots, 60);
+        });
+
+        dots.forEach(function(dot, index) {
+            dot.addEventListener('click', function() {
+                var cards = carousel.querySelectorAll('.tool-card');
+                if (cards[index]) {
+                    carousel.scrollTo({
+                        left: cards[index].offsetLeft - carousel.offsetLeft,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        updateDots();
     })();
 </script>
 <script src="technician-widget.js"></script>
