@@ -2060,6 +2060,7 @@
     </style>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <link rel="stylesheet" href="technician-widget.css" />
+    <link rel="stylesheet" href="chat-widget.css" />
 </head>
 <body>
 
@@ -2165,6 +2166,11 @@
     <nav class="header-nav">
         <div class="header-nav-inner">
             <div class="main-nav">
+                <!-- Home -->
+                <div class="nav-item">
+                    <a href="index.html" class="nav-link active">Home</a>
+                </div>
+
                 <!-- Services -->
                 <div class="nav-item">
                     <a href="#" class="nav-link">
@@ -2293,6 +2299,8 @@
         </div>
 
         <div class="mobile-menu-links">
+            <a href="index.html" style="font-weight:700;color:var(--orange);">Home</a>
+
             <span class="mobile-section-label">Services</span>
             <a href="/services/emergency">Emergency Services</a>
             <a href="/services/maintenance">Ongoing Maintenance</a>
@@ -3051,5 +3059,6 @@
     })();
 </script>
 <script src="technician-widget.js"></script>
+<script src="chat-widget.js"></script>
 </body>
 </html>
