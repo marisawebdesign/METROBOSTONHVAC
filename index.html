@@ -1167,6 +1167,143 @@
         .map-city-list.south-shore li:hover .city-pin,
         .map-city-list.south-shore li.active .city-pin { color: var(--navy); filter: drop-shadow(0 0 3px rgba(26,58,82,0.4)); }
 
+        /* ==================== CALCULATOR TOOLS SECTION ==================== */
+        .tools-section {
+            padding: 100px 24px;
+            background: var(--white);
+        }
+
+        .tools-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .tools-section .section-label {
+            justify-content: center;
+        }
+
+        .tools-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(32px, 4vw, 48px);
+            color: var(--navy);
+            margin-bottom: 12px;
+            letter-spacing: 1px;
+            line-height: 1.1;
+        }
+
+        .tools-subtitle {
+            font-size: 18px;
+            color: var(--gray-600);
+            max-width: 600px;
+            margin: 0 auto 16px;
+            line-height: 1.6;
+        }
+
+        .tools-trust-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--gray-50);
+            border: 1px solid var(--gray-200);
+            border-radius: 30px;
+            padding: 8px 20px;
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--navy);
+            margin-bottom: 48px;
+        }
+
+        .tools-trust-badge svg {
+            width: 16px;
+            height: 16px;
+            color: #1a8a5c;
+        }
+
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+            text-align: left;
+        }
+
+        .tool-card {
+            background: var(--white);
+            border: 1px solid var(--gray-200);
+            border-radius: 16px;
+            padding: 36px 32px;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .tool-card:hover {
+            box-shadow: 0 12px 40px rgba(26,58,82,0.1);
+            transform: translateY(-4px);
+            border-color: transparent;
+        }
+
+        .tool-card-icon {
+            width: 56px;
+            height: 56px;
+            background: rgba(255,107,53,0.1);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .tool-card-icon svg {
+            width: 28px;
+            height: 28px;
+            color: var(--orange);
+        }
+
+        .tool-card h3 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 24px;
+            color: var(--navy);
+            letter-spacing: 0.5px;
+            margin-bottom: 10px;
+            line-height: 1.1;
+        }
+
+        .tool-card p {
+            font-size: 15px;
+            color: var(--gray-600);
+            line-height: 1.6;
+            margin-bottom: 24px;
+            flex: 1;
+        }
+
+        .tool-card-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 22px;
+            background: var(--navy-dark);
+            color: var(--white);
+            font-size: 13px;
+            font-weight: 700;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            align-self: flex-start;
+        }
+
+        .tool-card-cta:hover {
+            background: var(--orange);
+            transform: translateY(-1px);
+        }
+
+        .tool-card-cta svg {
+            width: 16px;
+            height: 16px;
+        }
+
         /* ==================== REVIEWS SECTION ==================== */
         .reviews-section {
             padding: 80px 24px;
@@ -1753,9 +1890,21 @@
                 display: flex;
             }
 
+            .tools-grid {
+                grid-template-columns: 1fr;
+            }
+
         }
 
         @media (max-width: 768px) {
+
+            .tools-section {
+                padding: 60px 20px;
+            }
+
+            .tool-card {
+                padding: 28px 22px;
+            }
             .hero-content {
                 padding: 50px 20px;
             }
@@ -2199,6 +2348,10 @@
                     </a>
                     <div class="dropdown">
                         <a href="quote.html" class="dropdown-link">Instant Quote</a>
+                        <a href="/tools/btu-calculator" class="dropdown-link">BTU Calculator</a>
+                        <a href="/tools/system-selector" class="dropdown-link">System Selector Quiz</a>
+                        <a href="/tools/ductless-planner" class="dropdown-link">Ductless Planner</a>
+                        <a href="/tools/heat-pump-calculator" class="dropdown-link">Heat Pump Savings</a>
                         <a href="/resources/service-area" class="dropdown-link">Service Area</a>
                         <a href="/resources/faq" class="dropdown-link">FAQ</a>
                         <a href="/resources/loyalty-program" class="dropdown-link">Loyalty Program</a>
@@ -2314,6 +2467,11 @@
             <a href="services.html#commercial">Commercial Maintenance</a>
 
             <span class="mobile-section-label">Resources</span>
+            <a href="quote.html">Instant Quote</a>
+            <a href="/tools/btu-calculator">BTU Calculator</a>
+            <a href="/tools/system-selector">System Selector Quiz</a>
+            <a href="/tools/ductless-planner">Ductless Planner</a>
+            <a href="/tools/heat-pump-calculator">Heat Pump Savings</a>
             <a href="/resources/service-area">Service Area</a>
             <a href="/resources/faq">FAQ</a>
             <a href="/resources/loyalty-program">Loyalty Program</a>
@@ -2671,6 +2829,103 @@
                         <span class="payment-trust-label">Flexible Financing</span>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== CALCULATOR TOOLS SECTION ==================== -->
+    <section class="tools-section">
+        <div class="tools-container">
+            <div class="section-label">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="4" y="2" width="16" height="20" rx="2"/>
+                    <line x1="8" y1="6" x2="16" y2="6"/>
+                    <line x1="8" y1="10" x2="12" y2="10"/>
+                    <line x1="8" y1="14" x2="16" y2="14"/>
+                    <line x1="8" y1="18" x2="13" y2="18"/>
+                </svg>
+                Free HVAC Tools
+            </div>
+
+            <h2 class="tools-title">Free Tools to Help You Make Smart Decisions</h2>
+            <p class="tools-subtitle">Plan ahead, understand your options, and see what you could save — no email required.</p>
+
+            <span class="tools-trust-badge">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                100% Free — No Email Required
+            </span>
+
+            <div class="tools-grid">
+
+                <!-- BTU Calculator -->
+                <div class="tool-card scroll-reveal">
+                    <div class="tool-card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="4" y="2" width="16" height="20" rx="2"/>
+                            <line x1="8" y1="6" x2="16" y2="6"/>
+                            <line x1="16" y1="14" x2="16" y2="18"/>
+                            <line x1="14" y1="16" x2="18" y2="16"/>
+                            <rect x="8" y="10" width="4" height="4" rx="1"/>
+                        </svg>
+                    </div>
+                    <h3>Right-Size Your System</h3>
+                    <p>Find the perfect heating and cooling capacity for your home. Get accurate tonnage recommendations based on your square footage, insulation, and layout.</p>
+                    <a href="/tools/btu-calculator" class="tool-card-cta">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+                        Try Calculator
+                    </a>
+                </div>
+
+                <!-- System Selector Quiz -->
+                <div class="tool-card scroll-reveal delay-1">
+                    <div class="tool-card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
+                            <line x1="12" y1="17" x2="12.01" y2="17"/>
+                        </svg>
+                    </div>
+                    <h3>Which System Is Right for You?</h3>
+                    <p>Answer 5 quick questions about your home and priorities to discover which HVAC system fits your needs and budget best.</p>
+                    <a href="/tools/system-selector" class="tool-card-cta">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+                        Take the Quiz
+                    </a>
+                </div>
+
+                <!-- Ductless Mini-Split Planner -->
+                <div class="tool-card scroll-reveal">
+                    <div class="tool-card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+                            <line x1="8" y1="21" x2="16" y2="21"/>
+                            <line x1="12" y1="17" x2="12" y2="21"/>
+                            <path d="M6 10h4M14 10h4"/>
+                        </svg>
+                    </div>
+                    <h3>Plan Your Ductless System</h3>
+                    <p>Design a room-by-room ductless solution for your home. See exactly how many zones you need and what it will cost.</p>
+                    <a href="/tools/ductless-planner" class="tool-card-cta">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+                        Get Started
+                    </a>
+                </div>
+
+                <!-- Heat Pump Savings Calculator -->
+                <div class="tool-card scroll-reveal delay-1">
+                    <div class="tool-card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+                        </svg>
+                    </div>
+                    <h3>Calculate Your Heat Pump Savings</h3>
+                    <p>See your estimated payback period, monthly savings, and total 10-year savings. Compare your current heating costs to a modern heat pump system.</p>
+                    <a href="/tools/heat-pump-calculator" class="tool-card-cta">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+                        Try Calculator
+                    </a>
+                </div>
+
             </div>
         </div>
     </section>
