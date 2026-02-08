@@ -1,0 +1,2530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free BTU Calculator | Metro Boston HVAC | Right-Size Your System</title>
+    <meta name="description" content="Free BTU and tonnage calculator for Massachusetts homeowners. Find the perfect heating and cooling system size for your home in 60 seconds. No email required.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* ==================== RESET & VARIABLES ==================== */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --navy: #1a3a52;
+            --navy-dark: #0f2536;
+            --navy-light: #2a5070;
+            --orange: #ff6b35;
+            --orange-glow: #ff8855;
+            --gold: #ffd700;
+            --white: #ffffff;
+            --gray-50: #f9fafb;
+            --gray-100: #f3f4f6;
+            --gray-200: #e5e7eb;
+            --gray-400: #9ca3af;
+            --gray-600: #4b5563;
+            --gray-800: #1f2937;
+            --gray-light: rgba(255,255,255,0.15);
+            --green: #1a8a5c;
+            --red: #dc2626;
+        }
+
+        body {
+            font-family: 'Source Sans 3', sans-serif;
+            background: var(--gray-50);
+            color: var(--gray-800);
+            line-height: 1.6;
+        }
+
+        /* ==================== HEADER TOP BAR ==================== */
+        .header-top {
+            background: var(--white);
+            border-bottom: 1px solid var(--gray-200);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1001;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+        }
+
+        .header-top-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 16px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            flex-shrink: 0;
+        }
+
+        .logo img {
+            height: 72px;
+            width: auto;
+            display: block;
+            object-fit: contain;
+        }
+
+        .header-mobile-name {
+            display: none;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 28px;
+            color: var(--white);
+            letter-spacing: 1.5px;
+            line-height: 1;
+            -webkit-text-stroke: 1.2px var(--navy);
+            text-stroke: 1.2px var(--navy);
+            paint-order: stroke fill;
+        }
+
+        .header-mobile-name span {
+            color: var(--orange);
+            -webkit-text-stroke: 1.2px var(--navy);
+            text-stroke: 1.2px var(--navy);
+        }
+
+        .header-phone {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-shrink: 0;
+        }
+
+        .header-phone-icon {
+            width: 44px;
+            height: 44px;
+            background: var(--navy-dark);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .header-phone-icon svg { width: 22px; height: 22px; color: white; }
+
+        .header-phone-info { display: flex; flex-direction: column; }
+
+        .header-phone-number {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 24px;
+            color: var(--navy-dark);
+            letter-spacing: 1px;
+            line-height: 1.1;
+            text-decoration: none;
+        }
+
+        .header-phone-number:hover { color: var(--orange); }
+
+        .header-phone-label {
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--orange);
+            line-height: 1.2;
+        }
+
+        .header-trust-badges {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            flex-shrink: 0;
+        }
+
+        .trust-badge {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+            width: 110px;
+            text-align: center;
+        }
+
+        .trust-badge-icon {
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .trust-badge-icon svg { width: 28px; height: 28px; }
+        .trust-badge-icon.emergency { background: var(--orange); }
+        .trust-badge-icon.licensed { background: var(--navy-dark); }
+        .trust-badge-icon.reviews { background: var(--orange); }
+        .trust-badge-icon.local { background: var(--navy-dark); }
+        .trust-badge-icon.price { background: var(--green); }
+
+        .trust-badge-label {
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--navy-dark);
+            line-height: 1.25;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+        }
+
+        .get-service-btn {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: var(--orange);
+            color: var(--white);
+            padding: 18px 32px;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 24px;
+            letter-spacing: 2px;
+            text-decoration: none;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 107, 53, 0.4);
+            flex-shrink: 0;
+            white-space: nowrap;
+        }
+
+        .get-service-btn:hover {
+            background: var(--orange-glow);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(255, 107, 53, 0.5);
+        }
+
+        .get-service-btn svg { width: 26px; height: 26px; }
+
+        /* ==================== NAVIGATION BAR ==================== */
+        .header-nav {
+            background: var(--navy-dark);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            margin-top: 106px;
+            border-bottom: 3px solid var(--orange);
+        }
+
+        .header-nav-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            height: 56px;
+        }
+
+        .main-nav { display: flex; align-items: center; gap: 4px; }
+        .nav-item { position: relative; }
+
+        .nav-link {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 16px 22px;
+            color: rgba(255,255,255,0.9);
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: all 0.2s ease;
+        }
+
+        .nav-link:hover { color: var(--white); background: rgba(255,255,255,0.1); }
+        .nav-link svg { width: 12px; height: 12px; transition: transform 0.2s ease; }
+        .nav-item:hover .nav-link svg { transform: rotate(180deg); }
+
+        .dropdown {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            min-width: 220px;
+            background: var(--white);
+            border-radius: 0 0 10px 10px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(5px);
+            transition: all 0.25s ease;
+            padding: 8px;
+            z-index: 100;
+        }
+
+        .nav-item:hover .dropdown { opacity: 1; visibility: visible; transform: translateY(0); }
+
+        .dropdown-link {
+            display: block;
+            padding: 12px 16px;
+            color: var(--gray-800);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            border-radius: 6px;
+            transition: all 0.2s ease;
+            text-transform: none;
+            letter-spacing: 0;
+        }
+
+        .dropdown-link:hover { background: var(--gray-100); color: var(--navy); }
+
+        .nav-cta {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--orange);
+            color: var(--white);
+            padding: 10px 24px;
+            font-size: 14px;
+            font-weight: 700;
+            text-decoration: none;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .nav-cta:hover { background: var(--orange-glow); transform: translateY(-1px); }
+        .nav-cta svg { width: 16px; height: 16px; }
+
+        .mobile-toggle {
+            display: none;
+            background: none;
+            border: none;
+            padding: 8px;
+            cursor: pointer;
+        }
+
+        .mobile-toggle svg { width: 28px; height: 28px; color: var(--navy-dark); }
+
+        /* ==================== MOBILE MENU ==================== */
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: var(--navy-dark);
+            z-index: 2000;
+            flex-direction: column;
+            padding: 0;
+            overflow-y: auto;
+        }
+
+        .mobile-menu.active { display: flex; }
+
+        .mobile-menu-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px 24px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .mobile-menu-header .logo-text { color: var(--white); }
+
+        .logo-text {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 30px;
+            color: var(--white);
+            letter-spacing: 1px;
+            line-height: 1;
+        }
+
+        .logo-text span { color: var(--orange); }
+
+        .mobile-menu-close {
+            background: none;
+            border: none;
+            padding: 8px;
+            cursor: pointer;
+        }
+
+        .mobile-menu-close svg { width: 28px; height: 28px; color: white; }
+
+        .mobile-trust-strip {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 16px;
+            padding: 20px 24px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .mobile-trust-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            width: 72px;
+            text-align: center;
+        }
+
+        .mobile-trust-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .mobile-trust-icon svg { width: 24px; height: 24px; }
+        .mobile-trust-icon.emergency { background: var(--orange); }
+        .mobile-trust-icon.licensed { background: var(--navy-dark); }
+        .mobile-trust-icon.reviews { background: var(--orange); }
+        .mobile-trust-icon.local { background: var(--navy-dark); }
+        .mobile-trust-icon.price { background: var(--green); }
+
+        .mobile-trust-item span {
+            font-size: 10px;
+            font-weight: 700;
+            color: rgba(255,255,255,0.85);
+            line-height: 1.25;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+        }
+
+        .mobile-quote-btn-wrap { padding: 16px 24px 0; }
+
+        .mobile-quote-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            padding: 14px 24px;
+            background: linear-gradient(135deg, var(--orange), #e85d2a);
+            color: white;
+            font-size: 17px;
+            font-weight: 700;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
+        }
+
+        .mobile-quote-btn svg { width: 20px; height: 20px; }
+
+        .mobile-menu-links { display: flex; flex-direction: column; padding: 16px 0; }
+
+        .mobile-menu-links a {
+            display: block;
+            padding: 16px 24px;
+            color: rgba(255,255,255,0.9);
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: 600;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            transition: all 0.2s ease;
+        }
+
+        .mobile-menu-links a:hover { background: rgba(255,255,255,0.05); color: var(--orange); }
+
+        .mobile-menu-links .mobile-section-label {
+            padding: 12px 24px 6px;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--orange);
+            border-bottom: none;
+        }
+
+        .mobile-menu-links .mobile-section-label:hover { background: none; cursor: default; }
+
+        .mobile-menu-cta {
+            margin: 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .mobile-menu-cta a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 16px 24px;
+            border-radius: 10px;
+            font-size: 18px;
+            font-weight: 700;
+            text-decoration: none;
+            text-align: center;
+        }
+
+        .mobile-menu-cta .mobile-call-btn { background: var(--orange); color: white; }
+        .mobile-menu-cta .mobile-service-btn { background: rgba(255,255,255,0.1); color: white; border: 2px solid rgba(255,255,255,0.3); }
+        .mobile-menu-cta a svg { width: 22px; height: 22px; }
+
+        /* ==================== PAGE HERO ==================== */
+        .page-hero {
+            background: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy) 60%, var(--navy-light) 100%);
+            padding: 140px 24px 60px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page-hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(255,107,53,0.08) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .page-hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .page-hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 30px;
+            padding: 8px 20px;
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--orange);
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .page-hero-badge svg { width: 16px; height: 16px; }
+
+        .page-hero h1 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(36px, 6vw, 56px);
+            color: var(--white);
+            letter-spacing: 2px;
+            line-height: 1.05;
+            margin-bottom: 16px;
+        }
+
+        .page-hero h1 .accent { color: var(--orange); }
+
+        .page-hero p {
+            font-size: 18px;
+            color: rgba(255,255,255,0.8);
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* ==================== PROGRESS BAR ==================== */
+        .progress-wrap {
+            max-width: 900px;
+            margin: -24px auto 32px;
+            padding: 0 24px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .progress-card {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 16px 24px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .progress-text {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--gray-600);
+            white-space: nowrap;
+        }
+
+        .progress-text strong { color: var(--navy); }
+
+        .progress-bar {
+            flex: 1;
+            height: 8px;
+            background: var(--gray-200);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--orange), var(--orange-glow));
+            border-radius: 4px;
+            transition: width 0.5s ease;
+            width: 0%;
+        }
+
+        /* ==================== CALCULATOR LAYOUT ==================== */
+        .calc-layout {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 24px 60px;
+        }
+
+        /* ==================== FORM SECTIONS ==================== */
+        .calc-section {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 36px 32px;
+            margin-bottom: 24px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+            border: 1px solid var(--gray-200);
+        }
+
+        .calc-section-header {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 28px;
+        }
+
+        .calc-section-icon {
+            width: 44px;
+            height: 44px;
+            background: rgba(255,107,53,0.1);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .calc-section-icon svg { width: 22px; height: 22px; color: var(--orange); }
+
+        .calc-section-header h2 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 26px;
+            color: var(--navy);
+            letter-spacing: 0.5px;
+            line-height: 1.1;
+        }
+
+        .calc-section-header p {
+            font-size: 14px;
+            color: var(--gray-600);
+            margin-top: 2px;
+        }
+
+        /* ==================== FORM FIELDS ==================== */
+        .form-group {
+            margin-bottom: 24px;
+        }
+
+        .form-group:last-child { margin-bottom: 0; }
+
+        .form-label {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--navy);
+            margin-bottom: 8px;
+        }
+
+        .form-label .required {
+            color: var(--red);
+            font-size: 14px;
+        }
+
+        .form-help {
+            font-size: 13px;
+            color: var(--gray-600);
+            margin-bottom: 8px;
+            line-height: 1.5;
+        }
+
+        /* Tooltip */
+        .tooltip-trigger {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 20px;
+            height: 20px;
+            background: var(--gray-200);
+            border-radius: 50%;
+            cursor: help;
+            position: relative;
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--gray-600);
+            flex-shrink: 0;
+        }
+
+        .tooltip-trigger:hover .tooltip-content,
+        .tooltip-trigger:focus .tooltip-content {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .tooltip-content {
+            position: absolute;
+            bottom: calc(100% + 8px);
+            left: 50%;
+            transform: translateX(-50%) translateY(4px);
+            background: var(--navy-dark);
+            color: var(--white);
+            font-size: 13px;
+            font-weight: 400;
+            padding: 10px 14px;
+            border-radius: 8px;
+            white-space: normal;
+            width: 240px;
+            line-height: 1.5;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.2s ease;
+            z-index: 10;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            text-transform: none;
+            letter-spacing: 0;
+        }
+
+        .tooltip-content::after {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            border: 6px solid transparent;
+            border-top-color: var(--navy-dark);
+        }
+
+        /* Text / Number Input */
+        .form-input {
+            width: 100%;
+            padding: 14px 16px;
+            border: 2px solid var(--gray-200);
+            border-radius: 10px;
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 16px;
+            color: var(--gray-800);
+            transition: all 0.2s ease;
+            background: var(--white);
+            -webkit-appearance: none;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--orange);
+            box-shadow: 0 0 0 3px rgba(255,107,53,0.15);
+        }
+
+        .form-input.error {
+            border-color: var(--red);
+            box-shadow: 0 0 0 3px rgba(220,38,38,0.1);
+        }
+
+        .form-error {
+            font-size: 13px;
+            color: var(--red);
+            margin-top: 6px;
+            display: none;
+        }
+
+        .form-error.visible { display: block; }
+
+        /* Select */
+        .form-select {
+            width: 100%;
+            padding: 14px 40px 14px 16px;
+            border: 2px solid var(--gray-200);
+            border-radius: 10px;
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 16px;
+            color: var(--gray-800);
+            transition: all 0.2s ease;
+            background: var(--white) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%234b5563' stroke-width='2.5'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E") no-repeat right 16px center;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            cursor: pointer;
+        }
+
+        .form-select:focus {
+            outline: none;
+            border-color: var(--orange);
+            box-shadow: 0 0 0 3px rgba(255,107,53,0.15);
+        }
+
+        /* Radio Cards */
+        .radio-group {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+        }
+
+        .radio-card {
+            position: relative;
+        }
+
+        .radio-card input {
+            position: absolute;
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .radio-card label {
+            display: flex;
+            flex-direction: column;
+            padding: 14px 16px;
+            border: 2px solid var(--gray-200);
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            min-height: 44px;
+            justify-content: center;
+        }
+
+        .radio-card label .radio-title {
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--navy);
+            line-height: 1.3;
+        }
+
+        .radio-card label .radio-desc {
+            font-size: 12px;
+            color: var(--gray-600);
+            line-height: 1.4;
+            margin-top: 2px;
+        }
+
+        .radio-card input:checked + label {
+            border-color: var(--orange);
+            background: rgba(255,107,53,0.05);
+            box-shadow: 0 0 0 3px rgba(255,107,53,0.12);
+        }
+
+        .radio-card input:checked + label .radio-title { color: var(--orange); }
+
+        .radio-card input:focus-visible + label {
+            box-shadow: 0 0 0 3px rgba(255,107,53,0.3);
+        }
+
+        /* ==================== ADVANCED TOGGLE ==================== */
+        .advanced-toggle {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            padding: 16px;
+            background: var(--gray-50);
+            border: 2px dashed var(--gray-200);
+            border-radius: 12px;
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--navy);
+            transition: all 0.2s ease;
+            margin-bottom: 24px;
+        }
+
+        .advanced-toggle:hover {
+            border-color: var(--orange);
+            color: var(--orange);
+            background: rgba(255,107,53,0.03);
+        }
+
+        .advanced-toggle svg {
+            width: 18px;
+            height: 18px;
+            transition: transform 0.3s ease;
+        }
+
+        .advanced-toggle.open svg { transform: rotate(180deg); }
+
+        .advanced-section {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+        }
+
+        .advanced-section.open { max-height: 1200px; }
+
+        /* ==================== RESULTS PANEL ==================== */
+        .results-panel {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 0;
+            margin-bottom: 24px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+            border: 2px solid var(--gray-200);
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(12px);
+            transition: all 0.5s ease;
+            pointer-events: none;
+        }
+
+        .results-panel.visible {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: auto;
+        }
+
+        .results-header {
+            background: linear-gradient(135deg, var(--navy-dark), var(--navy));
+            padding: 28px 32px;
+            text-align: center;
+        }
+
+        .results-header h2 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 22px;
+            color: rgba(255,255,255,0.7);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+
+        .results-main-number {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 64px;
+            color: var(--white);
+            letter-spacing: 2px;
+            line-height: 1;
+        }
+
+        .results-main-number .unit {
+            font-size: 28px;
+            color: var(--orange);
+            letter-spacing: 1px;
+        }
+
+        .results-secondary {
+            font-size: 18px;
+            color: rgba(255,255,255,0.8);
+            margin-top: 6px;
+            font-weight: 600;
+        }
+
+        .results-body { padding: 32px; }
+
+        /* Gauge */
+        .gauge-wrap {
+            margin-bottom: 28px;
+        }
+
+        .gauge-label-row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--gray-400);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+        }
+
+        .gauge-track {
+            height: 16px;
+            background: var(--gray-100);
+            border-radius: 8px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .gauge-zones {
+            display: flex;
+            height: 100%;
+            width: 100%;
+        }
+
+        .gauge-zone {
+            height: 100%;
+            transition: all 0.3s ease;
+        }
+
+        .gauge-zone.small { background: #93c5fd; flex: 1; }
+        .gauge-zone.medium { background: #60a5fa; flex: 1; }
+        .gauge-zone.large { background: #3b82f6; flex: 1; }
+        .gauge-zone.xlarge { background: #1d4ed8; flex: 1; }
+
+        .gauge-marker {
+            position: absolute;
+            top: -6px;
+            width: 4px;
+            height: 28px;
+            background: var(--orange);
+            border-radius: 2px;
+            transition: left 0.5s ease;
+            box-shadow: 0 0 8px rgba(255,107,53,0.5);
+        }
+
+        .gauge-marker::after {
+            content: attr(data-label);
+            position: absolute;
+            bottom: calc(100% + 4px);
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--orange);
+            white-space: nowrap;
+            background: rgba(255,107,53,0.1);
+            padding: 2px 8px;
+            border-radius: 4px;
+        }
+
+        .gauge-ticks {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 6px;
+            padding: 0 2px;
+        }
+
+        .gauge-ticks span {
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--gray-400);
+        }
+
+        /* Range Recommendation */
+        .range-rec {
+            background: var(--gray-50);
+            border-radius: 12px;
+            padding: 20px 24px;
+            margin-bottom: 24px;
+            border-left: 4px solid var(--orange);
+        }
+
+        .range-rec p {
+            font-size: 15px;
+            color: var(--gray-600);
+            line-height: 1.6;
+        }
+
+        .range-rec strong { color: var(--navy); }
+
+        /* Why This Matters */
+        .sizing-matters {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .sizing-card {
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid var(--gray-200);
+        }
+
+        .sizing-card.too-small { border-left: 4px solid #dc2626; }
+        .sizing-card.too-large { border-left: 4px solid #f59e0b; }
+
+        .sizing-card h4 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 18px;
+            letter-spacing: 0.5px;
+            margin-bottom: 6px;
+        }
+
+        .sizing-card.too-small h4 { color: #dc2626; }
+        .sizing-card.too-large h4 { color: #f59e0b; }
+
+        .sizing-card p {
+            font-size: 13px;
+            color: var(--gray-600);
+            line-height: 1.5;
+        }
+
+        /* Common sizes reference */
+        .common-sizes {
+            margin-bottom: 28px;
+        }
+
+        .common-sizes h3 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 20px;
+            color: var(--navy);
+            letter-spacing: 0.5px;
+            margin-bottom: 12px;
+        }
+
+        .size-row {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 0;
+            border-bottom: 1px solid var(--gray-100);
+        }
+
+        .size-row:last-child { border-bottom: none; }
+
+        .size-bar-wrap { flex: 1; }
+
+        .size-bar {
+            height: 8px;
+            border-radius: 4px;
+            background: var(--gray-200);
+            transition: all 0.3s ease;
+        }
+
+        .size-bar.match { background: var(--orange); }
+
+        .size-label {
+            font-size: 13px;
+            color: var(--gray-600);
+            min-width: 150px;
+        }
+
+        .size-tons {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--navy);
+            min-width: 70px;
+            text-align: right;
+        }
+
+        /* Results CTA */
+        .results-cta {
+            background: linear-gradient(135deg, var(--navy-dark), var(--navy));
+            border-radius: 14px;
+            padding: 32px;
+            text-align: center;
+        }
+
+        .results-cta h3 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 28px;
+            color: var(--white);
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+
+        .results-cta p {
+            font-size: 14px;
+            color: rgba(255,255,255,0.7);
+            margin-bottom: 20px;
+        }
+
+        .results-cta-buttons {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .cta-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 16px 28px;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .cta-btn svg { width: 20px; height: 20px; }
+
+        .cta-btn.primary {
+            background: var(--orange);
+            color: var(--white);
+            box-shadow: 0 4px 15px rgba(255,107,53,0.4);
+        }
+
+        .cta-btn.primary:hover {
+            background: var(--orange-glow);
+            transform: translateY(-2px);
+        }
+
+        .cta-btn.secondary {
+            background: rgba(255,255,255,0.1);
+            color: var(--white);
+            border: 2px solid rgba(255,255,255,0.25);
+        }
+
+        .cta-btn.secondary:hover {
+            background: rgba(255,255,255,0.15);
+            border-color: rgba(255,255,255,0.4);
+        }
+
+        .results-disclaimer {
+            font-size: 12px;
+            color: rgba(255,255,255,0.5);
+            margin-top: 16px;
+            line-height: 1.5;
+        }
+
+        /* Print / Share buttons */
+        .results-actions {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .action-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 16px;
+            background: none;
+            border: 1px solid var(--gray-200);
+            border-radius: 8px;
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--gray-600);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .action-btn:hover {
+            border-color: var(--orange);
+            color: var(--orange);
+        }
+
+        .action-btn svg { width: 16px; height: 16px; }
+
+        /* ==================== EDUCATIONAL SECTIONS ==================== */
+        .edu-section {
+            background: var(--white);
+            border-radius: 16px;
+            margin-bottom: 24px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+            border: 1px solid var(--gray-200);
+            overflow: hidden;
+        }
+
+        .edu-toggle {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            width: 100%;
+            padding: 24px 32px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            text-align: left;
+            font-family: 'Source Sans 3', sans-serif;
+            transition: background 0.2s ease;
+        }
+
+        .edu-toggle:hover { background: var(--gray-50); }
+
+        .edu-toggle-icon {
+            width: 40px;
+            height: 40px;
+            background: rgba(26,58,82,0.08);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .edu-toggle-icon svg { width: 20px; height: 20px; color: var(--navy); }
+
+        .edu-toggle h3 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 22px;
+            color: var(--navy);
+            letter-spacing: 0.5px;
+            flex: 1;
+        }
+
+        .edu-toggle .chevron {
+            width: 20px;
+            height: 20px;
+            color: var(--gray-400);
+            transition: transform 0.3s ease;
+        }
+
+        .edu-toggle.open .chevron { transform: rotate(180deg); }
+
+        .edu-body {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+        }
+
+        .edu-body.open { max-height: 1000px; }
+
+        .edu-body-inner {
+            padding: 0 32px 28px;
+        }
+
+        .edu-body-inner p {
+            font-size: 15px;
+            color: var(--gray-600);
+            line-height: 1.7;
+            margin-bottom: 12px;
+        }
+
+        .edu-body-inner ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .edu-body-inner ul li {
+            position: relative;
+            padding: 8px 0 8px 24px;
+            font-size: 15px;
+            color: var(--gray-600);
+            line-height: 1.6;
+        }
+
+        .edu-body-inner ul li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 16px;
+            width: 8px;
+            height: 8px;
+            background: var(--orange);
+            border-radius: 50%;
+        }
+
+        .edu-body-inner strong { color: var(--navy); }
+
+        /* Pro CTA */
+        .pro-cta {
+            background: var(--gray-50);
+            border-radius: 12px;
+            padding: 24px;
+            border-left: 4px solid var(--orange);
+            margin-top: 16px;
+        }
+
+        .pro-cta h4 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 18px;
+            color: var(--navy);
+            margin-bottom: 8px;
+        }
+
+        .pro-cta p {
+            font-size: 14px;
+            color: var(--gray-600);
+            margin-bottom: 12px;
+        }
+
+        .pro-cta a {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--orange);
+            text-decoration: none;
+        }
+
+        .pro-cta a:hover { text-decoration: underline; }
+        .pro-cta a svg { width: 16px; height: 16px; }
+
+        /* ==================== FOOTER ==================== */
+        .site-footer {
+            background: var(--navy-dark);
+            padding: 48px 24px;
+            text-align: center;
+        }
+
+        .footer-inner {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .footer-phone {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 32px;
+            color: var(--white);
+            text-decoration: none;
+            letter-spacing: 2px;
+            display: inline-block;
+            margin-bottom: 8px;
+        }
+
+        .footer-phone:hover { color: var(--orange); }
+
+        .footer-tagline {
+            font-size: 14px;
+            color: rgba(255,255,255,0.6);
+            margin-bottom: 20px;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 24px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 24px;
+        }
+
+        .footer-links a {
+            font-size: 14px;
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .footer-links a:hover { color: var(--orange); }
+
+        .footer-copy {
+            font-size: 12px;
+            color: rgba(255,255,255,0.4);
+        }
+
+        .footer-copy a { color: rgba(255,255,255,0.5); text-decoration: none; }
+
+        /* ==================== RESPONSIVE ==================== */
+        @media (max-width: 1200px) {
+            .header-trust-badges { gap: 10px; }
+            .trust-badge { width: 95px; }
+            .trust-badge-icon { width: 46px; height: 46px; }
+            .trust-badge-icon svg { width: 24px; height: 24px; }
+            .trust-badge-label { font-size: 10px; }
+            .get-service-btn { padding: 14px 24px; font-size: 20px; }
+        }
+
+        @media (max-width: 1024px) {
+            .header-trust-badges { display: none; }
+            .header-phone { display: none; }
+            .get-service-btn { display: none; }
+            .mobile-toggle { display: block; }
+            .header-mobile-name { display: block; }
+            .header-top-inner { padding: 12px 20px; }
+            .main-nav { display: none; }
+            .header-nav { display: none; }
+
+            .page-hero { padding: 100px 24px 50px; }
+        }
+
+        @media (max-width: 768px) {
+            .page-hero { padding: 90px 20px 40px; }
+            .calc-section { padding: 28px 20px; }
+            .radio-group { grid-template-columns: 1fr; }
+            .sizing-matters { grid-template-columns: 1fr; }
+            .results-header { padding: 24px 20px; }
+            .results-main-number { font-size: 52px; }
+            .results-body { padding: 24px 20px; }
+            .results-cta { padding: 24px 20px; }
+            .results-cta-buttons { flex-direction: column; }
+            .cta-btn { justify-content: center; }
+            .edu-toggle { padding: 20px; }
+            .edu-body-inner { padding: 0 20px 24px; }
+            .progress-card { flex-direction: column; gap: 8px; text-align: center; }
+            .size-label { min-width: 110px; font-size: 12px; }
+        }
+
+        /* ==================== PRINT STYLES ==================== */
+        @media print {
+            .header-top, .header-nav, .mobile-menu, .mobile-toggle,
+            .advanced-toggle, .advanced-section, .edu-section,
+            .site-footer, .results-cta, .results-actions,
+            .page-hero-badge, .progress-wrap { display: none !important; }
+
+            body { background: white; }
+
+            .page-hero {
+                background: white !important;
+                padding: 20px 0 !important;
+                text-align: left;
+            }
+
+            .page-hero h1 { color: var(--navy) !important; font-size: 32px !important; }
+            .page-hero p { color: var(--gray-600) !important; }
+
+            .calc-layout { padding: 0; max-width: 100%; }
+            .calc-section { box-shadow: none; border: 1px solid #ddd; page-break-inside: avoid; }
+
+            .results-panel {
+                opacity: 1 !important;
+                transform: none !important;
+                pointer-events: auto !important;
+                box-shadow: none;
+                border: 2px solid var(--navy);
+                page-break-inside: avoid;
+            }
+
+            .results-header { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .gauge-zones .gauge-zone { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+
+            .footer-print-info {
+                display: block !important;
+                text-align: center;
+                padding: 20px;
+                font-size: 14px;
+                color: var(--gray-600);
+            }
+        }
+
+        .footer-print-info { display: none; }
+    </style>
+</head>
+<body>
+
+    <!-- ==================== HEADER TOP BAR ==================== -->
+    <header class="header-top">
+        <div class="header-top-inner">
+            <a href="/" class="logo">
+                <img src="/logo.jpg" alt="Metro Boston HVAC - 24/7 Service">
+            </a>
+
+            <span class="header-mobile-name">METRO <span>BOSTON</span> HVAC</span>
+
+            <div class="header-phone">
+                <div class="header-phone-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                    </svg>
+                </div>
+                <div class="header-phone-info">
+                    <!-- PHONE NUMBER: Update here -->
+                    <a href="tel:7814082506" class="header-phone-number">(781) 408-2506</a>
+                    <span class="header-phone-label">Emergency Services Available</span>
+                </div>
+            </div>
+
+            <div class="header-trust-badges">
+                <div class="trust-badge">
+                    <div class="trust-badge-icon emergency">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+                        </svg>
+                    </div>
+                    <span class="trust-badge-label">Emergency Service Repair Specialists</span>
+                </div>
+                <div class="trust-badge">
+                    <div class="trust-badge-icon licensed">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 2L4 6v6c0 5.5 3.4 10.7 8 12 4.6-1.3 8-6.5 8-12V6l-8-4z"/>
+                            <path d="M9 12l2 2 4-4" stroke="#ff6b35" stroke-width="2.5"/>
+                        </svg>
+                    </div>
+                    <span class="trust-badge-label">Licensed & Insured #081600137</span>
+                </div>
+                <div class="trust-badge">
+                    <div class="trust-badge-icon reviews">
+                        <svg viewBox="0 0 24 24" fill="white" stroke="none">
+                            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                        </svg>
+                    </div>
+                    <span class="trust-badge-label">Excellent Customer Reviews</span>
+                </div>
+                <div class="trust-badge">
+                    <div class="trust-badge-icon local">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                            <path d="M12 11c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2z" fill="#ff6b35" stroke="#ff6b35"/>
+                        </svg>
+                    </div>
+                    <span class="trust-badge-label">Locally Owned & Operated</span>
+                </div>
+                <div class="trust-badge">
+                    <div class="trust-badge-icon price">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 2L4 6v6c0 5.5 3.4 10.7 8 12 4.6-1.3 8-6.5 8-12V6l-8-4z"/>
+                            <text x="12" y="16" text-anchor="middle" font-family="Arial" font-weight="800" font-size="10" fill="white" stroke="none">$</text>
+                        </svg>
+                    </div>
+                    <span class="trust-badge-label">Price Match Guarantee</span>
+                </div>
+            </div>
+
+            <a href="/quote.html" class="get-service-btn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+                </svg>
+                GET INSTANT SERVICE QUOTE
+            </a>
+
+            <button class="mobile-toggle" aria-label="Menu" onclick="document.getElementById('mobileMenu').classList.add('active')">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="3" y1="12" x2="21" y2="12"/>
+                    <line x1="3" y1="6" x2="21" y2="6"/>
+                    <line x1="3" y1="18" x2="21" y2="18"/>
+                </svg>
+            </button>
+        </div>
+    </header>
+
+    <!-- ==================== NAVIGATION BAR ==================== -->
+    <nav class="header-nav">
+        <div class="header-nav-inner">
+            <div class="main-nav">
+                <div class="nav-item">
+                    <a href="/index.html" class="nav-link">Home</a>
+                </div>
+                <div class="nav-item">
+                    <a href="/services.html" class="nav-link">
+                        Services
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                    </a>
+                    <div class="dropdown">
+                        <a href="/services.html#emergency-repair" class="dropdown-link">Emergency Repair</a>
+                        <a href="/services.html#diagnostics" class="dropdown-link">Basic Diagnostics</a>
+                        <a href="/services.html#maintenance" class="dropdown-link">Ongoing Maintenance</a>
+                        <a href="/services.html#installation" class="dropdown-link">New Unit Installation</a>
+                        <a href="/services.html#heat-pumps" class="dropdown-link">Heat Pump Installation</a>
+                        <a href="/services.html#commercial" class="dropdown-link">Commercial Maintenance</a>
+                    </div>
+                </div>
+                <div class="nav-item">
+                    <a href="#" class="nav-link">
+                        Resources
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                    </a>
+                    <div class="dropdown">
+                        <a href="/quote.html" class="dropdown-link">Instant Quote</a>
+                        <a href="/tools/btu-calculator.html" class="dropdown-link">BTU Calculator</a>
+                        <a href="/tools/system-selector" class="dropdown-link">System Selector Quiz</a>
+                        <a href="/tools/ductless-planner" class="dropdown-link">Ductless Planner</a>
+                        <a href="/tools/heat-pump-calculator" class="dropdown-link">Heat Pump Savings</a>
+                        <a href="/resources/service-area" class="dropdown-link">Service Area</a>
+                        <a href="/resources/faq" class="dropdown-link">FAQ</a>
+                        <a href="/resources/loyalty-program" class="dropdown-link">Loyalty Program</a>
+                    </div>
+                </div>
+                <div class="nav-item">
+                    <a href="#" class="nav-link">
+                        About Us
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                    </a>
+                    <div class="dropdown">
+                        <a href="/about/faq" class="dropdown-link">FAQ</a>
+                        <a href="/about/mission" class="dropdown-link">Our Mission</a>
+                    </div>
+                </div>
+                <div class="nav-item">
+                    <a href="/offers.html" class="nav-link">Offers</a>
+                </div>
+                <div class="nav-item">
+                    <a href="/contact.html" class="nav-link">Contact Us</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ==================== MOBILE MENU ==================== -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu-header">
+            <span class="logo-text">METRO <span>BOSTON</span> HVAC</span>
+            <button class="mobile-menu-close" aria-label="Close menu" onclick="document.getElementById('mobileMenu').classList.remove('active')">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="18" y1="6" x2="6" y2="18"/>
+                    <line x1="6" y1="6" x2="18" y2="18"/>
+                </svg>
+            </button>
+        </div>
+
+        <div class="mobile-trust-strip">
+            <div class="mobile-trust-item">
+                <div class="mobile-trust-icon emergency">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+                    </svg>
+                </div>
+                <span>Emergency Service Repair Specialists</span>
+            </div>
+            <div class="mobile-trust-item">
+                <div class="mobile-trust-icon licensed">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 2L4 6v6c0 5.5 3.4 10.7 8 12 4.6-1.3 8-6.5 8-12V6l-8-4z"/>
+                        <path d="M9 12l2 2 4-4" stroke="#ff6b35" stroke-width="2.5"/>
+                    </svg>
+                </div>
+                <span>Licensed & Insured #081600137</span>
+            </div>
+            <div class="mobile-trust-item">
+                <div class="mobile-trust-icon reviews">
+                    <svg viewBox="0 0 24 24" fill="white" stroke="none">
+                        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                    </svg>
+                </div>
+                <span>Excellent Reviews</span>
+            </div>
+            <div class="mobile-trust-item">
+                <div class="mobile-trust-icon local">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                        <path d="M12 11c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2z" fill="#ff6b35" stroke="#ff6b35"/>
+                    </svg>
+                </div>
+                <span>Locally Owned</span>
+            </div>
+            <div class="mobile-trust-item">
+                <div class="mobile-trust-icon price">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 2L4 6v6c0 5.5 3.4 10.7 8 12 4.6-1.3 8-6.5 8-12V6l-8-4z"/>
+                        <text x="12" y="16" text-anchor="middle" font-family="Arial" font-weight="800" font-size="10" fill="white" stroke="none">$</text>
+                    </svg>
+                </div>
+                <span>Price Match Guarantee</span>
+            </div>
+        </div>
+
+        <div class="mobile-quote-btn-wrap">
+            <a href="/quote.html" class="mobile-quote-btn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+                    <line x1="8" y1="21" x2="16" y2="21"/>
+                    <line x1="12" y1="17" x2="12" y2="21"/>
+                </svg>
+                Get Instant Quote
+            </a>
+        </div>
+
+        <div class="mobile-menu-links">
+            <a href="/index.html">Home</a>
+
+            <span class="mobile-section-label">Services</span>
+            <a href="/services.html#emergency-repair">Emergency Repair</a>
+            <a href="/services.html#diagnostics">Basic Diagnostics</a>
+            <a href="/services.html#maintenance">Ongoing Maintenance</a>
+            <a href="/services.html#installation">New Unit Installation</a>
+            <a href="/services.html#heat-pumps">Heat Pump Installation</a>
+            <a href="/services.html#commercial">Commercial Maintenance</a>
+
+            <span class="mobile-section-label">Resources</span>
+            <a href="/quote.html">Instant Quote</a>
+            <a href="/tools/btu-calculator.html" style="font-weight:700;color:var(--orange);">BTU Calculator</a>
+            <a href="/tools/system-selector">System Selector Quiz</a>
+            <a href="/tools/ductless-planner">Ductless Planner</a>
+            <a href="/tools/heat-pump-calculator">Heat Pump Savings</a>
+            <a href="/resources/service-area">Service Area</a>
+            <a href="/resources/faq">FAQ</a>
+            <a href="/resources/loyalty-program">Loyalty Program</a>
+
+            <span class="mobile-section-label">About Us</span>
+            <a href="/about/faq">FAQ</a>
+            <a href="/about/mission">Our Mission</a>
+
+            <a href="/offers.html">Offers</a>
+            <a href="/contact.html">Contact Us</a>
+        </div>
+
+        <div class="mobile-menu-cta">
+            <a href="tel:7814082506" class="mobile-call-btn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                </svg>
+                Call (781) 408-2506
+            </a>
+            <a href="/quote.html" class="mobile-service-btn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+                </svg>
+                Get Service
+            </a>
+        </div>
+    </div>
+
+    <!-- ==================== PAGE HERO ==================== -->
+    <section class="page-hero">
+        <div class="page-hero-content">
+            <div class="page-hero-badge">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                100% Free — No Email Required
+            </div>
+            <h1>Free <span class="accent">BTU Calculator</span></h1>
+            <p>Find the perfect heating and cooling system size for your home in 60 seconds. Get accurate tonnage recommendations based on your space, insulation, and layout.</p>
+        </div>
+    </section>
+
+    <!-- ==================== PROGRESS BAR ==================== -->
+    <div class="progress-wrap">
+        <div class="progress-card">
+            <span class="progress-text" id="progressText"><strong>0</strong> of <strong>4</strong> required fields completed</span>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== CALCULATOR ==================== -->
+    <div class="calc-layout">
+
+        <!-- Basic Information -->
+        <div class="calc-section">
+            <div class="calc-section-header">
+                <div class="calc-section-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                        <polyline points="9 22 9 12 15 12 15 22"/>
+                    </svg>
+                </div>
+                <div>
+                    <h2>Basic Information</h2>
+                    <p>Tell us about your home</p>
+                </div>
+            </div>
+
+            <!-- Square Footage -->
+            <div class="form-group">
+                <label class="form-label" for="sqft">
+                    Square Footage <span class="required">*</span>
+                    <span class="tooltip-trigger" tabindex="0">i
+                        <span class="tooltip-content">Measure the total conditioned living space — rooms that are heated and cooled. Don't include garages, unfinished basements, or attics.</span>
+                    </span>
+                </label>
+                <p class="form-help">Total conditioned (heated/cooled) living space</p>
+                <input type="number" id="sqft" class="form-input" placeholder="e.g. 1800" min="400" max="10000" aria-required="true">
+                <p class="form-error" id="sqftError">Square footage must be between 400 and 10,000</p>
+            </div>
+
+            <!-- Ceiling Height -->
+            <div class="form-group">
+                <label class="form-label" for="ceiling">
+                    Ceiling Height <span class="required">*</span>
+                </label>
+                <select id="ceiling" class="form-select" aria-required="true">
+                    <option value="8" selected>8 ft (standard)</option>
+                    <option value="9">9 ft</option>
+                    <option value="10">10 ft</option>
+                    <option value="11">11 ft</option>
+                    <option value="12">12+ ft</option>
+                </select>
+            </div>
+
+            <!-- Climate Zone -->
+            <div class="form-group">
+                <label class="form-label" for="climate">
+                    Climate Zone <span class="required">*</span>
+                    <span class="tooltip-trigger" tabindex="0">i
+                        <span class="tooltip-content">Massachusetts is Zone 5. If you're in northern New England (VT, NH, ME), select Cold Climate. Southern CT or coastal RI may qualify as Moderate.</span>
+                    </span>
+                </label>
+                <select id="climate" class="form-select" aria-required="true">
+                    <option value="30" selected>Massachusetts (Zone 5)</option>
+                    <option value="35">Cold Climate (Zone 6-7)</option>
+                    <option value="25">Moderate Climate (Zone 3-4)</option>
+                </select>
+            </div>
+
+            <!-- Insulation Quality -->
+            <div class="form-group">
+                <label class="form-label">
+                    Insulation Quality <span class="required">*</span>
+                    <span class="tooltip-trigger" tabindex="0">i
+                        <span class="tooltip-content">Check your attic: if you see exposed joists with little or no insulation, select "Poor." If insulation covers the joists, that's typically "Average" or better.</span>
+                    </span>
+                </label>
+                <div class="radio-group" role="radiogroup" aria-label="Insulation quality">
+                    <div class="radio-card">
+                        <input type="radio" name="insulation" id="ins_poor" value="0.20">
+                        <label for="ins_poor">
+                            <span class="radio-title">Poor</span>
+                            <span class="radio-desc">Pre-1980s, minimal insulation</span>
+                        </label>
+                    </div>
+                    <div class="radio-card">
+                        <input type="radio" name="insulation" id="ins_avg" value="0">
+                        <label for="ins_avg">
+                            <span class="radio-title">Average</span>
+                            <span class="radio-desc">1980s–2000s, basic insulation</span>
+                        </label>
+                    </div>
+                    <div class="radio-card">
+                        <input type="radio" name="insulation" id="ins_good" value="-0.10">
+                        <label for="ins_good">
+                            <span class="radio-title">Good</span>
+                            <span class="radio-desc">2000s+, code-compliant</span>
+                        </label>
+                    </div>
+                    <div class="radio-card">
+                        <input type="radio" name="insulation" id="ins_exc" value="-0.20">
+                        <label for="ins_exc">
+                            <span class="radio-title">Excellent</span>
+                            <span class="radio-desc">Modern, high-efficiency build</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Advanced Options Toggle -->
+        <button class="advanced-toggle" id="advancedToggle" aria-expanded="false" aria-controls="advancedSection">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+            Advanced Options (Optional — Improves Accuracy)
+        </button>
+
+        <!-- Advanced Section -->
+        <div class="advanced-section" id="advancedSection">
+            <div class="calc-section">
+                <div class="calc-section-header">
+                    <div class="calc-section-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="3"/>
+                            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <h2>Advanced Factors</h2>
+                        <p>Fine-tune your estimate</p>
+                    </div>
+                </div>
+
+                <!-- Sun Exposure -->
+                <div class="form-group">
+                    <label class="form-label">Sun Exposure</label>
+                    <div class="radio-group">
+                        <div class="radio-card">
+                            <input type="radio" name="sun" id="sun_shade" value="-0.10">
+                            <label for="sun_shade">
+                                <span class="radio-title">Heavily Shaded</span>
+                                <span class="radio-desc">Dense tree cover, north-facing</span>
+                            </label>
+                        </div>
+                        <div class="radio-card">
+                            <input type="radio" name="sun" id="sun_partial" value="0" checked>
+                            <label for="sun_partial">
+                                <span class="radio-title">Partially Shaded</span>
+                                <span class="radio-desc">Some trees or shade</span>
+                            </label>
+                        </div>
+                        <div class="radio-card">
+                            <input type="radio" name="sun" id="sun_full" value="0.10">
+                            <label for="sun_full">
+                                <span class="radio-title">Full Sun</span>
+                                <span class="radio-desc">Direct sun most of the day</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Number of Windows -->
+                <div class="form-group">
+                    <label class="form-label" for="windows">Number of Windows</label>
+                    <select id="windows" class="form-select">
+                        <option value="-0.05">Few (1–5 windows)</option>
+                        <option value="0" selected>Average (6–12 windows)</option>
+                        <option value="0.10">Many (13+ windows)</option>
+                    </select>
+                </div>
+
+                <!-- Number of Occupants -->
+                <div class="form-group">
+                    <label class="form-label" for="occupants">
+                        Number of Occupants
+                        <span class="tooltip-trigger" tabindex="0">i
+                            <span class="tooltip-content">Each person adds roughly 600 BTU of heat to a room. This is more relevant for cooling calculations.</span>
+                        </span>
+                    </label>
+                    <p class="form-help">Each person adds ~600 BTU of heat</p>
+                    <input type="number" id="occupants" class="form-input" value="3" min="1" max="10">
+                </div>
+
+                <!-- Kitchen Type -->
+                <div class="form-group">
+                    <label class="form-label">Kitchen Type</label>
+                    <div class="radio-group">
+                        <div class="radio-card">
+                            <input type="radio" name="kitchen" id="kit_small" value="0">
+                            <label for="kit_small">
+                                <span class="radio-title">Small / No Kitchen</span>
+                                <span class="radio-desc">Kitchenette or minimal</span>
+                            </label>
+                        </div>
+                        <div class="radio-card">
+                            <input type="radio" name="kitchen" id="kit_standard" value="1200" checked>
+                            <label for="kit_standard">
+                                <span class="radio-title">Standard Kitchen</span>
+                                <span class="radio-desc">Typical stove, oven, fridge</span>
+                            </label>
+                        </div>
+                        <div class="radio-card">
+                            <input type="radio" name="kitchen" id="kit_large" value="2400">
+                            <label for="kit_large">
+                                <span class="radio-title">Large Kitchen</span>
+                                <span class="radio-desc">Multiple appliances, double oven</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Home Type -->
+                <div class="form-group">
+                    <label class="form-label" for="homeType">Home Type</label>
+                    <select id="homeType" class="form-select">
+                        <option value="-0.05">Single-story ranch</option>
+                        <option value="0" selected>Two-story home</option>
+                        <option value="0.05">Multi-level / split-level</option>
+                        <option value="-0.10">Condo / apartment</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- ==================== RESULTS PANEL ==================== -->
+        <div class="results-panel" id="resultsPanel">
+            <div class="results-header">
+                <h2>Your Recommended System Size</h2>
+                <div class="results-main-number">
+                    <span id="resultTonnage">3.0</span> <span class="unit">TON</span>
+                </div>
+                <div class="results-secondary">
+                    <span id="resultBTU">36,000</span> BTU
+                </div>
+            </div>
+
+            <div class="results-body">
+                <!-- Gauge -->
+                <div class="gauge-wrap">
+                    <div class="gauge-label-row">
+                        <span>Smaller</span>
+                        <span>Larger</span>
+                    </div>
+                    <div class="gauge-track">
+                        <div class="gauge-zones">
+                            <div class="gauge-zone small"></div>
+                            <div class="gauge-zone medium"></div>
+                            <div class="gauge-zone large"></div>
+                            <div class="gauge-zone xlarge"></div>
+                        </div>
+                        <div class="gauge-marker" id="gaugeMarker" data-label="3.0T"></div>
+                    </div>
+                    <div class="gauge-ticks">
+                        <span>1.5T</span>
+                        <span>2.0T</span>
+                        <span>2.5T</span>
+                        <span>3.0T</span>
+                        <span>3.5T</span>
+                        <span>4.0T</span>
+                        <span>4.5T</span>
+                        <span>5.0T</span>
+                    </div>
+                </div>
+
+                <!-- Range Recommendation -->
+                <div class="range-rec">
+                    <p>We recommend a system between <strong id="rangeLow">2.5</strong> and <strong id="rangeHigh">3.5</strong> tons for your home. A professional load calculation will confirm the ideal size.</p>
+                </div>
+
+                <!-- Why This Matters -->
+                <div class="sizing-matters">
+                    <div class="sizing-card too-small">
+                        <h4>Too Small</h4>
+                        <p>Won't heat or cool adequately. Runs constantly, drives up energy bills, and shortens equipment life.</p>
+                    </div>
+                    <div class="sizing-card too-large">
+                        <h4>Too Large</h4>
+                        <p>Short-cycles on and off. Creates humidity problems, uneven temperatures, and wastes energy.</p>
+                    </div>
+                </div>
+
+                <!-- Common Sizes -->
+                <div class="common-sizes">
+                    <h3>Common System Sizes for Reference</h3>
+                    <div class="size-row" data-min="1.5" data-max="2">
+                        <span class="size-label">Small (800–1,200 sq ft)</span>
+                        <div class="size-bar-wrap"><div class="size-bar" style="width:30%"></div></div>
+                        <span class="size-tons">1.5–2T</span>
+                    </div>
+                    <div class="size-row" data-min="2" data-max="3">
+                        <span class="size-label">Medium (1,200–1,800 sq ft)</span>
+                        <div class="size-bar-wrap"><div class="size-bar" style="width:50%"></div></div>
+                        <span class="size-tons">2–3T</span>
+                    </div>
+                    <div class="size-row" data-min="3" data-max="4">
+                        <span class="size-label">Large (1,800–2,500 sq ft)</span>
+                        <div class="size-bar-wrap"><div class="size-bar" style="width:70%"></div></div>
+                        <span class="size-tons">3–4T</span>
+                    </div>
+                    <div class="size-row" data-min="4" data-max="5">
+                        <span class="size-label">Very Large (2,500+ sq ft)</span>
+                        <div class="size-bar-wrap"><div class="size-bar" style="width:90%"></div></div>
+                        <span class="size-tons">4–5+T</span>
+                    </div>
+                </div>
+
+                <!-- Actions -->
+                <div class="results-actions">
+                    <button class="action-btn" onclick="window.print()">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+                        Print Results
+                    </button>
+                    <button class="action-btn" id="saveBtn" onclick="saveResults()">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
+                        Save Locally
+                    </button>
+                </div>
+
+                <!-- CTA -->
+                <div class="results-cta">
+                    <h3>Get an Exact Quote for Your Home</h3>
+                    <p>This calculator provides estimates. A professional load calculation ensures perfect sizing.</p>
+                    <div class="results-cta-buttons">
+                        <!-- PHONE NUMBER: Update here -->
+                        <a href="tel:7814082506" class="cta-btn primary">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                            </svg>
+                            Call (781) 408-2506
+                        </a>
+                        <!-- QUOTE LINK: Update here -->
+                        <a href="/quote.html" class="cta-btn secondary">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+                                <line x1="8" y1="21" x2="16" y2="21"/>
+                                <line x1="12" y1="17" x2="12" y2="21"/>
+                            </svg>
+                            Get Instant Quote
+                        </a>
+                    </div>
+                    <p class="results-disclaimer">This calculator provides estimates based on standard HVAC industry formulas. A professional Manual J load calculation is recommended for final equipment sizing. Results may vary based on ductwork condition, air leakage, and other factors.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ==================== EDUCATIONAL SECTIONS ==================== -->
+
+        <!-- How We Calculate -->
+        <div class="edu-section">
+            <button class="edu-toggle" onclick="toggleEdu(this)" aria-expanded="false">
+                <div class="edu-toggle-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="4" y="2" width="16" height="20" rx="2"/>
+                        <line x1="8" y1="6" x2="16" y2="6"/>
+                        <line x1="8" y1="10" x2="16" y2="10"/>
+                        <line x1="8" y1="14" x2="12" y2="14"/>
+                    </svg>
+                </div>
+                <h3>How We Calculate This</h3>
+                <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="edu-body">
+                <div class="edu-body-inner">
+                    <p>This calculator uses a simplified version of the <strong>Manual J</strong> load calculation methodology — the industry standard established by the Air Conditioning Contractors of America (ACCA). Professional HVAC technicians use the full Manual J process with detailed measurements.</p>
+                    <p>Our formula starts with a base BTU-per-square-foot multiplier for your climate zone, then adjusts for:</p>
+                    <ul>
+                        <li><strong>Ceiling height</strong> — taller ceilings mean more air volume to condition</li>
+                        <li><strong>Insulation quality</strong> — better insulation retains conditioned air longer</li>
+                        <li><strong>Sun exposure</strong> — direct sunlight adds significant heat load</li>
+                        <li><strong>Windows</strong> — more glass means more heat gain/loss</li>
+                        <li><strong>Occupants</strong> — each person adds ~600 BTU of body heat</li>
+                        <li><strong>Kitchen load</strong> — cooking appliances generate substantial heat</li>
+                        <li><strong>Home layout</strong> — multi-story homes need more capacity for distribution</li>
+                    </ul>
+                    <p>The result is converted to <strong>tons</strong> (1 ton = 12,000 BTU) and rounded to the nearest half-ton to match available equipment sizes.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Common Sizing Mistakes -->
+        <div class="edu-section">
+            <button class="edu-toggle" onclick="toggleEdu(this)" aria-expanded="false">
+                <div class="edu-toggle-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"/>
+                        <line x1="15" y1="9" x2="9" y2="15"/>
+                        <line x1="9" y1="9" x2="15" y2="15"/>
+                    </svg>
+                </div>
+                <h3>Common Sizing Mistakes</h3>
+                <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="edu-body">
+                <div class="edu-body-inner">
+                    <ul>
+                        <li><strong>"Going big just to be safe"</strong> — An oversized system short-cycles (turns on and off too frequently), leading to humidity problems, uneven temperatures, and premature wear. Bigger is not better.</li>
+                        <li><strong>Matching the old system size</strong> — If your previous system was installed 15+ years ago, it may have been improperly sized. New windows, added insulation, or sealed ducts can change your load significantly.</li>
+                        <li><strong>Ignoring home improvements</strong> — New windows, spray foam insulation, or a sealed attic can reduce your heating/cooling load by 20-30%. Always recalculate after upgrades.</li>
+                        <li><strong>Using "rule of thumb" alone</strong> — Simple square-footage rules ignore insulation, layout, sun exposure, and dozens of other factors that affect real-world performance.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- When to Call a Pro -->
+        <div class="edu-section">
+            <button class="edu-toggle" onclick="toggleEdu(this)" aria-expanded="false">
+                <div class="edu-toggle-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72"/>
+                    </svg>
+                </div>
+                <h3>When You Need a Professional Load Calculation</h3>
+                <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="edu-body">
+                <div class="edu-body-inner">
+                    <p>This calculator gives solid estimates for most homes. However, a full <strong>Manual J load calculation</strong> by a licensed technician is recommended when:</p>
+                    <ul>
+                        <li><strong>Your home is over 3,500 sq ft</strong> — larger homes often need zoned systems</li>
+                        <li><strong>Complex or unusual layouts</strong> — additions, vaulted ceilings, sunrooms</li>
+                        <li><strong>Radiant heat or unusual systems</strong> — hydronic, geothermal, or hybrid setups</li>
+                        <li><strong>You're switching fuel types</strong> — oil to gas, gas to heat pump, etc.</li>
+                        <li><strong>Significant ductwork issues</strong> — old, leaky, or undersized ducts</li>
+                    </ul>
+                    <div class="pro-cta">
+                        <h4>Schedule a Professional Assessment</h4>
+                        <p>Our licensed technicians perform detailed load calculations as part of every installation quote. No pressure, no obligation.</p>
+                        <a href="/quote.html">
+                            Get a Free Quote
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div><!-- /calc-layout -->
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <!-- PHONE NUMBER: Update here -->
+            <a href="tel:7814082506" class="footer-phone">(781) 408-2506</a>
+            <p class="footer-tagline">24/7 Emergency HVAC Services — Greater Boston & South Shore</p>
+            <div class="footer-links">
+                <a href="/index.html">Home</a>
+                <a href="/services.html">Services</a>
+                <a href="/quote.html">Get a Quote</a>
+                <a href="/offers.html">Offers</a>
+                <a href="/contact.html">Contact</a>
+            </div>
+            <p class="footer-copy">&copy; 2026 Metro Boston HVAC. MA License #081600137. Locally owned & operated.</p>
+        </div>
+    </footer>
+
+    <div class="footer-print-info">
+        <p>Generated by the Metro Boston HVAC BTU Calculator — metrobostonhvac.com</p>
+        <p>For a professional assessment, call (781) 408-2506</p>
+    </div>
+
+<!-- ==================== CALCULATOR JAVASCRIPT ==================== -->
+<script>
+(function() {
+    'use strict';
+
+    /*
+     * =============================================
+     *  CONFIGURATION — Easy to update
+     * =============================================
+     *
+     *  BTU_MULTIPLIERS: Base BTU per sq ft by climate zone.
+     *  These values are stored in the <select> option values.
+     *    - Massachusetts (Zone 5): 30
+     *    - Cold Climate (6-7):     35
+     *    - Moderate (3-4):         25
+     *
+     *  CEILING_ADJUSTMENTS: Percentage increase per ceiling height.
+     *  OCCUPANT_BTU: BTU added per person (industry standard: 600).
+     *  TONNAGE_DIVISOR: 12,000 BTU = 1 ton (constant).
+     *
+     *  Phone number: Search "PHONE NUMBER: Update here" in HTML.
+     *  Quote link:   Search "QUOTE LINK: Update here" in HTML.
+     */
+
+    var CEILING_ADJUSTMENTS = { '8': 0, '9': 0.10, '10': 0.20, '11': 0.30, '12': 0.40 };
+    var OCCUPANT_BTU = 600;
+    var TONNAGE_DIVISOR = 12000;
+    var GAUGE_MIN_TONS = 1.5;
+    var GAUGE_MAX_TONS = 5.0;
+
+    // DOM references
+    var sqftInput = document.getElementById('sqft');
+    var ceilingSelect = document.getElementById('ceiling');
+    var climateSelect = document.getElementById('climate');
+    var windowsSelect = document.getElementById('windows');
+    var occupantsInput = document.getElementById('occupants');
+    var homeTypeSelect = document.getElementById('homeType');
+
+    var progressText = document.getElementById('progressText');
+    var progressFill = document.getElementById('progressFill');
+    var resultsPanel = document.getElementById('resultsPanel');
+    var resultTonnage = document.getElementById('resultTonnage');
+    var resultBTU = document.getElementById('resultBTU');
+    var gaugeMarker = document.getElementById('gaugeMarker');
+    var rangeLow = document.getElementById('rangeLow');
+    var rangeHigh = document.getElementById('rangeHigh');
+
+    // ==================== PROGRESS TRACKING ====================
+
+    function updateProgress() {
+        var completed = 0;
+        var total = 4;
+
+        // 1. Square footage (valid number in range)
+        var sqft = parseFloat(sqftInput.value);
+        if (sqft >= 400 && sqft <= 10000) completed++;
+
+        // 2. Ceiling height (always has default)
+        completed++;
+
+        // 3. Climate zone (always has default)
+        completed++;
+
+        // 4. Insulation (must select one)
+        var insChecked = document.querySelector('input[name="insulation"]:checked');
+        if (insChecked) completed++;
+
+        progressText.innerHTML = '<strong>' + completed + '</strong> of <strong>' + total + '</strong> required fields completed';
+        progressFill.style.width = ((completed / total) * 100) + '%';
+
+        return completed === total;
+    }
+
+    // ==================== VALIDATION ====================
+
+    function validateSqft() {
+        var val = parseFloat(sqftInput.value);
+        var errorEl = document.getElementById('sqftError');
+
+        if (sqftInput.value === '') {
+            sqftInput.classList.remove('error');
+            errorEl.classList.remove('visible');
+            return false;
+        }
+
+        if (val < 400 || val > 10000 || isNaN(val)) {
+            sqftInput.classList.add('error');
+            errorEl.classList.add('visible');
+            return false;
+        }
+
+        sqftInput.classList.remove('error');
+        errorEl.classList.remove('visible');
+        return true;
+    }
+
+    // ==================== CALCULATION ====================
+
+    function calculate() {
+        var allValid = updateProgress();
+        if (!allValid) {
+            resultsPanel.classList.remove('visible');
+            return;
+        }
+
+        var sqft = parseFloat(sqftInput.value);
+        var climateMultiplier = parseFloat(climateSelect.value);
+        var ceilingAdj = CEILING_ADJUSTMENTS[ceilingSelect.value] || 0;
+
+        var insEl = document.querySelector('input[name="insulation"]:checked');
+        var insulationAdj = insEl ? parseFloat(insEl.value) : 0;
+
+        // Advanced factors (use defaults if not changed)
+        var sunEl = document.querySelector('input[name="sun"]:checked');
+        var sunAdj = sunEl ? parseFloat(sunEl.value) : 0;
+
+        var windowsAdj = parseFloat(windowsSelect.value);
+        var occupants = parseInt(occupantsInput.value, 10) || 3;
+
+        var kitchenEl = document.querySelector('input[name="kitchen"]:checked');
+        var kitchenBTU = kitchenEl ? parseFloat(kitchenEl.value) : 1200;
+
+        var homeTypeAdj = parseFloat(homeTypeSelect.value);
+
+        // Base calculation
+        var baseBTU = sqft * climateMultiplier;
+
+        // Apply percentage adjustments
+        var percentageAdj = 1 + ceilingAdj + insulationAdj + sunAdj + windowsAdj + homeTypeAdj;
+        var adjustedBTU = baseBTU * percentageAdj;
+
+        // Add fixed BTU additions
+        var occupantBTU = occupants * OCCUPANT_BTU;
+        var totalBTU = adjustedBTU + occupantBTU + kitchenBTU;
+
+        // Convert to tonnage and round to nearest 0.5
+        var rawTonnage = totalBTU / TONNAGE_DIVISOR;
+        var roundedTonnage = Math.round(rawTonnage * 2) / 2;
+
+        // Clamp to reasonable range
+        if (roundedTonnage < 1.5) roundedTonnage = 1.5;
+        if (roundedTonnage > 5.0) roundedTonnage = 5.0;
+
+        var displayBTU = roundedTonnage * TONNAGE_DIVISOR;
+
+        // Update results display
+        updateResults(roundedTonnage, displayBTU);
+
+        // Save to localStorage
+        try {
+            localStorage.setItem('btuCalc_lastResult', JSON.stringify({
+                sqft: sqft,
+                tonnage: roundedTonnage,
+                btu: displayBTU,
+                timestamp: Date.now()
+            }));
+        } catch(e) { /* localStorage unavailable */ }
+    }
+
+    // ==================== UPDATE RESULTS ====================
+
+    function updateResults(tonnage, btu) {
+        // Show panel
+        resultsPanel.classList.add('visible');
+
+        // Animate number changes
+        resultTonnage.textContent = tonnage.toFixed(1);
+        resultBTU.textContent = btu.toLocaleString();
+
+        // Gauge position: map tonnage to 0-100%
+        var pct = ((tonnage - GAUGE_MIN_TONS) / (GAUGE_MAX_TONS - GAUGE_MIN_TONS)) * 100;
+        pct = Math.max(2, Math.min(98, pct));
+        gaugeMarker.style.left = 'calc(' + pct + '% - 2px)';
+        gaugeMarker.setAttribute('data-label', tonnage.toFixed(1) + 'T');
+
+        // Range recommendation (±0.5 tons)
+        var low = Math.max(1.5, tonnage - 0.5);
+        var high = Math.min(5.0, tonnage + 0.5);
+        rangeLow.textContent = low.toFixed(1);
+        rangeHigh.textContent = high.toFixed(1);
+
+        // Highlight matching common size row
+        var rows = document.querySelectorAll('.size-row');
+        rows.forEach(function(row) {
+            var min = parseFloat(row.getAttribute('data-min'));
+            var max = parseFloat(row.getAttribute('data-max'));
+            var bar = row.querySelector('.size-bar');
+            if (tonnage >= min && tonnage <= max) {
+                bar.classList.add('match');
+            } else {
+                bar.classList.remove('match');
+            }
+        });
+
+        // Scroll results into view smoothly
+        setTimeout(function() {
+            resultsPanel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }, 100);
+    }
+
+    // ==================== EVENT LISTENERS ====================
+
+    // Debounce helper for text inputs
+    var debounceTimer;
+    function debounceCalc() {
+        clearTimeout(debounceTimer);
+        debounceTimer = setTimeout(function() {
+            validateSqft();
+            calculate();
+        }, 300);
+    }
+
+    // Text inputs — debounced
+    sqftInput.addEventListener('input', debounceCalc);
+    occupantsInput.addEventListener('input', debounceCalc);
+
+    // Selects — immediate
+    ceilingSelect.addEventListener('change', calculate);
+    climateSelect.addEventListener('change', calculate);
+    windowsSelect.addEventListener('change', calculate);
+    homeTypeSelect.addEventListener('change', calculate);
+
+    // Radio buttons — immediate
+    document.querySelectorAll('input[type="radio"]').forEach(function(radio) {
+        radio.addEventListener('change', calculate);
+    });
+
+    // ==================== ADVANCED TOGGLE ====================
+
+    var advToggle = document.getElementById('advancedToggle');
+    var advSection = document.getElementById('advancedSection');
+
+    advToggle.addEventListener('click', function() {
+        var isOpen = advSection.classList.contains('open');
+        advSection.classList.toggle('open');
+        advToggle.classList.toggle('open');
+        advToggle.setAttribute('aria-expanded', !isOpen);
+    });
+
+    // ==================== SAVE RESULTS ====================
+
+    window.saveResults = function() {
+        var btn = document.getElementById('saveBtn');
+        try {
+            var data = {
+                sqft: sqftInput.value,
+                ceiling: ceilingSelect.value,
+                climate: climateSelect.value,
+                insulation: (document.querySelector('input[name="insulation"]:checked') || {}).value,
+                sun: (document.querySelector('input[name="sun"]:checked') || {}).value,
+                windows: windowsSelect.value,
+                occupants: occupantsInput.value,
+                kitchen: (document.querySelector('input[name="kitchen"]:checked') || {}).value,
+                homeType: homeTypeSelect.value,
+                tonnage: resultTonnage.textContent,
+                btu: resultBTU.textContent,
+                savedAt: new Date().toLocaleString()
+            };
+            localStorage.setItem('btuCalc_savedInputs', JSON.stringify(data));
+            btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="16" height="16"><polyline points="20 6 9 17 4 12"/></svg> Saved!';
+            setTimeout(function() {
+                btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg> Save Locally';
+            }, 2000);
+        } catch(e) {
+            btn.textContent = 'Storage unavailable';
+        }
+    };
+
+    // ==================== LOAD SAVED INPUTS ====================
+
+    function loadSaved() {
+        try {
+            var saved = JSON.parse(localStorage.getItem('btuCalc_savedInputs'));
+            if (!saved) return;
+
+            if (saved.sqft) sqftInput.value = saved.sqft;
+            if (saved.ceiling) ceilingSelect.value = saved.ceiling;
+            if (saved.climate) climateSelect.value = saved.climate;
+
+            if (saved.insulation) {
+                var insRadio = document.querySelector('input[name="insulation"][value="' + saved.insulation + '"]');
+                if (insRadio) insRadio.checked = true;
+            }
+            if (saved.sun) {
+                var sunRadio = document.querySelector('input[name="sun"][value="' + saved.sun + '"]');
+                if (sunRadio) sunRadio.checked = true;
+            }
+            if (saved.windows) windowsSelect.value = saved.windows;
+            if (saved.occupants) occupantsInput.value = saved.occupants;
+            if (saved.kitchen) {
+                var kitRadio = document.querySelector('input[name="kitchen"][value="' + saved.kitchen + '"]');
+                if (kitRadio) kitRadio.checked = true;
+            }
+            if (saved.homeType) homeTypeSelect.value = saved.homeType;
+
+            // Recalculate with loaded values
+            setTimeout(calculate, 100);
+        } catch(e) { /* no saved data */ }
+    }
+
+    // ==================== EDUCATIONAL TOGGLE ====================
+
+    window.toggleEdu = function(btn) {
+        var body = btn.nextElementSibling;
+        var isOpen = body.classList.contains('open');
+        body.classList.toggle('open');
+        btn.classList.toggle('open');
+        btn.setAttribute('aria-expanded', !isOpen);
+    };
+
+    // ==================== INIT ====================
+
+    loadSaved();
+    updateProgress();
+
+})();
+</script>
+
+</body>
+</html>
