@@ -304,8 +304,8 @@
   "maintenance_new": {
     "messages": [
       "If you're considering a new system, heat pumps are definitely worth looking into. They handle both heating and cooling in one unit and are incredibly energy efficient.",
-      "Here's the big one: Massachusetts has some of the best incentives in the country through Mass Save. Many homeowners qualify for rebates of $1,250-$10,000+ depending on the system — which makes a huge difference on the upfront cost.",
-      "We can walk you through all the options and help you figure out exactly what rebates apply to your situation."
+      "We offer a price match guarantee on all installations and can work with you on flexible financing options to help make it fit your budget.",
+      "We can walk you through all the options and help you figure out the best fit for your home."
     ],
     "phone_cta": true,
     "link_cta": { "label": "Get an Instant Quote", "url": "quote.html" },
@@ -318,7 +318,7 @@
   "heat_pump_info": {
     "messages": [
       "Heat pumps are one of the smartest upgrades for a New England home. Here's why folks love them:",
-      "• They heat AND cool — one system, year-round comfort\n• Up to 3x more energy efficient than traditional furnaces\n• Modern units work great even at -15°F (no more \"heat pumps don't work in cold weather\")\n• Mass Save rebates can significantly offset the installation cost\n• Lower carbon footprint and quieter operation",
+      "• They heat AND cool — one system, year-round comfort\n• Up to 3x more energy efficient than traditional furnaces\n• Modern units work great even at -15°F (no more \"heat pumps don't work in cold weather\")\n• Price match guarantee on all installations\n• Lower carbon footprint and quieter operation",
       "We've installed hundreds across the Metro Boston area and can do a free assessment of your home to recommend the right setup. No obligation."
     ],
     "phone_cta": true,
