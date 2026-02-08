@@ -360,136 +360,75 @@
 
     // ── Process Multi-Selected Symptoms ──
     function processSymptoms(keys) {
-        var symptomData = chatData.symptom_data;
         var safetyTips = chatData.safety_tips;
         var ctx = getTimeContext();
         var count = keys.length;
 
-        var delay = 0;
-
-        // Empathy response based on count
         showTyping();
-        delay += TYPING_DELAY;
-
         setTimeout(function() {
             hideTyping();
-            if (count >= 3) {
-                addBotMessage("That's a lot going on at once — your system definitely needs professional attention. Let me share some quick tips for each issue while we get you connected with a technician.");
-            } else if (count === 2) {
-                addBotMessage("Okay, a couple things happening. Let me give you some tips for each one.");
-            } else {
-                addBotMessage("Got it. Here are some things to check:");
+
+            // One short consolidated response — no per-symptom diagnosis
+            addBotMessage("Thanks for letting us know. Before calling, a couple quick things worth checking: make sure your thermostat is set correctly, check your air filter (a dirty filter causes more issues than you'd think), and take a look at your breaker panel for anything tripped. Beyond that, this is something a technician should look at in person.");
+
+            // Only surface critical safety warnings
+            var safetyDelay = 400;
+            if (keys.indexOf('bad_smell') !== -1) {
+                setTimeout(function() {
+                    addSafetyTip(safetyTips.gas_smell);
+                }, safetyDelay);
+                safetyDelay += 300;
+            }
+            if (keys.indexOf('leaking') !== -1) {
+                setTimeout(function() {
+                    addSafetyTip(safetyTips.water_damage);
+                }, safetyDelay);
+                safetyDelay += 300;
             }
 
-            // Show tips for each symptom
-            var tipDelay = 400;
-            keys.forEach(function(key, i) {
-                var data = symptomData[key];
-                setTimeout(function() {
-                    showTyping();
-                    setTimeout(function() {
-                        hideTyping();
-                        var tipText = '**' + data.label + ':**\n' + data.tips.map(function(t) { return '• ' + t; }).join('\n');
-                        addBotMessage(tipText);
-
-                        // Add seasonal tip if applicable
-                        var seasonKey = 'seasonal_' + ctx.season;
-                        if (data[seasonKey]) {
-                            setTimeout(function() {
-                                addSafetyTip(data[seasonKey], true);
-                            }, 300);
-                        }
-
-                        // After all tips shown, proceed to safety + urgency
-                        if (i === keys.length - 1) {
-                            setTimeout(function() {
-                                showSafetyAndUrgency(keys, count);
-                            }, 600);
-                        }
-                    }, TYPING_DELAY);
-                }, tipDelay);
-                tipDelay += TYPING_DELAY + 600;
-            });
-        }, delay);
+            // Move to urgency assessment
+            setTimeout(function() {
+                showSafetyAndUrgency(keys, count);
+            }, safetyDelay + 200);
+        }, TYPING_DELAY);
     }
 
-    // ── Safety Tips + Urgency Assessment ──
+    // ── Urgency Assessment ──
     function showSafetyAndUrgency(keys, count) {
-        var safetyTips = chatData.safety_tips;
         var ctx = getTimeContext();
 
-        // Show relevant safety tips
-        var shownSafety = false;
-        if (keys.indexOf('bad_smell') !== -1) {
-            addSafetyTip(safetyTips.gas_smell);
-            shownSafety = true;
-        }
-        if (keys.indexOf('leaking') !== -1) {
-            addSafetyTip(safetyTips.water_damage);
-            shownSafety = true;
-        }
-        if (keys.indexOf('strange_noise') !== -1 || keys.indexOf('wont_start') !== -1) {
-            addSafetyTip(safetyTips.electrical);
-            shownSafety = true;
-        }
+        // Auto-urgent: 3+ symptoms, gas smell, or dangerous combos
+        var autoUrgent = count >= 3 ||
+            (keys.indexOf('bad_smell') !== -1) ||
+            (keys.indexOf('wont_start') !== -1 && (keys.indexOf('strange_noise') !== -1 || keys.indexOf('leaking') !== -1));
 
-        var afterSafetyDelay = shownSafety ? 600 : 0;
+        if (autoUrgent) {
+            showTyping();
+            setTimeout(function() {
+                hideTyping();
+                addBotMessage("Based on what you're describing, I'd recommend having a technician take a look as soon as possible. We're available 24/7.");
 
-        setTimeout(function() {
-            // Smart urgency: 3+ symptoms or certain combos = auto-urgent
-            var autoUrgent = count >= 3 ||
-                (keys.indexOf('bad_smell') !== -1) ||
-                (keys.indexOf('wont_start') !== -1 && (keys.indexOf('strange_noise') !== -1 || keys.indexOf('leaking') !== -1));
+                setTimeout(function() { addPhoneCTA(); }, 300);
 
-            if (autoUrgent) {
-                showTyping();
                 setTimeout(function() {
-                    hideTyping();
-                    addBotMessage("Based on what you've described, I'd recommend getting a technician out as soon as possible. Our team is available 24/7 and we serve the entire Metro Boston area.");
-
-                    // Show while-you-wait tip
-                    setTimeout(function() {
-                        showWhileYouWait(keys, ctx);
-                    }, 300);
-
-                    setTimeout(function() {
-                        addPhoneCTA();
-                    }, 500);
-
-                    setTimeout(function() {
-                        addOptions([
-                            { label: "How old is my system — does it matter?", next: "system_age" },
-                            { label: "What should I expect during the visit?", next: "what_to_expect" },
-                            { label: "Start over", next: "welcome", restart: true }
-                        ]);
-                    }, 700);
-                }, TYPING_DELAY);
-            } else {
-                // Ask urgency
-                showTyping();
-                setTimeout(function() {
-                    hideTyping();
-                    addBotMessage("Were you able to try any of those tips? How's things feeling right now?");
                     addOptions([
-                        { label: "It's really uncomfortable — need help now", next: "_urgent_yes" },
-                        { label: "I can manage for now", next: "_urgent_no" },
-                        { label: "Tried everything — still not working", next: "_urgent_yes" }
+                        { label: "What should I expect during the visit?", next: "what_to_expect" },
+                        { label: "How old is my system — does it matter?", next: "system_age" },
+                        { label: "Start over", next: "welcome", restart: true }
                     ]);
-                }, TYPING_DELAY);
-            }
-        }, afterSafetyDelay);
-    }
-
-    // ── While-You-Wait Tips ──
-    function showWhileYouWait(keys, ctx) {
-        var safetyTips = chatData.safety_tips;
-
-        if (keys.indexOf('no_heat') !== -1 && ctx.season === 'winter') {
-            addSafetyTip(safetyTips.no_heat_winter, true);
-        } else if (keys.indexOf('no_cooling') !== -1 && ctx.season === 'summer') {
-            addSafetyTip(safetyTips.no_cooling_summer, true);
+                }, 500);
+            }, TYPING_DELAY);
         } else {
-            addSafetyTip(safetyTips.general, true);
+            showTyping();
+            setTimeout(function() {
+                hideTyping();
+                addBotMessage("Would you like us to send someone out, or are you okay for now?");
+                addOptions([
+                    { label: "I'd like to schedule a visit", next: "_urgent_yes" },
+                    { label: "I'm okay for now", next: "_urgent_no" },
+                    { label: "Already tried the basics — still not working", next: "_urgent_yes" }
+                ]);
+            }, TYPING_DELAY);
         }
     }
 
@@ -530,29 +469,20 @@
     }
 
     function handleUrgentYes() {
-        var ctx = getTimeContext();
-        var keys = getState('lastSymptomKeys') || [];
-
         showTyping();
         setTimeout(function() {
             hideTyping();
-            addBotMessage("Let's get someone out to you. Our technicians are available 24/7, and with 30+ years of experience we've seen just about everything. We'll take good care of you.");
+            addBotMessage("We'll get someone out to you. Give us a call and we can usually have a technician there within the hour.");
 
-            setTimeout(function() {
-                showWhileYouWait(keys, ctx);
-            }, 300);
-
-            setTimeout(function() {
-                addPhoneCTA();
-            }, 500);
+            setTimeout(function() { addPhoneCTA(); }, 300);
 
             setTimeout(function() {
                 addOptions([
-                    { label: "How old is my system — does it matter?", next: "system_age" },
                     { label: "What will the visit cost?", next: "faq_emergency_pricing" },
+                    { label: "What should I expect?", next: "what_to_expect" },
                     { label: "Start over", next: "welcome", restart: true }
                 ]);
-            }, 700);
+            }, 500);
         }, TYPING_DELAY);
     }
 
@@ -560,17 +490,12 @@
         showTyping();
         setTimeout(function() {
             hideTyping();
-            addBotMessage("Glad you're comfortable for now. When you're ready, we'd love to help get things sorted out. You can call anytime — we're here 24/7. Or schedule through our contact page at your convenience.");
+            addBotMessage("No problem. When you're ready, give us a call or reach out online. We're here 24/7.");
 
-            setTimeout(function() {
-                addPhoneCTA();
-            }, 300);
-            setTimeout(function() {
-                addLinkCTA('Contact Us Online', 'contact.html');
-            }, 500);
+            setTimeout(function() { addPhoneCTA(); }, 300);
+            setTimeout(function() { addLinkCTA('Contact Us Online', 'contact.html'); }, 500);
             setTimeout(function() {
                 addOptions([
-                    { label: "How old is my system — does it matter?", next: "system_age" },
                     { label: "Do you have any specials?", next: "offers_plug" },
                     { label: "Start over", next: "welcome", restart: true }
                 ]);
@@ -624,6 +549,15 @@
         });
     }
 
+    // ── Pick Random Variant ──
+    function pickVariant(node) {
+        if (node.messages_variants && node.messages_variants.length > 0) {
+            var idx = Math.floor(Math.random() * node.messages_variants.length);
+            return node.messages_variants[idx];
+        }
+        return node.messages || [];
+    }
+
     // ── Conversation Start ──
     function startConversation() {
         chatMessages.innerHTML = '';
@@ -646,13 +580,12 @@
             welcomeNode = 'welcome_summer';
         }
 
-        // Use seasonal message but always use welcome's options
         var seasonalNode = chatData[welcomeNode];
         var welcomeOptions = chatData['welcome'].options;
+        var messages = pickVariant(seasonalNode);
+        if (messages.length === 0) messages = pickVariant(chatData['welcome']);
 
-        var messages = seasonalNode.messages || chatData['welcome'].messages;
         var delay = 0;
-
         showTyping();
         delay += TYPING_DELAY;
 

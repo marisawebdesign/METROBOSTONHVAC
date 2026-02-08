@@ -87,8 +87,13 @@
   },
 
   "welcome": {
+    "messages_variants": [
+      ["Hi, thanks for reaching out to Metro Boston HVAC. How can we help you today?"],
+      ["Hello! Welcome to Metro Boston HVAC. What can we help you with?"],
+      ["Hi there — Metro Boston HVAC here. Let us know what's going on and we'll point you in the right direction."]
+    ],
     "messages": [
-      "Hey there! Thanks for reaching out to Metro Boston HVAC. I'm here to help with whatever's going on with your heating or cooling. What can I help you with?"
+      "Hi, thanks for reaching out to Metro Boston HVAC. How can we help you today?"
     ],
     "options": [
       { "label": "My system isn't working right", "next": "emergency", "icon": "alert" },
@@ -100,31 +105,33 @@
   },
 
   "welcome_winter": {
-    "messages": [
-      "Hey there! Winter in New England is no joke — thanks for reaching out to Metro Boston HVAC. Whether your heat is acting up or you just want to make sure things are running smoothly, I'm here to help. What's going on?"
+    "messages_variants": [
+      ["Hi — Metro Boston HVAC here. Whether your heat needs attention or you just want a checkup before the cold sets in, we can help. What's going on?"],
+      ["Hello! Metro Boston HVAC. Heating issues don't wait for convenient timing — neither do we. How can we help?"]
     ]
   },
 
   "welcome_summer": {
-    "messages": [
-      "Hey there! Staying cool out there? Thanks for reaching out to Metro Boston HVAC. Whether your AC needs help or you're thinking about an upgrade, I'm here. What can I help with?"
+    "messages_variants": [
+      ["Hi — Metro Boston HVAC here. If your AC is giving you trouble or you're thinking about an upgrade, we can help. What do you need?"],
+      ["Hello! Metro Boston HVAC. Keeping cool is the priority — let us know what's going on."]
     ]
   },
 
   "return_welcome_emergency": {
     "messages": [
-      "Welcome back! Last time we chatted, it sounded like you were having some trouble with your system. Were you able to get that resolved?"
+      "Welcome back! Is everything running okay, or do you still need a hand?"
     ],
     "options": [
-      { "label": "Yes, all good now!", "next": "return_resolved" },
-      { "label": "No, still having issues", "next": "emergency" },
-      { "label": "Different question this time", "next": "welcome" }
+      { "label": "All good now", "next": "return_resolved" },
+      { "label": "Still having issues", "next": "emergency" },
+      { "label": "Something else", "next": "welcome" }
     ]
   },
 
   "return_resolved": {
     "messages": [
-      "That's great to hear! If anything comes up in the future, we're always here. Is there anything else I can help with today?"
+      "Good to hear. Is there anything else we can help with?"
     ],
     "options": [
       { "label": "I need maintenance", "next": "maintenance" },
@@ -135,14 +142,13 @@
 
   "goodbye": {
     "messages": [
-      "Sounds good — glad everything's working well. We're here 24/7 if you ever need anything. Stay comfortable out there!"
+      "Sounds good. We're here 24/7 if anything comes up. Take care."
     ]
   },
 
   "emergency": {
     "messages": [
-      "I'm sorry you're dealing with that — let's figure out what's going on.",
-      "Select everything that applies so we can give you the best advice:"
+      "Okay — select everything that applies so we can help:"
     ],
     "type": "multi_select",
     "symptom_keys": ["no_cooling", "no_heat", "strange_noise", "leaking", "wont_start", "short_cycling", "weak_airflow", "bad_smell"]
