@@ -339,25 +339,13 @@
             color: var(--navy);
         }
 
-        /* Nav CTA */
+        /* Nav CTA - styled as regular link on desktop */
         .nav-cta {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            background: var(--orange);
-            color: var(--white);
-            padding: 10px 24px;
-            font-size: 14px;
-            font-weight: 700;
-            text-decoration: none;
-            border-radius: 6px;
-            transition: all 0.3s ease;
-            white-space: nowrap;
+            /* inherits .nav-link styles */
         }
 
         .nav-cta:hover {
-            background: var(--orange-glow);
-            transform: translateY(-1px);
+            /* inherits .nav-link:hover styles */
         }
 
         .nav-cta svg {
