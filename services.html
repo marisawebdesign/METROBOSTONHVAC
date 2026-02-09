@@ -638,141 +638,148 @@
             color: var(--orange);
         }
 
-        /* ==================== SERVICES GRID ==================== */
-        .services-section {
-            padding: 80px 24px;
+        /* ==================== SERVICE SECTIONS ==================== */
+        .svc-section {
+            padding: 100px 24px;
             background: var(--white);
         }
 
-        .services-container {
+        .svc-section.alt-bg {
+            background: var(--gray-50);
+        }
+
+        .svc-container {
             max-width: 1200px;
             margin: 0 auto;
-        }
-
-        .services-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 32px;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
         }
 
-        .service-card {
-            background: var(--white);
-            border: 1px solid var(--gray-200);
-            border-radius: 16px;
-            padding: 40px 32px;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
+        .svc-content {
+            max-width: 540px;
         }
 
-        .service-card:hover {
-            box-shadow: 0 12px 40px rgba(26,58,82,0.12);
-            transform: translateY(-4px);
-            border-color: transparent;
+        .svc-section.reverse .svc-content {
+            order: 2;
         }
 
-        .service-card-icon {
-            width: 64px;
-            height: 64px;
-            background: rgba(255,107,53,0.1);
-            border-radius: 14px;
+        .svc-section.reverse .svc-image {
+            order: 1;
+        }
+
+        .section-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--orange);
+            margin-bottom: 16px;
+        }
+
+        .section-label svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        .svc-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(36px, 4vw, 52px);
+            color: var(--navy);
+            line-height: 1.1;
+            margin-bottom: 24px;
+            letter-spacing: 1px;
+        }
+
+        .svc-text {
+            font-size: 18px;
+            color: var(--gray-600);
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+
+        .svc-text strong {
+            color: var(--navy);
+        }
+
+        .svc-features {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            margin-top: 28px;
+        }
+
+        .svc-feature {
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+        }
+
+        .svc-feature-icon {
+            width: 44px;
+            height: 44px;
+            background: rgba(255, 107, 53, 0.1);
+            border-radius: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 24px;
+            flex-shrink: 0;
         }
 
-        .service-card-icon svg {
-            width: 32px;
-            height: 32px;
+        .svc-feature-icon svg {
+            width: 22px;
+            height: 22px;
             color: var(--orange);
         }
 
-        .service-card h2 {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 28px;
-            color: var(--navy);
-            letter-spacing: 1px;
-            margin-bottom: 16px;
-            line-height: 1.1;
-        }
-
-        .service-card p {
+        .svc-feature-text {
             font-size: 16px;
-            color: var(--gray-600);
-            line-height: 1.7;
-            margin-bottom: 24px;
-        }
-
-        .service-card-features {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            margin-bottom: 28px;
-        }
-
-        .service-card-feature {
-            display: flex;
-            align-items: flex-start;
-            gap: 10px;
-            font-size: 14px;
             color: var(--gray-600);
             line-height: 1.5;
         }
 
-        .service-card-feature svg {
-            width: 18px;
-            height: 18px;
-            color: var(--orange);
-            flex-shrink: 0;
-            margin-top: 2px;
+        .svc-feature-text strong {
+            color: var(--navy);
+            display: block;
+            margin-bottom: 2px;
         }
 
-        .service-card-cta {
-            display: inline-flex;
+        .svc-image {
+            position: relative;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(26, 58, 82, 0.15);
+        }
+
+        .svc-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .svc-image-placeholder {
+            width: 100%;
+            aspect-ratio: 4 / 3;
+            background: linear-gradient(135deg, var(--navy-dark), var(--navy));
+            display: flex;
             align-items: center;
-            gap: 8px;
-            padding: 12px 24px;
-            background: var(--navy-dark);
-            color: var(--white);
-            font-size: 14px;
-            font-weight: 700;
-            text-decoration: none;
-            border-radius: 8px;
-            transition: all 0.3s ease;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
+            justify-content: center;
+            border-radius: 16px;
         }
 
-        .service-card-cta:hover {
-            background: var(--orange);
-            transform: translateY(-1px);
+        .svc-image-placeholder span {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(20px, 3vw, 28px);
+            color: rgba(255,255,255,0.5);
+            letter-spacing: 3px;
+            text-align: center;
+            padding: 20px;
         }
-
-        .service-card-cta svg {
-            width: 16px;
-            height: 16px;
-        }
-
-        .service-card.featured {
-            border: 2px solid var(--orange);
-            background: linear-gradient(180deg, rgba(255,107,53,0.03) 0%, var(--white) 100%);
-        }
-
-        .service-card.featured .service-card-badge {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background: var(--orange);
-            color: white;
-            font-size: 11px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            padding: 6px 14px;
-            border-radius: 20px;
-        }
-
         /* ==================== CTA BANNER ==================== */
         .cta-banner {
             background: var(--navy-dark);
@@ -973,8 +980,21 @@
                 display: none;
             }
 
-            .services-grid {
+            .svc-container {
                 grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .svc-content {
+                max-width: none;
+            }
+
+            .svc-section.reverse .svc-content {
+                order: 2;
+            }
+
+            .svc-section.reverse .svc-image {
+                order: 1;
             }
 
             .why-us-inner {
@@ -987,16 +1007,24 @@
                 padding: 60px 20px 40px;
             }
 
-            .services-section {
-                padding: 48px 20px;
+            .svc-section {
+                padding: 60px 20px;
             }
 
-            .service-card {
-                padding: 28px 22px;
+            .svc-container {
+                gap: 32px;
             }
 
-            .service-card h2 {
-                font-size: 24px;
+            .svc-section.reverse .svc-content {
+                order: 1;
+            }
+
+            .svc-section.reverse .svc-image {
+                order: 2;
+            }
+
+            .svc-text {
+                font-size: 16px;
             }
 
             .cta-banner {
@@ -1041,6 +1069,11 @@
                 padding: 8px 14px;
                 font-size: 12px;
             }
+        }
+
+        /* ==================== ANCHOR OFFSET ==================== */
+        .svc-section[id] {
+            scroll-margin-top: 170px;
         }
 
         /* ==================== SCROLL REVEAL ==================== */
@@ -1161,8 +1194,8 @@
                         </svg>
                     </a>
                     <div class="dropdown">
-                        <a href="services.html#emergency-repair" class="dropdown-link">Emergency Repair</a>
                         <a href="services.html#diagnostics" class="dropdown-link">Basic Diagnostics</a>
+                        <a href="services.html#emergency-repair" class="dropdown-link">Emergency Repair</a>
                         <a href="services.html#maintenance" class="dropdown-link">Ongoing Maintenance</a>
                         <a href="services.html#installation" class="dropdown-link">New Unit Installation</a>
                         <a href="services.html#heat-pumps" class="dropdown-link">Heat Pump Installation</a>
@@ -1282,8 +1315,8 @@
             <a href="index.html" style="font-weight:700;color:var(--orange);">Home</a>
 
             <span class="mobile-section-label">Services</span>
-            <a href="services.html#emergency-repair">Emergency Repair</a>
             <a href="services.html#diagnostics">Basic Diagnostics</a>
+            <a href="services.html#emergency-repair">Emergency Repair</a>
             <a href="services.html#maintenance">Ongoing Maintenance</a>
             <a href="services.html#installation">New Unit Installation</a>
             <a href="services.html#heat-pumps">Heat Pump Installation</a>
@@ -1344,218 +1377,284 @@
         </div>
     </section>
 
-    <!-- ==================== SERVICES GRID ==================== -->
-    <section class="services-section">
-        <div class="services-container">
-            <div class="services-grid">
-
-                <!-- Emergency Repair -->
-                <div class="service-card featured scroll-reveal" id="emergency-repair">
-                    <span class="service-card-badge">24/7</span>
-                    <div class="service-card-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
-                        </svg>
-                    </div>
-                    <h2>Emergency Repair Services</h2>
-                    <p>When your heating or cooling fails, every minute matters. We respond to emergency calls around the clock — nights, weekends, and holidays — and make every effort to have a technician at your door within the hour. Our team has over 30 years of experience diagnosing and repairing all major HVAC brands, and we carry the most common parts on our trucks so repairs can often be completed on the first visit. No after-hours surcharges, no surprises — just honest, fast service when you need it most.</p>
-                    <div class="service-card-features">
-                        <div class="service-card-feature">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-                            Available 24/7/365 — no after-hours fees
-                        </div>
-                        <div class="service-card-feature">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-                            Typical response time under 1 hour
-                        </div>
-                        <div class="service-card-feature">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-                            Upfront pricing before any work begins
-                        </div>
-                        <div class="service-card-feature">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-                            Price match guarantee
-                        </div>
-                    </div>
-                    <a href="tel:7814082506" class="service-card-cta">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-                        Call Now — (781) 408-2506
-                    </a>
+    <!-- ==================== BASIC DIAGNOSTICS ==================== -->
+    <section class="svc-section" id="diagnostics">
+        <div class="svc-container">
+            <div class="svc-content scroll-reveal">
+                <div class="section-label">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                    Diagnostic Services
                 </div>
-
-                <!-- Basic Diagnostics -->
-                <div class="service-card scroll-reveal delay-1" id="diagnostics">
-                    <div class="service-card-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <circle cx="11" cy="11" r="8"/>
-                            <line x1="21" y1="21" x2="16.65" y2="16.65"/>
-                        </svg>
-                    </div>
-                    <h2>Basic Diagnostics</h2>
-                    <p>Not sure what's wrong? That's exactly what our diagnostic service is for. A technician will come out, thoroughly inspect your system, and give you a straightforward explanation of the issue along with your options. Our diagnostic fee is $79, and if you go ahead with the repair, we waive it — so you only pay for the fix itself. No guesswork, no upselling, just an honest assessment from experienced professionals.</p>
-                    <div class="service-card-features">
-                        <div class="service-card-feature">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-                            $79 diagnostic fee — waived with repair
+                <h2 class="svc-title">Not Sure What's Wrong? We'll Find Out</h2>
+                <p class="svc-text">Not sure what's going on with your system? That's exactly what our diagnostic service is for. A technician will come out, thoroughly inspect your equipment, and give you a straightforward explanation of the issue along with your options.</p>
+                <p class="svc-text">Our diagnostic fee is <strong>$79</strong>, and if you go ahead with the repair, we waive it — so you only pay for the fix itself. No guesswork, no upselling, just an honest assessment from experienced professionals who have been doing this for over 30 years.</p>
+                <div class="svc-features">
+                    <div class="svc-feature">
+                        <div class="svc-feature-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
                         </div>
-                        <div class="service-card-feature">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-                            Thorough inspection of all system components
-                        </div>
-                        <div class="service-card-feature">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-                            Clear explanation of findings and options
-                        </div>
-                        <div class="service-card-feature">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-                            Written estimate before any work starts
+                        <div class="svc-feature-text">
+                            <strong>$79 diagnostic fee — waived with repair</strong>
+                            You only pay for the fix, not the visit.
                         </div>
                     </div>
-                    <a href="contact.html" class="service-card-cta">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-                        Schedule a Diagnostic
-                    </a>
+                    <div class="svc-feature">
+                        <div class="svc-feature-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                        </div>
+                        <div class="svc-feature-text">
+                            <strong>Thorough system inspection</strong>
+                            We check every component, not just the obvious ones.
+                        </div>
+                    </div>
+                    <div class="svc-feature">
+                        <div class="svc-feature-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                        </div>
+                        <div class="svc-feature-text">
+                            <strong>Written estimate before any work starts</strong>
+                            Clear explanation of findings and options — no surprises.
+                        </div>
+                    </div>
                 </div>
+            </div>
+            <div class="svc-image scroll-reveal delay-1">
+                <div class="svc-image-placeholder"><span>DIAGNOSTIC<br>SERVICE PHOTO</span></div>
+            </div>
+        </div>
+    </section>
 
-                <!-- Ongoing Maintenance -->
-                <div class="service-card scroll-reveal" id="maintenance">
-                    <div class="service-card-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
-                        </svg>
-                    </div>
-                    <h2>Ongoing Maintenance</h2>
-                    <p>Regular maintenance is the single best way to avoid surprise breakdowns, extend the life of your equipment, and keep your energy bills from creeping up. Our seasonal tune-ups include a full inspection, cleaning, safety checks, and performance testing. Most of our maintenance customers find that the service pays for itself in lower utility costs and avoided emergency repairs. We offer one-time tune-ups and annual plans depending on what works best for you.</p>
-                    <div class="service-card-features">
-                        <div class="service-card-feature">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-                            Full system inspection, cleaning, and calibration
-                        </div>
-                        <div class="service-card-feature">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-                            Catch small problems before they become expensive
-                        </div>
-                        <div class="service-card-feature">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-                            Annual plans with priority scheduling and parts discounts
-                        </div>
-                        <div class="service-card-feature">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-                            Helps maintain manufacturer warranty requirements
-                        </div>
-                    </div>
-                    <a href="quote.html" class="service-card-cta">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
-                        Get a Maintenance Quote
-                    </a>
+    <!-- ==================== EMERGENCY REPAIR ==================== -->
+    <section class="svc-section alt-bg reverse" id="emergency-repair">
+        <div class="svc-container">
+            <div class="svc-content scroll-reveal">
+                <div class="section-label">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                    Emergency Services
                 </div>
-
-                <!-- New Unit Installation -->
-                <div class="service-card scroll-reveal delay-1" id="installation">
-                    <div class="service-card-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/>
-                            <path d="M16 3l-4 4-4-4"/>
-                            <line x1="12" y1="3" x2="12" y2="7"/>
-                            <path d="M6 14h12"/>
-                        </svg>
-                    </div>
-                    <h2>New Unit Installation</h2>
-                    <p>Whether you're replacing an aging system or outfitting a new space, we handle the full installation process from assessment to final testing. We work with all major brands and will recommend the best fit for your home's size, layout, and budget — not just the most expensive option. Every installation is done to code by our licensed technicians, and we stand behind our work. We also offer flexible financing options on a case-by-case basis, because a new system shouldn't be out of reach when you need one.</p>
-                    <div class="service-card-features">
-                        <div class="service-card-feature">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-                            Free in-home assessment and consultation
+                <h2 class="svc-title">When Your System Fails, We're On Our Way</h2>
+                <p class="svc-text">When your heating or cooling fails, every minute matters. We respond to emergency calls around the clock — nights, weekends, and holidays — and make every effort to have a technician at your door within the hour.</p>
+                <p class="svc-text">Our team has over 30 years of experience diagnosing and repairing all major HVAC brands, and we carry the most common parts on our trucks so repairs can often be completed on the first visit. <strong>No after-hours surcharges, no surprises</strong> — just honest, fast service when you need it most.</p>
+                <div class="svc-features">
+                    <div class="svc-feature">
+                        <div class="svc-feature-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
                         </div>
-                        <div class="service-card-feature">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-                            All major brands — furnaces, ACs, boilers, mini-splits
-                        </div>
-                        <div class="service-card-feature">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-                            Price match guarantee and flexible financing
-                        </div>
-                        <div class="service-card-feature">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-                            Code-compliant installation by licensed contractors
+                        <div class="svc-feature-text">
+                            <strong>Available 24/7/365 — no after-hours fees</strong>
+                            Nights, weekends, and holidays. We're always on call.
                         </div>
                     </div>
-                    <a href="quote.html" class="service-card-cta">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
-                        Get an Installation Quote
-                    </a>
+                    <div class="svc-feature">
+                        <div class="svc-feature-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                        </div>
+                        <div class="svc-feature-text">
+                            <strong>Typical response time under 1 hour</strong>
+                            We make every effort to be at your door quickly.
+                        </div>
+                    </div>
+                    <div class="svc-feature">
+                        <div class="svc-feature-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                        </div>
+                        <div class="svc-feature-text">
+                            <strong>Upfront pricing and price match guarantee</strong>
+                            You'll know the cost before any work begins.
+                        </div>
+                    </div>
                 </div>
+            </div>
+            <div class="svc-image scroll-reveal delay-1">
+                <div class="svc-image-placeholder"><span>EMERGENCY<br>REPAIR PHOTO</span></div>
+            </div>
+        </div>
+    </section>
 
-                <!-- Heat Pump Installation -->
-                <div class="service-card scroll-reveal" id="heat-pumps">
-                    <div class="service-card-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <polyline points="23 4 23 10 17 10"/>
-                            <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/>
-                        </svg>
-                    </div>
-                    <h2>Heat Pump Installation</h2>
-                    <p>Heat pumps are one of the most efficient ways to heat and cool a New England home — one system handles both, year-round. Modern cold-climate heat pumps work effectively even at -15°F, which makes them a practical option for Massachusetts winters. They can significantly reduce your energy costs compared to traditional furnaces and central AC setups. We've installed hundreds across the Greater Boston area and can assess your home to recommend the right configuration. We offer a price match guarantee on all installations and flexible financing options to help make it work for your budget.</p>
-                    <div class="service-card-features">
-                        <div class="service-card-feature">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-                            Heats and cools — one system, year-round comfort
-                        </div>
-                        <div class="service-card-feature">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-                            Up to 3x more energy efficient than traditional systems
-                        </div>
-                        <div class="service-card-feature">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-                            Cold-climate rated — works in Massachusetts winters
-                        </div>
-                        <div class="service-card-feature">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-                            Free home assessment and no-obligation quote
-                        </div>
-                    </div>
-                    <a href="quote.html" class="service-card-cta">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
-                        Get a Heat Pump Quote
-                    </a>
+    <!-- ==================== ONGOING MAINTENANCE ==================== -->
+    <section class="svc-section" id="maintenance">
+        <div class="svc-container">
+            <div class="svc-content scroll-reveal">
+                <div class="section-label">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+                    Preventive Maintenance
                 </div>
-
-                <!-- Commercial Maintenance -->
-                <div class="service-card scroll-reveal delay-1" id="commercial">
-                    <div class="service-card-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <rect x="1" y="3" width="15" height="13"/>
-                            <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/>
-                            <circle cx="5.5" cy="18.5" r="2.5"/>
-                            <circle cx="18.5" cy="18.5" r="2.5"/>
-                        </svg>
-                    </div>
-                    <h2>Commercial Maintenance</h2>
-                    <p>We work with businesses of all sizes across the Greater Boston and South Shore areas — offices, retail spaces, restaurants, warehouses, and multi-unit buildings. Commercial systems need consistent attention to keep operations running smoothly and tenants comfortable. We offer tailored maintenance plans designed around your business schedule, with priority response times and competitive pricing. With 30+ years of experience in both commercial and residential settings, we understand the unique demands of commercial HVAC.</p>
-                    <div class="service-card-features">
-                        <div class="service-card-feature">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-                            Custom maintenance plans for your business
+                <h2 class="svc-title">Keep Your System Running at Its Best</h2>
+                <p class="svc-text">Regular maintenance is the single best way to avoid surprise breakdowns, extend the life of your equipment, and keep your energy bills from creeping up. Our seasonal tune-ups include a full inspection, cleaning, safety checks, and performance testing.</p>
+                <p class="svc-text">Most of our maintenance customers find that the service pays for itself in lower utility costs and avoided emergency repairs. We offer <strong>one-time tune-ups and annual plans</strong> depending on what works best for you.</p>
+                <div class="svc-features">
+                    <div class="svc-feature">
+                        <div class="svc-feature-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
                         </div>
-                        <div class="service-card-feature">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-                            Flexible scheduling to minimize business disruption
-                        </div>
-                        <div class="service-card-feature">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-                            Priority emergency response for contract customers
-                        </div>
-                        <div class="service-card-feature">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-                            Offices, retail, restaurants, warehouses, multi-unit
+                        <div class="svc-feature-text">
+                            <strong>Full system inspection, cleaning, and calibration</strong>
+                            Everything checked and tuned for peak performance.
                         </div>
                     </div>
-                    <a href="contact.html" class="service-card-cta">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-                        Contact Us for Commercial
-                    </a>
+                    <div class="svc-feature">
+                        <div class="svc-feature-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                        </div>
+                        <div class="svc-feature-text">
+                            <strong>Catch small problems before they become expensive</strong>
+                            Preventive care saves you money in the long run.
+                        </div>
+                    </div>
+                    <div class="svc-feature">
+                        <div class="svc-feature-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                        </div>
+                        <div class="svc-feature-text">
+                            <strong>Annual plans with priority scheduling</strong>
+                            Parts discounts and helps maintain warranty requirements.
+                        </div>
+                    </div>
                 </div>
+            </div>
+            <div class="svc-image scroll-reveal delay-1">
+                <div class="svc-image-placeholder"><span>MAINTENANCE<br>SERVICE PHOTO</span></div>
+            </div>
+        </div>
+    </section>
 
+    <!-- ==================== NEW UNIT INSTALLATION ==================== -->
+    <section class="svc-section alt-bg reverse" id="installation">
+        <div class="svc-container">
+            <div class="svc-content scroll-reveal">
+                <div class="section-label">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 3l-4 4-4-4"/><line x1="12" y1="3" x2="12" y2="7"/><path d="M6 14h12"/></svg>
+                    Installation Services
+                </div>
+                <h2 class="svc-title">The Right System, Installed Right</h2>
+                <p class="svc-text">Whether you're replacing an aging system or outfitting a new space, we handle the full installation process from assessment to final testing. We work with all major brands and will recommend the best fit for your home's size, layout, and budget — not just the most expensive option.</p>
+                <p class="svc-text">Every installation is done to code by our licensed technicians, and we stand behind our work. We also offer <strong>flexible financing options</strong> on a case-by-case basis, because a new system shouldn't be out of reach when you need one.</p>
+                <div class="svc-features">
+                    <div class="svc-feature">
+                        <div class="svc-feature-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+                        </div>
+                        <div class="svc-feature-text">
+                            <strong>Free in-home assessment and consultation</strong>
+                            We evaluate your space and recommend the right fit.
+                        </div>
+                    </div>
+                    <div class="svc-feature">
+                        <div class="svc-feature-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                        </div>
+                        <div class="svc-feature-text">
+                            <strong>Code-compliant installation by licensed contractors</strong>
+                            MA License #081600137. Fully insured.
+                        </div>
+                    </div>
+                    <div class="svc-feature">
+                        <div class="svc-feature-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                        </div>
+                        <div class="svc-feature-text">
+                            <strong>Price match guarantee and flexible financing</strong>
+                            Competitive pricing with options to fit your budget.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="svc-image scroll-reveal delay-1">
+                <div class="svc-image-placeholder"><span>INSTALLATION<br>SERVICE PHOTO</span></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== HEAT PUMP INSTALLATION ==================== -->
+    <section class="svc-section" id="heat-pumps">
+        <div class="svc-container">
+            <div class="svc-content scroll-reveal">
+                <div class="section-label">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
+                    Heat Pump Systems
+                </div>
+                <h2 class="svc-title">One System for Year-Round Comfort</h2>
+                <p class="svc-text">Heat pumps are one of the most efficient ways to heat and cool a New England home — one system handles both, year-round. Modern cold-climate heat pumps work effectively even at -15&deg;F, which makes them a practical option for Massachusetts winters.</p>
+                <p class="svc-text">They can significantly reduce your energy costs compared to traditional furnaces and central AC setups. We've installed hundreds across the Greater Boston area and can assess your home to recommend the right configuration. We offer a <strong>price match guarantee</strong> on all installations and flexible financing options.</p>
+                <div class="svc-features">
+                    <div class="svc-feature">
+                        <div class="svc-feature-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
+                        </div>
+                        <div class="svc-feature-text">
+                            <strong>Heats and cools — one system, year-round</strong>
+                            Eliminates the need for separate heating and AC units.
+                        </div>
+                    </div>
+                    <div class="svc-feature">
+                        <div class="svc-feature-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                        </div>
+                        <div class="svc-feature-text">
+                            <strong>Up to 3x more energy efficient</strong>
+                            Lower utility bills compared to traditional systems.
+                        </div>
+                    </div>
+                    <div class="svc-feature">
+                        <div class="svc-feature-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M12 8v4M12 16h.01"/></svg>
+                        </div>
+                        <div class="svc-feature-text">
+                            <strong>Cold-climate rated for Massachusetts winters</strong>
+                            Effective down to -15&deg;F. Proven in New England.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="svc-image scroll-reveal delay-1">
+                <div class="svc-image-placeholder"><span>HEAT PUMP<br>SERVICE PHOTO</span></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== COMMERCIAL MAINTENANCE ==================== -->
+    <section class="svc-section alt-bg reverse" id="commercial">
+        <div class="svc-container">
+            <div class="svc-content scroll-reveal">
+                <div class="section-label">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+                    Commercial Services
+                </div>
+                <h2 class="svc-title">Reliable HVAC for Your Business</h2>
+                <p class="svc-text">We work with businesses of all sizes across the Greater Boston and South Shore areas — offices, retail spaces, restaurants, warehouses, and multi-unit buildings. Commercial systems need consistent attention to keep operations running smoothly and tenants comfortable.</p>
+                <p class="svc-text">We offer <strong>tailored maintenance plans</strong> designed around your business schedule, with priority response times and competitive pricing. With 30+ years of experience in both commercial and residential settings, we understand the unique demands of commercial HVAC.</p>
+                <div class="svc-features">
+                    <div class="svc-feature">
+                        <div class="svc-feature-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                        </div>
+                        <div class="svc-feature-text">
+                            <strong>Custom maintenance plans for your business</strong>
+                            Flexible scheduling to minimize disruption.
+                        </div>
+                    </div>
+                    <div class="svc-feature">
+                        <div class="svc-feature-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                        </div>
+                        <div class="svc-feature-text">
+                            <strong>Priority emergency response for contract customers</strong>
+                            When something goes wrong, you're at the front of the line.
+                        </div>
+                    </div>
+                    <div class="svc-feature">
+                        <div class="svc-feature-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+                        </div>
+                        <div class="svc-feature-text">
+                            <strong>Offices, retail, restaurants, warehouses, multi-unit</strong>
+                            30+ years of commercial and residential experience.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="svc-image scroll-reveal delay-1">
+                <div class="svc-image-placeholder"><span>COMMERCIAL<br>SERVICE PHOTO</span></div>
             </div>
         </div>
     </section>
