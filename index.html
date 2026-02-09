@@ -116,74 +116,39 @@
     <nav class="header-nav">
         <div class="header-nav-inner">
             <div class="main-nav">
-                <!-- Home -->
+                <div class="nav-item"><a href="index.html" class="nav-link active">Home</a></div>
                 <div class="nav-item">
-                    <a href="index.html" class="nav-link active">Home</a>
-                </div>
-
-                <!-- Services -->
-                <div class="nav-item">
-                    <a href="services.html" class="nav-link">
-                        Services
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <polyline points="6 9 12 15 18 9"/>
-                        </svg>
-                    </a>
+                    <a href="services.html" class="nav-link">Services <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></a>
                     <div class="dropdown">
                         <a href="services.html#diagnostics" class="dropdown-link">Basic Diagnostics</a>
                         <a href="services.html#emergency-repair" class="dropdown-link">Emergency Repair</a>
-                        <a href="services.html#maintenance" class="dropdown-link">Ongoing Maintenance</a>
-                        <a href="services.html#installation" class="dropdown-link">New Unit Installation</a>
+                        <a href="services.html#maintenance" class="dropdown-link">Annual Maintenance</a>
+                        <a href="services.html#installation" class="dropdown-link">New-Unit Installation</a>
                         <a href="services.html#heat-pumps" class="dropdown-link">Heat Pump Installation</a>
                         <a href="services.html#commercial" class="dropdown-link">Commercial Maintenance</a>
                     </div>
                 </div>
-
-                <!-- Resources -->
                 <div class="nav-item">
-                    <a href="#" class="nav-link">
-                        Resources
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <polyline points="6 9 12 15 18 9"/>
-                        </svg>
-                    </a>
+                    <a href="#" class="nav-link">Resources <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></a>
                     <div class="dropdown">
                         <a href="quote.html" class="dropdown-link">Instant Quote</a>
-                        <a href="tools/btu-calculator.html" class="dropdown-link">BTU Calculator</a>
-                        <a href="/tools/system-selector" class="dropdown-link">System Selector Quiz</a>
-                        <a href="/tools/ductless-planner" class="dropdown-link">Ductless Planner</a>
-                        <a href="/tools/heat-pump-calculator" class="dropdown-link">Heat Pump Savings</a>
-                        <a href="/resources/service-area" class="dropdown-link">Service Area</a>
-                        <a href="/resources/faq" class="dropdown-link">FAQ</a>
-                        <a href="/resources/loyalty-program" class="dropdown-link">Loyalty Program</a>
+                        <a href="tools/btu-calculator.html" class="dropdown-link">HVAC BTU Size Calculator</a>
+                        <a href="tools/system-selector.html" class="dropdown-link">System Selector Quiz</a>
+                        <a href="printouts.html" class="dropdown-link">Printouts, Calendars &amp; Guides</a>
                     </div>
                 </div>
-
-                <!-- About Us -->
                 <div class="nav-item">
-                    <a href="#" class="nav-link">
-                        About Us
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <polyline points="6 9 12 15 18 9"/>
-                        </svg>
-                    </a>
+                    <a href="#" class="nav-link">About Us <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></a>
                     <div class="dropdown">
-                        <a href="/about/faq" class="dropdown-link">FAQ</a>
-                        <a href="/about/mission" class="dropdown-link">Our Mission</a>
+                        <a href="mission.html" class="dropdown-link">Our Mission</a>
+                        <a href="careers.html" class="dropdown-link">Careers</a>
+                        <a href="service-area.html" class="dropdown-link">Service Area</a>
                     </div>
                 </div>
-
-                <!-- Offers -->
-                <div class="nav-item">
-                    <a href="offers.html" class="nav-link">Offers</a>
-                </div>
-
-                <!-- Contact Us -->
-                <div class="nav-item">
-                    <a href="contact.html" class="nav-link">Contact Us</a>
-                </div>
+                <div class="nav-item"><a href="offers.html" class="nav-link">Offers</a></div>
+                <div class="nav-item"><a href="contact.html" class="nav-link">Contact Us</a></div>
+                <div class="nav-item"><a href="book-appointment.html" class="nav-link nav-cta">Book an Appointment</a></div>
             </div>
-
         </div>
     </nav>
 
@@ -259,30 +224,46 @@
         <div class="mobile-menu-links">
             <a href="index.html" style="font-weight:700;color:var(--orange);">Home</a>
 
-            <span class="mobile-section-label">Services</span>
-            <a href="services.html#diagnostics">Basic Diagnostics</a>
-            <a href="services.html#emergency-repair">Emergency Repair</a>
-            <a href="services.html#maintenance">Ongoing Maintenance</a>
-            <a href="services.html#installation">New Unit Installation</a>
-            <a href="services.html#heat-pumps">Heat Pump Installation</a>
-            <a href="services.html#commercial">Commercial Maintenance</a>
+            <div class="mobile-accordion">
+                <button class="mobile-accordion-toggle">Services <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button>
+                <div class="mobile-accordion-content">
+                    <a href="services.html#diagnostics">Basic Diagnostics</a>
+                    <a href="services.html#emergency-repair">Emergency Repair</a>
+                    <a href="services.html#maintenance">Annual Maintenance</a>
+                    <a href="services.html#installation">New-Unit Installation</a>
+                    <a href="services.html#heat-pumps">Heat Pump Installation</a>
+                    <a href="services.html#commercial">Commercial Maintenance</a>
+                </div>
+            </div>
 
-            <span class="mobile-section-label">Resources</span>
-            <a href="quote.html">Instant Quote</a>
-            <a href="tools/btu-calculator.html">BTU Calculator</a>
-            <a href="/tools/system-selector">System Selector Quiz</a>
-            <a href="/tools/ductless-planner">Ductless Planner</a>
-            <a href="/tools/heat-pump-calculator">Heat Pump Savings</a>
-            <a href="/resources/service-area">Service Area</a>
-            <a href="/resources/faq">FAQ</a>
-            <a href="/resources/loyalty-program">Loyalty Program</a>
+            <div class="mobile-accordion">
+                <button class="mobile-accordion-toggle">Resources <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button>
+                <div class="mobile-accordion-content">
+                    <a href="quote.html">Instant Quote</a>
+                    <a href="tools/btu-calculator.html">HVAC BTU Size Calculator</a>
+                    <a href="tools/system-selector.html">System Selector Quiz</a>
+                    <a href="printouts.html">Printouts, Calendars &amp; Guides</a>
+                </div>
+            </div>
 
-            <span class="mobile-section-label">About Us</span>
-            <a href="/about/faq">FAQ</a>
-            <a href="/about/mission">Our Mission</a>
+            <div class="mobile-accordion">
+                <button class="mobile-accordion-toggle">About Us <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button>
+                <div class="mobile-accordion-content">
+                    <a href="mission.html">Our Mission</a>
+                    <a href="careers.html">Careers</a>
+                    <a href="service-area.html">Service Area</a>
+                </div>
+            </div>
 
             <a href="offers.html">Offers</a>
             <a href="contact.html">Contact Us</a>
+        </div>
+
+        <div class="mobile-book-appointment">
+            <a href="book-appointment.html" class="mobile-book-btn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                Book an Appointment Online
+            </a>
         </div>
 
         <div class="mobile-menu-cta">
@@ -895,6 +876,14 @@
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script src="scripts.js"></script>
+<script>
+// Mobile accordion
+document.querySelectorAll('.mobile-accordion-toggle').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+        this.parentElement.classList.toggle('open');
+    });
+});
+</script>
 <script src="technician-widget.js"></script>
 <script src="chat-widget.js"></script>
 </body>

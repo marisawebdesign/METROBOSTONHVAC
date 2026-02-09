@@ -430,7 +430,7 @@
             padding: 16px 0;
         }
 
-        .mobile-menu-links a {
+        .mobile-menu-links > a {
             display: block;
             padding: 16px 24px;
             color: rgba(255,255,255,0.9);
@@ -441,7 +441,7 @@
             transition: all 0.2s ease;
         }
 
-        .mobile-menu-links a:hover {
+        .mobile-menu-links > a:hover {
             background: rgba(255,255,255,0.05);
             color: var(--orange);
         }
@@ -493,6 +493,107 @@
         }
 
         .mobile-menu-cta a svg {
+            width: 22px;
+            height: 22px;
+        }
+
+        /* Mobile Accordion */
+        .mobile-accordion {
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .mobile-accordion-toggle {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            padding: 16px 24px;
+            background: none;
+            border: none;
+            color: rgba(255,255,255,0.9);
+            font-size: 18px;
+            font-weight: 600;
+            font-family: 'Source Sans 3', sans-serif;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .mobile-accordion-toggle:hover {
+            background: rgba(255,255,255,0.05);
+            color: var(--orange);
+        }
+
+        .mobile-accordion-toggle svg {
+            width: 16px;
+            height: 16px;
+            transition: transform 0.3s ease;
+            flex-shrink: 0;
+        }
+
+        .mobile-accordion.open .mobile-accordion-toggle svg {
+            transform: rotate(180deg);
+        }
+
+        .mobile-accordion.open .mobile-accordion-toggle {
+            color: var(--orange);
+        }
+
+        .mobile-accordion-content {
+            display: none;
+            flex-direction: column;
+            background: rgba(0,0,0,0.15);
+        }
+
+        .mobile-accordion.open .mobile-accordion-content {
+            display: flex;
+        }
+
+        .mobile-accordion-content a {
+            display: block;
+            padding: 12px 24px 12px 40px;
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            border-bottom: 1px solid rgba(255,255,255,0.03);
+            transition: all 0.2s ease;
+        }
+
+        .mobile-accordion-content a:hover {
+            background: rgba(255,255,255,0.05);
+            color: var(--orange);
+        }
+
+        /* Mobile Book Appointment Button */
+        .mobile-book-appointment {
+            padding: 16px 24px;
+        }
+
+        .mobile-book-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            padding: 16px 24px;
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: white;
+            font-size: 18px;
+            font-weight: 700;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .mobile-book-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(16, 185, 129, 0.4);
+        }
+
+        .mobile-book-btn svg {
             width: 22px;
             height: 22px;
         }
