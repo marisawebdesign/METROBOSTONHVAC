@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Service Area | Metro Boston HVAC</title>
+    <meta name="description" content="Metro Boston HVAC serves Stoughton, Brockton, Canton, Quincy, and surrounding South Shore communities.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="technician-widget.css">
+    <link rel="stylesheet" href="chat-widget.css">
+</head>
+<body>
+
+    <!-- ==================== HEADER TOP BAR ==================== -->
+    <header class="header-top">
+        <div class="header-top-inner">
+            <a href="index.html" class="logo"><img src="images/logo.jpg" alt="Metro Boston HVAC - 24/7 Service"></a>
+            <span class="header-mobile-name">METRO <span>BOSTON</span> HVAC</span>
+            <div class="header-phone">
+                <div class="header-phone-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+                <div class="header-phone-info">
+                    <a href="tel:7814082506" class="header-phone-number">(781) 408-2506</a>
+                    <span class="header-phone-label">Emergency Services Available</span>
+                </div>
+            </div>
+            <div class="header-trust-badges">
+                <div class="trust-badge"><div class="trust-badge-icon emergency"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div><span class="trust-badge-label">Emergency Service Repair Specialists</span></div>
+                <div class="trust-badge"><div class="trust-badge-icon licensed"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L4 6v6c0 5.5 3.4 10.7 8 12 4.6-1.3 8-6.5 8-12V6l-8-4z"/><path d="M9 12l2 2 4-4" stroke="#ff6b35" stroke-width="2.5"/></svg></div><span class="trust-badge-label">Licensed &amp; Insured #081600137</span></div>
+                <div class="trust-badge"><div class="trust-badge-icon reviews"><svg viewBox="0 0 24 24" fill="white" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div><span class="trust-badge-label">Excellent Customer Reviews</span></div>
+                <div class="trust-badge"><div class="trust-badge-icon local"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M12 11c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2z" fill="#ff6b35" stroke="#ff6b35"/></svg></div><span class="trust-badge-label">Locally Owned &amp; Operated</span></div>
+                <div class="trust-badge"><div class="trust-badge-icon price"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L4 6v6c0 5.5 3.4 10.7 8 12 4.6-1.3 8-6.5 8-12V6l-8-4z"/><text x="12" y="16" text-anchor="middle" font-family="Arial" font-weight="800" font-size="10" fill="white" stroke="none">$</text></svg></div><span class="trust-badge-label">Price Match Guarantee</span></div>
+            </div>
+            <a href="quote.html" class="get-service-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg> GET INSTANT SERVICE QUOTE</a>
+            <button class="mobile-toggle" aria-label="Menu" onclick="document.getElementById('mobileMenu').classList.add('active')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+        </div>
+    </header>
+
+    <!-- ==================== NAVIGATION BAR ==================== -->
+    <nav class="header-nav">
+        <div class="header-nav-inner">
+            <div class="main-nav">
+                <div class="nav-item"><a href="index.html" class="nav-link">Home</a></div>
+                <div class="nav-item">
+                    <a href="services.html" class="nav-link">Services <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></a>
+                    <div class="dropdown">
+                        <a href="services.html#diagnostics" class="dropdown-link">Basic Diagnostics</a>
+                        <a href="services.html#emergency-repair" class="dropdown-link">Emergency Repair</a>
+                        <a href="services.html#maintenance" class="dropdown-link">Annual Maintenance</a>
+                        <a href="services.html#installation" class="dropdown-link">New-Unit Installation</a>
+                        <a href="services.html#heat-pumps" class="dropdown-link">Heat Pump Installation</a>
+                        <a href="services.html#commercial" class="dropdown-link">Commercial Maintenance</a>
+                    </div>
+                </div>
+                <div class="nav-item">
+                    <a href="#" class="nav-link">Resources <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></a>
+                    <div class="dropdown">
+                        <a href="quote.html" class="dropdown-link">Instant Quote</a>
+                        <a href="tools/btu-calculator.html" class="dropdown-link">HVAC BTU Size Calculator</a>
+                        <a href="tools/system-selector.html" class="dropdown-link">System Selector Quiz</a>
+                        <a href="printouts.html" class="dropdown-link">Printouts, Calendars &amp; Guides</a>
+                    </div>
+                </div>
+                <div class="nav-item">
+                    <a href="#" class="nav-link">About Us <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></a>
+                    <div class="dropdown">
+                        <a href="mission.html" class="dropdown-link">Our Mission</a>
+                        <a href="careers.html" class="dropdown-link">Careers</a>
+                        <a href="service-area.html" class="dropdown-link">Service Area</a>
+                    </div>
+                </div>
+                <div class="nav-item"><a href="offers.html" class="nav-link">Offers</a></div>
+                <div class="nav-item"><a href="contact.html" class="nav-link">Contact Us</a></div>
+                <div class="nav-item"><a href="book-appointment.html" class="nav-link nav-cta">Book an Appointment</a></div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ==================== MOBILE MENU ==================== -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu-header">
+            <span class="logo-text">METRO <span>BOSTON</span> HVAC</span>
+            <button class="mobile-menu-close" aria-label="Close menu" onclick="document.getElementById('mobileMenu').classList.remove('active')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+        </div>
+        <div class="mobile-trust-strip">
+            <div class="mobile-trust-item"><div class="mobile-trust-icon emergency"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div><span>Emergency Repair</span></div>
+            <div class="mobile-trust-item"><div class="mobile-trust-icon licensed"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L4 6v6c0 5.5 3.4 10.7 8 12 4.6-1.3 8-6.5 8-12V6l-8-4z"/><path d="M9 12l2 2 4-4" stroke="#ff6b35" stroke-width="2.5"/></svg></div><span>Licensed &amp; Insured</span></div>
+            <div class="mobile-trust-item"><div class="mobile-trust-icon reviews"><svg viewBox="0 0 24 24" fill="white" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div><span>Excellent Reviews</span></div>
+            <div class="mobile-trust-item"><div class="mobile-trust-icon local"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M12 11c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2z" fill="#ff6b35" stroke="#ff6b35"/></svg></div><span>Locally Owned</span></div>
+            <div class="mobile-trust-item"><div class="mobile-trust-icon price"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L4 6v6c0 5.5 3.4 10.7 8 12 4.6-1.3 8-6.5 8-12V6l-8-4z"/><text x="12" y="16" text-anchor="middle" font-family="Arial" font-weight="800" font-size="10" fill="white" stroke="none">$</text></svg></div><span>Price Match</span></div>
+        </div>
+        <div class="mobile-quote-btn-wrap">
+            <a href="quote.html" class="mobile-quote-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg> Get Instant Quote</a>
+        </div>
+        <div class="mobile-menu-links">
+            <a href="index.html">Home</a>
+            <div class="mobile-accordion">
+                <button class="mobile-accordion-toggle">Services <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button>
+                <div class="mobile-accordion-content">
+                    <a href="services.html#diagnostics">Basic Diagnostics</a>
+                    <a href="services.html#emergency-repair">Emergency Repair</a>
+                    <a href="services.html#maintenance">Annual Maintenance</a>
+                    <a href="services.html#installation">New-Unit Installation</a>
+                    <a href="services.html#heat-pumps">Heat Pump Installation</a>
+                    <a href="services.html#commercial">Commercial Maintenance</a>
+                </div>
+            </div>
+            <div class="mobile-accordion">
+                <button class="mobile-accordion-toggle">Resources <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button>
+                <div class="mobile-accordion-content">
+                    <a href="quote.html">Instant Quote</a>
+                    <a href="tools/btu-calculator.html">HVAC BTU Size Calculator</a>
+                    <a href="tools/system-selector.html">System Selector Quiz</a>
+                    <a href="printouts.html">Printouts, Calendars &amp; Guides</a>
+                </div>
+            </div>
+            <div class="mobile-accordion">
+                <button class="mobile-accordion-toggle">About Us <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button>
+                <div class="mobile-accordion-content">
+                    <a href="mission.html">Our Mission</a>
+                    <a href="careers.html">Careers</a>
+                    <a href="service-area.html">Service Area</a>
+                </div>
+            </div>
+            <a href="offers.html">Offers</a>
+            <a href="contact.html">Contact Us</a>
+        </div>
+        <div class="mobile-book-appointment">
+            <a href="book-appointment.html" class="mobile-book-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg> Book an Appointment Online</a>
+        </div>
+        <div class="mobile-menu-cta">
+            <a href="tel:7814082506" class="mobile-call-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg> Call (781) 408-2506</a>
+            <a href="quote.html" class="mobile-service-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg> Get Service</a>
+        </div>
+    </div>
+
+<script>
+document.querySelectorAll('.mobile-accordion-toggle').forEach(function(btn) {
+    btn.addEventListener('click', function() { this.parentElement.classList.toggle('open'); });
+});
+</script>
+<script src="technician-widget.js"></script>
+<script src="chat-widget.js"></script>
+</body>
+</html>
