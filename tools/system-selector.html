@@ -764,6 +764,11 @@
         .quiz-btn-next:disabled {
             background: var(--gray-400);
             cursor: not-allowed;
+            box-shadow: none;
+        }
+
+        .quiz-btn-next:disabled:hover {
+            background: var(--gray-400);
         }
 
         .quiz-btn-start {
@@ -791,6 +796,8 @@
             letter-spacing: 1px;
             margin-bottom: 12px;
         }
+
+        .quiz-start .accent { color: var(--orange); }
 
         .quiz-start p {
             font-size: 16px;
@@ -1054,6 +1061,46 @@
 
         .footer-copy a { color: rgba(255,255,255,0.5); text-decoration: none; }
 
+        /* ==================== ANIMATIONS ==================== */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(16px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .quiz-question.active {
+            animation: fadeInUp 0.35s ease forwards;
+        }
+
+        .quiz-results.visible {
+            animation: fadeInUp 0.5s ease forwards;
+        }
+
+        .quiz-option label {
+            transition: all 0.2s ease;
+        }
+
+        .quiz-option label:active {
+            transform: scale(0.98);
+        }
+
+        .quiz-btn-next {
+            transition: all 0.2s ease;
+        }
+
+        .quiz-btn-next:not(:disabled):active {
+            transform: scale(0.97);
+        }
+
+        .quiz-progress-fill {
+            transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
         /* ==================== RESPONSIVE ==================== */
         @media (max-width: 1200px) {
             .header-trust-badges { display: none; }
@@ -1088,9 +1135,17 @@
 
         @media (max-width: 480px) {
             .page-hero h1 { font-size: 32px; }
+            .page-hero-badge { font-size: 11px; padding: 5px 10px; }
             .quiz-start h2 { font-size: 26px; }
-            .quiz-option label { padding: 14px 16px; }
-            .quiz-btn-next { padding: 12px 22px; }
+            .quiz-start p { font-size: 15px; }
+            .quiz-option label { padding: 14px 16px; gap: 10px; }
+            .quiz-option-title { font-size: 15px; }
+            .quiz-option-desc { font-size: 12px; }
+            .quiz-btn-next { padding: 12px 22px; font-size: 16px; }
+            .quiz-btn-back { font-size: 16px; }
+            .results-system-name { font-size: 24px; }
+            .results-cta-btn { font-size: 16px; padding: 12px 16px; }
+            .quiz-intro-card p { font-size: 15px; }
         }
     </style>
 </head>
