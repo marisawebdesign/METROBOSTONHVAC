@@ -1313,53 +1313,199 @@
 
 <!-- ==================== QUIZ JAVASCRIPT ==================== -->
 <script>
-// Phase 1: Basic navigation shell
-var currentQuestion = 0;
-var totalQuestions = 5;
+(function() {
 
-function startQuiz() {
-    document.getElementById('quizStart').style.display = 'none';
-    document.getElementById('quizProgress').style.display = 'flex';
-    document.getElementById('quizNav').style.display = 'flex';
-    showQuestion(0);
-}
+    // ==================== QUIZ DATA ====================
+    var questions = [
+        {
+            id: 'home-type',
+            title: 'Tell Us About Your Home',
+            desc: 'What type of home do you have, and roughly how large is it?',
+            options: [
+                { value: 'small-single', title: 'Small Single-Family', desc: 'Under 1,500 sq ft — ranch, cape, cottage' },
+                { value: 'mid-single', title: 'Mid-Size Single-Family', desc: '1,500–2,500 sq ft — colonial, split-level, raised ranch' },
+                { value: 'large-single', title: 'Large Single-Family', desc: 'Over 2,500 sq ft — larger colonial, contemporary, custom build' },
+                { value: 'multi-family', title: 'Multi-Family or Condo', desc: 'Duplex, triple-decker, townhouse, or condo unit' }
+            ]
+        },
+        {
+            id: 'current-system',
+            title: 'Your Current System',
+            desc: 'What best describes your existing heating and cooling setup?',
+            options: [
+                { value: 'old-furnace', title: 'Aging Furnace & AC', desc: 'Traditional system that\'s 10+ years old or needing frequent repairs' },
+                { value: 'boiler-no-ac', title: 'Boiler or Radiators, No AC', desc: 'Hot water or steam heat with no central cooling' },
+                { value: 'newer-system', title: 'Newer System, Want to Upgrade', desc: 'Working system under 10 years old, but looking for better efficiency' },
+                { value: 'no-ductwork', title: 'No Ductwork', desc: 'Window units, space heaters, or no central system at all' }
+            ]
+        },
+        {
+            id: 'budget',
+            title: 'Budget Priority',
+            desc: 'What matters more to you when investing in a new HVAC system?',
+            options: [
+                { value: 'low-upfront', title: 'Lower Upfront Cost', desc: 'Keep the initial investment as affordable as possible' },
+                { value: 'balanced', title: 'Best Value Overall', desc: 'A balance between upfront cost and long-term energy savings' },
+                { value: 'long-term', title: 'Long-Term Savings', desc: 'Willing to invest more now to save significantly on energy bills over time' }
+            ]
+        },
+        {
+            id: 'efficiency',
+            title: 'Energy Efficiency Goals',
+            desc: 'How important is reducing your monthly energy bills?',
+            options: [
+                { value: 'not-priority', title: 'Not a Top Priority', desc: 'I just need reliable heating and cooling that works' },
+                { value: 'somewhat', title: 'Somewhat Important', desc: 'I\'d like to see lower bills, but it\'s not the deciding factor' },
+                { value: 'very-important', title: 'Very Important', desc: 'I want the most energy-efficient option available — lower bills and smaller carbon footprint' }
+            ]
+        },
+        {
+            id: 'comfort',
+            title: 'Comfort Needs',
+            desc: 'Which comfort issue matters most to you? Pick the one that\'s been the biggest headache.',
+            options: [
+                { value: 'uneven-temps', title: 'Uneven Temperatures', desc: 'Some rooms are too hot while others are too cold' },
+                { value: 'humidity', title: 'Humidity Problems', desc: 'Too dry in winter, too muggy in summer' },
+                { value: 'noise', title: 'Noise Levels', desc: 'Current system is loud and disruptive' },
+                { value: 'air-quality', title: 'Air Quality & Allergies', desc: 'Dust, allergens, or stale air circulating through the home' }
+            ]
+        }
+    ];
 
-function showQuestion(index) {
-    // Will be implemented in Phase 2
-    currentQuestion = index;
-    updateProgress();
-    updateNav();
-}
+    var currentQuestion = 0;
+    var totalQuestions = questions.length;
+    var answers = {};
 
-function nextQuestion() {
-    if (currentQuestion < totalQuestions - 1) {
-        showQuestion(currentQuestion + 1);
-    } else {
-        showResults();
+    // ==================== BUILD QUESTIONS ====================
+    function buildQuestions() {
+        var container = document.getElementById('quizQuestions');
+        var html = '';
+
+        for (var i = 0; i < questions.length; i++) {
+            var q = questions[i];
+            html += '<div class="quiz-body quiz-question" id="question-' + i + '">';
+            html += '<h2>' + q.title + '</h2>';
+            html += '<p class="quiz-question-desc">' + q.desc + '</p>';
+            html += '<div class="quiz-options">';
+
+            for (var j = 0; j < q.options.length; j++) {
+                var opt = q.options[j];
+                var inputId = q.id + '-' + opt.value;
+                html += '<div class="quiz-option">';
+                html += '<input type="radio" name="' + q.id + '" id="' + inputId + '" value="' + opt.value + '">';
+                html += '<label for="' + inputId + '">';
+                html += '<div class="quiz-option-radio"></div>';
+                html += '<div class="quiz-option-text">';
+                html += '<div class="quiz-option-title">' + opt.title + '</div>';
+                html += '<div class="quiz-option-desc">' + opt.desc + '</div>';
+                html += '</div>';
+                html += '</label>';
+                html += '</div>';
+            }
+
+            html += '</div>';
+            html += '</div>';
+        }
+
+        container.innerHTML = html;
+
+        // Add change listeners to all radio buttons
+        var radios = container.querySelectorAll('input[type="radio"]');
+        for (var k = 0; k < radios.length; k++) {
+            radios[k].addEventListener('change', function() {
+                answers[this.name] = this.value;
+                document.getElementById('quizNext').disabled = false;
+            });
+        }
     }
-}
 
-function prevQuestion() {
-    if (currentQuestion > 0) {
-        showQuestion(currentQuestion - 1);
+    // ==================== NAVIGATION ====================
+    function startQuiz() {
+        document.getElementById('quizStart').style.display = 'none';
+        document.getElementById('quizProgress').style.display = 'flex';
+        document.getElementById('quizNav').style.display = 'flex';
+        showQuestion(0);
     }
-}
 
-function updateProgress() {
-    var pct = ((currentQuestion + 1) / totalQuestions) * 100;
-    document.getElementById('quizProgressFill').style.width = pct + '%';
-    document.getElementById('quizProgressStep').textContent = (currentQuestion + 1) + ' / ' + totalQuestions;
-}
+    function showQuestion(index) {
+        // Hide all questions
+        var allQ = document.querySelectorAll('.quiz-question');
+        for (var i = 0; i < allQ.length; i++) {
+            allQ[i].classList.remove('active');
+        }
 
-function updateNav() {
-    document.getElementById('quizBack').style.visibility = currentQuestion === 0 ? 'hidden' : 'visible';
-    var nextBtn = document.getElementById('quizNext');
-    nextBtn.textContent = currentQuestion === totalQuestions - 1 ? 'See Results' : 'Next';
-}
+        // Show target question
+        var target = document.getElementById('question-' + index);
+        if (target) target.classList.add('active');
 
-function showResults() {
-    // Will be implemented in Phase 3
-}
+        currentQuestion = index;
+        updateProgress();
+        updateNav();
+
+        // Check if this question already has an answer
+        var qId = questions[index].id;
+        var selected = document.querySelector('input[name="' + qId + '"]:checked');
+        document.getElementById('quizNext').disabled = !selected;
+    }
+
+    function nextQuestion() {
+        if (currentQuestion < totalQuestions - 1) {
+            showQuestion(currentQuestion + 1);
+        } else {
+            showResults();
+        }
+    }
+
+    function prevQuestion() {
+        if (currentQuestion > 0) {
+            showQuestion(currentQuestion - 1);
+        }
+    }
+
+    function updateProgress() {
+        var pct = ((currentQuestion + 1) / totalQuestions) * 100;
+        document.getElementById('quizProgressFill').style.width = pct + '%';
+        document.getElementById('quizProgressStep').textContent = (currentQuestion + 1) + ' / ' + totalQuestions;
+    }
+
+    function updateNav() {
+        document.getElementById('quizBack').style.visibility = currentQuestion === 0 ? 'hidden' : 'visible';
+        var nextBtn = document.getElementById('quizNext');
+        if (currentQuestion === totalQuestions - 1) {
+            nextBtn.innerHTML = 'See Results <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><polyline points="9 18 15 12 9 6"/></svg>';
+        } else {
+            nextBtn.innerHTML = 'Next <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><polyline points="9 18 15 12 9 6"/></svg>';
+        }
+    }
+
+    function showResults() {
+        // Will be implemented in Phase 3
+    }
+
+    function retakeQuiz() {
+        // Reset answers
+        answers = {};
+        var radios = document.querySelectorAll('#quizQuestions input[type="radio"]');
+        for (var i = 0; i < radios.length; i++) {
+            radios[i].checked = false;
+        }
+        // Hide results, show quiz
+        document.getElementById('quizResults').classList.remove('visible');
+        document.getElementById('quizProgress').style.display = 'flex';
+        document.getElementById('quizNav').style.display = 'flex';
+        showQuestion(0);
+    }
+
+    // ==================== INIT ====================
+    buildQuestions();
+
+    // Expose functions globally for onclick handlers
+    window.startQuiz = startQuiz;
+    window.nextQuestion = nextQuestion;
+    window.prevQuestion = prevQuestion;
+    window.retakeQuiz = retakeQuiz;
+
+})();
 </script>
 
 <script>
