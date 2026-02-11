@@ -4,12 +4,1095 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>System Selector Quiz | Metro Boston HVAC</title>
-    <meta name="description" content="Find the perfect HVAC system for your home with our interactive quiz from Metro Boston HVAC.">
+    <meta name="description" content="Not sure which HVAC system is right for your home? Take our free 5-question quiz to get a personalized recommendation backed by 30+ years of contractor expertise.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../styles.css">
 
     <link rel="stylesheet" href="../chat-widget.css">
+    <style>
+        /* ==================== RESET & VARIABLES ==================== */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --navy: #1a3a52;
+            --navy-dark: #0f2536;
+            --navy-light: #2a5070;
+            --orange: #ff6b35;
+            --orange-glow: #ff8855;
+            --gold: #ffd700;
+            --white: #ffffff;
+            --gray-50: #f9fafb;
+            --gray-100: #f3f4f6;
+            --gray-200: #e5e7eb;
+            --gray-400: #9ca3af;
+            --gray-600: #4b5563;
+            --gray-800: #1f2937;
+            --gray-light: rgba(255,255,255,0.15);
+            --green: #1a8a5c;
+            --red: #dc2626;
+        }
+
+        body {
+            font-family: 'Source Sans 3', sans-serif;
+            background: var(--gray-50);
+            color: var(--gray-800);
+            line-height: 1.6;
+        }
+
+        /* ==================== HEADER TOP BAR ==================== */
+        .header-top {
+            background: var(--white);
+            border-bottom: 1px solid var(--gray-200);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1001;
+        }
+
+        .header-top-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 10px 24px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .logo img {
+            height: 50px;
+            width: auto;
+        }
+
+        .header-mobile-name {
+            display: none;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 18px;
+            color: var(--navy);
+            letter-spacing: 1px;
+        }
+
+        .header-mobile-name span { color: var(--orange); }
+
+        .header-phone {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-left: auto;
+        }
+
+        .header-phone-icon {
+            width: 36px;
+            height: 36px;
+            background: var(--navy);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .header-phone-icon svg {
+            width: 18px;
+            height: 18px;
+            color: var(--orange);
+        }
+
+        .header-phone-info { display: flex; flex-direction: column; }
+        .header-phone-number {
+            font-weight: 700;
+            font-size: 18px;
+            color: var(--navy);
+            text-decoration: none;
+            letter-spacing: 0.5px;
+        }
+        .header-phone-number:hover { color: var(--orange); }
+        .header-phone-label { font-size: 11px; color: var(--gray-600); }
+
+        .header-trust-badges {
+            display: flex;
+            gap: 12px;
+            margin-left: 16px;
+        }
+
+        .trust-badge {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .trust-badge-icon {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .trust-badge-icon svg { width: 14px; height: 14px; }
+        .trust-badge-icon.emergency { background: var(--red); }
+        .trust-badge-icon.licensed { background: var(--navy); }
+        .trust-badge-icon.reviews { background: var(--gold); }
+        .trust-badge-icon.local { background: var(--green); }
+        .trust-badge-icon.price { background: var(--navy-light); }
+
+        .trust-badge-label {
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--gray-800);
+            line-height: 1.2;
+            max-width: 100px;
+        }
+
+        .get-service-btn {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            background: var(--orange);
+            color: white;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 15px;
+            letter-spacing: 1.5px;
+            padding: 10px 18px;
+            border-radius: 0;
+            text-decoration: none;
+            white-space: nowrap;
+            transition: background 0.2s;
+        }
+
+        .get-service-btn svg { width: 16px; height: 16px; }
+        .get-service-btn:hover { background: var(--orange-glow); }
+
+        .mobile-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+        }
+
+        .mobile-toggle svg { width: 28px; height: 28px; color: var(--navy); }
+
+        /* ==================== NAVIGATION ==================== */
+        .header-nav {
+            background: var(--navy);
+            position: sticky;
+            top: 70px;
+            z-index: 1000;
+        }
+
+        .header-nav-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .main-nav {
+            display: flex;
+            align-items: stretch;
+        }
+
+        .nav-item { position: relative; }
+
+        .nav-link {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            padding: 14px 16px;
+            color: rgba(255,255,255,0.85);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 0.3px;
+            transition: all 0.2s;
+            white-space: nowrap;
+        }
+
+        .nav-link svg { width: 14px; height: 14px; opacity: 0.6; }
+        .nav-link:hover { color: white; background: rgba(255,255,255,0.08); }
+
+        .nav-cta {
+            background: var(--orange) !important;
+            color: white !important;
+            margin-left: auto;
+        }
+
+        .nav-cta:hover { background: var(--orange-glow) !important; }
+
+        .dropdown {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: var(--white);
+            min-width: 220px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+            z-index: 100;
+        }
+
+        .nav-item:hover .dropdown { display: block; }
+
+        .dropdown-link {
+            display: block;
+            padding: 10px 18px;
+            color: var(--gray-800);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            border-bottom: 1px solid var(--gray-100);
+            transition: all 0.15s;
+        }
+
+        .dropdown-link:hover {
+            background: var(--gray-50);
+            color: var(--orange);
+            padding-left: 22px;
+        }
+
+        /* ==================== MOBILE MENU ==================== */
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: var(--navy-dark);
+            z-index: 2000;
+            overflow-y: auto;
+            flex-direction: column;
+        }
+
+        .mobile-menu.active { display: flex; }
+
+        .mobile-menu-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 20px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .logo-text {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 22px;
+            color: white;
+            letter-spacing: 2px;
+        }
+
+        .logo-text span { color: var(--orange); }
+
+        .mobile-menu-close {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+        }
+
+        .mobile-menu-close svg { width: 28px; height: 28px; color: white; }
+
+        .mobile-trust-strip {
+            display: flex;
+            padding: 12px 20px;
+            gap: 8px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            overflow-x: auto;
+        }
+
+        .mobile-trust-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            white-space: nowrap;
+        }
+
+        .mobile-trust-icon {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .mobile-trust-icon svg { width: 12px; height: 12px; }
+        .mobile-trust-icon.emergency { background: var(--red); }
+        .mobile-trust-icon.licensed { background: var(--navy-light); }
+        .mobile-trust-icon.reviews { background: var(--gold); }
+        .mobile-trust-icon.local { background: var(--green); }
+        .mobile-trust-icon.price { background: var(--navy-light); }
+        .mobile-trust-item span { font-size: 11px; color: rgba(255,255,255,0.7); }
+
+        .mobile-quote-btn-wrap { padding: 16px 20px 8px; }
+
+        .mobile-quote-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background: var(--orange);
+            color: white;
+            text-decoration: none;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 18px;
+            letter-spacing: 1.5px;
+            padding: 14px;
+            border-radius: 0;
+        }
+
+        .mobile-quote-btn svg { width: 20px; height: 20px; }
+
+        .mobile-menu-links {
+            padding: 8px 0;
+        }
+
+        .mobile-menu-links > a {
+            display: block;
+            padding: 14px 20px;
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 600;
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+        }
+
+        .mobile-accordion-toggle {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            padding: 14px 20px;
+            background: none;
+            border: none;
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+            color: white;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            font-family: inherit;
+        }
+
+        .mobile-accordion-toggle svg {
+            width: 18px;
+            height: 18px;
+            transition: transform 0.2s;
+        }
+
+        .mobile-accordion.open .mobile-accordion-toggle svg {
+            transform: rotate(180deg);
+        }
+
+        .mobile-accordion-content {
+            display: none;
+            background: rgba(0,0,0,0.2);
+        }
+
+        .mobile-accordion.open .mobile-accordion-content { display: block; }
+
+        .mobile-accordion-content a {
+            display: block;
+            padding: 12px 20px 12px 36px;
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            font-size: 15px;
+            border-bottom: 1px solid rgba(255,255,255,0.04);
+        }
+
+        .mobile-book-appointment { padding: 12px 20px; }
+
+        .mobile-book-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background: linear-gradient(135deg, var(--green), #15a065);
+            color: white;
+            text-decoration: none;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 17px;
+            letter-spacing: 1.5px;
+            padding: 13px;
+            border-radius: 0;
+        }
+
+        .mobile-book-btn svg { width: 18px; height: 18px; }
+
+        .mobile-menu-cta {
+            padding: 12px 20px 24px;
+            display: flex;
+            gap: 10px;
+        }
+
+        .mobile-call-btn, .mobile-service-btn {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            padding: 12px;
+            text-decoration: none;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 15px;
+            letter-spacing: 1px;
+            border-radius: 0;
+        }
+
+        .mobile-call-btn {
+            background: var(--white);
+            color: var(--navy);
+        }
+
+        .mobile-service-btn {
+            background: var(--orange);
+            color: white;
+        }
+
+        .mobile-call-btn svg, .mobile-service-btn svg { width: 16px; height: 16px; }
+
+        /* ==================== PAGE HERO ==================== */
+        .page-hero {
+            background: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy) 60%, var(--navy-light) 100%);
+            padding: 140px 24px 60px;
+            text-align: center;
+        }
+
+        .page-hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .page-hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.15);
+            padding: 6px 14px;
+            margin-bottom: 16px;
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--orange);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .page-hero-badge svg {
+            width: 14px;
+            height: 14px;
+        }
+
+        .page-hero h1 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(36px, 6vw, 56px);
+            color: var(--white);
+            letter-spacing: 2px;
+            line-height: 1.1;
+            margin-bottom: 16px;
+        }
+
+        .page-hero h1 .accent { color: var(--orange); }
+
+        .page-hero p {
+            font-size: 18px;
+            color: rgba(255,255,255,0.8);
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* ==================== QUIZ INTRO ==================== */
+        .quiz-intro {
+            max-width: 760px;
+            margin: -30px auto 0;
+            padding: 0 24px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .quiz-intro-card {
+            background: var(--white);
+            padding: 32px 36px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            border-radius: 0;
+        }
+
+        .quiz-intro-card p {
+            font-size: 16px;
+            color: var(--gray-600);
+            line-height: 1.7;
+            margin-bottom: 16px;
+        }
+
+        .quiz-intro-card p:last-child {
+            margin-bottom: 0;
+        }
+
+        .quiz-intro-features {
+            display: flex;
+            gap: 24px;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid var(--gray-200);
+        }
+
+        .quiz-intro-feature {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--navy);
+        }
+
+        .quiz-intro-feature svg {
+            width: 18px;
+            height: 18px;
+            color: var(--orange);
+            flex-shrink: 0;
+        }
+
+        /* ==================== QUIZ CONTAINER ==================== */
+        .quiz-container {
+            max-width: 760px;
+            margin: 32px auto 0;
+            padding: 0 24px 48px;
+        }
+
+        .quiz-card {
+            background: var(--white);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            border-radius: 0;
+            overflow: hidden;
+        }
+
+        /* Progress bar */
+        .quiz-progress {
+            background: var(--gray-100);
+            padding: 16px 28px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid var(--gray-200);
+        }
+
+        .quiz-progress-label {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--gray-600);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .quiz-progress-bar {
+            flex: 1;
+            height: 6px;
+            background: var(--gray-200);
+            margin: 0 16px;
+            border-radius: 0;
+            overflow: hidden;
+        }
+
+        .quiz-progress-fill {
+            height: 100%;
+            background: var(--orange);
+            width: 0%;
+            transition: width 0.4s ease;
+        }
+
+        .quiz-progress-step {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--navy);
+        }
+
+        /* Question area */
+        .quiz-body {
+            padding: 36px 28px;
+        }
+
+        .quiz-question {
+            display: none;
+        }
+
+        .quiz-question.active {
+            display: block;
+        }
+
+        .quiz-question h2 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 28px;
+            color: var(--navy);
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+
+        .quiz-question-desc {
+            font-size: 15px;
+            color: var(--gray-600);
+            margin-bottom: 24px;
+        }
+
+        /* Option cards */
+        .quiz-options {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .quiz-option {
+            position: relative;
+        }
+
+        .quiz-option input[type="radio"] {
+            position: absolute;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .quiz-option label {
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            padding: 16px 20px;
+            background: var(--white);
+            border: 2px solid var(--gray-200);
+            border-radius: 0;
+            cursor: pointer;
+            transition: all 0.2s;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .quiz-option label:hover {
+            border-color: var(--navy-light);
+        }
+
+        .quiz-option input[type="radio"]:checked + label {
+            border-color: var(--orange);
+            background: #fff8f5;
+        }
+
+        .quiz-option-radio {
+            width: 22px;
+            height: 22px;
+            border: 2px solid var(--gray-400);
+            border-radius: 50%;
+            flex-shrink: 0;
+            margin-top: 2px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+        }
+
+        .quiz-option input[type="radio"]:checked + label .quiz-option-radio {
+            border-color: var(--orange);
+        }
+
+        .quiz-option input[type="radio"]:checked + label .quiz-option-radio::after {
+            content: '';
+            width: 12px;
+            height: 12px;
+            background: var(--orange);
+            border-radius: 50%;
+        }
+
+        .quiz-option-text {
+            flex: 1;
+        }
+
+        .quiz-option-title {
+            font-weight: 700;
+            font-size: 16px;
+            color: var(--gray-800);
+            margin-bottom: 2px;
+        }
+
+        .quiz-option-desc {
+            font-size: 13px;
+            color: var(--gray-600);
+            line-height: 1.4;
+        }
+
+        /* Navigation buttons */
+        .quiz-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 28px;
+            border-top: 1px solid var(--gray-200);
+            background: var(--gray-50);
+        }
+
+        .quiz-btn {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 18px;
+            letter-spacing: 1.5px;
+            padding: 12px 28px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.2s;
+            border-radius: 0;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .quiz-btn svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        .quiz-btn-back {
+            background: none;
+            color: var(--gray-600);
+            padding: 12px 16px;
+        }
+
+        .quiz-btn-back:hover {
+            color: var(--navy);
+        }
+
+        .quiz-btn-next {
+            background: var(--orange);
+            color: var(--white);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .quiz-btn-next:hover {
+            background: var(--orange-glow);
+        }
+
+        .quiz-btn-next:disabled {
+            background: var(--gray-400);
+            cursor: not-allowed;
+        }
+
+        .quiz-btn-start {
+            background: var(--orange);
+            color: var(--white);
+            font-size: 20px;
+            padding: 14px 36px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .quiz-btn-start:hover {
+            background: var(--orange-glow);
+        }
+
+        /* Start screen */
+        .quiz-start {
+            text-align: center;
+            padding: 48px 28px;
+        }
+
+        .quiz-start h2 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 32px;
+            color: var(--navy);
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+        }
+
+        .quiz-start p {
+            font-size: 16px;
+            color: var(--gray-600);
+            margin-bottom: 28px;
+            max-width: 480px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* ==================== RESULTS SECTION ==================== */
+        .quiz-results {
+            display: none;
+        }
+
+        .quiz-results.visible {
+            display: block;
+        }
+
+        .results-header {
+            background: linear-gradient(135deg, var(--navy-dark), var(--navy));
+            padding: 28px 28px;
+            text-align: center;
+        }
+
+        .results-header-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(255,107,53,0.2);
+            border: 1px solid rgba(255,107,53,0.3);
+            padding: 5px 12px;
+            margin-bottom: 12px;
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--orange);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .results-header h2 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 36px;
+            color: var(--white);
+            letter-spacing: 2px;
+            margin-bottom: 4px;
+        }
+
+        .results-header p {
+            font-size: 15px;
+            color: rgba(255,255,255,0.7);
+        }
+
+        .results-body {
+            padding: 32px 28px;
+        }
+
+        .results-system-name {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 28px;
+            color: var(--navy);
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+
+        .results-system-tagline {
+            font-size: 15px;
+            color: var(--gray-600);
+            margin-bottom: 24px;
+            padding-bottom: 24px;
+            border-bottom: 1px solid var(--gray-200);
+        }
+
+        .results-why-title {
+            font-weight: 700;
+            font-size: 15px;
+            color: var(--navy);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 12px;
+        }
+
+        .results-reasons {
+            list-style: none;
+            margin-bottom: 24px;
+        }
+
+        .results-reasons li {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            padding: 8px 0;
+            font-size: 15px;
+            color: var(--gray-800);
+            line-height: 1.5;
+        }
+
+        .results-reasons li svg {
+            width: 18px;
+            height: 18px;
+            color: var(--green);
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .results-benefits {
+            background: var(--gray-50);
+            border: 1px solid var(--gray-200);
+            padding: 20px 24px;
+            margin-bottom: 28px;
+            border-radius: 0;
+        }
+
+        .results-benefits-title {
+            font-weight: 700;
+            font-size: 14px;
+            color: var(--navy);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 10px;
+        }
+
+        .results-benefits ul {
+            list-style: none;
+        }
+
+        .results-benefits li {
+            font-size: 14px;
+            color: var(--gray-600);
+            padding: 4px 0;
+            padding-left: 18px;
+            position: relative;
+        }
+
+        .results-benefits li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 11px;
+            width: 8px;
+            height: 8px;
+            background: var(--orange);
+            border-radius: 0;
+        }
+
+        .results-cta {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .results-cta-btn {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 14px 20px;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 18px;
+            letter-spacing: 1.5px;
+            text-decoration: none;
+            border-radius: 0;
+            transition: all 0.2s;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .results-cta-btn svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        .results-cta-quote {
+            background: var(--orange);
+            color: var(--white);
+        }
+
+        .results-cta-quote:hover {
+            background: var(--orange-glow);
+        }
+
+        .results-cta-call {
+            background: var(--navy);
+            color: var(--white);
+        }
+
+        .results-cta-call:hover {
+            background: var(--navy-light);
+        }
+
+        .results-retake {
+            text-align: center;
+        }
+
+        .results-retake button {
+            background: none;
+            border: none;
+            color: var(--gray-600);
+            font-size: 14px;
+            cursor: pointer;
+            text-decoration: underline;
+            padding: 8px;
+        }
+
+        .results-retake button:hover {
+            color: var(--navy);
+        }
+
+        /* ==================== FOOTER ==================== */
+        .site-footer {
+            background: var(--navy-dark);
+            padding: 32px 24px;
+            text-align: center;
+        }
+
+        .footer-inner {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .footer-phone {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 28px;
+            color: white;
+            text-decoration: none;
+            letter-spacing: 2px;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .footer-phone:hover { color: var(--orange); }
+
+        .footer-tagline {
+            font-size: 14px;
+            color: rgba(255,255,255,0.6);
+            margin-bottom: 16px;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-bottom: 16px;
+        }
+
+        .footer-links a {
+            color: rgba(255,255,255,0.5);
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover { color: var(--orange); }
+
+        .footer-copy {
+            font-size: 12px;
+            color: rgba(255,255,255,0.3);
+        }
+
+        .footer-copy a { color: rgba(255,255,255,0.5); text-decoration: none; }
+
+        /* ==================== RESPONSIVE ==================== */
+        @media (max-width: 1200px) {
+            .header-trust-badges { display: none; }
+        }
+
+        @media (max-width: 1024px) {
+            .header-nav { display: none; }
+            .mobile-toggle { display: block; }
+            .header-mobile-name { display: block; }
+            .get-service-btn { display: none; }
+            .logo img { height: 40px; }
+            .page-hero { padding: 120px 24px 50px; }
+        }
+
+        @media (max-width: 768px) {
+            .header-top-inner { padding: 8px 16px; }
+            .header-phone-number { font-size: 16px; }
+            .header-phone-label { display: none; }
+            .page-hero { padding: 110px 16px 40px; }
+            .page-hero p { font-size: 16px; }
+            .quiz-intro { padding: 0 16px; margin-top: -20px; }
+            .quiz-intro-card { padding: 24px; }
+            .quiz-intro-features { flex-direction: column; gap: 12px; }
+            .quiz-container { padding: 0 16px 40px; margin-top: 24px; }
+            .quiz-body { padding: 24px 20px; }
+            .quiz-nav { padding: 16px 20px; }
+            .quiz-question h2 { font-size: 24px; }
+            .results-body { padding: 24px 20px; }
+            .results-cta { flex-direction: column; }
+            .results-header h2 { font-size: 28px; }
+        }
+
+        @media (max-width: 480px) {
+            .page-hero h1 { font-size: 32px; }
+            .quiz-start h2 { font-size: 26px; }
+            .quiz-option label { padding: 14px 16px; }
+            .quiz-btn-next { padding: 12px 22px; }
+        }
+    </style>
 </head>
 <body>
 
@@ -138,15 +1221,146 @@
     <!-- ==================== PAGE HERO ==================== -->
     <section class="page-hero">
         <div class="page-hero-content">
+            <div class="page-hero-badge">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+                Free HVAC Assessment Tool
+            </div>
             <h1>System Selector <span class="accent">Quiz</span></h1>
-            <p>Answer a few questions and we'll recommend the perfect HVAC system for your home.</p>
+            <p>Answer a few quick questions and we'll recommend the ideal heating and cooling system for your home.</p>
         </div>
     </section>
 
-    <section class="page-content">
-        <h2>Coming Soon</h2>
-        <p>This page is currently under development. Please check back soon for updates, or contact us at <a href="tel:7814082506" style="color:var(--orange);font-weight:700;">(781) 408-2506</a> for assistance.</p>
-    </section>
+    <!-- ==================== QUIZ INTRO ==================== -->
+    <div class="quiz-intro">
+        <div class="quiz-intro-card">
+            <p>Not sure which heating and cooling system is right for your home? This quick 5-question quiz analyzes your home's needs, budget, and priorities to recommend the perfect HVAC solution. Get personalized results in under 2 minutes, backed by 30+ years of contractor expertise.</p>
+            <div class="quiz-intro-features">
+                <div class="quiz-intro-feature">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                    Takes under 2 minutes
+                </div>
+                <div class="quiz-intro-feature">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+                    5 simple questions
+                </div>
+                <div class="quiz-intro-feature">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    Expert-backed results
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== QUIZ CONTAINER ==================== -->
+    <div class="quiz-container">
+        <div class="quiz-card">
+
+            <!-- Progress bar (hidden until quiz starts) -->
+            <div class="quiz-progress" id="quizProgress" style="display:none;">
+                <span class="quiz-progress-label">Progress</span>
+                <div class="quiz-progress-bar">
+                    <div class="quiz-progress-fill" id="quizProgressFill"></div>
+                </div>
+                <span class="quiz-progress-step" id="quizProgressStep">1 / 5</span>
+            </div>
+
+            <!-- Start screen -->
+            <div class="quiz-start" id="quizStart">
+                <h2>Ready to Find Your <span class="accent">Perfect System</span>?</h2>
+                <p>We'll walk you through a few questions about your home and preferences to match you with the right HVAC solution.</p>
+                <button class="quiz-btn quiz-btn-start" onclick="startQuiz()">
+                    Start the Quiz
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+                </button>
+            </div>
+
+            <!-- Questions will be inserted here by Phase 2 -->
+            <div id="quizQuestions"></div>
+
+            <!-- Navigation (hidden until quiz starts) -->
+            <div class="quiz-nav" id="quizNav" style="display:none;">
+                <button class="quiz-btn quiz-btn-back" id="quizBack" onclick="prevQuestion()" style="visibility:hidden;">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+                    Back
+                </button>
+                <button class="quiz-btn quiz-btn-next" id="quizNext" onclick="nextQuestion()" disabled>
+                    Next
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+                </button>
+            </div>
+
+            <!-- Results (hidden until quiz complete) -->
+            <div class="quiz-results" id="quizResults"></div>
+
+        </div>
+    </div>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <a href="tel:7814082506" class="footer-phone">(781) 408-2506</a>
+            <p class="footer-tagline">24/7 Emergency HVAC Services — Greater Boston & South Shore</p>
+            <div class="footer-links">
+                <a href="../index.html">Home</a>
+                <a href="../services.html">Services</a>
+                <a href="../quote.html">Get a Quote</a>
+                <a href="../offers.html">Offers</a>
+                <a href="../contact.html">Contact</a>
+            </div>
+            <p class="footer-copy">&copy; 2026 Metro Boston HVAC. MA License #081600137. Locally owned & operated.</p>
+        </div>
+    </footer>
+
+<!-- ==================== QUIZ JAVASCRIPT ==================== -->
+<script>
+// Phase 1: Basic navigation shell
+var currentQuestion = 0;
+var totalQuestions = 5;
+
+function startQuiz() {
+    document.getElementById('quizStart').style.display = 'none';
+    document.getElementById('quizProgress').style.display = 'flex';
+    document.getElementById('quizNav').style.display = 'flex';
+    showQuestion(0);
+}
+
+function showQuestion(index) {
+    // Will be implemented in Phase 2
+    currentQuestion = index;
+    updateProgress();
+    updateNav();
+}
+
+function nextQuestion() {
+    if (currentQuestion < totalQuestions - 1) {
+        showQuestion(currentQuestion + 1);
+    } else {
+        showResults();
+    }
+}
+
+function prevQuestion() {
+    if (currentQuestion > 0) {
+        showQuestion(currentQuestion - 1);
+    }
+}
+
+function updateProgress() {
+    var pct = ((currentQuestion + 1) / totalQuestions) * 100;
+    document.getElementById('quizProgressFill').style.width = pct + '%';
+    document.getElementById('quizProgressStep').textContent = (currentQuestion + 1) + ' / ' + totalQuestions;
+}
+
+function updateNav() {
+    document.getElementById('quizBack').style.visibility = currentQuestion === 0 ? 'hidden' : 'visible';
+    var nextBtn = document.getElementById('quizNext');
+    nextBtn.textContent = currentQuestion === totalQuestions - 1 ? 'See Results' : 'Next';
+}
+
+function showResults() {
+    // Will be implemented in Phase 3
+}
+</script>
 
 <script>
 document.querySelectorAll('.mobile-accordion-toggle').forEach(function(btn) {
