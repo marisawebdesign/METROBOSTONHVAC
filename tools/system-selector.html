@@ -1478,8 +1478,226 @@
         }
     }
 
+    // ==================== SYSTEM RECOMMENDATIONS ====================
+    var systems = {
+        'split': {
+            name: 'Traditional Furnace & AC Split System',
+            tagline: 'The tried-and-true choice for reliable, budget-friendly whole-home comfort.',
+            reasons: [],
+            benefits: [
+                'Proven technology trusted in millions of homes across New England',
+                'Wide range of models and price points to fit any budget',
+                'Easy to find replacement parts and qualified technicians',
+                'Compatible with standard ductwork already in most homes'
+            ]
+        },
+        'heat-pump': {
+            name: 'Heat Pump System',
+            tagline: 'One system that heats and cools — efficient, versatile, and built for Massachusetts weather.',
+            reasons: [],
+            benefits: [
+                'Heats and cools with a single system — no separate furnace and AC',
+                'Up to 3x more energy-efficient than traditional heating',
+                'Eligible for Mass Save rebates and federal tax credits',
+                'Handles New England winters with modern cold-climate technology'
+            ]
+        },
+        'mini-split': {
+            name: 'Ductless Mini-Split System',
+            tagline: 'Flexible zone control without the need for ductwork — ideal for older homes and additions.',
+            reasons: [],
+            benefits: [
+                'No ductwork required — installs in almost any home',
+                'Individual temperature control for each room or zone',
+                'Whisper-quiet operation with no noisy indoor blower',
+                'Extremely energy-efficient with inverter-driven compressors'
+            ]
+        },
+        'hybrid': {
+            name: 'Hybrid / Dual Fuel System',
+            tagline: 'Maximum efficiency and comfort by combining a heat pump with a gas furnace backup.',
+            reasons: [],
+            benefits: [
+                'Automatically switches between electric and gas for lowest cost',
+                'Best possible efficiency ratings across all seasons',
+                'Never worry about comfort even in the coldest Boston winters',
+                'Significant long-term savings on heating and cooling bills'
+            ]
+        }
+    };
+
+    function calculateRecommendation() {
+        var scores = { 'split': 0, 'heat-pump': 0, 'mini-split': 0, 'hybrid': 0 };
+        var reasons = { 'split': [], 'heat-pump': [], 'mini-split': [], 'hybrid': [] };
+
+        // Question 1: Home type
+        var home = answers['home-type'];
+        if (home === 'small-single') {
+            scores['mini-split'] += 2;
+            scores['heat-pump'] += 2;
+            scores['split'] += 1;
+            reasons['mini-split'].push('Mini-splits work great in smaller homes where zone control covers the whole space efficiently');
+            reasons['heat-pump'].push('A heat pump is well-sized for a smaller single-family home');
+        } else if (home === 'mid-single') {
+            scores['split'] += 2;
+            scores['heat-pump'] += 2;
+            scores['hybrid'] += 1;
+            reasons['split'].push('A traditional split system is a solid fit for a mid-size home with existing ductwork');
+            reasons['heat-pump'].push('A heat pump can efficiently handle a mid-size home year-round');
+        } else if (home === 'large-single') {
+            scores['hybrid'] += 3;
+            scores['split'] += 2;
+            reasons['hybrid'].push('Larger homes benefit from the dual fuel approach — it covers high heating demand without sky-high energy bills');
+            reasons['split'].push('A traditional system provides dependable coverage for a larger home');
+        } else if (home === 'multi-family') {
+            scores['mini-split'] += 3;
+            scores['heat-pump'] += 1;
+            reasons['mini-split'].push('Mini-splits are ideal for multi-family or condo living — each unit gets independent control without shared ductwork');
+        }
+
+        // Question 2: Current system
+        var system = answers['current-system'];
+        if (system === 'old-furnace') {
+            scores['split'] += 2;
+            scores['hybrid'] += 2;
+            scores['heat-pump'] += 1;
+            reasons['split'].push('Since you already have ductwork, a new furnace/AC swap is straightforward and cost-effective');
+            reasons['hybrid'].push('Your existing ductwork makes a hybrid upgrade seamless — you get better efficiency without starting from scratch');
+        } else if (system === 'boiler-no-ac') {
+            scores['mini-split'] += 3;
+            scores['heat-pump'] += 1;
+            reasons['mini-split'].push('Without existing ductwork, a ductless mini-split adds cooling (and efficient heating) without tearing into walls');
+        } else if (system === 'newer-system') {
+            scores['hybrid'] += 2;
+            scores['heat-pump'] += 2;
+            reasons['hybrid'].push('Upgrading to a dual fuel system takes your efficiency to the next level while keeping your existing infrastructure');
+            reasons['heat-pump'].push('A heat pump upgrade delivers noticeably better efficiency over your current setup');
+        } else if (system === 'no-ductwork') {
+            scores['mini-split'] += 4;
+            reasons['mini-split'].push('With no ductwork in your home, a ductless mini-split is the natural choice — no major construction needed');
+        }
+
+        // Question 3: Budget
+        var budget = answers['budget'];
+        if (budget === 'low-upfront') {
+            scores['split'] += 3;
+            reasons['split'].push('A traditional split system has the lowest upfront cost of any whole-home HVAC solution');
+        } else if (budget === 'balanced') {
+            scores['heat-pump'] += 2;
+            scores['mini-split'] += 1;
+            reasons['heat-pump'].push('Heat pumps offer a strong balance — moderate upfront cost with real energy savings over time');
+        } else if (budget === 'long-term') {
+            scores['hybrid'] += 3;
+            scores['heat-pump'] += 2;
+            reasons['hybrid'].push('A hybrid system has a higher upfront cost, but the long-term energy savings are the best you can get');
+            reasons['heat-pump'].push('Investing in a heat pump pays off with significantly lower monthly bills');
+        }
+
+        // Question 4: Efficiency
+        var efficiency = answers['efficiency'];
+        if (efficiency === 'not-priority') {
+            scores['split'] += 2;
+            reasons['split'].push('You want something that just works — a traditional system delivers reliable performance without complexity');
+        } else if (efficiency === 'somewhat') {
+            scores['heat-pump'] += 2;
+            scores['mini-split'] += 1;
+            reasons['heat-pump'].push('A heat pump gives you meaningful efficiency gains without going to the extreme');
+        } else if (efficiency === 'very-important') {
+            scores['hybrid'] += 2;
+            scores['mini-split'] += 2;
+            scores['heat-pump'] += 1;
+            reasons['hybrid'].push('For maximum efficiency, the hybrid system automatically picks the cheapest fuel source at any given time');
+            reasons['mini-split'].push('Mini-splits with inverter compressors are among the most energy-efficient systems on the market');
+        }
+
+        // Question 5: Comfort
+        var comfort = answers['comfort'];
+        if (comfort === 'uneven-temps') {
+            scores['mini-split'] += 3;
+            reasons['mini-split'].push('Zone-by-zone control means you can set different temperatures in every room — no more hot and cold spots');
+        } else if (comfort === 'humidity') {
+            scores['heat-pump'] += 2;
+            scores['hybrid'] += 1;
+            reasons['heat-pump'].push('Modern heat pumps handle both heating and dehumidification, keeping your home comfortable year-round');
+        } else if (comfort === 'noise') {
+            scores['mini-split'] += 2;
+            scores['heat-pump'] += 1;
+            reasons['mini-split'].push('Ductless mini-splits run at whisper-quiet levels — most people can\'t even tell they\'re on');
+        } else if (comfort === 'air-quality') {
+            scores['split'] += 1;
+            scores['hybrid'] += 2;
+            scores['heat-pump'] += 1;
+            reasons['hybrid'].push('A ducted system with advanced filtration does the best job of cleaning and circulating air throughout your home');
+        }
+
+        // Find the winner
+        var best = 'split';
+        var bestScore = 0;
+        for (var key in scores) {
+            if (scores[key] > bestScore) {
+                bestScore = scores[key];
+                best = key;
+            }
+        }
+
+        return { system: best, reasons: reasons[best] };
+    }
+
     function showResults() {
-        // Will be implemented in Phase 3
+        var result = calculateRecommendation();
+        var sys = systems[result.system];
+        var reasonsList = result.reasons;
+
+        // Limit to top 4 reasons
+        if (reasonsList.length > 4) reasonsList = reasonsList.slice(0, 4);
+
+        // Build check icon SVG
+        var checkSvg = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>';
+
+        var html = '';
+        html += '<div class="results-header">';
+        html += '<div class="results-header-badge">Your Recommendation</div>';
+        html += '<h2>We Found Your Match</h2>';
+        html += '<p>Based on your answers, here\'s what we\'d recommend</p>';
+        html += '</div>';
+        html += '<div class="results-body">';
+        html += '<div class="results-system-name">' + sys.name + '</div>';
+        html += '<p class="results-system-tagline">' + sys.tagline + '</p>';
+        html += '<div class="results-why-title">Why This System Fits Your Home</div>';
+        html += '<ul class="results-reasons">';
+        for (var i = 0; i < reasonsList.length; i++) {
+            html += '<li>' + checkSvg + '<span>' + reasonsList[i] + '</span></li>';
+        }
+        html += '</ul>';
+        html += '<div class="results-benefits">';
+        html += '<div class="results-benefits-title">Key Benefits</div>';
+        html += '<ul>';
+        for (var j = 0; j < sys.benefits.length; j++) {
+            html += '<li>' + sys.benefits[j] + '</li>';
+        }
+        html += '</ul>';
+        html += '</div>';
+        html += '<div class="results-cta">';
+        html += '<a href="../quote.html" class="results-cta-btn results-cta-quote"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg> Get Instant Quote</a>';
+        html += '<a href="tel:7814082506" class="results-cta-btn results-cta-call"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg> Call (781) 408-2506</a>';
+        html += '</div>';
+        html += '<div class="results-retake"><button onclick="retakeQuiz()">Retake the quiz</button></div>';
+        html += '</div>';
+
+        // Hide quiz UI, show results
+        document.getElementById('quizProgress').style.display = 'none';
+        document.getElementById('quizNav').style.display = 'none';
+        var allQ = document.querySelectorAll('.quiz-question');
+        for (var k = 0; k < allQ.length; k++) {
+            allQ[k].classList.remove('active');
+        }
+
+        var resultsEl = document.getElementById('quizResults');
+        resultsEl.innerHTML = html;
+        resultsEl.classList.add('visible');
+
+        // Scroll to results
+        resultsEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
 
     function retakeQuiz() {
