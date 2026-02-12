@@ -3,37 +3,615 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Our Mission | Metro Boston HVAC</title>
-    <meta name="description" content="Learn about Metro Boston HVAC's mission to provide reliable, honest HVAC services to the Greater Boston area.">
+    <title>Our Mission | Metro Boston HVAC | Stoughton MA</title>
+    <meta name="description" content="Learn about Metro Boston HVAC's mission to provide honest, reliable heating and cooling services to Greater Boston families. Family-owned since 1994.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="technician-widget.css" />
+    <link rel="stylesheet" href="chat-widget.css" />
+    <style>
+        /* ==================== MISSION PAGE STYLES ==================== */
 
-    <link rel="stylesheet" href="chat-widget.css">
+        /* Hero Banner */
+        .mission-hero {
+            background: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy) 60%, var(--navy-light) 100%);
+            padding: 80px 20px 60px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .mission-hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 1;
+        }
+        .mission-hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .mission-hero-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 107, 53, 0.15);
+            border: 1px solid rgba(255, 107, 53, 0.3);
+            color: var(--orange);
+            padding: 6px 16px;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            border-radius: 0;
+        }
+        .mission-hero-label svg {
+            width: 16px;
+            height: 16px;
+        }
+        .mission-hero h1 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(48px, 8vw, 80px);
+            color: var(--white);
+            letter-spacing: 3px;
+            line-height: 1;
+            margin-bottom: 16px;
+        }
+        .mission-hero h1 .accent {
+            color: var(--orange);
+        }
+        .mission-hero-sub {
+            font-size: 18px;
+            color: rgba(255,255,255,0.7);
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* Mission Statement Section */
+        .mission-section {
+            padding: 80px 20px;
+            background: var(--white);
+        }
+        .mission-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .mission-statement {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        .mission-statement-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--orange);
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+        .mission-statement-label svg {
+            width: 18px;
+            height: 18px;
+        }
+        .mission-statement h2 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(32px, 5vw, 48px);
+            color: var(--navy);
+            letter-spacing: 2px;
+            margin-bottom: 30px;
+            line-height: 1.1;
+        }
+        .mission-statement-text {
+            font-size: 18px;
+            line-height: 1.8;
+            color: var(--gray-600);
+            max-width: 760px;
+            margin: 0 auto 24px;
+        }
+        .mission-statement-text:last-of-type {
+            margin-bottom: 0;
+        }
+        .mission-quote {
+            background: linear-gradient(135deg, var(--navy-dark), var(--navy));
+            padding: 40px;
+            margin: 50px 0;
+            position: relative;
+            border-left: 4px solid var(--orange);
+            border-radius: 0;
+        }
+        .mission-quote p {
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 20px;
+            font-style: italic;
+            color: rgba(255,255,255,0.9);
+            line-height: 1.7;
+            margin-bottom: 16px;
+        }
+        .mission-quote cite {
+            font-style: normal;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--orange);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* Values Grid */
+        .values-section {
+            padding: 0 20px 80px;
+            background: var(--white);
+        }
+        .values-container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        .values-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        .values-header h2 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(28px, 4vw, 40px);
+            color: var(--navy);
+            letter-spacing: 2px;
+            margin-bottom: 12px;
+        }
+        .values-header p {
+            font-size: 16px;
+            color: var(--gray-600);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        .value-card {
+            background: var(--gray-50);
+            border: 1px solid var(--gray-200);
+            padding: 36px 28px;
+            border-radius: 0;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .value-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(26, 58, 82, 0.1);
+        }
+        .value-card-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--navy);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            border-radius: 0;
+        }
+        .value-card-icon svg {
+            width: 24px;
+            height: 24px;
+            stroke: var(--orange);
+        }
+        .value-card h3 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 22px;
+            color: var(--navy);
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+        }
+        .value-card p {
+            font-size: 15px;
+            color: var(--gray-600);
+            line-height: 1.6;
+        }
+
+        /* Team Carousel Section */
+        .team-section {
+            padding: 80px 20px;
+            background: var(--gray-50);
+            border-top: 1px solid var(--gray-200);
+            border-bottom: 1px solid var(--gray-200);
+        }
+        .team-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .team-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .team-header h2 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(28px, 4vw, 40px);
+            color: var(--navy);
+            letter-spacing: 2px;
+            margin-bottom: 12px;
+        }
+        .team-header p {
+            font-size: 16px;
+            color: var(--gray-600);
+            max-width: 550px;
+            margin: 0 auto;
+        }
+        .team-carousel-wrapper {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .team-carousel {
+            overflow: hidden;
+            border-radius: 0;
+        }
+        .team-track {
+            display: flex;
+            transition: transform 0.4s ease;
+        }
+        .team-slide {
+            min-width: 100%;
+            flex-shrink: 0;
+        }
+        .team-slide img {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            display: block;
+            border-radius: 0;
+        }
+        .team-slide-caption {
+            background: var(--navy);
+            padding: 20px 24px;
+            text-align: center;
+            border-radius: 0;
+        }
+        .team-slide-caption h3 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 20px;
+            color: var(--white);
+            letter-spacing: 1.5px;
+            margin-bottom: 4px;
+        }
+        .team-slide-caption p {
+            font-size: 14px;
+            color: rgba(255,255,255,0.6);
+        }
+
+        /* Carousel Arrows */
+        .team-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(calc(-50% - 30px));
+            width: 48px;
+            height: 48px;
+            background: var(--navy);
+            border: 2px solid var(--orange);
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 10;
+            transition: background 0.2s;
+            border-radius: 0;
+        }
+        .team-arrow:hover {
+            background: var(--orange);
+        }
+        .team-arrow svg {
+            width: 24px;
+            height: 24px;
+        }
+        .team-arrow.prev {
+            left: -24px;
+        }
+        .team-arrow.next {
+            right: -24px;
+        }
+
+        /* Carousel Dots */
+        .team-dots {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 24px;
+        }
+        .team-dot {
+            width: 12px;
+            height: 12px;
+            background: var(--gray-200);
+            border: 2px solid var(--gray-400);
+            cursor: pointer;
+            transition: all 0.2s;
+            border-radius: 0;
+        }
+        .team-dot.active {
+            background: var(--orange);
+            border-color: var(--orange);
+        }
+
+        /* CTA Section */
+        .mission-cta-section {
+            padding: 80px 20px;
+            background: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy) 100%);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .mission-cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+        .mission-cta-content {
+            position: relative;
+            z-index: 1;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        .mission-cta-content h2 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(32px, 5vw, 52px);
+            color: var(--white);
+            letter-spacing: 2px;
+            margin-bottom: 16px;
+            line-height: 1.1;
+        }
+        .mission-cta-content h2 .accent {
+            color: var(--orange);
+        }
+        .mission-cta-content p {
+            font-size: 18px;
+            color: rgba(255,255,255,0.7);
+            margin-bottom: 32px;
+            line-height: 1.6;
+        }
+        .mission-cta-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .mission-cta-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 16px 32px;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 18px;
+            letter-spacing: 2px;
+            text-decoration: none;
+            border-radius: 0;
+            transition: all 0.2s;
+        }
+        .mission-cta-btn svg {
+            width: 20px;
+            height: 20px;
+        }
+        .mission-cta-btn.primary {
+            background: var(--orange);
+            color: var(--white);
+        }
+        .mission-cta-btn.primary:hover {
+            background: var(--orange-glow);
+            transform: translateY(-2px);
+        }
+        .mission-cta-btn.secondary {
+            background: transparent;
+            color: var(--white);
+            border: 2px solid rgba(255,255,255,0.3);
+        }
+        .mission-cta-btn.secondary:hover {
+            border-color: var(--white);
+            transform: translateY(-2px);
+        }
+
+        /* Contact Info Strip */
+        .mission-contact {
+            padding: 50px 20px;
+            background: var(--white);
+            text-align: center;
+        }
+        .mission-contact-inner {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .mission-contact h3 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 28px;
+            color: var(--navy);
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+        }
+        .mission-contact-grid {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+        .mission-contact-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: var(--gray-600);
+            font-size: 15px;
+            transition: color 0.2s;
+        }
+        .mission-contact-item:hover {
+            color: var(--orange);
+        }
+        .mission-contact-item svg {
+            width: 20px;
+            height: 20px;
+            stroke: var(--orange);
+            flex-shrink: 0;
+        }
+
+        /* Footer */
+        .mission-footer {
+            background: var(--navy-dark);
+            padding: 30px 20px;
+            text-align: center;
+            border-top: 3px solid var(--orange);
+        }
+        .mission-footer p {
+            font-size: 13px;
+            color: rgba(255,255,255,0.4);
+        }
+        .mission-footer a {
+            color: rgba(255,255,255,0.6);
+            text-decoration: none;
+        }
+        .mission-footer a:hover {
+            color: var(--orange);
+        }
+
+        /* ==================== RESPONSIVE ==================== */
+        @media (max-width: 1024px) {
+            .team-arrow.prev { left: 8px; }
+            .team-arrow.next { right: 8px; }
+        }
+        @media (max-width: 768px) {
+            .mission-hero { padding: 60px 16px 48px; }
+            .mission-section { padding: 60px 16px; }
+            .values-section { padding: 0 16px 60px; }
+            .team-section { padding: 60px 16px; }
+            .mission-cta-section { padding: 60px 16px; }
+            .values-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            .team-slide img {
+                height: 300px;
+            }
+            .team-arrow {
+                width: 40px;
+                height: 40px;
+            }
+            .team-arrow.prev { left: 8px; }
+            .team-arrow.next { right: 8px; }
+            .mission-quote {
+                padding: 28px 20px;
+            }
+            .mission-quote p { font-size: 17px; }
+            .mission-contact-grid {
+                flex-direction: column;
+                align-items: center;
+                gap: 20px;
+            }
+        }
+        @media (max-width: 480px) {
+            .team-slide img {
+                height: 220px;
+            }
+            .mission-cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            .mission-cta-btn {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
+            }
+        }
+    </style>
 </head>
 <body>
 
     <!-- ==================== HEADER TOP BAR ==================== -->
     <header class="header-top">
         <div class="header-top-inner">
-            <a href="index.html" class="logo"><img src="images/logo.jpg" alt="Metro Boston HVAC - 24/7 Service"></a>
+            <a href="index.html" class="logo">
+                <img src="images/logo.jpg" alt="Metro Boston HVAC - 24/7 Service">
+            </a>
+
+            <!-- Mobile company name (visible only on mobile) -->
             <span class="header-mobile-name">METRO <span>BOSTON</span> HVAC</span>
+
+            <!-- Phone Block -->
             <div class="header-phone">
-                <div class="header-phone-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+                <div class="header-phone-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                    </svg>
+                </div>
                 <div class="header-phone-info">
                     <a href="tel:7814082506" class="header-phone-number">(781) 408-2506</a>
                     <span class="header-phone-label">Emergency Services Available</span>
                 </div>
             </div>
+
+            <!-- Trust Badges -->
             <div class="header-trust-badges">
-                <div class="trust-badge"><div class="trust-badge-icon emergency"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div><span class="trust-badge-label">Emergency Service Repair Specialists</span></div>
-                <div class="trust-badge"><div class="trust-badge-icon licensed"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L4 6v6c0 5.5 3.4 10.7 8 12 4.6-1.3 8-6.5 8-12V6l-8-4z"/><path d="M9 12l2 2 4-4" stroke="#ff6b35" stroke-width="2.5"/></svg></div><span class="trust-badge-label">Licensed &amp; Insured #081600137</span></div>
-                <div class="trust-badge"><div class="trust-badge-icon reviews"><svg viewBox="0 0 24 24" fill="white" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div><span class="trust-badge-label">Excellent Customer Reviews</span></div>
-                <div class="trust-badge"><div class="trust-badge-icon local"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M12 11c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2z" fill="#ff6b35" stroke="#ff6b35"/></svg></div><span class="trust-badge-label">Locally Owned &amp; Operated</span></div>
-                <div class="trust-badge"><div class="trust-badge-icon price"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L4 6v6c0 5.5 3.4 10.7 8 12 4.6-1.3 8-6.5 8-12V6l-8-4z"/><text x="12" y="16" text-anchor="middle" font-family="Arial" font-weight="800" font-size="10" fill="white" stroke="none">$</text></svg></div><span class="trust-badge-label">Price Match Guarantee</span></div>
+                <div class="trust-badge">
+                    <div class="trust-badge-icon emergency">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+                        </svg>
+                    </div>
+                    <span class="trust-badge-label">Emergency Service Repair Specialists</span>
+                </div>
+                <div class="trust-badge">
+                    <div class="trust-badge-icon licensed">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 2L4 6v6c0 5.5 3.4 10.7 8 12 4.6-1.3 8-6.5 8-12V6l-8-4z"/>
+                            <path d="M9 12l2 2 4-4" stroke="#ff6b35" stroke-width="2.5"/>
+                        </svg>
+                    </div>
+                    <span class="trust-badge-label">Licensed & Insured #081600137</span>
+                </div>
+                <div class="trust-badge">
+                    <div class="trust-badge-icon reviews">
+                        <svg viewBox="0 0 24 24" fill="white" stroke="none">
+                            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                        </svg>
+                    </div>
+                    <span class="trust-badge-label">Excellent Customer Reviews</span>
+                </div>
+                <div class="trust-badge">
+                    <div class="trust-badge-icon local">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                            <path d="M12 11c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2z" fill="#ff6b35" stroke="#ff6b35"/>
+                        </svg>
+                    </div>
+                    <span class="trust-badge-label">Locally Owned & Operated</span>
+                </div>
+                <div class="trust-badge">
+                    <div class="trust-badge-icon price">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 2L4 6v6c0 5.5 3.4 10.7 8 12 4.6-1.3 8-6.5 8-12V6l-8-4z"/>
+                            <text x="12" y="16" text-anchor="middle" font-family="Arial" font-weight="800" font-size="10" fill="white" stroke="none">$</text>
+                        </svg>
+                    </div>
+                    <span class="trust-badge-label">Price Match Guarantee</span>
+                </div>
             </div>
-            <a href="quote.html" class="get-service-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg> GET INSTANT SERVICE QUOTE</a>
-            <button class="mobile-toggle" aria-label="Menu" onclick="document.getElementById('mobileMenu').classList.add('active')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+
+            <!-- Get Service Button -->
+            <a href="quote.html" class="get-service-btn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+                </svg>
+                GET INSTANT SERVICE QUOTE
+            </a>
+
+            <!-- Mobile Toggle -->
+            <button class="mobile-toggle" aria-label="Menu" onclick="document.getElementById('mobileMenu').classList.add('active')">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="3" y1="12" x2="21" y2="12"/>
+                    <line x1="3" y1="6" x2="21" y2="6"/>
+                    <line x1="3" y1="18" x2="21" y2="18"/>
+                </svg>
+            </button>
         </div>
     </header>
 
@@ -63,7 +641,7 @@
                     </div>
                 </div>
                 <div class="nav-item">
-                    <a href="#" class="nav-link">About Us <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></a>
+                    <a href="#" class="nav-link active">About Us <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></a>
                     <div class="dropdown">
                         <a href="mission.html" class="dropdown-link">Our Mission</a>
                         <a href="careers.html" class="dropdown-link">Careers</a>
@@ -81,20 +659,74 @@
     <div class="mobile-menu" id="mobileMenu">
         <div class="mobile-menu-header">
             <span class="logo-text">METRO <span>BOSTON</span> HVAC</span>
-            <button class="mobile-menu-close" aria-label="Close menu" onclick="document.getElementById('mobileMenu').classList.remove('active')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+            <button class="mobile-menu-close" aria-label="Close menu" onclick="document.getElementById('mobileMenu').classList.remove('active')">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="18" y1="6" x2="6" y2="18"/>
+                    <line x1="6" y1="6" x2="18" y2="18"/>
+                </svg>
+            </button>
         </div>
+
         <div class="mobile-trust-strip">
-            <div class="mobile-trust-item"><div class="mobile-trust-icon emergency"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div><span>Emergency Repair</span></div>
-            <div class="mobile-trust-item"><div class="mobile-trust-icon licensed"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L4 6v6c0 5.5 3.4 10.7 8 12 4.6-1.3 8-6.5 8-12V6l-8-4z"/><path d="M9 12l2 2 4-4" stroke="#ff6b35" stroke-width="2.5"/></svg></div><span>Licensed &amp; Insured</span></div>
-            <div class="mobile-trust-item"><div class="mobile-trust-icon reviews"><svg viewBox="0 0 24 24" fill="white" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div><span>Excellent Reviews</span></div>
-            <div class="mobile-trust-item"><div class="mobile-trust-icon local"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M12 11c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2z" fill="#ff6b35" stroke="#ff6b35"/></svg></div><span>Locally Owned</span></div>
-            <div class="mobile-trust-item"><div class="mobile-trust-icon price"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L4 6v6c0 5.5 3.4 10.7 8 12 4.6-1.3 8-6.5 8-12V6l-8-4z"/><text x="12" y="16" text-anchor="middle" font-family="Arial" font-weight="800" font-size="10" fill="white" stroke="none">$</text></svg></div><span>Price Match</span></div>
+            <div class="mobile-trust-item">
+                <div class="mobile-trust-icon emergency">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+                    </svg>
+                </div>
+                <span>Emergency Service Repair Specialists</span>
+            </div>
+            <div class="mobile-trust-item">
+                <div class="mobile-trust-icon licensed">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 2L4 6v6c0 5.5 3.4 10.7 8 12 4.6-1.3 8-6.5 8-12V6l-8-4z"/>
+                        <path d="M9 12l2 2 4-4" stroke="#ff6b35" stroke-width="2.5"/>
+                    </svg>
+                </div>
+                <span>Licensed & Insured #081600137</span>
+            </div>
+            <div class="mobile-trust-item">
+                <div class="mobile-trust-icon reviews">
+                    <svg viewBox="0 0 24 24" fill="white" stroke="none">
+                        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                    </svg>
+                </div>
+                <span>Excellent Reviews</span>
+            </div>
+            <div class="mobile-trust-item">
+                <div class="mobile-trust-icon local">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                        <path d="M12 11c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2z" fill="#ff6b35" stroke="#ff6b35"/>
+                    </svg>
+                </div>
+                <span>Locally Owned</span>
+            </div>
+            <div class="mobile-trust-item">
+                <div class="mobile-trust-icon price">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 2L4 6v6c0 5.5 3.4 10.7 8 12 4.6-1.3 8-6.5 8-12V6l-8-4z"/>
+                        <text x="12" y="16" text-anchor="middle" font-family="Arial" font-weight="800" font-size="10" fill="white" stroke="none">$</text>
+                    </svg>
+                </div>
+                <span>Price Match Guarantee</span>
+            </div>
         </div>
+
         <div class="mobile-quote-btn-wrap">
-            <a href="quote.html" class="mobile-quote-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg> Get Instant Quote</a>
+            <a href="quote.html" class="mobile-quote-btn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+                    <line x1="8" y1="21" x2="16" y2="21"/>
+                    <line x1="12" y1="17" x2="12" y2="21"/>
+                </svg>
+                Get Instant Quote
+            </a>
         </div>
+
         <div class="mobile-menu-links">
             <a href="index.html">Home</a>
+
             <div class="mobile-accordion">
                 <button class="mobile-accordion-toggle">Services <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button>
                 <div class="mobile-accordion-content">
@@ -106,6 +738,7 @@
                     <a href="services.html#commercial">Commercial Maintenance</a>
                 </div>
             </div>
+
             <div class="mobile-accordion">
                 <button class="mobile-accordion-toggle">Resources <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button>
                 <div class="mobile-accordion-content">
@@ -115,32 +748,367 @@
                     <a href="printouts.html">Printouts, Calendars &amp; Guides</a>
                 </div>
             </div>
+
             <div class="mobile-accordion">
-                <button class="mobile-accordion-toggle">About Us <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button>
+                <button class="mobile-accordion-toggle" style="font-weight:700;color:var(--orange);">About Us <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button>
                 <div class="mobile-accordion-content">
-                    <a href="mission.html">Our Mission</a>
+                    <a href="mission.html" style="font-weight:700;color:var(--orange);">Our Mission</a>
                     <a href="careers.html">Careers</a>
                     <a href="service-area.html">Service Area</a>
                 </div>
             </div>
+
             <a href="offers.html">Offers</a>
             <a href="contact.html">Contact Us</a>
         </div>
+
         <div class="mobile-book-appointment">
-            <a href="book-appointment.html" class="mobile-book-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg> Book an Appointment Online</a>
+            <a href="book-appointment.html" class="mobile-book-btn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                Book an Appointment Online
+            </a>
         </div>
+
         <div class="mobile-menu-cta">
-            <a href="tel:7814082506" class="mobile-call-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg> Call (781) 408-2506</a>
-            <a href="quote.html" class="mobile-service-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg> Get Service</a>
+            <a href="tel:7814082506" class="mobile-call-btn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                </svg>
+                Call (781) 408-2506
+            </a>
+            <a href="quote.html" class="mobile-service-btn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+                </svg>
+                Get Service
+            </a>
         </div>
     </div>
 
-<script>
-document.querySelectorAll('.mobile-accordion-toggle').forEach(function(btn) {
-    btn.addEventListener('click', function() { this.parentElement.classList.toggle('open'); });
-});
-</script>
+    <!-- ==================== HERO BANNER ==================== -->
+    <section class="mission-hero">
+        <div class="mission-hero-content">
+            <div class="mission-hero-label">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                </svg>
+                About Metro Boston HVAC
+            </div>
+            <h1>Our <span class="accent">Mission</span></h1>
+            <p class="mission-hero-sub">Family-owned and operated since 1994, serving Greater Boston with honest, dependable heating and cooling services.</p>
+        </div>
+    </section>
 
+    <!-- ==================== MISSION STATEMENT ==================== -->
+    <section class="mission-section">
+        <div class="mission-container">
+            <div class="mission-statement">
+                <div class="mission-statement-label">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                    </svg>
+                    What We Stand For
+                </div>
+                <h2>Comfort, Honesty &amp; Community</h2>
+
+                <p class="mission-statement-text">
+                    At Metro Boston HVAC, our mission is simple: to keep every home and business in Greater Boston safe, comfortable, and running efficiently &mdash; no matter the season, no matter the hour. We believe that reliable heating and cooling isn't a luxury. It's a necessity. And every family deserves a service provider they can trust completely.
+                </p>
+
+                <p class="mission-statement-text">
+                    We built this company on the principle that honest work speaks for itself. From the moment you call us to the moment we leave your home, we hold ourselves to one standard: treat every customer the way we'd want our own family to be treated. That means transparent pricing, clear communication, and work we stand behind every time.
+                </p>
+
+                <p class="mission-statement-text">
+                    As a family-owned business with deep roots in the community, we understand the trust you place in us when you invite us into your home. We don't take that lightly. Our technicians are licensed, insured, and genuinely committed to solving your problem &mdash; not upselling you on services you don't need.
+                </p>
+            </div>
+
+            <div class="mission-quote">
+                <p>"We answer our phones day and night because we know that when your furnace goes out in January, it's not just an inconvenience &mdash; it's an emergency. Your family's safety and comfort are what drive everything we do."</p>
+                <cite>&mdash; Metro Boston HVAC Team</cite>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== OUR VALUES ==================== -->
+    <section class="values-section">
+        <div class="values-container">
+            <div class="values-header">
+                <h2>Our Core Values</h2>
+                <p>The principles that guide every service call, every repair, and every interaction with our customers.</p>
+            </div>
+
+            <div class="values-grid">
+                <div class="value-card">
+                    <div class="value-card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                        </svg>
+                    </div>
+                    <h3>Integrity First</h3>
+                    <p>We give honest assessments, transparent pricing, and never recommend work you don't need. Our reputation is built on trust.</p>
+                </div>
+
+                <div class="value-card">
+                    <div class="value-card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"/>
+                            <polyline points="12 6 12 12 16 14"/>
+                        </svg>
+                    </div>
+                    <h3>Always Available</h3>
+                    <p>Emergencies don't wait for business hours. We're available 24/7, including nights, weekends, and holidays, because your comfort can't wait.</p>
+                </div>
+
+                <div class="value-card">
+                    <div class="value-card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                        </svg>
+                    </div>
+                    <h3>Community Focused</h3>
+                    <p>We're your neighbors. We've raised our families here and we serve this community with the care and respect it deserves.</p>
+                </div>
+
+                <div class="value-card">
+                    <div class="value-card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+                        </svg>
+                    </div>
+                    <h3>Expert Craftsmanship</h3>
+                    <p>With over 30 years of experience in commercial and residential HVAC, we bring expertise and precision to every job.</p>
+                </div>
+
+                <div class="value-card">
+                    <div class="value-card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="12" y1="1" x2="12" y2="23"/>
+                            <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+                        </svg>
+                    </div>
+                    <h3>Fair Pricing</h3>
+                    <p>We offer a price match guarantee and flexible financing options, because quality HVAC service shouldn't break the bank.</p>
+                </div>
+
+                <div class="value-card">
+                    <div class="value-card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                            <circle cx="9" cy="7" r="4"/>
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                        </svg>
+                    </div>
+                    <h3>Customer First</h3>
+                    <p>Real people answer our phones. We show up when we say we will. Every decision we make puts your family's safety and comfort first.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== TEAM PHOTO CAROUSEL ==================== -->
+    <section class="team-section">
+        <div class="team-container">
+            <div class="team-header">
+                <h2>Meet Our Team</h2>
+                <p>The dedicated professionals who keep Greater Boston comfortable, day and night.</p>
+            </div>
+
+            <div class="team-carousel-wrapper">
+                <button class="team-arrow prev" id="teamPrev" aria-label="Previous slide">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+                </button>
+                <button class="team-arrow next" id="teamNext" aria-label="Next slide">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 6 15 12 9 18"/></svg>
+                </button>
+
+                <div class="team-carousel">
+                    <div class="team-track" id="teamTrack">
+                        <!-- Slide 1 -->
+                        <div class="team-slide">
+                            <img src="https://via.placeholder.com/1200x800/1a3a52/ffffff?text=Our+Team+at+Work" alt="Our Team at Work">
+                            <div class="team-slide-caption">
+                                <h3>Our Team at Work</h3>
+                                <p>Dedicated technicians committed to your comfort</p>
+                            </div>
+                        </div>
+                        <!-- Slide 2 -->
+                        <div class="team-slide">
+                            <img src="https://via.placeholder.com/1200x800/0f2536/ff6b35?text=Licensed+Technicians" alt="Licensed Technicians">
+                            <div class="team-slide-caption">
+                                <h3>Licensed Technicians</h3>
+                                <p>Fully licensed and insured professionals - MA #081600137</p>
+                            </div>
+                        </div>
+                        <!-- Slide 3 -->
+                        <div class="team-slide">
+                            <img src="https://via.placeholder.com/1200x800/2a5070/ffd700?text=Family-Owned+Since+1994" alt="Family-Owned Since 1994">
+                            <div class="team-slide-caption">
+                                <h3>Family-Owned Since 1994</h3>
+                                <p>Over 30 years of trusted service in Greater Boston</p>
+                            </div>
+                        </div>
+                        <!-- Slide 4 -->
+                        <div class="team-slide">
+                            <img src="https://via.placeholder.com/1200x800/ff6b35/ffffff?text=Serving+Greater+Boston" alt="Serving Greater Boston">
+                            <div class="team-slide-caption">
+                                <h3>Serving Greater Boston</h3>
+                                <p>Boston Metro and South Shore communities</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="team-dots" id="teamDots">
+                    <button class="team-dot active" aria-label="Slide 1"></button>
+                    <button class="team-dot" aria-label="Slide 2"></button>
+                    <button class="team-dot" aria-label="Slide 3"></button>
+                    <button class="team-dot" aria-label="Slide 4"></button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== CTA SECTION ==================== -->
+    <section class="mission-cta-section">
+        <div class="mission-cta-content">
+            <h2>Ready to Experience the <span class="accent">Difference</span>?</h2>
+            <p>Whether it's an emergency repair or a new installation, we're here to help. Call us anytime or get a free estimate online.</p>
+            <div class="mission-cta-buttons">
+                <a href="tel:7814082506" class="mission-cta-btn primary">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                    </svg>
+                    Call (781) 408-2506
+                </a>
+                <a href="quote.html" class="mission-cta-btn secondary">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+                        <line x1="8" y1="21" x2="16" y2="21"/>
+                        <line x1="12" y1="17" x2="12" y2="21"/>
+                    </svg>
+                    Get Free Estimate
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== CONTACT INFO ==================== -->
+    <section class="mission-contact">
+        <div class="mission-contact-inner">
+            <h3>Get in Touch</h3>
+            <div class="mission-contact-grid">
+                <a href="tel:7814082506" class="mission-contact-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
+                        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                    </svg>
+                    (781) 408-2506
+                </a>
+                <a href="sms:7814082506" class="mission-contact-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
+                        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                    </svg>
+                    Text Us
+                </a>
+                <a href="contact.html" class="mission-contact-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
+                        <rect x="2" y="4" width="20" height="16" rx="2"/>
+                        <path d="M22 7l-10 7L2 7"/>
+                    </svg>
+                    Email Us
+                </a>
+                <a href="book-appointment.html" class="mission-contact-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
+                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                        <line x1="16" y1="2" x2="16" y2="6"/>
+                        <line x1="8" y1="2" x2="8" y2="6"/>
+                        <line x1="3" y1="10" x2="21" y2="10"/>
+                    </svg>
+                    Book Appointment
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer class="mission-footer">
+        <p>&copy; 2025 Metro Boston HVAC. All rights reserved. | MA License #081600137 | Stoughton, MA | <a href="tel:7814082506">(781) 408-2506</a></p>
+    </footer>
+
+<!-- ==================== SCRIPTS ==================== -->
+<script>
+// Mobile accordion functionality
+document.querySelectorAll('.mobile-accordion-toggle').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+        this.parentElement.classList.toggle('open');
+    });
+});
+
+// Team Photo Carousel
+(function() {
+    var track = document.getElementById('teamTrack');
+    var dots = document.querySelectorAll('#teamDots .team-dot');
+    var prevBtn = document.getElementById('teamPrev');
+    var nextBtn = document.getElementById('teamNext');
+    var slides = track.querySelectorAll('.team-slide');
+    var current = 0;
+    var total = slides.length;
+    var autoplayInterval;
+    var isHovered = false;
+
+    function goTo(index) {
+        if (index < 0) index = total - 1;
+        if (index >= total) index = 0;
+        current = index;
+        track.style.transform = 'translateX(-' + (current * 100) + '%)';
+        dots.forEach(function(d, i) {
+            d.classList.toggle('active', i === current);
+        });
+    }
+
+    prevBtn.addEventListener('click', function() { goTo(current - 1); });
+    nextBtn.addEventListener('click', function() { goTo(current + 1); });
+
+    dots.forEach(function(dot, i) {
+        dot.addEventListener('click', function() { goTo(i); });
+    });
+
+    // Touch/swipe support
+    var startX = 0;
+    var isDragging = false;
+
+    track.addEventListener('touchstart', function(e) {
+        startX = e.touches[0].clientX;
+        isDragging = true;
+    }, { passive: true });
+
+    track.addEventListener('touchend', function(e) {
+        if (!isDragging) return;
+        isDragging = false;
+        var diff = startX - e.changedTouches[0].clientX;
+        if (Math.abs(diff) > 50) {
+            if (diff > 0) goTo(current + 1);
+            else goTo(current - 1);
+        }
+    }, { passive: true });
+
+    // Autoplay with pause on hover
+    function startAutoplay() {
+        autoplayInterval = setInterval(function() {
+            if (!isHovered) goTo(current + 1);
+        }, 5000);
+    }
+
+    var wrapper = document.querySelector('.team-carousel-wrapper');
+    wrapper.addEventListener('mouseenter', function() { isHovered = true; });
+    wrapper.addEventListener('mouseleave', function() { isHovered = false; });
+
+    startAutoplay();
+})();
+</script>
+<script src="technician-widget.js"></script>
 <script src="chat-widget.js"></script>
 </body>
 </html>
