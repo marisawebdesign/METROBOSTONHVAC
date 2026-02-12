@@ -461,6 +461,104 @@
             color: #9ca3af;
         }
 
+        /* CTA Section */
+        .printouts-cta {
+            background: linear-gradient(135deg, #0f2536 0%, #1a3a52 100%);
+            padding: 56px 24px;
+        }
+
+        .printouts-cta-inner {
+            max-width: 900px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 40px;
+        }
+
+        .printouts-cta-content h2 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 32px;
+            color: white;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+
+        .printouts-cta-content p {
+            font-size: 15px;
+            color: rgba(255,255,255,0.7);
+            max-width: 420px;
+        }
+
+        .printouts-cta-actions {
+            display: flex;
+            gap: 12px;
+            flex-shrink: 0;
+        }
+
+        .printouts-cta-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 24px;
+            font-weight: 700;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-decoration: none;
+            transition: all 0.2s;
+            white-space: nowrap;
+            border-radius: 0;
+        }
+
+        .printouts-cta-btn svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        .printouts-cta-btn.primary {
+            background: #ff6b35;
+            color: white;
+        }
+
+        .printouts-cta-btn.primary:hover {
+            background: #ff8855;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(255, 107, 53, 0.4);
+        }
+
+        .printouts-cta-btn.secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid rgba(255,255,255,0.3);
+        }
+
+        .printouts-cta-btn.secondary:hover {
+            border-color: white;
+            background: rgba(255,255,255,0.1);
+        }
+
+        /* Download button hover animation */
+        .pdf-download-btn {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pdf-download-btn::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+            transition: left 0.4s ease;
+        }
+
+        .pdf-card:hover .pdf-download-btn::after {
+            left: 100%;
+        }
+
         /* Footer */
         .site-footer {
             background: #0f2536;
@@ -564,6 +662,20 @@
             }
             .filter-inner {
                 padding: 12px 16px;
+            }
+            .printouts-cta-inner {
+                flex-direction: column;
+                text-align: center;
+            }
+            .printouts-cta-content p {
+                max-width: none;
+            }
+            .printouts-cta-actions {
+                flex-direction: column;
+                width: 100%;
+            }
+            .printouts-cta-btn {
+                justify-content: center;
             }
         }
 
@@ -1102,6 +1214,26 @@
 
     </section>
 
+    <!-- ==================== CTA SECTION ==================== -->
+    <section class="printouts-cta">
+        <div class="printouts-cta-inner">
+            <div class="printouts-cta-content">
+                <h2>Have a Suggestion for a New Printout?</h2>
+                <p>We're always creating new resources to help homeowners maintain their HVAC systems. Let us know what would be useful for you.</p>
+            </div>
+            <div class="printouts-cta-actions">
+                <a href="contact.html" class="printouts-cta-btn primary">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                    Request a Printout
+                </a>
+                <a href="quote.html" class="printouts-cta-btn secondary">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+                    Get a Service Quote
+                </a>
+            </div>
+        </div>
+    </section>
+
     <!-- ==================== FOOTER ==================== -->
     <footer class="site-footer">
         <div class="footer-inner">
@@ -1145,7 +1277,29 @@ document.querySelectorAll('.filter-btn').forEach(function(btn) {
         });
 
         document.getElementById('noResults').classList.toggle('visible', visibleCount === 0);
+
+        // Smooth scroll to grid
+        if (filter !== 'all') {
+            document.querySelector('.pdf-section').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
     });
+});
+
+// Animate cards on scroll
+var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+        }
+    });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.pdf-card').forEach(function(card, i) {
+    card.style.opacity = '0';
+    card.style.transform = 'translateY(20px)';
+    card.style.transition = 'opacity 0.5s ease ' + (i * 0.1) + 's, transform 0.5s ease ' + (i * 0.1) + 's';
+    observer.observe(card);
 });
 </script>
 
