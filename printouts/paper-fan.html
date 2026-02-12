@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stay Cool Paper Fan | Metro Boston HVAC</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        @page { size: letter; margin: 0.3in; }
+
+        body {
+            font-family: 'Source Sans 3', sans-serif;
+            color: #1f2937;
+            line-height: 1.4;
+            background: white;
+            width: 8.5in;
+            margin: 0 auto;
+        }
+
+        .page { width: 7.9in; margin: 0 auto; }
+
+        /* Header */
+        .pdf-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 20px;
+            background: #1a2332;
+            margin-bottom: 10px;
+        }
+
+        .pdf-header-left { display: flex; align-items: center; gap: 12px; }
+
+        .pdf-logo-icon {
+            width: 32px; height: 32px;
+            background: #ff6b35;
+            display: flex; align-items: center; justify-content: center;
+        }
+
+        .pdf-logo-icon svg { width: 20px; height: 20px; color: white; }
+
+        .pdf-logo-text {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 20px; color: white; letter-spacing: 2px;
+        }
+
+        .pdf-logo-text span { color: #ff6b35; }
+
+        .pdf-header-right {
+            text-align: right; color: rgba(255,255,255,0.7); font-size: 10px; line-height: 1.4;
+        }
+
+        .pdf-header-phone {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 16px; color: #ff6b35; letter-spacing: 1px;
+        }
+
+        /* Title + Instructions Row */
+        .intro-row {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 12px;
+            align-items: stretch;
+        }
+
+        .intro-title {
+            background: #f9fafb;
+            border: 1px solid #e5e7eb;
+            padding: 12px 16px;
+            flex: 1;
+        }
+
+        .intro-title h1 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 22px;
+            color: #1a2332;
+            letter-spacing: 1px;
+            line-height: 1;
+            margin-bottom: 4px;
+        }
+
+        .intro-title h1 em {
+            color: #ff6b35;
+            font-style: normal;
+        }
+
+        .intro-title p {
+            font-size: 10px;
+            color: #6b7280;
+            line-height: 1.4;
+        }
+
+        .intro-instructions {
+            background: #1a2332;
+            color: white;
+            padding: 12px 16px;
+            width: 260px;
+            flex-shrink: 0;
+        }
+
+        .intro-instructions h2 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 14px;
+            letter-spacing: 1px;
+            color: #ff6b35;
+            margin-bottom: 6px;
+        }
+
+        .intro-instructions ol {
+            font-size: 9px;
+            padding-left: 14px;
+            line-height: 1.5;
+            color: rgba(255,255,255,0.85);
+        }
+
+        .intro-instructions li { margin-bottom: 2px; }
+
+        /* Fan Panels */
+        .fan-container {
+            border: 2px dashed #d1d5db;
+            padding: 4px;
+            position: relative;
+        }
+
+        .cut-label {
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: white;
+            padding: 0 8px;
+            font-size: 8px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #9ca3af;
+        }
+
+        .fan-panels {
+            display: grid;
+            grid-template-columns: repeat(8, 1fr);
+            min-height: 540px;
+        }
+
+        .fan-panel {
+            border-right: 1px dashed #d1d5db;
+            padding: 12px 6px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            position: relative;
+        }
+
+        .fan-panel:last-child { border-right: none; }
+
+        /* Alternate panel colors */
+        .fan-panel:nth-child(odd) { background: #f0f7ff; }
+        .fan-panel:nth-child(even) { background: white; }
+
+        .fan-panel-number {
+            width: 22px; height: 22px;
+            background: #1a2332;
+            color: white;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 13px;
+            display: flex; align-items: center; justify-content: center;
+            margin-bottom: 8px;
+            flex-shrink: 0;
+        }
+
+        .fan-panel:nth-child(1) .fan-panel-number,
+        .fan-panel:nth-child(5) .fan-panel-number { background: #ff6b35; }
+
+        .fan-panel-icon {
+            margin-bottom: 6px;
+        }
+
+        .fan-panel-icon svg {
+            width: 28px; height: 28px;
+            color: #1a2332;
+        }
+
+        .fan-panel:nth-child(1) .fan-panel-icon svg,
+        .fan-panel:nth-child(5) .fan-panel-icon svg { color: #ff6b35; }
+
+        .fan-panel-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 11px;
+            color: #1a2332;
+            letter-spacing: 0.5px;
+            line-height: 1.2;
+            margin-bottom: 6px;
+            min-height: 26px;
+        }
+
+        .fan-panel-tip {
+            font-size: 8.5px;
+            color: #4b5563;
+            line-height: 1.4;
+            flex: 1;
+        }
+
+        .fan-panel-footer {
+            margin-top: auto;
+            padding-top: 8px;
+            width: 100%;
+        }
+
+        .fan-panel-brand {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 7px;
+            color: #9ca3af;
+            letter-spacing: 1px;
+        }
+
+        /* Fold line labels */
+        .fold-labels {
+            display: grid;
+            grid-template-columns: repeat(8, 1fr);
+            margin-top: 2px;
+        }
+
+        .fold-label {
+            text-align: center;
+            font-size: 7px;
+            color: #d1d5db;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            padding: 2px 0;
+        }
+
+        .fold-label:nth-child(odd) { color: #ff6b35; }
+
+        /* Bottom info */
+        .bottom-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 10px;
+            padding: 8px 12px;
+            background: #f9fafb;
+            border: 1px solid #e5e7eb;
+            font-size: 9px;
+            color: #9ca3af;
+        }
+
+        .bottom-info strong { color: #1a2332; }
+
+        @media print {
+            body { width: auto; }
+            .page { width: auto; }
+            .no-print { display: none !important; }
+        }
+
+        .print-bar {
+            position: fixed; bottom: 0; left: 0; right: 0;
+            background: #1a2332; padding: 12px 24px;
+            display: flex; align-items: center; justify-content: center; gap: 16px; z-index: 100;
+        }
+
+        .print-bar p { color: rgba(255,255,255,0.7); font-size: 14px; }
+
+        .print-btn {
+            display: inline-flex; align-items: center; gap: 8px;
+            padding: 10px 24px; background: #ff6b35; color: white; border: none;
+            font-family: 'Bebas Neue', sans-serif; font-size: 18px;
+            letter-spacing: 1.5px; cursor: pointer;
+        }
+
+        .print-btn:hover { background: #e85d2a; }
+        .print-btn svg { width: 20px; height: 20px; }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <!-- Header -->
+        <div class="pdf-header">
+            <div class="pdf-header-left">
+                <div class="pdf-logo-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                </div>
+                <div class="pdf-logo-text">METRO <span>BOSTON</span> HVAC</div>
+            </div>
+            <div class="pdf-header-right">
+                <div class="pdf-header-phone">(781) 408-2506</div>
+                Licensed MA #081600137 &bull; Stoughton, MA
+            </div>
+        </div>
+
+        <!-- Title + Instructions -->
+        <div class="intro-row">
+            <div class="intro-title">
+                <h1><em>Stay Cool</em> Paper Fan</h1>
+                <p>Print, cut along the outer dashed line, then accordion-fold along each panel line. Pinch one end together and secure with tape or a rubber band. Fan yourself while you wait for your AC tune-up!</p>
+            </div>
+            <div class="intro-instructions">
+                <h2>How to Make Your Fan</h2>
+                <ol>
+                    <li>Print this page on regular paper (cardstock works even better)</li>
+                    <li>Cut along the outer dashed border</li>
+                    <li>Fold back and forth along each dashed panel line (accordion style)</li>
+                    <li>Pinch the bottom edge together</li>
+                    <li>Secure with tape, a staple, or rubber band</li>
+                    <li>Fan out the top and stay cool!</li>
+                </ol>
+            </div>
+        </div>
+
+        <!-- Fan Panels -->
+        <div class="fan-container">
+            <span class="cut-label">&#9986; Cut along dashed line</span>
+            <div class="fan-panels">
+                <!-- Panel 1 -->
+                <div class="fan-panel">
+                    <div class="fan-panel-number">1</div>
+                    <div class="fan-panel-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                    </div>
+                    <div class="fan-panel-title">Change Your Filters</div>
+                    <div class="fan-panel-tip">Replace HVAC filters every 1-3 months. A clean filter improves airflow by up to 15%.</div>
+                    <div class="fan-panel-footer"><span class="fan-panel-brand">MetroBostonHVAC.com</span></div>
+                </div>
+
+                <!-- Panel 2 -->
+                <div class="fan-panel">
+                    <div class="fan-panel-number">2</div>
+                    <div class="fan-panel-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"/></svg>
+                    </div>
+                    <div class="fan-panel-title">Set It Right</div>
+                    <div class="fan-panel-tip">Summer: 76&deg;F when home, 80-82&deg;F when away. Each 1&deg;F saves ~3% on energy.</div>
+                    <div class="fan-panel-footer"><span class="fan-panel-brand">(781) 408-2506</span></div>
+                </div>
+
+                <!-- Panel 3 -->
+                <div class="fan-panel">
+                    <div class="fan-panel-number">3</div>
+                    <div class="fan-panel-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/></svg>
+                    </div>
+                    <div class="fan-panel-title">Close the Blinds</div>
+                    <div class="fan-panel-tip">Closing curtains on south and west windows during peak sun can reduce cooling costs up to 30%.</div>
+                    <div class="fan-panel-footer"><span class="fan-panel-brand">MetroBostonHVAC.com</span></div>
+                </div>
+
+                <!-- Panel 4 -->
+                <div class="fan-panel">
+                    <div class="fan-panel-number">4</div>
+                    <div class="fan-panel-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+                    </div>
+                    <div class="fan-panel-title">Clear the Vents</div>
+                    <div class="fan-panel-tip">Keep furniture, rugs, and curtains away from vents and registers for even cooling throughout your home.</div>
+                    <div class="fan-panel-footer"><span class="fan-panel-brand">(781) 408-2506</span></div>
+                </div>
+
+                <!-- Panel 5 -->
+                <div class="fan-panel">
+                    <div class="fan-panel-number">5</div>
+                    <div class="fan-panel-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+                    </div>
+                    <div class="fan-panel-title">Annual Tune-Up</div>
+                    <div class="fan-panel-tip">Schedule a professional tune-up every spring. Prevents breakdowns and extends system life by years.</div>
+                    <div class="fan-panel-footer"><span class="fan-panel-brand">MetroBostonHVAC.com</span></div>
+                </div>
+
+                <!-- Panel 6 -->
+                <div class="fan-panel">
+                    <div class="fan-panel-number">6</div>
+                    <div class="fan-panel-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
+                    </div>
+                    <div class="fan-panel-title">Clean the Unit</div>
+                    <div class="fan-panel-tip">Keep 2 feet of clearance around your outdoor AC unit. Rinse the coils gently with a garden hose.</div>
+                    <div class="fan-panel-footer"><span class="fan-panel-brand">(781) 408-2506</span></div>
+                </div>
+
+                <!-- Panel 7 -->
+                <div class="fan-panel">
+                    <div class="fan-panel-number">7</div>
+                    <div class="fan-panel-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                    </div>
+                    <div class="fan-panel-title">Use Fans Wisely</div>
+                    <div class="fan-panel-tip">Ceiling fans counter-clockwise in summer create a wind-chill effect. You can raise the thermostat 4&deg;F with no comfort loss.</div>
+                    <div class="fan-panel-footer"><span class="fan-panel-brand">MetroBostonHVAC.com</span></div>
+                </div>
+
+                <!-- Panel 8 -->
+                <div class="fan-panel">
+                    <div class="fan-panel-number">8</div>
+                    <div class="fan-panel-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3"/><path d="M15.05 5A5 5 0 0 1 19 8.95M15.05 1A9 9 0 0 1 23 8.94"/></svg>
+                    </div>
+                    <div class="fan-panel-title">Call Us 24/7</div>
+                    <div class="fan-panel-tip">AC emergency? Call Metro Boston HVAC at (781) 408-2506. We offer 24/7 emergency service &amp; price match guarantee.</div>
+                    <div class="fan-panel-footer"><span class="fan-panel-brand">(781) 408-2506</span></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Fold labels -->
+        <div class="fold-labels">
+            <div class="fold-label">&#9660; fold</div>
+            <div class="fold-label">&#9650; fold</div>
+            <div class="fold-label">&#9660; fold</div>
+            <div class="fold-label">&#9650; fold</div>
+            <div class="fold-label">&#9660; fold</div>
+            <div class="fold-label">&#9650; fold</div>
+            <div class="fold-label">&#9660; fold</div>
+            <div class="fold-label">&#9650; fold</div>
+        </div>
+
+        <!-- Footer -->
+        <div class="bottom-info">
+            <span><strong>Metro Boston HVAC</strong> &bull; (781) 408-2506 &bull; License #081600137</span>
+            <span>MetroBostonHVAC.com</span>
+        </div>
+    </div>
+
+    <!-- Print Button -->
+    <div class="print-bar no-print">
+        <p>Print this page or save as PDF (Ctrl+P / Cmd+P)</p>
+        <button class="print-btn" onclick="window.print()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+            Print / Save PDF
+        </button>
+    </div>
+</body>
+</html>
