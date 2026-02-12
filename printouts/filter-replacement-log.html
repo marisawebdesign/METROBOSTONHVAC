@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HVAC Filter Replacement Log | Metro Boston HVAC</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        @page {
+            size: letter;
+            margin: 0.4in;
+        }
+
+        body {
+            font-family: 'Source Sans 3', sans-serif;
+            color: #1f2937;
+            line-height: 1.4;
+            background: white;
+            width: 8.5in;
+            margin: 0 auto;
+        }
+
+        .page {
+            width: 7.7in;
+            margin: 0 auto;
+            padding: 0;
+        }
+
+        /* Header */
+        .pdf-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 20px;
+            background: #1a2332;
+            margin-bottom: 16px;
+        }
+
+        .pdf-header-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .pdf-logo-icon {
+            width: 36px;
+            height: 36px;
+            background: #ff6b35;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .pdf-logo-icon svg {
+            width: 22px;
+            height: 22px;
+            color: white;
+        }
+
+        .pdf-logo-text {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 22px;
+            color: white;
+            letter-spacing: 2px;
+        }
+
+        .pdf-logo-text span {
+            color: #ff6b35;
+        }
+
+        .pdf-header-right {
+            text-align: right;
+            color: rgba(255,255,255,0.7);
+            font-size: 11px;
+            line-height: 1.4;
+        }
+
+        .pdf-header-phone {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 18px;
+            color: #ff6b35;
+            letter-spacing: 1px;
+        }
+
+        /* Title */
+        .pdf-title {
+            text-align: center;
+            margin-bottom: 12px;
+        }
+
+        .pdf-title h1 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 26px;
+            color: #1a2332;
+            letter-spacing: 2px;
+            line-height: 1;
+        }
+
+        .pdf-title p {
+            font-size: 11px;
+            color: #6b7280;
+            margin-top: 4px;
+        }
+
+        /* System Information Section */
+        .system-info {
+            border: 1px solid #e5e7eb;
+            padding: 10px 14px;
+            margin-bottom: 12px;
+        }
+
+        .system-info h3 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 14px;
+            color: #1a2332;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+            padding-bottom: 4px;
+            border-bottom: 2px solid #ff6b35;
+        }
+
+        .system-info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6px 24px;
+        }
+
+        .system-field {
+            display: flex;
+            align-items: baseline;
+            gap: 6px;
+            font-size: 10px;
+        }
+
+        .system-field label {
+            font-weight: 700;
+            color: #1a2332;
+            white-space: nowrap;
+        }
+
+        .system-field .blank-line {
+            flex: 1;
+            border-bottom: 1px solid #d1d5db;
+            min-width: 80px;
+        }
+
+        .system-field .hint {
+            font-size: 8.5px;
+            color: #9ca3af;
+            white-space: nowrap;
+        }
+
+        /* Replacement Log Table */
+        .log-section {
+            margin-bottom: 10px;
+        }
+
+        .log-section h3 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 14px;
+            color: #1a2332;
+            letter-spacing: 1px;
+            margin-bottom: 6px;
+            padding-bottom: 4px;
+            border-bottom: 2px solid #ff6b35;
+        }
+
+        .log-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 9px;
+        }
+
+        .log-table thead th {
+            background: #1a2332;
+            color: white;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 10px;
+            letter-spacing: 0.8px;
+            padding: 4px 6px;
+            text-align: left;
+            font-weight: 400;
+        }
+
+        .log-table thead th:first-child {
+            width: 24px;
+            text-align: center;
+        }
+
+        .log-table tbody td {
+            padding: 5px 6px;
+            border: 1px solid #e5e7eb;
+            height: 20px;
+            vertical-align: middle;
+        }
+
+        .log-table tbody td:first-child {
+            text-align: center;
+            font-weight: 600;
+            color: #9ca3af;
+            font-size: 8.5px;
+        }
+
+        .log-table tbody tr:nth-child(even) {
+            background: #f9fafb;
+        }
+
+        .log-table tbody tr:nth-child(odd) {
+            background: white;
+        }
+
+        /* Guide Section */
+        .guide-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 10px;
+        }
+
+        .guide-box {
+            border: 1px solid #e5e7eb;
+            padding: 8px 10px;
+        }
+
+        .guide-box h3 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 12px;
+            color: #1a2332;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+            padding-bottom: 3px;
+            border-bottom: 2px solid #ff6b35;
+        }
+
+        .guide-list {
+            font-size: 9px;
+            line-height: 1.5;
+        }
+
+        .guide-list dt {
+            font-weight: 700;
+            color: #1a2332;
+            display: inline;
+        }
+
+        .guide-list dd {
+            display: inline;
+            margin: 0;
+            color: #6b7280;
+        }
+
+        .guide-list dd::after {
+            content: '';
+            display: block;
+            margin-bottom: 2px;
+        }
+
+        .guide-list ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .guide-list ul li {
+            font-size: 9px;
+            color: #4b5563;
+            padding-left: 10px;
+            position: relative;
+            line-height: 1.5;
+        }
+
+        .guide-list ul li::before {
+            content: "\2022";
+            color: #ff6b35;
+            font-weight: 700;
+            position: absolute;
+            left: 0;
+        }
+
+        /* Footer */
+        .pdf-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 8px 16px;
+            background: #f9fafb;
+            border: 1px solid #e5e7eb;
+            font-size: 9px;
+            color: #9ca3af;
+        }
+
+        .pdf-footer-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .pdf-footer strong {
+            color: #1a2332;
+        }
+
+        /* Print styles */
+        @media print {
+            body { width: auto; }
+            .page { width: auto; }
+            .no-print { display: none !important; }
+        }
+
+        /* Screen-only print button */
+        .print-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: #1a2332;
+            padding: 12px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            z-index: 100;
+        }
+
+        .print-bar p {
+            color: rgba(255,255,255,0.7);
+            font-size: 14px;
+        }
+
+        .print-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 24px;
+            background: #ff6b35;
+            color: white;
+            border: none;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 18px;
+            letter-spacing: 1.5px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .print-btn:hover { background: #e85d2a; }
+        .print-btn svg { width: 20px; height: 20px; }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <!-- Header -->
+        <div class="pdf-header">
+            <div class="pdf-header-left">
+                <div class="pdf-logo-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                </div>
+                <div class="pdf-logo-text">METRO <span>BOSTON</span> HVAC</div>
+            </div>
+            <div class="pdf-header-right">
+                <div class="pdf-header-phone">(781) 408-2506</div>
+                Licensed MA #081600137 &bull; Stoughton, MA
+            </div>
+        </div>
+
+        <!-- Title -->
+        <div class="pdf-title">
+            <h1>HVAC Filter Replacement Log</h1>
+            <p>Track your filter changes to maintain air quality and system efficiency.</p>
+        </div>
+
+        <!-- System Information -->
+        <div class="system-info">
+            <h3>System Information</h3>
+            <div class="system-info-grid">
+                <div class="system-field">
+                    <label>System Type:</label>
+                    <span class="blank-line"></span>
+                    <span class="hint">(Furnace / AC / Heat Pump)</span>
+                </div>
+                <div class="system-field">
+                    <label>Filter Size:</label>
+                    <span class="blank-line"></span>
+                    <span class="hint">(e.g., 16x25x1, 20x20x4)</span>
+                </div>
+                <div class="system-field">
+                    <label>Filter Type:</label>
+                    <span class="blank-line"></span>
+                    <span class="hint">(Fiberglass / Pleated / HEPA)</span>
+                </div>
+                <div class="system-field">
+                    <label>Replacement Interval:</label>
+                    <span class="blank-line"></span>
+                    <span class="hint">(30 / 60 / 90 days)</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Replacement Log Table -->
+        <div class="log-section">
+            <h3>Replacement Log</h3>
+            <table class="log-table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Date Replaced</th>
+                        <th>Filter Type/Brand</th>
+                        <th>Filter Size</th>
+                        <th>Next Due Date</th>
+                        <th>Notes</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>1</td><td></td><td></td><td></td><td></td><td></td></tr>
+                    <tr><td>2</td><td></td><td></td><td></td><td></td><td></td></tr>
+                    <tr><td>3</td><td></td><td></td><td></td><td></td><td></td></tr>
+                    <tr><td>4</td><td></td><td></td><td></td><td></td><td></td></tr>
+                    <tr><td>5</td><td></td><td></td><td></td><td></td><td></td></tr>
+                    <tr><td>6</td><td></td><td></td><td></td><td></td><td></td></tr>
+                    <tr><td>7</td><td></td><td></td><td></td><td></td><td></td></tr>
+                    <tr><td>8</td><td></td><td></td><td></td><td></td><td></td></tr>
+                    <tr><td>9</td><td></td><td></td><td></td><td></td><td></td></tr>
+                    <tr><td>10</td><td></td><td></td><td></td><td></td><td></td></tr>
+                    <tr><td>11</td><td></td><td></td><td></td><td></td><td></td></tr>
+                    <tr><td>12</td><td></td><td></td><td></td><td></td><td></td></tr>
+                    <tr><td>13</td><td></td><td></td><td></td><td></td><td></td></tr>
+                    <tr><td>14</td><td></td><td></td><td></td><td></td><td></td></tr>
+                    <tr><td>15</td><td></td><td></td><td></td><td></td><td></td></tr>
+                    <tr><td>16</td><td></td><td></td><td></td><td></td><td></td></tr>
+                    <tr><td>17</td><td></td><td></td><td></td><td></td><td></td></tr>
+                    <tr><td>18</td><td></td><td></td><td></td><td></td><td></td></tr>
+                    <tr><td>19</td><td></td><td></td><td></td><td></td><td></td></tr>
+                    <tr><td>20</td><td></td><td></td><td></td><td></td><td></td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Filter Replacement Guide -->
+        <div class="guide-section">
+            <div class="guide-box">
+                <h3>Recommended Replacement Schedule</h3>
+                <dl class="guide-list">
+                    <dt>1" Fiberglass:</dt> <dd>Every 30 days</dd>
+                    <dt>1" Pleated:</dt> <dd>Every 60-90 days</dd>
+                    <dt>2" Pleated:</dt> <dd>Every 3-4 months</dd>
+                    <dt>4" Pleated:</dt> <dd>Every 6-12 months</dd>
+                    <dt>HEPA:</dt> <dd>Per manufacturer specs</dd>
+                </dl>
+            </div>
+            <div class="guide-box">
+                <h3>Replace More Often If</h3>
+                <div class="guide-list">
+                    <ul>
+                        <li>You have pets (especially shedding breeds)</li>
+                        <li>Family members have allergies or asthma</li>
+                        <li>You live near construction or dusty roads</li>
+                        <li>You run your system more than average</li>
+                        <li>You notice reduced airflow</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="pdf-footer">
+            <div class="pdf-footer-left">
+                <span><strong>Metro Boston HVAC</strong> &bull; (781) 408-2506</span>
+                <span>&bull; Stoughton, MA</span>
+                <span>&bull; License #081600137</span>
+            </div>
+            <span>MetroBostonHVAC.com</span>
+        </div>
+    </div>
+
+    <!-- Print Button (screen only) -->
+    <div class="print-bar no-print">
+        <p>Print this page or save as PDF (Ctrl+P / Cmd+P)</p>
+        <button class="print-btn" onclick="window.print()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+            Print / Save PDF
+        </button>
+    </div>
+</body>
+</html>

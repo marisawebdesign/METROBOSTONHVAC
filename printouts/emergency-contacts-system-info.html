@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emergency Contacts & HVAC System Information | Metro Boston HVAC</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        @page {
+            size: letter;
+            margin: 0.4in;
+        }
+
+        body {
+            font-family: 'Source Sans 3', sans-serif;
+            color: #1f2937;
+            line-height: 1.4;
+            background: white;
+            width: 8.5in;
+            margin: 0 auto;
+        }
+
+        .page {
+            width: 7.7in;
+            margin: 0 auto;
+            padding: 0;
+        }
+
+        /* Header */
+        .pdf-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 20px;
+            background: #1a2332;
+            margin-bottom: 16px;
+        }
+
+        .pdf-header-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .pdf-logo-icon {
+            width: 36px;
+            height: 36px;
+            background: #ff6b35;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .pdf-logo-icon svg {
+            width: 22px;
+            height: 22px;
+            color: white;
+        }
+
+        .pdf-logo-text {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 22px;
+            color: white;
+            letter-spacing: 2px;
+        }
+
+        .pdf-logo-text span {
+            color: #ff6b35;
+        }
+
+        .pdf-header-right {
+            text-align: right;
+            color: rgba(255,255,255,0.7);
+            font-size: 11px;
+            line-height: 1.4;
+        }
+
+        .pdf-header-phone {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 18px;
+            color: #ff6b35;
+            letter-spacing: 1px;
+        }
+
+        /* Title */
+        .pdf-title {
+            text-align: center;
+            margin-bottom: 14px;
+        }
+
+        .pdf-title h1 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 26px;
+            color: #1a2332;
+            letter-spacing: 2px;
+            line-height: 1;
+        }
+
+        .pdf-title p {
+            font-size: 11px;
+            color: #6b7280;
+            margin-top: 4px;
+        }
+
+        /* Section boxes */
+        .section-box {
+            border: 1px solid #e5e7eb;
+            margin-bottom: 12px;
+        }
+
+        .section-header {
+            background: #1a2332;
+            color: white;
+            padding: 6px 12px;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 15px;
+            letter-spacing: 1.5px;
+        }
+
+        .section-body {
+            padding: 10px 14px;
+        }
+
+        /* Emergency contacts */
+        .emergency-primary {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: #fff7ed;
+            border: 2px solid #ff6b35;
+            padding: 8px 14px;
+            margin-bottom: 10px;
+        }
+
+        .emergency-primary-name {
+            font-weight: 700;
+            font-size: 13px;
+            color: #1a2332;
+        }
+
+        .emergency-primary-phone {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 20px;
+            color: #ff6b35;
+            letter-spacing: 1px;
+        }
+
+        .emergency-primary-note {
+            font-size: 9px;
+            color: #ff6b35;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .contact-row {
+            display: flex;
+            align-items: baseline;
+            gap: 8px;
+            padding: 5px 0;
+            border-bottom: 1px solid #f3f4f6;
+            font-size: 11px;
+        }
+
+        .contact-row:last-child {
+            border-bottom: none;
+        }
+
+        .contact-label {
+            font-weight: 600;
+            color: #1a2332;
+            min-width: 120px;
+            flex-shrink: 0;
+        }
+
+        .contact-field {
+            flex: 1;
+            border-bottom: 1px solid #d1d5db;
+            min-height: 14px;
+            color: #9ca3af;
+            font-size: 10px;
+        }
+
+        .contact-phone-label {
+            font-weight: 600;
+            color: #1a2332;
+            min-width: 44px;
+            flex-shrink: 0;
+            margin-left: 8px;
+        }
+
+        .contact-phone-field {
+            width: 140px;
+            flex-shrink: 0;
+            border-bottom: 1px solid #d1d5db;
+            min-height: 14px;
+            color: #9ca3af;
+            font-size: 10px;
+        }
+
+        .contact-prefilled {
+            color: #1a2332;
+            font-weight: 600;
+        }
+
+        /* System info grids */
+        .systems-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+
+        .system-box {
+            border: 1px solid #e5e7eb;
+        }
+
+        .system-header {
+            background: #1a2332;
+            color: white;
+            padding: 5px 12px;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 14px;
+            letter-spacing: 1.5px;
+        }
+
+        .system-body {
+            padding: 8px 12px;
+        }
+
+        .info-row {
+            display: flex;
+            align-items: baseline;
+            gap: 6px;
+            padding: 3px 0;
+            border-bottom: 1px solid #f3f4f6;
+            font-size: 10px;
+        }
+
+        .info-row:last-child {
+            border-bottom: none;
+        }
+
+        .info-label {
+            font-weight: 600;
+            color: #1a2332;
+            min-width: 95px;
+            flex-shrink: 0;
+        }
+
+        .info-field {
+            flex: 1;
+            border-bottom: 1px solid #d1d5db;
+            min-height: 13px;
+        }
+
+        .info-hint {
+            font-size: 8px;
+            color: #9ca3af;
+            flex-shrink: 0;
+        }
+
+        /* Safety reminders */
+        .safety-box {
+            border: 1px solid #e5e7eb;
+            margin-bottom: 0;
+        }
+
+        .safety-header {
+            background: #dc2626;
+            color: white;
+            padding: 5px 12px;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 14px;
+            letter-spacing: 1.5px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .safety-body {
+            padding: 8px 14px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2px 20px;
+        }
+
+        .safety-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 6px;
+            font-size: 9.5px;
+            line-height: 1.4;
+            padding: 2px 0;
+        }
+
+        .safety-icon {
+            color: #dc2626;
+            font-weight: 700;
+            flex-shrink: 0;
+            font-size: 10px;
+            margin-top: 1px;
+        }
+
+        /* Footer */
+        .pdf-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 8px 16px;
+            background: #f9fafb;
+            border: 1px solid #e5e7eb;
+            font-size: 9px;
+            color: #9ca3af;
+            margin-top: 12px;
+        }
+
+        .pdf-footer-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .pdf-footer strong {
+            color: #1a2332;
+        }
+
+        /* Print styles */
+        @media print {
+            body { width: auto; }
+            .page { width: auto; }
+            .no-print { display: none !important; }
+        }
+
+        /* Screen-only print button */
+        .print-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: #1a2332;
+            padding: 12px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            z-index: 100;
+        }
+
+        .print-bar p {
+            color: rgba(255,255,255,0.7);
+            font-size: 14px;
+        }
+
+        .print-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 24px;
+            background: #ff6b35;
+            color: white;
+            border: none;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 18px;
+            letter-spacing: 1.5px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .print-btn:hover { background: #e85d2a; }
+        .print-btn svg { width: 20px; height: 20px; }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <!-- Header -->
+        <div class="pdf-header">
+            <div class="pdf-header-left">
+                <div class="pdf-logo-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                </div>
+                <div class="pdf-logo-text">METRO <span>BOSTON</span> HVAC</div>
+            </div>
+            <div class="pdf-header-right">
+                <div class="pdf-header-phone">(781) 408-2506</div>
+                Licensed MA #081600137 &bull; Stoughton, MA
+            </div>
+        </div>
+
+        <!-- Title -->
+        <div class="pdf-title">
+            <h1>Emergency Contacts &amp; HVAC System Information</h1>
+            <p>Post near your HVAC system for quick reference in emergencies.</p>
+        </div>
+
+        <!-- Section 1: Emergency Contacts -->
+        <div class="section-box">
+            <div class="section-header">Emergency Contacts</div>
+            <div class="section-body">
+                <div class="emergency-primary">
+                    <div>
+                        <div class="emergency-primary-name">Metro Boston HVAC</div>
+                        <div class="emergency-primary-note">24/7 Emergency Service</div>
+                    </div>
+                    <div class="emergency-primary-phone">(781) 408-2506</div>
+                </div>
+
+                <div class="contact-row">
+                    <span class="contact-label">Gas Company:</span>
+                    <span class="contact-field"></span>
+                    <span class="contact-phone-label">Phone:</span>
+                    <span class="contact-phone-field"></span>
+                </div>
+                <div class="contact-row">
+                    <span class="contact-label">Electric Company:</span>
+                    <span class="contact-field"></span>
+                    <span class="contact-phone-label">Phone:</span>
+                    <span class="contact-phone-field"></span>
+                </div>
+                <div class="contact-row">
+                    <span class="contact-label">Plumber:</span>
+                    <span class="contact-field"></span>
+                    <span class="contact-phone-label">Phone:</span>
+                    <span class="contact-phone-field"></span>
+                </div>
+                <div class="contact-row">
+                    <span class="contact-label">Electrician:</span>
+                    <span class="contact-field"></span>
+                    <span class="contact-phone-label">Phone:</span>
+                    <span class="contact-phone-field"></span>
+                </div>
+                <div class="contact-row">
+                    <span class="contact-label">Insurance Company:</span>
+                    <span class="contact-field"></span>
+                    <span class="contact-phone-label">Phone:</span>
+                    <span class="contact-phone-field"></span>
+                </div>
+                <div class="contact-row">
+                    <span class="contact-label">Emergency Services:</span>
+                    <span class="contact-field contact-prefilled">Police / Fire / Medical</span>
+                    <span class="contact-phone-label">Phone:</span>
+                    <span class="contact-phone-field contact-prefilled">911</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 2 & 3: System Information -->
+        <div class="systems-grid">
+            <!-- Heating System -->
+            <div class="system-box">
+                <div class="system-header">Heating System Information</div>
+                <div class="system-body">
+                    <div class="info-row">
+                        <span class="info-label">System Type:</span>
+                        <span class="info-field"></span>
+                        <span class="info-hint">Furnace / Boiler / Heat Pump</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Fuel Type:</span>
+                        <span class="info-field"></span>
+                        <span class="info-hint">Gas / Oil / Electric / Propane</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Make/Brand:</span>
+                        <span class="info-field"></span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Model Number:</span>
+                        <span class="info-field"></span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Serial Number:</span>
+                        <span class="info-field"></span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Installation Date:</span>
+                        <span class="info-field"></span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">BTU Rating:</span>
+                        <span class="info-field"></span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Warranty Exp:</span>
+                        <span class="info-field"></span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Last Service Date:</span>
+                        <span class="info-field"></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cooling System -->
+            <div class="system-box">
+                <div class="system-header">Cooling System Information</div>
+                <div class="system-body">
+                    <div class="info-row">
+                        <span class="info-label">System Type:</span>
+                        <span class="info-field"></span>
+                        <span class="info-hint">Central AC / Heat Pump / Mini-Split</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Make/Brand:</span>
+                        <span class="info-field"></span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Model Number:</span>
+                        <span class="info-field"></span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Serial Number:</span>
+                        <span class="info-field"></span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Installation Date:</span>
+                        <span class="info-field"></span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">SEER Rating:</span>
+                        <span class="info-field"></span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Tonnage:</span>
+                        <span class="info-field"></span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Warranty Exp:</span>
+                        <span class="info-field"></span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Last Service Date:</span>
+                        <span class="info-field"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 4: Safety Reminders -->
+        <div class="safety-box">
+            <div class="safety-header">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                Important Safety Reminders
+            </div>
+            <div class="safety-body">
+                <div class="safety-item">
+                    <span class="safety-icon">&#9679;</span>
+                    <span>If you smell gas, leave immediately and call 911</span>
+                </div>
+                <div class="safety-item">
+                    <span class="safety-icon">&#9679;</span>
+                    <span>Never store flammable materials near your furnace</span>
+                </div>
+                <div class="safety-item">
+                    <span class="safety-icon">&#9679;</span>
+                    <span>Test CO detectors monthly; replace batteries twice yearly</span>
+                </div>
+                <div class="safety-item">
+                    <span class="safety-icon">&#9679;</span>
+                    <span>Keep furnace area clear (3ft minimum clearance)</span>
+                </div>
+                <div class="safety-item">
+                    <span class="safety-icon">&#9679;</span>
+                    <span>Know where your gas shutoff valve is located</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="pdf-footer">
+            <div class="pdf-footer-left">
+                <span><strong>Metro Boston HVAC</strong> &bull; (781) 408-2506</span>
+                <span>&bull; Stoughton, MA</span>
+                <span>&bull; License #081600137</span>
+            </div>
+            <span>MetroBostonHVAC.com</span>
+        </div>
+    </div>
+
+    <!-- Print Button (screen only) -->
+    <div class="print-bar no-print">
+        <p>Print this page or save as PDF (Ctrl+P / Cmd+P)</p>
+        <button class="print-btn" onclick="window.print()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+            Print / Save PDF
+        </button>
+    </div>
+</body>
+</html>
