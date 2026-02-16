@@ -250,3 +250,146 @@
             moving = false;
         }, { passive: true });
     })();
+
+    // Reviews carousel — full-featured with auto-advance, pause, keyboard nav, ARIA
+    (function() {
+        var track = document.getElementById('reviewsTrack');
+        var dotsContainer = document.getElementById('reviewsDots');
+        var prevBtn = document.getElementById('reviewsPrev');
+        var nextBtn = document.getElementById('reviewsNext');
+        if (!track || !dotsContainer) return;
+
+        var section = track.closest('.reviews-section');
+        var cards = track.children;
+        var current = 0;
+        var autoplayInterval = null;
+        var autoplayDelay = 6000;
+
+        // ARIA setup
+        track.setAttribute('role', 'list');
+        track.setAttribute('aria-label', 'Customer reviews');
+        for (var c = 0; c < cards.length; c++) {
+            cards[c].setAttribute('role', 'listitem');
+        }
+        dotsContainer.setAttribute('role', 'tablist');
+        dotsContainer.setAttribute('aria-label', 'Review pages');
+
+        function getCardsPerView() {
+            var width = window.innerWidth;
+            if (width <= 480) return 1;
+            if (width <= 768) return 2;
+            return 3;
+        }
+
+        function getTotalPages() {
+            var perView = getCardsPerView();
+            return Math.ceil(cards.length / perView);
+        }
+
+        function buildDots() {
+            dotsContainer.innerHTML = '';
+            var total = getTotalPages();
+            for (var i = 0; i < total; i++) {
+                var dot = document.createElement('button');
+                dot.className = 'reviews-dot' + (i === current ? ' active' : '');
+                dot.setAttribute('role', 'tab');
+                dot.setAttribute('aria-selected', i === current ? 'true' : 'false');
+                dot.setAttribute('aria-label', 'Review page ' + (i + 1) + ' of ' + total);
+                dot.addEventListener('click', (function(idx) {
+                    return function() { goTo(idx); };
+                })(i));
+                dotsContainer.appendChild(dot);
+            }
+        }
+
+        function goTo(index) {
+            var total = getTotalPages();
+            if (index < 0) index = total - 1;
+            if (index >= total) index = 0;
+            current = index;
+
+            var perView = getCardsPerView();
+            var cardEl = cards[0];
+            var style = window.getComputedStyle(cardEl);
+            var cardWidth = cardEl.offsetWidth + parseFloat(style.marginLeft) + parseFloat(style.marginRight);
+            var offset = current * perView * cardWidth;
+
+            track.style.transform = 'translateX(-' + offset + 'px)';
+
+            var dots = dotsContainer.querySelectorAll('.reviews-dot');
+            for (var i = 0; i < dots.length; i++) {
+                dots[i].classList.toggle('active', i === current);
+                dots[i].setAttribute('aria-selected', i === current ? 'true' : 'false');
+            }
+        }
+
+        prevBtn.addEventListener('click', function() { goTo(current - 1); });
+        nextBtn.addEventListener('click', function() { goTo(current + 1); });
+
+        // Touch/swipe support
+        var startX = 0;
+        var moving = false;
+        track.addEventListener('touchstart', function(e) {
+            startX = e.touches[0].clientX;
+            moving = true;
+        }, { passive: true });
+        track.addEventListener('touchend', function(e) {
+            if (!moving) return;
+            var diff = startX - e.changedTouches[0].clientX;
+            if (Math.abs(diff) > 40) {
+                goTo(diff > 0 ? current + 1 : current - 1);
+            }
+            moving = false;
+        }, { passive: true });
+
+        // Auto-advance
+        function startAutoplay() {
+            stopAutoplay();
+            autoplayInterval = setInterval(function() {
+                goTo(current + 1);
+            }, autoplayDelay);
+        }
+
+        function stopAutoplay() {
+            if (autoplayInterval) {
+                clearInterval(autoplayInterval);
+                autoplayInterval = null;
+            }
+        }
+
+        // Pause on hover
+        section.addEventListener('mouseenter', stopAutoplay);
+        section.addEventListener('mouseleave', startAutoplay);
+
+        // Pause on focus within (for keyboard users)
+        section.addEventListener('focusin', stopAutoplay);
+        section.addEventListener('focusout', function(e) {
+            if (!section.contains(e.relatedTarget)) startAutoplay();
+        });
+
+        // Keyboard navigation
+        section.addEventListener('keydown', function(e) {
+            if (e.key === 'ArrowLeft') {
+                goTo(current - 1);
+                e.preventDefault();
+            } else if (e.key === 'ArrowRight') {
+                goTo(current + 1);
+                e.preventDefault();
+            }
+        });
+
+        // Rebuild dots on resize
+        var resizeTimer;
+        window.addEventListener('resize', function() {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(function() {
+                var total = getTotalPages();
+                if (current >= total) current = total - 1;
+                buildDots();
+                goTo(current);
+            }, 200);
+        });
+
+        buildDots();
+        startAutoplay();
+    })();
