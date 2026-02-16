@@ -574,6 +574,50 @@
             margin-top: 14px;
         }
 
+        /* ==================== COUPON CLIPPED STATE ==================== */
+        .coupon-card.clipped {
+            border-color: var(--navy-light);
+        }
+
+        .coupon-card.clipped .coupon-scissor svg {
+            color: var(--navy-light);
+        }
+
+        .coupon-clip-btn.clipped {
+            background: var(--navy-dark);
+            box-shadow: 0 4px 12px rgba(26,58,82,0.3);
+        }
+
+        .coupon-clip-btn.clipped:hover {
+            background: var(--navy-light);
+            box-shadow: 0 6px 18px rgba(26,58,82,0.4);
+        }
+
+        /* Clipped stamp overlay */
+        .coupon-card .coupon-stamp {
+            display: none;
+        }
+
+        .coupon-card.clipped .coupon-stamp {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            top: 24px;
+            right: 24px;
+            width: 80px;
+            height: 80px;
+            border: 3px solid rgba(16,185,129,0.35);
+            border-radius: 50%;
+            color: var(--green);
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 15px;
+            letter-spacing: 2px;
+            transform: rotate(-15deg);
+            z-index: 4;
+            pointer-events: none;
+        }
+
         /* ==================== COUPON HOVER: CORNER PEEL ==================== */
         .coupon-card {
             transition: box-shadow 0.4s ease;
@@ -1248,6 +1292,7 @@
                     <div class="coupon-scissor">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><line x1="20" y1="4" x2="8.12" y2="15.88"/><line x1="14.47" y1="14.48" x2="20" y2="20"/><line x1="8.12" y1="8.12" x2="12" y2="12"/></svg>
                     </div>
+                    <div class="coupon-stamp">CLIPPED</div>
                     <div class="coupon-body">
                         <h3 class="coupon-headline">$79 Diagnostic Fee</h3>
                         <p class="coupon-subtitle">Waived With Completed Repair</p>
@@ -1275,6 +1320,7 @@
                     <div class="coupon-scissor">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><line x1="20" y1="4" x2="8.12" y2="15.88"/><line x1="14.47" y1="14.48" x2="20" y2="20"/><line x1="8.12" y1="8.12" x2="12" y2="12"/></svg>
                     </div>
+                    <div class="coupon-stamp">CLIPPED</div>
                     <div class="coupon-body">
                         <h3 class="coupon-headline">$25 Off First Service</h3>
                         <p class="coupon-subtitle">New Customer Welcome</p>
@@ -1292,6 +1338,7 @@
                     <div class="coupon-scissor">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><line x1="20" y1="4" x2="8.12" y2="15.88"/><line x1="14.47" y1="14.48" x2="20" y2="20"/><line x1="8.12" y1="8.12" x2="12" y2="12"/></svg>
                     </div>
+                    <div class="coupon-stamp">CLIPPED</div>
                     <div class="coupon-body">
                         <h3 class="coupon-headline">10% Off All Services</h3>
                         <p class="coupon-subtitle">Seniors &amp; Veterans</p>
@@ -1429,6 +1476,10 @@
             localStorage.setItem(STORAGE_KEY, JSON.stringify(arr));
         }
 
+        function isClipped(id) {
+            return getClipped().some(function(o) { return o.id === id; });
+        }
+
         function updateStickyBar() {
             var count = getClipped().length;
             var bar = document.getElementById('stickyBar');
@@ -1441,7 +1492,55 @@
             }
         }
 
+        // ===== CLIP / UNCLIP TOGGLE =====
+        function setClippedUI(card, btn, clipped) {
+            if (clipped) {
+                card.classList.add('clipped');
+                btn.classList.add('clipped');
+                btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="18" height="18"><polyline points="20 6 9 17 4 12"/></svg> <span class="coupon-clip-text">Offer Clipped</span>';
+                btn.setAttribute('aria-label', 'Unclip this offer');
+            } else {
+                card.classList.remove('clipped');
+                btn.classList.remove('clipped');
+                btn.innerHTML = '<svg class="coupon-clip-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><line x1="20" y1="4" x2="8.12" y2="15.88"/><line x1="14.47" y1="14.48" x2="20" y2="20"/><line x1="8.12" y1="8.12" x2="12" y2="12"/></svg> <span class="coupon-clip-text">Clip This Offer</span>';
+                btn.setAttribute('aria-label', 'Clip this offer');
+            }
+        }
+
+        // Restore clipped state on page load
+        document.querySelectorAll('.coupon-card').forEach(function(card) {
+            var id = card.getAttribute('data-offer-id');
+            var btn = card.querySelector('.coupon-clip-btn');
+            if (isClipped(id)) {
+                setClippedUI(card, btn, true);
+            }
+        });
+
         updateStickyBar();
+
+        // Bind clip/unclip click handlers
+        document.querySelectorAll('.coupon-clip-btn').forEach(function(btn) {
+            btn.addEventListener('click', function() {
+                var card = btn.closest('.coupon-card');
+                var id = card.getAttribute('data-offer-id');
+                var title = card.getAttribute('data-offer-title');
+                var arr = getClipped();
+                var alreadyClipped = arr.some(function(o) { return o.id === id; });
+
+                if (alreadyClipped) {
+                    // Unclip
+                    arr = arr.filter(function(o) { return o.id !== id; });
+                    saveClipped(arr);
+                    setClippedUI(card, btn, false);
+                } else {
+                    // Clip
+                    arr.push({ id: id, title: title });
+                    saveClipped(arr);
+                    setClippedUI(card, btn, true);
+                }
+                updateStickyBar();
+            });
+        });
 
         // ===== MODAL =====
         window.openModal = function() {
