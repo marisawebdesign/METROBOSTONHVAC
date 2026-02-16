@@ -1427,7 +1427,7 @@
             border-radius: 4px;
         }
 
-        /* ==================== REVIEWS CAROUSEL SECTION ==================== */
+        /* ==================== REVIEWS SECTION ==================== */
         .reviews-section {
             padding: 80px 24px;
             background: var(--gray-50);
@@ -1436,175 +1436,14 @@
         .reviews-container {
             max-width: 1200px;
             margin: 0 auto;
-            text-align: center;
         }
 
-        .reviews-title {
+        .reviews-heading {
             font-family: 'Bebas Neue', sans-serif;
             font-size: clamp(32px, 4vw, 46px);
             color: var(--navy);
-            margin-bottom: 12px;
             letter-spacing: 1px;
-        }
-
-        .reviews-subtitle {
-            font-size: 18px;
-            color: var(--gray-600);
-            margin-bottom: 48px;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .reviews-carousel-wrapper {
-            position: relative;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .reviews-carousel-viewport {
-            overflow: hidden;
-            flex: 1;
-        }
-
-        .reviews-carousel-track {
-            display: flex;
-            transition: transform 0.4s ease;
-        }
-
-        .review-card {
-            flex: 0 0 calc(33.333% - 16px);
-            margin: 0 8px;
-            background: var(--white);
-            border-radius: 14px;
-            padding: 28px 24px;
             text-align: center;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-            border: 1px solid var(--gray-200);
-            transition: all 0.3s ease;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .review-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 8px 24px rgba(0,0,0,0.12);
-            border-color: var(--orange);
-        }
-
-        .review-logo {
-            height: 36px;
-            margin-bottom: 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .review-logo img {
-            height: 100%;
-            width: auto;
-        }
-
-        .review-logo svg {
-            height: 32px;
-            width: auto;
-        }
-
-        .review-stars {
-            display: flex;
-            justify-content: center;
-            gap: 3px;
-            margin-bottom: 16px;
-        }
-
-        .review-stars svg {
-            width: 18px;
-            height: 18px;
-            fill: var(--gold);
-            color: var(--gold);
-        }
-
-        .review-text {
-            font-size: 16px;
-            line-height: 1.6;
-            color: var(--gray-800);
-            margin-bottom: 20px;
-            flex: 1;
-            text-align: left;
-        }
-
-        .review-meta {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding-top: 16px;
-            border-top: 1px solid var(--gray-200);
-        }
-
-        .review-name {
-            font-weight: 700;
-            font-size: 14px;
-            color: var(--navy);
-        }
-
-        .review-date {
-            font-size: 13px;
-            color: var(--gray-400);
-        }
-
-        /* Arrow buttons */
-        .reviews-arrow {
-            width: 44px;
-            height: 44px;
-            background: var(--white);
-            border: 1px solid var(--gray-200);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            flex-shrink: 0;
-            transition: all 0.2s ease;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-        }
-
-        .reviews-arrow:hover {
-            border-color: var(--orange);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-        }
-
-        .reviews-arrow svg {
-            width: 20px;
-            height: 20px;
-            color: var(--navy);
-        }
-
-        .reviews-arrow:hover svg { color: var(--orange); }
-
-        /* Dots */
-        .reviews-dots {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            margin-top: 28px;
-        }
-
-        .reviews-dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: var(--gray-200);
-            border: none;
-            padding: 0;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .reviews-dot.active {
-            background: var(--orange);
-            width: 24px;
-            border-radius: 4px;
         }
 
         /* ==================== INSTANT QUOTE SECTION ==================== */
@@ -2235,17 +2074,6 @@
                 padding: 6px 8px;
             }
 
-            .review-card {
-                flex: 0 0 calc(50% - 16px);
-            }
-
-            .reviews-arrow {
-                width: 36px;
-                height: 36px;
-            }
-
-            .reviews-arrow svg { width: 18px; height: 18px; }
-
             .quote-features {
                 flex-direction: column;
                 gap: 16px;
@@ -2253,23 +2081,6 @@
         }
 
         @media (max-width: 480px) {
-            .review-card {
-                flex: 0 0 calc(100% - 16px);
-                padding: 24px 18px;
-            }
-
-            .reviews-arrow {
-                display: none;
-            }
-
-            .reviews-carousel-wrapper {
-                gap: 0;
-            }
-
-            .review-text {
-                font-size: 15px;
-            }
-
             .mobile-trust-item {
                 width: 60px;
             }
