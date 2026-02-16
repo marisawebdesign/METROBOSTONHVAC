@@ -1438,32 +1438,38 @@
             margin: 0 auto;
         }
 
-        /* Platform Bar */
+        /* Platform Trust Bar (below header/nav) */
         .review-platforms-bar {
-            border-bottom: 1px solid var(--gray-200);
-            padding-bottom: 32px;
-            margin-bottom: 40px;
+            background: #1a2332;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+            padding: 10px 24px;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
         }
 
         .review-platforms-row {
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 32px;
-            flex-wrap: wrap;
+            gap: 24px;
+            flex-wrap: nowrap;
+            min-width: max-content;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
         .review-platform {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
             text-decoration: none;
-            padding: 8px 12px;
+            padding: 6px 10px;
             transition: opacity 0.2s ease;
+            white-space: nowrap;
         }
 
         .review-platform:hover {
-            opacity: 0.75;
+            opacity: 0.8;
         }
 
         .review-platform-logo {
@@ -1491,7 +1497,7 @@
         .review-platform-name {
             font-size: 13px;
             font-weight: 700;
-            color: var(--gray-800);
+            color: rgba(255,255,255,0.9);
             line-height: 1;
         }
 
@@ -1505,9 +1511,7 @@
         }
 
         .review-platform-count {
-            font-size: 11px;
-            color: var(--gray-400);
-            line-height: 1;
+            display: none;
         }
 
         /* Section Heading */
@@ -1523,16 +1527,19 @@
         @media (max-width: 768px) {
             .review-platforms-row {
                 gap: 16px;
+                justify-content: flex-start;
             }
             .review-platform {
-                padding: 6px 8px;
+                padding: 4px 8px;
             }
         }
 
         @media (max-width: 480px) {
+            .review-platforms-bar {
+                padding: 8px 12px;
+            }
             .review-platforms-row {
                 gap: 12px;
-                justify-content: center;
             }
             .review-platform {
                 gap: 6px;
@@ -1544,9 +1551,6 @@
             }
             .review-platform-name {
                 font-size: 11px;
-            }
-            .review-platform-count {
-                font-size: 10px;
             }
             .review-platform-stars svg {
                 width: 10px;
