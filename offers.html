@@ -696,13 +696,6 @@
             line-height: 1.5; margin-bottom: 24px;
         }
 
-        .urgency-date {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: clamp(28px, 4vw, 42px);
-            color: var(--orange); letter-spacing: 2px;
-            margin-bottom: 32px;
-        }
-
         .urgency-trust {
             display: flex; justify-content: center; flex-wrap: wrap;
             gap: 28px; margin-bottom: 40px;
@@ -721,7 +714,7 @@
 
         .urgency-cta {
             display: inline-flex; align-items: center; gap: 10px;
-            padding: 18px 36px; border-radius: 10px;
+            padding: 18px 36px; border-radius: 0;
             font-size: 18px; font-weight: 700;
             text-decoration: none; transition: all 0.3s ease;
         }
@@ -1010,7 +1003,6 @@
             .offers-hero-content h1 { font-size: 32px; }
             .coupon-headline { font-size: 26px; }
             .coupon-body { padding: 22px 18px 20px; }
-            .urgency-date { font-size: 24px; }
         }
 
         /* ==================== PRINT ==================== */
@@ -1358,9 +1350,8 @@
     <!-- ==================== URGENCY SECTION ==================== -->
     <section class="urgency-section">
         <div class="urgency-container">
-            <h2>THESE OFFERS <span class="accent">WON'T LAST</span> FOREVER</h2>
-            <p class="urgency-sub">Claim your savings now and keep them for 90 days from today</p>
-            <div class="urgency-date" id="expiryDate"></div>
+            <h2>READY TO <span class="accent">SAVE</span>?</h2>
+            <p class="urgency-sub">Clip your offers above, then call or schedule online to book your service</p>
             <div class="urgency-trust">
                 <div class="urgency-trust-item">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
