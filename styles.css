@@ -1438,12 +1438,120 @@
             margin: 0 auto;
         }
 
+        /* Platform Bar */
+        .review-platforms-bar {
+            border-bottom: 1px solid var(--gray-200);
+            padding-bottom: 32px;
+            margin-bottom: 40px;
+        }
+
+        .review-platforms-row {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 32px;
+            flex-wrap: wrap;
+        }
+
+        .review-platform {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            padding: 8px 12px;
+            transition: opacity 0.2s ease;
+        }
+
+        .review-platform:hover {
+            opacity: 0.75;
+        }
+
+        .review-platform-logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .angi-wordmark {
+            font-family: 'Source Sans 3', Arial, sans-serif;
+            font-size: 18px;
+            font-weight: 800;
+            color: #49A744;
+            text-transform: lowercase;
+            line-height: 1;
+        }
+
+        .review-platform-info {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .review-platform-name {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--gray-800);
+            line-height: 1;
+        }
+
+        .review-platform-stars {
+            display: flex;
+            gap: 1px;
+        }
+
+        .review-platform-stars svg {
+            fill: var(--orange);
+        }
+
+        .review-platform-count {
+            font-size: 11px;
+            color: var(--gray-400);
+            line-height: 1;
+        }
+
+        /* Section Heading */
         .reviews-heading {
             font-family: 'Bebas Neue', sans-serif;
             font-size: clamp(32px, 4vw, 46px);
             color: var(--navy);
             letter-spacing: 1px;
             text-align: center;
+            margin-bottom: 40px;
+        }
+
+        @media (max-width: 768px) {
+            .review-platforms-row {
+                gap: 16px;
+            }
+            .review-platform {
+                padding: 6px 8px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .review-platforms-row {
+                gap: 12px;
+                justify-content: center;
+            }
+            .review-platform {
+                gap: 6px;
+                padding: 4px 6px;
+            }
+            .review-platform-logo svg,
+            .review-platform-logo .angi-wordmark {
+                transform: scale(0.85);
+            }
+            .review-platform-name {
+                font-size: 11px;
+            }
+            .review-platform-count {
+                font-size: 10px;
+            }
+            .review-platform-stars svg {
+                width: 10px;
+                height: 10px;
+            }
         }
 
         /* ==================== INSTANT QUOTE SECTION ==================== */
