@@ -1726,6 +1726,57 @@
             }
         }
 
+        /* Reviews CTA Buttons */
+        .reviews-cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+        }
+
+        .reviews-cta-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 14px 32px;
+            font-size: 14px;
+            font-weight: 700;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: all 0.2s ease;
+        }
+
+        .reviews-cta-filled {
+            background: var(--orange);
+            color: var(--white);
+        }
+
+        .reviews-cta-filled:hover {
+            background: #e55a28;
+        }
+
+        .reviews-cta-outlined {
+            background: transparent;
+            color: var(--orange);
+            border: 2px solid var(--orange);
+        }
+
+        .reviews-cta-outlined:hover {
+            background: var(--orange);
+            color: var(--white);
+        }
+
+        @media (max-width: 480px) {
+            .reviews-cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            .reviews-cta-btn {
+                width: 100%;
+                max-width: 280px;
+            }
+        }
+
         /* ==================== INSTANT QUOTE SECTION ==================== */
         .quote-section {
             padding: 100px 24px;
