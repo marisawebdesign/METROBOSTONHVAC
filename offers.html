@@ -444,7 +444,135 @@
             gap: 28px;
         }
 
-        /* Offer Card styles will be added in Phase 2 */
+        /* ==================== COUPON CARDS ==================== */
+        .coupon-card {
+            background: var(--white);
+            border: 3px dashed #c0392b;
+            border-radius: 0;
+            padding: 0;
+            position: relative;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            display: flex;
+            flex-direction: column;
+            min-height: 340px;
+        }
+
+        .coupon-scissor {
+            position: absolute;
+            top: -14px;
+            left: 24px;
+            width: 28px;
+            height: 28px;
+            background: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2;
+        }
+
+        .coupon-scissor svg {
+            width: 20px;
+            height: 20px;
+            color: #c0392b;
+            transform: rotate(90deg);
+        }
+
+        .coupon-body {
+            padding: 32px 32px 28px;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
+
+        .coupon-headline {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 36px;
+            color: var(--navy-dark);
+            letter-spacing: 1px;
+            line-height: 1.05;
+            margin-bottom: 4px;
+        }
+
+        .coupon-subtitle {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--orange);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 14px;
+        }
+
+        .coupon-desc {
+            font-size: 15px;
+            color: var(--gray-600);
+            line-height: 1.7;
+            margin-bottom: 18px;
+        }
+
+        .coupon-savings {
+            background: var(--gray-50);
+            border: 1px solid var(--gray-200);
+            border-radius: 0;
+            padding: 14px 18px;
+            margin-bottom: 20px;
+        }
+
+        .coupon-savings-row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 14px;
+            padding: 3px 0;
+        }
+
+        .coupon-savings-label { color: var(--gray-600); }
+        .coupon-savings-val { font-weight: 700; color: var(--navy-dark); }
+        .coupon-savings-strike { text-decoration: line-through; color: var(--gray-400); }
+        .coupon-savings-green { color: var(--green); }
+
+        .coupon-clip-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            padding: 14px 24px;
+            background: var(--orange);
+            color: var(--white);
+            border: none;
+            border-radius: 0;
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background 0.2s ease, box-shadow 0.2s ease;
+            box-shadow: 0 4px 12px rgba(255,107,53,0.3);
+            margin-top: auto;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .coupon-clip-btn:hover {
+            background: var(--orange-glow);
+            box-shadow: 0 6px 18px rgba(255,107,53,0.4);
+        }
+
+        .coupon-clip-btn:focus-visible {
+            outline: 3px solid var(--orange);
+            outline-offset: 2px;
+        }
+
+        .coupon-clip-icon {
+            width: 18px;
+            height: 18px;
+            flex-shrink: 0;
+        }
+
+        .coupon-fine-print {
+            font-size: 12px;
+            color: var(--gray-400);
+            line-height: 1.5;
+            margin-top: 14px;
+        }
 
         /* ==================== URGENCY SECTION ==================== */
         .urgency-section {
@@ -774,7 +902,8 @@
             .hero-trust-item { font-size: 12px; }
             .offers-section { padding: 50px 20px; }
             .offers-grid { grid-template-columns: 1fr; gap: 24px; }
-            .offer-card { padding: 28px 22px; }
+            .coupon-body { padding: 24px 22px 22px; }
+            .coupon-headline { font-size: 30px; }
             .urgency-section { padding: 50px 20px; }
             .urgency-ctas { flex-direction: column; align-items: center; }
             .urgency-cta { width: 100%; max-width: 340px; justify-content: center; }
@@ -789,8 +918,8 @@
             .mobile-trust-icon { width: 42px; height: 42px; }
             .mobile-trust-icon svg { width: 20px; height: 20px; }
             .offers-hero-content h1 { font-size: 32px; }
-            .offer-title { font-size: 24px; }
-            .offer-card { padding: 24px 18px; }
+            .coupon-headline { font-size: 26px; }
+            .coupon-body { padding: 22px 18px 20px; }
             .urgency-date { font-size: 24px; }
         }
 
@@ -798,20 +927,19 @@
         @media print {
             .header-top, .header-nav, .mobile-menu, .mobile-toggle,
             .offers-hero, .urgency-section, .faq-section, .sticky-bar,
-            .page-disclaimer, .offer-clip-btn, .offer-fine-print { display: none !important; }
+            .page-disclaimer, .coupon-clip-btn, .coupon-fine-print,
+            .coupon-scissor { display: none !important; }
 
             body { background: white; color: black; font-size: 12pt; }
 
             .offers-section { padding: 0; }
             .offers-grid { grid-template-columns: 1fr 1fr; gap: 16px; }
 
-            .offer-card {
+            .coupon-card {
                 border: 1px solid #ccc; box-shadow: none;
                 page-break-inside: avoid;
                 transform: none !important;
             }
-
-            .offer-badge { position: static; display: inline-block; margin-bottom: 8px; }
 
             .offers-section-header { margin-bottom: 24px; }
             .offers-section-header h2 { font-size: 24pt; }
@@ -1064,11 +1192,72 @@
         <div class="offers-container">
             <div class="offers-section-header">
                 <h2>Claim Your Savings Today</h2>
-                <p>Click any offer below to save it. Show to your technician at time of service.</p>
+                <p>Click any offer below to clip it. Show to your technician at time of service.</p>
             </div>
 
             <div class="offers-grid">
-                <!-- NEW COUPONS GO HERE -->
+
+                <!-- COUPON 1: Diagnostic Fee -->
+                <div class="coupon-card" data-offer-id="diagnostic-waived" data-offer-title="$79 Diagnostic Fee">
+                    <div class="coupon-scissor">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><line x1="20" y1="4" x2="8.12" y2="15.88"/><line x1="14.47" y1="14.48" x2="20" y2="20"/><line x1="8.12" y1="8.12" x2="12" y2="12"/></svg>
+                    </div>
+                    <div class="coupon-body">
+                        <h3 class="coupon-headline">$79 Diagnostic Fee</h3>
+                        <p class="coupon-subtitle">Waived With Completed Repair</p>
+                        <p class="coupon-desc">Our expert technicians will diagnose your HVAC issue for just $79. When you approve the repair, the diagnostic fee is 100% waived.</p>
+                        <div class="coupon-savings">
+                            <div class="coupon-savings-row">
+                                <span class="coupon-savings-label">Regular diagnostic:</span>
+                                <span class="coupon-savings-val coupon-savings-strike">$125</span>
+                            </div>
+                            <div class="coupon-savings-row">
+                                <span class="coupon-savings-label">You save:</span>
+                                <span class="coupon-savings-val coupon-savings-green">$46</span>
+                            </div>
+                        </div>
+                        <button class="coupon-clip-btn" aria-label="Clip this offer">
+                            <svg class="coupon-clip-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><line x1="20" y1="4" x2="8.12" y2="15.88"/><line x1="14.47" y1="14.48" x2="20" y2="20"/><line x1="8.12" y1="8.12" x2="12" y2="12"/></svg>
+                            <span class="coupon-clip-text">Clip This Offer</span>
+                        </button>
+                        <p class="coupon-fine-print">Valid for new customers. Cannot be combined with other offers. Must mention at time of booking.</p>
+                    </div>
+                </div>
+
+                <!-- COUPON 2: New Customer Discount -->
+                <div class="coupon-card" data-offer-id="first-service-25" data-offer-title="$25 Off First Service">
+                    <div class="coupon-scissor">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><line x1="20" y1="4" x2="8.12" y2="15.88"/><line x1="14.47" y1="14.48" x2="20" y2="20"/><line x1="8.12" y1="8.12" x2="12" y2="12"/></svg>
+                    </div>
+                    <div class="coupon-body">
+                        <h3 class="coupon-headline">$25 Off First Service</h3>
+                        <p class="coupon-subtitle">New Customer Welcome</p>
+                        <p class="coupon-desc">Save $25 on any repair service over $200. Our way of saying thanks for trusting us with your comfort.</p>
+                        <button class="coupon-clip-btn" aria-label="Clip this offer">
+                            <svg class="coupon-clip-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><line x1="20" y1="4" x2="8.12" y2="15.88"/><line x1="14.47" y1="14.48" x2="20" y2="20"/><line x1="8.12" y1="8.12" x2="12" y2="12"/></svg>
+                            <span class="coupon-clip-text">Clip This Offer</span>
+                        </button>
+                        <p class="coupon-fine-print">Minimum $200 repair required. New customers only.</p>
+                    </div>
+                </div>
+
+                <!-- COUPON 3: Senior & Veteran Discount -->
+                <div class="coupon-card" data-offer-id="senior-veteran" data-offer-title="10% Off All Services">
+                    <div class="coupon-scissor">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><line x1="20" y1="4" x2="8.12" y2="15.88"/><line x1="14.47" y1="14.48" x2="20" y2="20"/><line x1="8.12" y1="8.12" x2="12" y2="12"/></svg>
+                    </div>
+                    <div class="coupon-body">
+                        <h3 class="coupon-headline">10% Off All Services</h3>
+                        <p class="coupon-subtitle">Seniors &amp; Veterans</p>
+                        <p class="coupon-desc">Thank you for your service to our community and country. We're honored to offer 10% off all repairs.</p>
+                        <button class="coupon-clip-btn" aria-label="Clip this offer">
+                            <svg class="coupon-clip-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><line x1="20" y1="4" x2="8.12" y2="15.88"/><line x1="14.47" y1="14.48" x2="20" y2="20"/><line x1="8.12" y1="8.12" x2="12" y2="12"/></svg>
+                            <span class="coupon-clip-text">Clip This Offer</span>
+                        </button>
+                        <p class="coupon-fine-print">Valid ID required. Seniors 65+, active military, veterans. Cannot be combined with other discounts.</p>
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>
