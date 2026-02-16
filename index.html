@@ -689,299 +689,301 @@
         </div>
     </section>
 
-    <!-- ==================== REVIEWS CAROUSEL SECTION ==================== -->
-    <section class="reviews-section" aria-label="Customer Reviews" tabindex="0">
+    <!-- ==================== REVIEWS SECTION ==================== -->
+    <section class="reviews-section" aria-label="Customer Reviews">
         <div class="reviews-container">
-            <h2 class="reviews-title">See What Your Neighbors Are Saying</h2>
-            <p class="reviews-subtitle">
-                Hundreds of homeowners across Greater Boston trust us to keep their families comfortable. Here's what they have to say.
-            </p>
 
-            <div class="reviews-carousel-wrapper">
-                <button class="reviews-arrow reviews-arrow-prev" id="reviewsPrev" aria-label="Previous reviews">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
-                </button>
+            <!-- Section A: Off-Site Review Platform Bar -->
+            <div class="review-platforms-bar">
+                <div class="review-platforms-row">
 
-                <div class="reviews-carousel-viewport">
-                    <div class="reviews-carousel-track" id="reviewsTrack">
+                    <!-- Google -->
+                    <a href="#" class="review-platform" aria-label="Google Reviews - 4.9 stars, 127 reviews">
+                        <div class="review-platform-logo">
+                            <svg viewBox="0 0 24 24" width="20" height="20">
+                                <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z"/>
+                                <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                                <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
+                                <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+                            </svg>
+                        </div>
+                        <div class="review-platform-info">
+                            <span class="review-platform-name">Google</span>
+                            <span class="review-platform-stars">
+                                <svg viewBox="0 0 24 24" width="12" height="12"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                <svg viewBox="0 0 24 24" width="12" height="12"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                <svg viewBox="0 0 24 24" width="12" height="12"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                <svg viewBox="0 0 24 24" width="12" height="12"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                <svg viewBox="0 0 24 24" width="12" height="12"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                            </span>
+                            <span class="review-platform-count">4.9 / 127 reviews</span>
+                        </div>
+                    </a>
 
-                        <!-- Google Review 1 -->
+                    <!-- Yelp -->
+                    <a href="#" class="review-platform" aria-label="Yelp Reviews - 5.0 stars, 89 reviews">
+                        <div class="review-platform-logo">
+                            <svg viewBox="0 0 24 24" width="20" height="20">
+                                <path fill="#D32323" d="M12.14 2C8.07 2 6.5 5.33 6.5 5.33L10.23 12l.14.25c.28.5.83.55 1.22.12l5.2-5.7S15.17 2 12.14 2zm-1.9 11.1l-.14.25-4.96 2.7s-.55.36-.23.97c.32.6 2.46 3.23 2.46 3.23s.45.5.92.14l5-3.95c.4-.32.34-.87-.02-1.2l-1.8-1.89c-.37-.34-.94-.45-1.23-.25zm3.53.1l-1.8 1.9c-.36.33-.42.87-.02 1.2l5 3.94c.47.36.92-.14.92-.14s2.14-2.63 2.46-3.23c.32-.6-.23-.97-.23-.97l-4.96-2.7-.14-.25c-.29-.2-.86-.09-1.23.25zm-7.23-2.6S3.47 11.3 3.3 12c-.17.72.5.87.5.87l5.44 1.55.28.07c.53.12.96-.2.96-.72V11.6c0-.53-.3-.94-.72-1.02l-2.6-.48c-.43-.06-.82.18-.82.5zm11.1-.6l-2.6.48c-.43.08-.72.5-.72 1.02v2.17c0 .52.43.84.96.72l.28-.07 5.44-1.55s.67-.15.5-.87c-.17-.7-3.24-.72-3.24-.72s-.2-.27-.62-.18z"/>
+                            </svg>
+                        </div>
+                        <div class="review-platform-info">
+                            <span class="review-platform-name" style="color:#D32323;font-weight:800;text-transform:lowercase;">yelp</span>
+                            <span class="review-platform-stars">
+                                <svg viewBox="0 0 24 24" width="12" height="12"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                <svg viewBox="0 0 24 24" width="12" height="12"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                <svg viewBox="0 0 24 24" width="12" height="12"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                <svg viewBox="0 0 24 24" width="12" height="12"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                <svg viewBox="0 0 24 24" width="12" height="12"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                            </span>
+                            <span class="review-platform-count">5.0 / 89 reviews</span>
+                        </div>
+                    </a>
+
+                    <!-- Nextdoor -->
+                    <a href="#" class="review-platform" aria-label="Nextdoor Reviews - 4.8 stars, 64 reviews">
+                        <div class="review-platform-logo">
+                            <svg viewBox="0 0 24 24" width="20" height="20">
+                                <path fill="#00B551" d="M12 1L2 8.5V23h7.5v-7h5v7H22V8.5L12 1zm0 3.13L19 10v10.5h-2.5v-7h-9v7H5V10l7-5.87z"/>
+                            </svg>
+                        </div>
+                        <div class="review-platform-info">
+                            <span class="review-platform-name" style="color:#00B551;">Nextdoor</span>
+                            <span class="review-platform-stars">
+                                <svg viewBox="0 0 24 24" width="12" height="12"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                <svg viewBox="0 0 24 24" width="12" height="12"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                <svg viewBox="0 0 24 24" width="12" height="12"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                <svg viewBox="0 0 24 24" width="12" height="12"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                <svg viewBox="0 0 24 24" width="12" height="12"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                            </span>
+                            <span class="review-platform-count">4.8 / 64 reviews</span>
+                        </div>
+                    </a>
+
+                    <!-- Thumbtack -->
+                    <a href="#" class="review-platform" aria-label="Thumbtack Reviews - 5.0 stars, 53 reviews">
+                        <div class="review-platform-logo">
+                            <svg viewBox="0 0 24 24" width="20" height="20">
+                                <path fill="#009FD9" d="M12 0C8.5 0 5.8 1.7 5.8 4.5c0 2.3 1.5 4 3.7 4.5L8 22l4 2 4-2-1.5-13c2.2-.5 3.7-2.2 3.7-4.5C18.2 1.7 15.5 0 12 0zm0 7c-1.7 0-3-1.1-3-2.5S10.3 2 12 2s3 1.1 3 2.5S13.7 7 12 7z"/>
+                            </svg>
+                        </div>
+                        <div class="review-platform-info">
+                            <span class="review-platform-name" style="color:#009FD9;">Thumbtack</span>
+                            <span class="review-platform-stars">
+                                <svg viewBox="0 0 24 24" width="12" height="12"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                <svg viewBox="0 0 24 24" width="12" height="12"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                <svg viewBox="0 0 24 24" width="12" height="12"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                <svg viewBox="0 0 24 24" width="12" height="12"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                <svg viewBox="0 0 24 24" width="12" height="12"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                            </span>
+                            <span class="review-platform-count">5.0 / 53 reviews</span>
+                        </div>
+                    </a>
+
+                    <!-- HomeAdvisor -->
+                    <a href="#" class="review-platform" aria-label="HomeAdvisor Reviews - 4.9 stars, 71 reviews">
+                        <div class="review-platform-logo">
+                            <svg viewBox="0 0 24 24" width="20" height="20">
+                                <path fill="#F68B1F" d="M12 2L3 9h3v11h12V9h3L12 2zm0 3.5L17 10v8H7v-8l5-4.5z"/>
+                            </svg>
+                        </div>
+                        <div class="review-platform-info">
+                            <span class="review-platform-name" style="color:#F68B1F;">HomeAdvisor</span>
+                            <span class="review-platform-stars">
+                                <svg viewBox="0 0 24 24" width="12" height="12"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                <svg viewBox="0 0 24 24" width="12" height="12"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                <svg viewBox="0 0 24 24" width="12" height="12"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                <svg viewBox="0 0 24 24" width="12" height="12"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                <svg viewBox="0 0 24 24" width="12" height="12"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                            </span>
+                            <span class="review-platform-count">4.9 / 71 reviews</span>
+                        </div>
+                    </a>
+
+                    <!-- Angi -->
+                    <a href="#" class="review-platform" aria-label="Angi Reviews - 4.8 stars, 45 reviews">
+                        <div class="review-platform-logo">
+                            <span class="angi-wordmark">angi</span>
+                        </div>
+                        <div class="review-platform-info">
+                            <span class="review-platform-stars">
+                                <svg viewBox="0 0 24 24" width="12" height="12"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                <svg viewBox="0 0 24 24" width="12" height="12"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                <svg viewBox="0 0 24 24" width="12" height="12"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                <svg viewBox="0 0 24 24" width="12" height="12"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                <svg viewBox="0 0 24 24" width="12" height="12"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                            </span>
+                            <span class="review-platform-count">4.8 / 45 reviews</span>
+                        </div>
+                    </a>
+
+                </div>
+            </div>
+
+            <!-- Section B: Section Heading -->
+            <h2 class="reviews-heading">What Our Customers Are Saying</h2>
+
+            <!-- Section C: Vertical Review Carousel -->
+            <div class="review-carousel-wrapper" id="reviewCarousel" aria-label="Customer testimonials" role="region">
+
+                <div class="review-carousel-viewport" id="reviewViewport">
+                    <div class="review-carousel-track" id="reviewTrack">
+
+                        <!-- Review 1 -->
                         <div class="review-card">
-                            <div class="review-logo">
-                                <svg viewBox="0 0 272 92" height="28">
-                                    <path fill="#4285F4" d="M115.75 47.18c0 12.77-9.99 22.18-22.25 22.18s-22.25-9.41-22.25-22.18C71.25 34.32 81.24 25 93.5 25s22.25 9.32 22.25 22.18zm-9.74 0c0-7.98-5.79-13.44-12.51-13.44S80.99 39.2 80.99 47.18c0 7.9 5.79 13.44 12.51 13.44s12.51-5.55 12.51-13.44z"/>
-                                    <path fill="#EA4335" d="M163.75 47.18c0 12.77-9.99 22.18-22.25 22.18s-22.25-9.41-22.25-22.18c0-12.85 9.99-22.18 22.25-22.18s22.25 9.32 22.25 22.18zm-9.74 0c0-7.98-5.79-13.44-12.51-13.44s-12.51 5.46-12.51 13.44c0 7.9 5.79 13.44 12.51 13.44s12.51-5.55 12.51-13.44z"/>
-                                    <path fill="#FBBC05" d="M209.75 26.34v39.82c0 16.38-9.66 23.07-21.08 23.07-10.75 0-17.22-7.19-19.66-13.07l8.48-3.53c1.51 3.61 5.21 7.87 11.17 7.87 7.31 0 11.84-4.51 11.84-13v-3.19h-.34c-2.18 2.69-6.38 5.04-11.68 5.04-11.09 0-21.25-9.66-21.25-22.09 0-12.52 10.16-22.26 21.25-22.26 5.29 0 9.49 2.35 11.68 4.96h.34v-3.61h9.25zm-8.56 20.92c0-7.81-5.21-13.52-11.84-13.52-6.72 0-12.35 5.71-12.35 13.52 0 7.73 5.63 13.36 12.35 13.36 6.63 0 11.84-5.63 11.84-13.36z"/>
-                                    <path fill="#4285F4" d="M225 3v65h-9.5V3h9.5z"/>
-                                    <path fill="#34A853" d="M262.02 54.48l7.56 5.04c-2.44 3.61-8.32 9.83-18.48 9.83-12.6 0-22.01-9.74-22.01-22.18 0-13.19 9.49-22.18 20.92-22.18 11.51 0 17.14 9.16 18.98 14.11l1.01 2.52-29.65 12.28c2.27 4.45 5.8 6.72 10.75 6.72 4.96 0 8.4-2.44 10.92-6.14zm-23.27-7.98l19.82-8.23c-1.09-2.77-4.37-4.7-8.23-4.7-4.95 0-11.84 4.37-11.59 12.93z"/>
-                                    <path fill="#EA4335" d="M35.29 41.41V32H67c.31 1.64.47 3.58.47 5.68 0 7.06-1.93 15.79-8.15 22.01-6.05 6.3-13.78 9.66-24.02 9.66C16.32 69.35.36 53.89.36 34.91.36 15.93 16.32.47 35.3.47c10.5 0 17.98 4.12 23.6 9.49l-6.64 6.64c-4.03-3.78-9.49-6.72-16.97-6.72-13.86 0-24.7 11.17-24.7 25.03 0 13.86 10.84 25.03 24.7 25.03 8.99 0 14.11-3.61 17.39-6.89 2.66-2.66 4.41-6.46 5.1-11.65l-22.49.01z"/>
-                                </svg>
+                            <div class="review-card-header">
+                                <div class="review-card-reviewer">
+                                    <span class="review-card-name">Sarah M.</span>
+                                    <span class="review-card-location">Braintree</span>
+                                </div>
+                                <span class="review-card-service">AC Repair</span>
                             </div>
-                            <div class="review-stars">
+                            <div class="review-card-stars">
                                 <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
                                 <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
                                 <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
                                 <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
                                 <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
                             </div>
-                            <p class="review-text">Called them at 11pm when our heat went out during that cold snap in December. Guy showed up in 45 minutes, found a bad ignitor, and had it replaced in under an hour. Charged exactly what he quoted over the phone.</p>
-                            <div class="review-meta">
-                                <span class="review-name">Mike T.</span>
-                                <span class="review-date">December 2025</span>
-                            </div>
+                            <p class="review-card-text">"Gabe came out the same day we called about our AC not blowing cold. Figured out the issue fast and didn't try to upsell us on stuff we didn't need. Really refreshing honestly. Will definitely be calling him again."</p>
                         </div>
 
-                        <!-- Google Review 2 -->
+                        <!-- Review 2 -->
                         <div class="review-card">
-                            <div class="review-logo">
-                                <svg viewBox="0 0 272 92" height="28">
-                                    <path fill="#4285F4" d="M115.75 47.18c0 12.77-9.99 22.18-22.25 22.18s-22.25-9.41-22.25-22.18C71.25 34.32 81.24 25 93.5 25s22.25 9.32 22.25 22.18zm-9.74 0c0-7.98-5.79-13.44-12.51-13.44S80.99 39.2 80.99 47.18c0 7.9 5.79 13.44 12.51 13.44s12.51-5.55 12.51-13.44z"/>
-                                    <path fill="#EA4335" d="M163.75 47.18c0 12.77-9.99 22.18-22.25 22.18s-22.25-9.41-22.25-22.18c0-12.85 9.99-22.18 22.25-22.18s22.25 9.32 22.25 22.18zm-9.74 0c0-7.98-5.79-13.44-12.51-13.44s-12.51 5.46-12.51 13.44c0 7.9 5.79 13.44 12.51 13.44s12.51-5.55 12.51-13.44z"/>
-                                    <path fill="#FBBC05" d="M209.75 26.34v39.82c0 16.38-9.66 23.07-21.08 23.07-10.75 0-17.22-7.19-19.66-13.07l8.48-3.53c1.51 3.61 5.21 7.87 11.17 7.87 7.31 0 11.84-4.51 11.84-13v-3.19h-.34c-2.18 2.69-6.38 5.04-11.68 5.04-11.09 0-21.25-9.66-21.25-22.09 0-12.52 10.16-22.26 21.25-22.26 5.29 0 9.49 2.35 11.68 4.96h.34v-3.61h9.25zm-8.56 20.92c0-7.81-5.21-13.52-11.84-13.52-6.72 0-12.35 5.71-12.35 13.52 0 7.73 5.63 13.36 12.35 13.36 6.63 0 11.84-5.63 11.84-13.36z"/>
-                                    <path fill="#4285F4" d="M225 3v65h-9.5V3h9.5z"/>
-                                    <path fill="#34A853" d="M262.02 54.48l7.56 5.04c-2.44 3.61-8.32 9.83-18.48 9.83-12.6 0-22.01-9.74-22.01-22.18 0-13.19 9.49-22.18 20.92-22.18 11.51 0 17.14 9.16 18.98 14.11l1.01 2.52-29.65 12.28c2.27 4.45 5.8 6.72 10.75 6.72 4.96 0 8.4-2.44 10.92-6.14zm-23.27-7.98l19.82-8.23c-1.09-2.77-4.37-4.7-8.23-4.7-4.95 0-11.84 4.37-11.59 12.93z"/>
-                                    <path fill="#EA4335" d="M35.29 41.41V32H67c.31 1.64.47 3.58.47 5.68 0 7.06-1.93 15.79-8.15 22.01-6.05 6.3-13.78 9.66-24.02 9.66C16.32 69.35.36 53.89.36 34.91.36 15.93 16.32.47 35.3.47c10.5 0 17.98 4.12 23.6 9.49l-6.64 6.64c-4.03-3.78-9.49-6.72-16.97-6.72-13.86 0-24.7 11.17-24.7 25.03 0 13.86 10.84 25.03 24.7 25.03 8.99 0 14.11-3.61 17.39-6.89 2.66-2.66 4.41-6.46 5.1-11.65l-22.49.01z"/>
-                                </svg>
+                            <div class="review-card-header">
+                                <div class="review-card-reviewer">
+                                    <span class="review-card-name">Dan R.</span>
+                                    <span class="review-card-location">Stoughton</span>
+                                </div>
+                                <span class="review-card-service">Furnace Installation</span>
                             </div>
-                            <div class="review-stars">
+                            <div class="review-card-stars">
                                 <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
                                 <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
                                 <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
                                 <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
                                 <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
                             </div>
-                            <p class="review-text">Had them install a new Carrier system last spring. Three guys showed up right on time, covered the floors, and were done by early afternoon. The house cools down so much faster now compared to our old unit.</p>
-                            <div class="review-meta">
-                                <span class="review-name">Sarah M.</span>
-                                <span class="review-date">January 2026</span>
-                            </div>
+                            <p class="review-card-text">"We needed to replace our old furnace that was probably 20+ years old and honestly not sure where to even start. Got a few quotes from different companies and Metro Boston HVAC was the most straightforward about everything. No pressure, no scare tactics about our old system, just laid out our options and let us decide. Gabe has like 30 years experience which you can tell right away because he answers every question without hesitation. Install day went smooth, him and his team showed up right on time, worked clean, and walked us through the new thermostat before they left. Its been about a month now and our heating bill already went down which is a nice bonus. Would definitely recommend to anyone in the Stoughton area or south shore looking for someone honest and reliable."</p>
                         </div>
 
-                        <!-- Facebook Review 1 -->
+                        <!-- Review 3 -->
                         <div class="review-card">
-                            <div class="review-logo">
-                                <svg viewBox="0 0 512 512" height="32">
-                                    <path fill="#1877F2" d="M512 256C512 114.6 397.4 0 256 0S0 114.6 0 256c0 120.8 83.5 222.1 196 250.5V330h-59v-74h59v-56.3c0-58.4 34.8-90.7 88-90.7 25.5 0 52.2 4.6 52.2 4.6v57.3H307c-29 0-38 18-38 36.5V256h64.5l-10.3 74H269v176.5C381.5 478.1 512 376.8 512 256z"/>
-                                </svg>
+                            <div class="review-card-header">
+                                <div class="review-card-reviewer">
+                                    <span class="review-card-name">Jennifer T.</span>
+                                    <span class="review-card-location">Quincy</span>
+                                </div>
+                                <span class="review-card-service">Emergency Heating Repair</span>
                             </div>
-                            <div class="review-stars">
+                            <div class="review-card-stars">
                                 <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
                                 <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
                                 <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
                                 <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
                                 <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
                             </div>
-                            <p class="review-text">Our furnace started making a weird banging noise at like 6am on a Saturday. I left a message not really expecting a call back until Monday, but they called within 20 minutes and had someone at our door by 9. Turned out to be a loose blower wheel. Quick fix.</p>
-                            <div class="review-meta">
-                                <span class="review-name">Jennifer L.</span>
-                                <span class="review-date">January 2026</span>
-                            </div>
+                            <p class="review-card-text">"Our heat went out on one of the coldest nights in January and Gabe was there within a couple hours. He explained everything he was doing and what caused the problem so we'd know for next time. Super knowledgable and just a genuinely good guy. So grateful we found him!"</p>
                         </div>
 
-                        <!-- Facebook Review 2 -->
+                        <!-- Review 4 -->
                         <div class="review-card">
-                            <div class="review-logo">
-                                <svg viewBox="0 0 512 512" height="32">
-                                    <path fill="#1877F2" d="M512 256C512 114.6 397.4 0 256 0S0 114.6 0 256c0 120.8 83.5 222.1 196 250.5V330h-59v-74h59v-56.3c0-58.4 34.8-90.7 88-90.7 25.5 0 52.2 4.6 52.2 4.6v57.3H307c-29 0-38 18-38 36.5V256h64.5l-10.3 74H269v176.5C381.5 478.1 512 376.8 512 256z"/>
-                                </svg>
+                            <div class="review-card-header">
+                                <div class="review-card-reviewer">
+                                    <span class="review-card-name">Mike C.</span>
+                                    <span class="review-card-location">Weymouth</span>
+                                </div>
+                                <span class="review-card-service">Mini Split Installation</span>
                             </div>
-                            <div class="review-stars">
+                            <div class="review-card-stars">
                                 <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
                                 <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
                                 <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
                                 <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
                                 <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
                             </div>
-                            <p class="review-text">Second time using them. First was a mini split install in our sunroom, this time for annual maintenance on the central air. Both times, the techs were on time, explained what they were doing, and didn't try to upsell stuff we don't need.</p>
-                            <div class="review-meta">
-                                <span class="review-name">Dan R.</span>
-                                <span class="review-date">November 2025</span>
-                            </div>
+                            <p class="review-card-text">"Great service. Got our mini split system installed, price was fair and the work was clean. Would reccommend."</p>
                         </div>
 
-                        <!-- Nextdoor Review 1 -->
+                        <!-- Review 5 -->
                         <div class="review-card">
-                            <div class="review-logo">
-                                <svg viewBox="0 0 200 50" height="28">
-                                    <path fill="#00B246" d="M25 5C13.95 5 5 13.95 5 25s8.95 20 20 20 20-8.95 20-20S36.05 5 25 5zm0 6c3.31 0 6 2.69 6 6v8c0 3.31-2.69 6-6 6s-6-2.69-6-6v-8c0-3.31 2.69-6 6-6z"/>
-                                    <text x="55" y="33" font-family="Arial" font-weight="700" font-size="22" fill="#00B246">nextdoor</text>
-                                </svg>
+                            <div class="review-card-header">
+                                <div class="review-card-reviewer">
+                                    <span class="review-card-name">Lisa D.</span>
+                                    <span class="review-card-location">Canton</span>
+                                </div>
+                                <span class="review-card-service">AC Repair</span>
                             </div>
-                            <div class="review-stars">
+                            <div class="review-card-stars">
                                 <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
                                 <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
                                 <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
                                 <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
                                 <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
                             </div>
-                            <p class="review-text">Posting because someone on here asked for HVAC recs last week. We've used Metro Boston twice now for our place in Braintree. Fair pricing, no pressure, and they actually show up when they say they will. Not much more you can ask for.</p>
-                            <div class="review-meta">
-                                <span class="review-name">Karen W.</span>
-                                <span class="review-date">February 2026</span>
-                            </div>
+                            <p class="review-card-text">"Called on a Saturday expecting to leave a voicemail and Gabe actually picked up. Had someone out by Monday morning. The tech was polite and knew exactly what was wrong with our unit within like 10 minutes. Very fair price too."</p>
                         </div>
 
-                        <!-- Nextdoor Review 2 -->
+                        <!-- Review 6 -->
                         <div class="review-card">
-                            <div class="review-logo">
-                                <svg viewBox="0 0 200 50" height="28">
-                                    <path fill="#00B246" d="M25 5C13.95 5 5 13.95 5 25s8.95 20 20 20 20-8.95 20-20S36.05 5 25 5zm0 6c3.31 0 6 2.69 6 6v8c0 3.31-2.69 6-6 6s-6-2.69-6-6v-8c0-3.31 2.69-6 6-6z"/>
-                                    <text x="55" y="33" font-family="Arial" font-weight="700" font-size="22" fill="#00B246">nextdoor</text>
-                                </svg>
+                            <div class="review-card-header">
+                                <div class="review-card-reviewer">
+                                    <span class="review-card-name">Chris W.</span>
+                                    <span class="review-card-location">Randolph</span>
+                                </div>
+                                <span class="review-card-service">Annual Maintenance</span>
                             </div>
-                            <div class="review-stars">
+                            <div class="review-card-stars">
                                 <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
                                 <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
                                 <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
                                 <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
                                 <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
                             </div>
-                            <p class="review-text">They put in a heat pump for us last month. The whole crew was professional and cleaned up everything when they were done. Already noticing a difference on our electric bill compared to the old baseboard heaters.</p>
-                            <div class="review-meta">
-                                <span class="review-name">Tom H.</span>
-                                <span class="review-date">January 2026</span>
-                            </div>
+                            <p class="review-card-text">"We've used Metro Boston HVAC twice now, once for a repair and once for our annual maintenance. Both times they were on time professional and reasonably priced. Hard to find that combo these days. We wont be going anywhere else."</p>
                         </div>
 
-                        <!-- Thumbtack Review 1 -->
+                        <!-- Review 7 -->
                         <div class="review-card">
-                            <div class="review-logo">
-                                <svg viewBox="0 0 200 50" height="28">
-                                    <circle cx="18" cy="25" r="14" fill="#009FD9"/>
-                                    <text x="40" y="33" font-family="Arial" font-weight="700" font-size="22" fill="#009FD9">Thumbtack</text>
-                                </svg>
+                            <div class="review-card-header">
+                                <div class="review-card-reviewer">
+                                    <span class="review-card-name">Angela P.</span>
+                                    <span class="review-card-location">Norwood</span>
+                                </div>
+                                <span class="review-card-service">Diagnostics</span>
                             </div>
-                            <div class="review-stars">
-                                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                            </div>
-                            <p class="review-text">Got three quotes for a new AC system. Metro Boston was the middle price but they were the only ones who actually took time to measure the rooms and explain the sizing. Went with them and glad I did. Unit runs perfectly.</p>
-                            <div class="review-meta">
-                                <span class="review-name">Lisa C.</span>
-                                <span class="review-date">December 2025</span>
-                            </div>
-                        </div>
-
-                        <!-- Thumbtack Review 2 -->
-                        <div class="review-card">
-                            <div class="review-logo">
-                                <svg viewBox="0 0 200 50" height="28">
-                                    <circle cx="18" cy="25" r="14" fill="#009FD9"/>
-                                    <text x="40" y="33" font-family="Arial" font-weight="700" font-size="22" fill="#009FD9">Thumbtack</text>
-                                </svg>
-                            </div>
-                            <div class="review-stars">
+                            <div class="review-card-stars">
                                 <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
                                 <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
                                 <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
                                 <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
                                 <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
                             </div>
-                            <p class="review-text">Needed ductwork repaired in our older colonial. The tech found two spots where the ducts had come apart in the crawlspace. Fixed both and now the upstairs actually gets warm. Should have called them sooner.</p>
-                            <div class="review-meta">
-                                <span class="review-name">Brian K.</span>
-                                <span class="review-date">February 2026</span>
-                            </div>
-                        </div>
-
-                        <!-- HomeAdvisor Review 1 -->
-                        <div class="review-card">
-                            <div class="review-logo">
-                                <svg viewBox="0 0 200 50" height="28">
-                                    <path fill="#F68B1F" d="M10 40V20L25 10l15 10v20H30v-12h-10v12z"/>
-                                    <text x="50" y="33" font-family="Arial" font-weight="700" font-size="18" fill="#F68B1F">HomeAdvisor</text>
-                                </svg>
-                            </div>
-                            <div class="review-stars">
-                                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                            </div>
-                            <p class="review-text">We had no heat on a Sunday morning with a toddler in the house. They answered on the second ring, had a tech here within the hour, and our furnace was back up before lunch. That's the kind of response time you want in an emergency.</p>
-                            <div class="review-meta">
-                                <span class="review-name">Amanda P.</span>
-                                <span class="review-date">December 2025</span>
-                            </div>
-                        </div>
-
-                        <!-- HomeAdvisor Review 2 -->
-                        <div class="review-card">
-                            <div class="review-logo">
-                                <svg viewBox="0 0 200 50" height="28">
-                                    <path fill="#F68B1F" d="M10 40V20L25 10l15 10v20H30v-12h-10v12z"/>
-                                    <text x="50" y="33" font-family="Arial" font-weight="700" font-size="18" fill="#F68B1F">HomeAdvisor</text>
-                                </svg>
-                            </div>
-                            <div class="review-stars">
-                                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                            </div>
-                            <p class="review-text">Hired them through HomeAdvisor for a full system replacement. The install team was respectful of our home, wore booties inside, and walked us through how to use the new thermostat before they left. Everything's been running great since.</p>
-                            <div class="review-meta">
-                                <span class="review-name">Steve G.</span>
-                                <span class="review-date">November 2025</span>
-                            </div>
-                        </div>
-
-                        <!-- Angi Review 1 -->
-                        <div class="review-card">
-                            <div class="review-logo">
-                                <svg viewBox="0 0 100 50" height="28">
-                                    <text x="10" y="35" font-family="Arial" font-weight="800" font-size="28" fill="#FF6153">angi</text>
-                                </svg>
-                            </div>
-                            <div class="review-stars">
-                                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                            </div>
-                            <p class="review-text">AC died during that heat wave in July. They came out same day and got us back up and running before dinner. Turned out the capacitor blew. Fair price too, especially for a weekend call.</p>
-                            <div class="review-meta">
-                                <span class="review-name">Rachel D.</span>
-                                <span class="review-date">January 2026</span>
-                            </div>
-                        </div>
-
-                        <!-- Angi Review 2 -->
-                        <div class="review-card">
-                            <div class="review-logo">
-                                <svg viewBox="0 0 100 50" height="28">
-                                    <text x="10" y="35" font-family="Arial" font-weight="800" font-size="28" fill="#FF6153">angi</text>
-                                </svg>
-                            </div>
-                            <div class="review-stars">
-                                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                            </div>
-                            <p class="review-text">Had them come out for a pre-winter tune-up on our boiler. Tech was thorough, checked everything, and pointed out a small leak in a valve that could have been a bigger problem later. Honest company that doesn't cut corners.</p>
-                            <div class="review-meta">
-                                <span class="review-name">Chris N.</span>
-                                <span class="review-date">November 2025</span>
-                            </div>
+                            <p class="review-card-text">"Had a weird burning smell coming from our vents and honestly was kind of panicking. Called Metro Boston and they got someone to us fast. Turned out it was just dust buildup but they checked everything thoroughly and didn't charge us an arm and a leg for it. Really appreciate how they handled it, felt like they actually cared."</p>
                         </div>
 
                     </div>
                 </div>
 
-                <button class="reviews-arrow reviews-arrow-next" id="reviewsNext" aria-label="Next reviews">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
-                </button>
+                <!-- Navigation controls -->
+                <div class="review-carousel-nav">
+                    <button class="review-carousel-arrow review-carousel-up" id="reviewUp" aria-label="Previous review">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="18 15 12 9 6 15"/></svg>
+                    </button>
+                    <div class="review-carousel-dots" id="reviewDots"></div>
+                    <button class="review-carousel-arrow review-carousel-down" id="reviewDown" aria-label="Next review">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                    </button>
+                </div>
+
             </div>
 
-            <div class="reviews-dots" id="reviewsDots"></div>
+            <!-- Section D: Bottom CTA Buttons -->
+            <div class="reviews-cta-buttons">
+                <a href="reviews.html" class="reviews-cta-btn reviews-cta-filled">Read More Reviews</a>
+                <a href="reviews.html" class="reviews-cta-btn reviews-cta-outlined">Write a Review</a>
+            </div>
+
         </div>
     </section>
 
@@ -1047,6 +1049,184 @@ document.querySelectorAll('.mobile-accordion-toggle').forEach(function(btn) {
         this.parentElement.classList.toggle('open');
     });
 });
+</script>
+<script>
+// Vertical review carousel
+(function() {
+    var track = document.getElementById('reviewTrack');
+    var viewport = document.getElementById('reviewViewport');
+    var upBtn = document.getElementById('reviewUp');
+    var downBtn = document.getElementById('reviewDown');
+    var dotsContainer = document.getElementById('reviewDots');
+    if (!track || !viewport) return;
+
+    var cards = Array.prototype.slice.call(track.querySelectorAll('.review-card'));
+    var total = cards.length;
+    var current = 0;
+    var isTransitioning = false;
+
+    // Measure card heights and set viewport height to show current card + peek
+    function getCardHeight(index) {
+        var card = track.children[index];
+        if (!card) return 0;
+        var style = window.getComputedStyle(card);
+        return card.offsetHeight + parseInt(style.marginBottom || 0);
+    }
+
+    function updateViewportHeight() {
+        var cardIdx = current;
+        // Account for cloned cards at the start
+        var trackCards = track.children;
+        var mainCard = trackCards[cardIdx + total];
+        if (!mainCard) mainCard = trackCards[cardIdx];
+        var mainHeight = mainCard.offsetHeight;
+        // Show a 60px peek of the next card
+        viewport.style.height = (mainHeight + 76) + 'px';
+    }
+
+    // Clone cards for infinite loop: append clones of all cards before and after
+    function setupInfiniteLoop() {
+        // Clone all cards and prepend
+        for (var i = total - 1; i >= 0; i--) {
+            var clone = cards[i].cloneNode(true);
+            clone.setAttribute('aria-hidden', 'true');
+            clone.classList.add('review-card-clone');
+            track.insertBefore(clone, track.firstChild);
+        }
+        // Clone all cards and append
+        for (var j = 0; j < total; j++) {
+            var clone2 = cards[j].cloneNode(true);
+            clone2.setAttribute('aria-hidden', 'true');
+            clone2.classList.add('review-card-clone');
+            track.appendChild(clone2);
+        }
+    }
+
+    function getOffset(index) {
+        // index is relative to original cards; in track, original cards start at position `total`
+        var actualIndex = index + total;
+        var offset = 0;
+        var trackCards = track.children;
+        for (var i = 0; i < actualIndex; i++) {
+            var card = trackCards[i];
+            var style = window.getComputedStyle(card);
+            offset += card.offsetHeight + parseInt(style.marginBottom || 0);
+        }
+        return offset;
+    }
+
+    function goTo(index, animate) {
+        if (isTransitioning && animate !== false) return;
+
+        current = index;
+        var offset = getOffset(current);
+
+        if (animate === false) {
+            track.style.transition = 'none';
+        } else {
+            track.style.transition = 'transform 0.5s cubic-bezier(0.25, 0.1, 0.25, 1)';
+            isTransitioning = true;
+        }
+
+        track.style.transform = 'translateY(-' + offset + 'px)';
+        updateViewportHeight();
+        updateDots();
+
+        if (animate === false) {
+            // Force reflow
+            track.offsetHeight;
+            track.style.transition = 'transform 0.5s cubic-bezier(0.25, 0.1, 0.25, 1)';
+        }
+    }
+
+    function onTransitionEnd() {
+        isTransitioning = false;
+        // If we scrolled past the originals, snap back
+        if (current >= total) {
+            current = current - total;
+            goTo(current, false);
+        } else if (current < 0) {
+            current = current + total;
+            goTo(current, false);
+        }
+    }
+
+    track.addEventListener('transitionend', onTransitionEnd);
+
+    // Build dots
+    function buildDots() {
+        dotsContainer.innerHTML = '';
+        for (var i = 0; i < total; i++) {
+            var dot = document.createElement('button');
+            dot.className = 'review-carousel-dot' + (i === current ? ' active' : '');
+            dot.setAttribute('aria-label', 'Go to review ' + (i + 1));
+            dot.addEventListener('click', (function(idx) {
+                return function() { goTo(idx, true); };
+            })(i));
+            dotsContainer.appendChild(dot);
+        }
+    }
+
+    function updateDots() {
+        var normalizedIndex = ((current % total) + total) % total;
+        var dots = dotsContainer.querySelectorAll('.review-carousel-dot');
+        for (var i = 0; i < dots.length; i++) {
+            dots[i].classList.toggle('active', i === normalizedIndex);
+        }
+    }
+
+    // Navigation
+    upBtn.addEventListener('click', function() {
+        goTo(current - 1, true);
+    });
+
+    downBtn.addEventListener('click', function() {
+        goTo(current + 1, true);
+    });
+
+    // Keyboard navigation
+    var wrapper = document.getElementById('reviewCarousel');
+    wrapper.setAttribute('tabindex', '0');
+    wrapper.addEventListener('keydown', function(e) {
+        if (e.key === 'ArrowUp') {
+            goTo(current - 1, true);
+            e.preventDefault();
+        } else if (e.key === 'ArrowDown') {
+            goTo(current + 1, true);
+            e.preventDefault();
+        }
+    });
+
+    // Touch/swipe support for mobile (vertical)
+    var startY = 0;
+    var touchMoving = false;
+    viewport.addEventListener('touchstart', function(e) {
+        startY = e.touches[0].clientY;
+        touchMoving = true;
+    }, { passive: true });
+    viewport.addEventListener('touchend', function(e) {
+        if (!touchMoving) return;
+        var diff = startY - e.changedTouches[0].clientY;
+        if (Math.abs(diff) > 40) {
+            goTo(diff > 0 ? current + 1 : current - 1, true);
+        }
+        touchMoving = false;
+    }, { passive: true });
+
+    // Initialize
+    setupInfiniteLoop();
+    buildDots();
+    goTo(0, false);
+
+    // Recalculate on resize
+    var resizeTimer;
+    window.addEventListener('resize', function() {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(function() {
+            goTo(current, false);
+        }, 200);
+    });
+})();
 </script>
 <script src="technician-widget.js"></script>
 <script src="chat-widget.js"></script>
