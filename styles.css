@@ -1554,6 +1554,175 @@
             }
         }
 
+        /* Review Carousel Wrapper */
+        .review-carousel-wrapper {
+            display: flex;
+            align-items: flex-start;
+            gap: 24px;
+            max-width: 700px;
+            margin: 0 auto 40px;
+        }
+
+        .review-carousel-viewport {
+            flex: 1;
+            overflow: hidden;
+        }
+
+        .review-carousel-track {
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Review Cards */
+        .review-card {
+            background: var(--white);
+            padding: 28px 32px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+            border: 1px solid var(--gray-200);
+            margin-bottom: 16px;
+        }
+
+        .review-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 12px;
+        }
+
+        .review-card-reviewer {
+            display: flex;
+            align-items: baseline;
+            gap: 10px;
+        }
+
+        .review-card-name {
+            font-weight: 700;
+            font-size: 16px;
+            color: var(--navy);
+        }
+
+        .review-card-location {
+            font-size: 13px;
+            color: var(--gray-400);
+        }
+
+        .review-card-service {
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--orange);
+            background: rgba(255, 107, 53, 0.08);
+            padding: 4px 10px;
+            white-space: nowrap;
+        }
+
+        .review-card-stars {
+            display: flex;
+            gap: 2px;
+            margin-bottom: 14px;
+        }
+
+        .review-card-stars svg {
+            width: 16px;
+            height: 16px;
+            fill: var(--orange);
+        }
+
+        .review-card-text {
+            font-size: 15px;
+            line-height: 1.65;
+            color: var(--gray-800);
+        }
+
+        /* Carousel Navigation */
+        .review-carousel-nav {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            padding-top: 20px;
+            flex-shrink: 0;
+        }
+
+        .review-carousel-arrow {
+            width: 40px;
+            height: 40px;
+            background: var(--white);
+            border: 1px solid var(--gray-200);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+        }
+
+        .review-carousel-arrow:hover {
+            border-color: var(--orange);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .review-carousel-arrow svg {
+            width: 20px;
+            height: 20px;
+            color: var(--navy);
+        }
+
+        .review-carousel-arrow:hover svg {
+            color: var(--orange);
+        }
+
+        .review-carousel-dots {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            align-items: center;
+        }
+
+        .review-carousel-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--gray-200);
+            border: none;
+            padding: 0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .review-carousel-dot.active {
+            background: var(--orange);
+            height: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .review-carousel-wrapper {
+                max-width: 100%;
+            }
+            .review-card {
+                padding: 24px 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .review-carousel-wrapper {
+                gap: 12px;
+            }
+            .review-card {
+                padding: 20px 16px;
+            }
+            .review-card-header {
+                flex-direction: column;
+                gap: 8px;
+            }
+            .review-card-text {
+                font-size: 14px;
+            }
+            .review-carousel-nav {
+                display: none;
+            }
+        }
+
         /* ==================== INSTANT QUOTE SECTION ==================== */
         .quote-section {
             padding: 100px 24px;

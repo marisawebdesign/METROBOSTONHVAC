@@ -824,8 +824,158 @@
             <h2 class="reviews-heading">What Our Customers Are Saying</h2>
 
             <!-- Section C: Vertical Review Carousel -->
-            <div class="review-carousel-wrapper">
-                <!-- Review cards and carousel will be built in Phases 3-4 -->
+            <div class="review-carousel-wrapper" id="reviewCarousel" aria-label="Customer testimonials" role="region">
+
+                <div class="review-carousel-viewport" id="reviewViewport">
+                    <div class="review-carousel-track" id="reviewTrack">
+
+                        <!-- Review 1 -->
+                        <div class="review-card">
+                            <div class="review-card-header">
+                                <div class="review-card-reviewer">
+                                    <span class="review-card-name">Sarah M.</span>
+                                    <span class="review-card-location">Braintree</span>
+                                </div>
+                                <span class="review-card-service">AC Repair</span>
+                            </div>
+                            <div class="review-card-stars">
+                                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                            </div>
+                            <p class="review-card-text">"Gabe came out the same day we called about our AC not blowing cold. Figured out the issue fast and didn't try to upsell us on stuff we didn't need. Really refreshing honestly. Will definitely be calling him again."</p>
+                        </div>
+
+                        <!-- Review 2 -->
+                        <div class="review-card">
+                            <div class="review-card-header">
+                                <div class="review-card-reviewer">
+                                    <span class="review-card-name">Dan R.</span>
+                                    <span class="review-card-location">Stoughton</span>
+                                </div>
+                                <span class="review-card-service">Furnace Installation</span>
+                            </div>
+                            <div class="review-card-stars">
+                                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                            </div>
+                            <p class="review-card-text">"We needed to replace our old furnace that was probably 20+ years old and honestly not sure where to even start. Got a few quotes from different companies and Metro Boston HVAC was the most straightforward about everything. No pressure, no scare tactics about our old system, just laid out our options and let us decide. Gabe has like 30 years experience which you can tell right away because he answers every question without hesitation. Install day went smooth, him and his team showed up right on time, worked clean, and walked us through the new thermostat before they left. Its been about a month now and our heating bill already went down which is a nice bonus. Would definitely recommend to anyone in the Stoughton area or south shore looking for someone honest and reliable."</p>
+                        </div>
+
+                        <!-- Review 3 -->
+                        <div class="review-card">
+                            <div class="review-card-header">
+                                <div class="review-card-reviewer">
+                                    <span class="review-card-name">Jennifer T.</span>
+                                    <span class="review-card-location">Quincy</span>
+                                </div>
+                                <span class="review-card-service">Emergency Heating Repair</span>
+                            </div>
+                            <div class="review-card-stars">
+                                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                            </div>
+                            <p class="review-card-text">"Our heat went out on one of the coldest nights in January and Gabe was there within a couple hours. He explained everything he was doing and what caused the problem so we'd know for next time. Super knowledgable and just a genuinely good guy. So grateful we found him!"</p>
+                        </div>
+
+                        <!-- Review 4 -->
+                        <div class="review-card">
+                            <div class="review-card-header">
+                                <div class="review-card-reviewer">
+                                    <span class="review-card-name">Mike C.</span>
+                                    <span class="review-card-location">Weymouth</span>
+                                </div>
+                                <span class="review-card-service">Mini Split Installation</span>
+                            </div>
+                            <div class="review-card-stars">
+                                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                            </div>
+                            <p class="review-card-text">"Great service. Got our mini split system installed, price was fair and the work was clean. Would reccommend."</p>
+                        </div>
+
+                        <!-- Review 5 -->
+                        <div class="review-card">
+                            <div class="review-card-header">
+                                <div class="review-card-reviewer">
+                                    <span class="review-card-name">Lisa D.</span>
+                                    <span class="review-card-location">Canton</span>
+                                </div>
+                                <span class="review-card-service">AC Repair</span>
+                            </div>
+                            <div class="review-card-stars">
+                                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                            </div>
+                            <p class="review-card-text">"Called on a Saturday expecting to leave a voicemail and Gabe actually picked up. Had someone out by Monday morning. The tech was polite and knew exactly what was wrong with our unit within like 10 minutes. Very fair price too."</p>
+                        </div>
+
+                        <!-- Review 6 -->
+                        <div class="review-card">
+                            <div class="review-card-header">
+                                <div class="review-card-reviewer">
+                                    <span class="review-card-name">Chris W.</span>
+                                    <span class="review-card-location">Randolph</span>
+                                </div>
+                                <span class="review-card-service">Annual Maintenance</span>
+                            </div>
+                            <div class="review-card-stars">
+                                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                            </div>
+                            <p class="review-card-text">"We've used Metro Boston HVAC twice now, once for a repair and once for our annual maintenance. Both times they were on time professional and reasonably priced. Hard to find that combo these days. We wont be going anywhere else."</p>
+                        </div>
+
+                        <!-- Review 7 -->
+                        <div class="review-card">
+                            <div class="review-card-header">
+                                <div class="review-card-reviewer">
+                                    <span class="review-card-name">Angela P.</span>
+                                    <span class="review-card-location">Norwood</span>
+                                </div>
+                                <span class="review-card-service">Diagnostics</span>
+                            </div>
+                            <div class="review-card-stars">
+                                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                            </div>
+                            <p class="review-card-text">"Had a weird burning smell coming from our vents and honestly was kind of panicking. Called Metro Boston and they got someone to us fast. Turned out it was just dust buildup but they checked everything thoroughly and didn't charge us an arm and a leg for it. Really appreciate how they handled it, felt like they actually cared."</p>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Navigation controls -->
+                <div class="review-carousel-nav">
+                    <button class="review-carousel-arrow review-carousel-up" id="reviewUp" aria-label="Previous review">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="18 15 12 9 6 15"/></svg>
+                    </button>
+                    <div class="review-carousel-dots" id="reviewDots"></div>
+                    <button class="review-carousel-arrow review-carousel-down" id="reviewDown" aria-label="Next review">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                    </button>
+                </div>
+
             </div>
 
             <!-- Section D: Bottom CTA Buttons -->
