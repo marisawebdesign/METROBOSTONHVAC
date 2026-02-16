@@ -444,136 +444,224 @@
             gap: 28px;
         }
 
-        /* Offer Card */
-        .offer-card {
+        /* ==================== COUPON CARDS ==================== */
+        .coupon-card {
             background: var(--white);
-            border: 3px dashed #b91c1c;
-            border-radius: 14px;
-            padding: 32px;
+            border: 3px dashed #c0392b;
+            border-radius: 0;
+            padding: 0;
             position: relative;
-            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            display: flex;
+            flex-direction: column;
+            min-height: 340px;
         }
 
-        .offer-card:hover {
-            border-color: #991b1b;
-            transform: translateY(-4px);
-            box-shadow: 0 12px 36px rgba(0,0,0,0.1);
+        .coupon-scissor {
+            position: absolute;
+            top: -14px;
+            left: 24px;
+            width: 28px;
+            height: 28px;
+            background: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2;
         }
 
-        .offer-card.featured {
-            grid-column: 1;
+        .coupon-scissor svg {
+            width: 20px;
+            height: 20px;
+            color: #c0392b;
+            transform: rotate(90deg);
         }
 
-        .offer-badge {
-            position: absolute; top: -14px; right: 20px;
-            padding: 6px 18px; border-radius: 20px;
-            font-size: 11px; font-weight: 700;
-            text-transform: uppercase; letter-spacing: 1.5px;
-            white-space: nowrap;
+        .coupon-body {
+            padding: 32px 32px 28px;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
         }
 
-        .offer-badge.popular { background: var(--orange); color: var(--white); }
-        .offer-badge.value { background: var(--navy); color: var(--white); }
-
-        .offer-icon {
-            width: 48px; height: 48px; border-radius: 50%;
-            background: rgba(255,107,53,0.1);
-            display: flex; align-items: center; justify-content: center;
-            margin-bottom: 16px;
-        }
-
-        .offer-icon svg { width: 26px; height: 26px; color: var(--orange); }
-
-        .offer-title {
+        .coupon-headline {
             font-family: 'Bebas Neue', sans-serif;
-            font-size: 28px; color: var(--navy-dark);
-            letter-spacing: 1px; line-height: 1.1; margin-bottom: 4px;
+            font-size: 36px;
+            color: var(--navy-dark);
+            letter-spacing: 1px;
+            line-height: 1.05;
+            margin-bottom: 4px;
         }
 
-        .offer-subtitle {
-            font-size: 14px; font-weight: 700;
-            color: var(--orange); text-transform: uppercase;
-            letter-spacing: 1px; margin-bottom: 14px;
+        .coupon-subtitle {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--orange);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 14px;
         }
 
-        .offer-desc {
-            font-size: 15px; color: var(--gray-600); line-height: 1.7;
-            margin-bottom: 16px;
+        .coupon-desc {
+            font-size: 15px;
+            color: var(--gray-600);
+            line-height: 1.7;
+            margin-bottom: 18px;
         }
 
-        .offer-value-box {
-            background: var(--gray-50); border: 1px solid var(--gray-200);
-            border-radius: 10px; padding: 14px 18px; margin-bottom: 18px;
+        .coupon-savings {
+            background: var(--gray-50);
+            border: 1px solid var(--gray-200);
+            border-radius: 0;
+            padding: 14px 18px;
+            margin-bottom: 20px;
         }
 
-        .offer-value-row {
-            display: flex; justify-content: space-between;
-            font-size: 14px; padding: 3px 0;
+        .coupon-savings-row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 14px;
+            padding: 3px 0;
         }
 
-        .offer-value-row .label { color: var(--gray-600); }
-        .offer-value-row .val { font-weight: 700; color: var(--navy-dark); }
-        .offer-value-row .val.save { color: var(--green); }
-        .offer-value-row .val.strike { text-decoration: line-through; color: var(--gray-400); }
+        .coupon-savings-label { color: var(--gray-600); }
+        .coupon-savings-val { font-weight: 700; color: var(--navy-dark); }
+        .coupon-savings-strike { text-decoration: line-through; color: var(--gray-400); }
+        .coupon-savings-green { color: var(--green); }
 
-        .offer-clip-btn {
-            display: flex; align-items: center; justify-content: center; gap: 10px;
-            width: 100%; padding: 14px 24px;
-            background: var(--orange); color: var(--white); border: none;
-            border-radius: 10px;
+        .coupon-clip-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            padding: 14px 24px;
+            background: var(--orange);
+            color: var(--white);
+            border: none;
+            border-radius: 0;
             font-family: 'Source Sans 3', sans-serif;
-            font-size: 16px; font-weight: 700; cursor: pointer;
-            transition: all 0.3s ease;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background 0.2s ease, box-shadow 0.2s ease;
             box-shadow: 0 4px 12px rgba(255,107,53,0.3);
-            position: relative;
-            overflow: hidden;
+            margin-top: auto;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
-        .offer-clip-btn:hover {
+        .coupon-clip-btn:hover {
             background: var(--orange-glow);
-            transform: translateY(-2px);
             box-shadow: 0 6px 18px rgba(255,107,53,0.4);
         }
 
-        .offer-clip-btn svg { width: 18px; height: 18px; }
-
-        .offer-clip-btn.clipping {
-            animation: scissorSnip 0.6s ease forwards;
+        .coupon-clip-btn:focus-visible {
+            outline: 3px solid var(--orange);
+            outline-offset: 2px;
         }
 
-        .offer-clip-btn.clipping .scissor-icon {
-            animation: scissorCut 0.6s ease;
+        .coupon-clip-icon {
+            width: 18px;
+            height: 18px;
+            flex-shrink: 0;
         }
 
-        @keyframes scissorSnip {
-            0% { transform: scale(1); }
-            30% { transform: scale(1.04); }
-            60% { transform: scale(0.97); }
-            100% { transform: scale(1); }
-        }
-
-        @keyframes scissorCut {
-            0% { transform: rotate(0deg); }
-            25% { transform: rotate(-15deg); }
-            50% { transform: rotate(10deg); }
-            75% { transform: rotate(-8deg); }
-            100% { transform: rotate(0deg); }
-        }
-
-        .offer-clip-btn.clipped {
-            background: var(--green);
-            box-shadow: 0 4px 12px rgba(16,185,129,0.3);
-            cursor: default;
-        }
-
-        .offer-clip-btn.clipped:hover {
-            transform: none;
-            box-shadow: 0 4px 12px rgba(16,185,129,0.3);
-        }
-
-        .offer-fine-print {
-            font-size: 12px; color: var(--gray-400); line-height: 1.5;
+        .coupon-fine-print {
+            font-size: 12px;
+            color: var(--gray-400);
+            line-height: 1.5;
             margin-top: 14px;
+        }
+
+        /* ==================== COUPON CLIPPED STATE ==================== */
+        .coupon-card.clipped {
+            border-color: var(--navy-light);
+        }
+
+        .coupon-card.clipped .coupon-scissor svg {
+            color: var(--navy-light);
+        }
+
+        .coupon-clip-btn.clipped {
+            background: var(--navy-dark);
+            box-shadow: 0 4px 12px rgba(26,58,82,0.3);
+        }
+
+        .coupon-clip-btn.clipped:hover {
+            background: var(--navy-light);
+            box-shadow: 0 6px 18px rgba(26,58,82,0.4);
+        }
+
+        /* Clipped stamp overlay */
+        .coupon-card .coupon-stamp {
+            display: none;
+        }
+
+        .coupon-card.clipped .coupon-stamp {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            top: 24px;
+            right: 24px;
+            width: 80px;
+            height: 80px;
+            border: 3px solid rgba(16,185,129,0.35);
+            border-radius: 50%;
+            color: var(--green);
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 15px;
+            letter-spacing: 2px;
+            transform: rotate(-15deg);
+            z-index: 4;
+            pointer-events: none;
+        }
+
+        /* ==================== COUPON HOVER: CORNER PEEL ==================== */
+        .coupon-card {
+            transition: box-shadow 0.4s ease;
+        }
+
+        .coupon-card::before,
+        .coupon-card::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            pointer-events: none;
+            z-index: 3;
+        }
+
+        /* The folded triangle (the peel itself) */
+        .coupon-card::before {
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 0 0 0 0;
+            border-color: transparent transparent #e8e8e8 transparent;
+            transition: border-width 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        /* The shadow underneath the peel */
+        .coupon-card::after {
+            width: 0;
+            height: 0;
+            background: linear-gradient(225deg, rgba(0,0,0,0.12) 0%, transparent 60%);
+            transition: width 0.4s cubic-bezier(0.22, 1, 0.36, 1), height 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .coupon-card:hover {
+            box-shadow: 0 8px 32px rgba(0,0,0,0.14);
+        }
+
+        .coupon-card:hover::before {
+            border-width: 0 0 48px 48px;
+        }
+
+        .coupon-card:hover::after {
+            width: 56px;
+            height: 56px;
         }
 
         /* ==================== URGENCY SECTION ==================== */
@@ -608,13 +696,6 @@
             line-height: 1.5; margin-bottom: 24px;
         }
 
-        .urgency-date {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: clamp(28px, 4vw, 42px);
-            color: var(--orange); letter-spacing: 2px;
-            margin-bottom: 32px;
-        }
-
         .urgency-trust {
             display: flex; justify-content: center; flex-wrap: wrap;
             gap: 28px; margin-bottom: 40px;
@@ -633,7 +714,7 @@
 
         .urgency-cta {
             display: inline-flex; align-items: center; gap: 10px;
-            padding: 18px 36px; border-radius: 10px;
+            padding: 18px 36px; border-radius: 0;
             font-size: 18px; font-weight: 700;
             text-decoration: none; transition: all 0.3s ease;
         }
@@ -904,7 +985,8 @@
             .hero-trust-item { font-size: 12px; }
             .offers-section { padding: 50px 20px; }
             .offers-grid { grid-template-columns: 1fr; gap: 24px; }
-            .offer-card { padding: 28px 22px; }
+            .coupon-body { padding: 24px 22px 22px; }
+            .coupon-headline { font-size: 30px; }
             .urgency-section { padding: 50px 20px; }
             .urgency-ctas { flex-direction: column; align-items: center; }
             .urgency-cta { width: 100%; max-width: 340px; justify-content: center; }
@@ -919,29 +1001,27 @@
             .mobile-trust-icon { width: 42px; height: 42px; }
             .mobile-trust-icon svg { width: 20px; height: 20px; }
             .offers-hero-content h1 { font-size: 32px; }
-            .offer-title { font-size: 24px; }
-            .offer-card { padding: 24px 18px; }
-            .urgency-date { font-size: 24px; }
+            .coupon-headline { font-size: 26px; }
+            .coupon-body { padding: 22px 18px 20px; }
         }
 
         /* ==================== PRINT ==================== */
         @media print {
             .header-top, .header-nav, .mobile-menu, .mobile-toggle,
             .offers-hero, .urgency-section, .faq-section, .sticky-bar,
-            .page-disclaimer, .offer-clip-btn, .offer-fine-print { display: none !important; }
+            .page-disclaimer, .coupon-clip-btn, .coupon-fine-print,
+            .coupon-scissor { display: none !important; }
 
             body { background: white; color: black; font-size: 12pt; }
 
             .offers-section { padding: 0; }
             .offers-grid { grid-template-columns: 1fr 1fr; gap: 16px; }
 
-            .offer-card {
+            .coupon-card {
                 border: 1px solid #ccc; box-shadow: none;
                 page-break-inside: avoid;
                 transform: none !important;
             }
-
-            .offer-badge { position: static; display: inline-block; margin-bottom: 8px; }
 
             .offers-section-header { margin-bottom: 24px; }
             .offers-section-header h2 { font-size: 24pt; }
@@ -1194,79 +1274,75 @@
         <div class="offers-container">
             <div class="offers-section-header">
                 <h2>Claim Your Savings Today</h2>
-                <p>Click any offer below to save it. Show to your technician at time of service.</p>
+                <p>Click any offer below to clip it. Show to your technician at time of service.</p>
             </div>
 
             <div class="offers-grid">
-                <!-- OFFER 1: Featured -->
-                <div class="offer-card featured" data-offer-id="diagnostic-waived" data-offer-title="$79 Diagnostic Fee" data-offer-code="DIAG79">
-                    <div class="offer-badge popular">MOST POPULAR</div>
-                    <div class="offer-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+
+                <!-- COUPON 1: Diagnostic Fee -->
+                <div class="coupon-card" data-offer-id="diagnostic-waived" data-offer-title="$79 Diagnostic Fee">
+                    <div class="coupon-scissor">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><line x1="20" y1="4" x2="8.12" y2="15.88"/><line x1="14.47" y1="14.48" x2="20" y2="20"/><line x1="8.12" y1="8.12" x2="12" y2="12"/></svg>
                     </div>
-                    <h3 class="offer-title">$79 Diagnostic Fee</h3>
-                    <p class="offer-subtitle">Waived With Completed Repair</p>
-                    <p class="offer-desc">Our expert technicians will diagnose your HVAC issue for just $79. When you approve the repair, the diagnostic fee is 100% waived.</p>
-                    <div class="offer-value-box">
-                        <div class="offer-value-row"><span class="label">Regular diagnostic:</span><span class="val strike">$125</span></div>
-                        <div class="offer-value-row"><span class="label">You save:</span><span class="val save">$46</span></div>
+                    <div class="coupon-stamp">CLIPPED</div>
+                    <div class="coupon-body">
+                        <h3 class="coupon-headline">$79 Diagnostic Fee</h3>
+                        <p class="coupon-subtitle">Waived With Completed Repair</p>
+                        <p class="coupon-desc">Our expert technicians will diagnose your HVAC issue for just $79. When you approve the repair, the diagnostic fee is 100% waived.</p>
+                        <div class="coupon-savings">
+                            <div class="coupon-savings-row">
+                                <span class="coupon-savings-label">Regular diagnostic:</span>
+                                <span class="coupon-savings-val coupon-savings-strike">$125</span>
+                            </div>
+                            <div class="coupon-savings-row">
+                                <span class="coupon-savings-label">You save:</span>
+                                <span class="coupon-savings-val coupon-savings-green">$46</span>
+                            </div>
+                        </div>
+                        <button class="coupon-clip-btn" aria-label="Clip this offer">
+                            <svg class="coupon-clip-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><line x1="20" y1="4" x2="8.12" y2="15.88"/><line x1="14.47" y1="14.48" x2="20" y2="20"/><line x1="8.12" y1="8.12" x2="12" y2="12"/></svg>
+                            <span class="coupon-clip-text">Clip This Offer</span>
+                        </button>
+                        <p class="coupon-fine-print">Valid for new customers. Cannot be combined with other offers. Must mention at time of booking.</p>
                     </div>
-                    <button class="offer-clip-btn" aria-label="Clip this offer">
-                        <svg class="scissor-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><line x1="20" y1="4" x2="8.12" y2="15.88"/><line x1="14.47" y1="14.48" x2="20" y2="20"/><line x1="8.12" y1="8.12" x2="12" y2="12"/></svg>
-                        Clip This Offer
-                    </button>
-                    <p class="offer-fine-print">Valid for new customers. Cannot be combined with other offers. Must mention at time of booking.</p>
                 </div>
 
-                <!-- OFFER 2 -->
-                <div class="offer-card" data-offer-id="first-service-25" data-offer-title="$25 Off First Service" data-offer-code="WELCOME25">
-                    <div class="offer-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                <!-- COUPON 2: New Customer Discount -->
+                <div class="coupon-card" data-offer-id="first-service-25" data-offer-title="$25 Off First Service">
+                    <div class="coupon-scissor">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><line x1="20" y1="4" x2="8.12" y2="15.88"/><line x1="14.47" y1="14.48" x2="20" y2="20"/><line x1="8.12" y1="8.12" x2="12" y2="12"/></svg>
                     </div>
-                    <h3 class="offer-title">$25 Off First Service</h3>
-                    <p class="offer-subtitle">New Customer Welcome</p>
-                    <p class="offer-desc">Save $25 on any repair service over $200. Our way of saying thanks for trusting us with your comfort.</p>
-                    <button class="offer-clip-btn" aria-label="Claim discount">
-                        <svg class="scissor-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><line x1="20" y1="4" x2="8.12" y2="15.88"/><line x1="14.47" y1="14.48" x2="20" y2="20"/><line x1="8.12" y1="8.12" x2="12" y2="12"/></svg>
-                        Clip This Offer
-                    </button>
-                    <p class="offer-fine-print">Minimum $200 repair required. New customers only. Expires <span class="auto-expire"></span>.</p>
+                    <div class="coupon-stamp">CLIPPED</div>
+                    <div class="coupon-body">
+                        <h3 class="coupon-headline">$25 Off First Service</h3>
+                        <p class="coupon-subtitle">New Customer Welcome</p>
+                        <p class="coupon-desc">Save $25 on any repair service over $200. Our way of saying thanks for trusting us with your comfort.</p>
+                        <button class="coupon-clip-btn" aria-label="Clip this offer">
+                            <svg class="coupon-clip-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><line x1="20" y1="4" x2="8.12" y2="15.88"/><line x1="14.47" y1="14.48" x2="20" y2="20"/><line x1="8.12" y1="8.12" x2="12" y2="12"/></svg>
+                            <span class="coupon-clip-text">Clip This Offer</span>
+                        </button>
+                        <p class="coupon-fine-print">Minimum $200 repair required. New customers only.</p>
+                    </div>
                 </div>
 
-                <!-- OFFER 3 -->
-                <div class="offer-card" data-offer-id="no-afterhours" data-offer-title="No After-Hours Fees" data-offer-code="NOFEE247">
-                    <div class="offer-badge value">BEST VALUE</div>
-                    <div class="offer-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                <!-- COUPON 3: Senior & Veteran Discount -->
+                <div class="coupon-card" data-offer-id="senior-veteran" data-offer-title="10% Off All Services">
+                    <div class="coupon-scissor">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><line x1="20" y1="4" x2="8.12" y2="15.88"/><line x1="14.47" y1="14.48" x2="20" y2="20"/><line x1="8.12" y1="8.12" x2="12" y2="12"/></svg>
                     </div>
-                    <h3 class="offer-title">No After-Hours Fees</h3>
-                    <p class="offer-subtitle">24/7 Emergency Service</p>
-                    <p class="offer-desc">Unlike other companies that charge 50-100% premium rates, we don't add emergency fees for nights, weekends, or holidays.</p>
-                    <div class="offer-value-box">
-                        <div class="offer-value-row"><span class="label">Competitor after-hours:</span><span class="val strike">$150-$200+</span></div>
-                        <div class="offer-value-row"><span class="label">Our price:</span><span class="val save">Standard Rate</span></div>
+                    <div class="coupon-stamp">CLIPPED</div>
+                    <div class="coupon-body">
+                        <h3 class="coupon-headline">10% Off All Services</h3>
+                        <p class="coupon-subtitle">Seniors &amp; Veterans</p>
+                        <p class="coupon-desc">Thank you for your service to our community and country. We're honored to offer 10% off all repairs.</p>
+                        <button class="coupon-clip-btn" aria-label="Clip this offer">
+                            <svg class="coupon-clip-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><line x1="20" y1="4" x2="8.12" y2="15.88"/><line x1="14.47" y1="14.48" x2="20" y2="20"/><line x1="8.12" y1="8.12" x2="12" y2="12"/></svg>
+                            <span class="coupon-clip-text">Clip This Offer</span>
+                        </button>
+                        <p class="coupon-fine-print">Valid ID required. Seniors 65+, active military, veterans. Cannot be combined with other discounts.</p>
                     </div>
-                    <button class="offer-clip-btn" aria-label="Save this offer">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="2" width="6" height="6" rx="1"/><path d="M4 8h16v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8z"/><path d="M8 2h8"/></svg>
-                        Save This Offer
-                    </button>
-                    <p class="offer-fine-print">Standard diagnostic and repair rates apply. Available 24/7/365.</p>
                 </div>
 
-                <!-- OFFER 4 -->
-                <div class="offer-card" data-offer-id="senior-veteran" data-offer-title="10% Off All Services" data-offer-code="HONOR10">
-                    <div class="offer-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L4 6v6c0 5.5 3.4 10.7 8 12 4.6-1.3 8-6.5 8-12V6l-8-4z"/></svg>
-                    </div>
-                    <h3 class="offer-title">10% Off All Services</h3>
-                    <p class="offer-subtitle">Seniors & Veterans</p>
-                    <p class="offer-desc">Thank you for your service to our community and country. We're honored to offer 10% off all repairs.</p>
-                    <button class="offer-clip-btn" aria-label="Get discount">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="2" width="6" height="6" rx="1"/><path d="M4 8h16v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8z"/><path d="M8 2h8"/></svg>
-                        Get Discount
-                    </button>
-                    <p class="offer-fine-print">Valid ID required. Seniors 65+, active military, veterans. Cannot be combined with other discounts.</p>
-                </div>
             </div>
         </div>
     </section>
@@ -1274,9 +1350,8 @@
     <!-- ==================== URGENCY SECTION ==================== -->
     <section class="urgency-section">
         <div class="urgency-container">
-            <h2>THESE OFFERS <span class="accent">WON'T LAST</span> FOREVER</h2>
-            <p class="urgency-sub">Claim your savings now and keep them for 90 days from today</p>
-            <div class="urgency-date" id="expiryDate"></div>
+            <h2>READY TO <span class="accent">SAVE</span>?</h2>
+            <p class="urgency-sub">Clip your offers above, then call or schedule online to book your service</p>
             <div class="urgency-trust">
                 <div class="urgency-trust-item">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
@@ -1379,28 +1454,6 @@
 
     <script>
     (function() {
-        // ===== DATE HELPERS =====
-        var now = new Date();
-        var expiry = new Date(now.getTime() + 90 * 24 * 60 * 60 * 1000);
-        var months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
-
-        function formatDate(d) {
-            return months[d.getMonth()] + ' ' + d.getDate() + ', ' + d.getFullYear();
-        }
-
-        function shortDate(d) {
-            return (d.getMonth()+1) + '/' + d.getDate() + '/' + d.getFullYear();
-        }
-
-        // Set expiry date display
-        var expiryEl = document.getElementById('expiryDate');
-        if (expiryEl) expiryEl.textContent = 'Offers valid through: ' + formatDate(expiry);
-
-        // Set auto-expire spans
-        document.querySelectorAll('.auto-expire').forEach(function(el) {
-            el.textContent = formatDate(expiry);
-        });
-
         // ===== LOCALSTORAGE =====
         var STORAGE_KEY = 'mbhvac_clipped_offers';
 
@@ -1418,9 +1471,6 @@
             return getClipped().some(function(o) { return o.id === id; });
         }
 
-        // ===== INIT CLIPPED STATE =====
-        var clipped = getClipped();
-
         function updateStickyBar() {
             var count = getClipped().length;
             var bar = document.getElementById('stickyBar');
@@ -1433,49 +1483,53 @@
             }
         }
 
-        function markButtonClipped(btn) {
-            btn.classList.add('clipped');
-            btn.disabled = true;
-            btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="18" height="18"><polyline points="20 6 9 17 4 12"/></svg> Clipped!';
+        // ===== CLIP / UNCLIP TOGGLE =====
+        function setClippedUI(card, btn, clipped) {
+            if (clipped) {
+                card.classList.add('clipped');
+                btn.classList.add('clipped');
+                btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="18" height="18"><polyline points="20 6 9 17 4 12"/></svg> <span class="coupon-clip-text">Offer Clipped</span>';
+                btn.setAttribute('aria-label', 'Unclip this offer');
+            } else {
+                card.classList.remove('clipped');
+                btn.classList.remove('clipped');
+                btn.innerHTML = '<svg class="coupon-clip-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><line x1="20" y1="4" x2="8.12" y2="15.88"/><line x1="14.47" y1="14.48" x2="20" y2="20"/><line x1="8.12" y1="8.12" x2="12" y2="12"/></svg> <span class="coupon-clip-text">Clip This Offer</span>';
+                btn.setAttribute('aria-label', 'Clip this offer');
+            }
         }
 
-        // Restore clipped buttons on page load
-        document.querySelectorAll('.offer-card').forEach(function(card) {
+        // Restore clipped state on page load
+        document.querySelectorAll('.coupon-card').forEach(function(card) {
             var id = card.getAttribute('data-offer-id');
+            var btn = card.querySelector('.coupon-clip-btn');
             if (isClipped(id)) {
-                markButtonClipped(card.querySelector('.offer-clip-btn'));
+                setClippedUI(card, btn, true);
             }
         });
 
         updateStickyBar();
 
-        // ===== CLIP BUTTONS =====
-        document.querySelectorAll('.offer-clip-btn').forEach(function(btn) {
+        // Bind clip/unclip click handlers
+        document.querySelectorAll('.coupon-clip-btn').forEach(function(btn) {
             btn.addEventListener('click', function() {
-                if (btn.classList.contains('clipped') || btn.classList.contains('clipping')) return;
-
-                var card = btn.closest('.offer-card');
+                var card = btn.closest('.coupon-card');
                 var id = card.getAttribute('data-offer-id');
                 var title = card.getAttribute('data-offer-title');
-                var code = card.getAttribute('data-offer-code');
-
                 var arr = getClipped();
-                arr.push({
-                    id: id,
-                    title: title,
-                    code: code,
-                    clippedDate: shortDate(now),
-                    expiresDate: shortDate(expiry)
-                });
-                saveClipped(arr);
+                var alreadyClipped = arr.some(function(o) { return o.id === id; });
 
-                // Scissor snip animation, then mark clipped
-                btn.classList.add('clipping');
-                setTimeout(function() {
-                    btn.classList.remove('clipping');
-                    markButtonClipped(btn);
-                    updateStickyBar();
-                }, 650);
+                if (alreadyClipped) {
+                    // Unclip
+                    arr = arr.filter(function(o) { return o.id !== id; });
+                    saveClipped(arr);
+                    setClippedUI(card, btn, false);
+                } else {
+                    // Clip
+                    arr.push({ id: id, title: title });
+                    saveClipped(arr);
+                    setClippedUI(card, btn, true);
+                }
+                updateStickyBar();
             });
         });
 
@@ -1495,10 +1549,9 @@
                     html += '<div class="modal-offer">';
                     html += '<div class="modal-offer-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>';
                     html += '<div class="modal-offer-info">';
-                    html += '<div class="modal-offer-title">' + o.title + ' <span style="color:var(--orange);font-size:12px;">(Code: ' + o.code + ')</span></div>';
-                    html += '<div class="modal-offer-meta">Clipped: ' + o.clippedDate + ' · Expires: ' + o.expiresDate + '</div>';
+                    html += '<div class="modal-offer-title">' + o.title + '</div>';
                     html += '</div></div>';
-                    emailBody += '- ' + o.title + ' (Code: ' + o.code + ') Expires: ' + o.expiresDate + '%0A';
+                    emailBody += '- ' + o.title + '%0A';
                 });
                 body.innerHTML = html;
                 emailBody += '%0ACall (781) 408-2506 to book!';
@@ -1512,12 +1565,10 @@
             document.getElementById('modalOverlay').classList.remove('active');
         };
 
-        // Close on overlay click
         document.getElementById('modalOverlay').addEventListener('click', function(e) {
             if (e.target === this) closeModal();
         });
 
-        // Close on ESC
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape') closeModal();
         });
@@ -1527,13 +1578,10 @@
             btn.addEventListener('click', function() {
                 var item = btn.closest('.faq-item');
                 var isOpen = item.classList.contains('open');
-
-                // Close all
                 document.querySelectorAll('.faq-item').forEach(function(fi) {
                     fi.classList.remove('open');
                     fi.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
                 });
-
                 if (!isOpen) {
                     item.classList.add('open');
                     btn.setAttribute('aria-expanded', 'true');
