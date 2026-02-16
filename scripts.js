@@ -251,7 +251,7 @@
         }, { passive: true });
     })();
 
-    // Reviews carousel — arrow navigation + dots + swipe
+    // Reviews carousel — full-featured with auto-advance, pause, keyboard nav, ARIA
     (function() {
         var track = document.getElementById('reviewsTrack');
         var dotsContainer = document.getElementById('reviewsDots');
@@ -259,8 +259,20 @@
         var nextBtn = document.getElementById('reviewsNext');
         if (!track || !dotsContainer) return;
 
+        var section = track.closest('.reviews-section');
         var cards = track.children;
         var current = 0;
+        var autoplayInterval = null;
+        var autoplayDelay = 6000;
+
+        // ARIA setup
+        track.setAttribute('role', 'list');
+        track.setAttribute('aria-label', 'Customer reviews');
+        for (var c = 0; c < cards.length; c++) {
+            cards[c].setAttribute('role', 'listitem');
+        }
+        dotsContainer.setAttribute('role', 'tablist');
+        dotsContainer.setAttribute('aria-label', 'Review pages');
 
         function getCardsPerView() {
             var width = window.innerWidth;
@@ -280,7 +292,9 @@
             for (var i = 0; i < total; i++) {
                 var dot = document.createElement('button');
                 dot.className = 'reviews-dot' + (i === current ? ' active' : '');
-                dot.setAttribute('aria-label', 'Go to review page ' + (i + 1));
+                dot.setAttribute('role', 'tab');
+                dot.setAttribute('aria-selected', i === current ? 'true' : 'false');
+                dot.setAttribute('aria-label', 'Review page ' + (i + 1) + ' of ' + total);
                 dot.addEventListener('click', (function(idx) {
                     return function() { goTo(idx); };
                 })(i));
@@ -305,6 +319,7 @@
             var dots = dotsContainer.querySelectorAll('.reviews-dot');
             for (var i = 0; i < dots.length; i++) {
                 dots[i].classList.toggle('active', i === current);
+                dots[i].setAttribute('aria-selected', i === current ? 'true' : 'false');
             }
         }
 
@@ -327,6 +342,42 @@
             moving = false;
         }, { passive: true });
 
+        // Auto-advance
+        function startAutoplay() {
+            stopAutoplay();
+            autoplayInterval = setInterval(function() {
+                goTo(current + 1);
+            }, autoplayDelay);
+        }
+
+        function stopAutoplay() {
+            if (autoplayInterval) {
+                clearInterval(autoplayInterval);
+                autoplayInterval = null;
+            }
+        }
+
+        // Pause on hover
+        section.addEventListener('mouseenter', stopAutoplay);
+        section.addEventListener('mouseleave', startAutoplay);
+
+        // Pause on focus within (for keyboard users)
+        section.addEventListener('focusin', stopAutoplay);
+        section.addEventListener('focusout', function(e) {
+            if (!section.contains(e.relatedTarget)) startAutoplay();
+        });
+
+        // Keyboard navigation
+        section.addEventListener('keydown', function(e) {
+            if (e.key === 'ArrowLeft') {
+                goTo(current - 1);
+                e.preventDefault();
+            } else if (e.key === 'ArrowRight') {
+                goTo(current + 1);
+                e.preventDefault();
+            }
+        });
+
         // Rebuild dots on resize
         var resizeTimer;
         window.addEventListener('resize', function() {
@@ -340,4 +391,5 @@
         });
 
         buildDots();
+        startAutoplay();
     })();
