@@ -615,74 +615,74 @@
     <section class="tools-section">
         <div class="tools-container">
 
-            <div class="tools-header">
-                <h2 class="tools-title"><span class="navy">FREE HVAC TOOLS &amp; PRINT-OUTS</span></h2>
-                <div class="tools-title-sub">presented by <span class="orange">Metro Boston HVAC</span></div>
-                <p class="tools-desc">Browse our free tools, printable guides, calendars and maintenance schedules below to help you get started, learn more about your options and keep your system running right. Everything here is completely free and does not require any personal information to use.</p>
-            </div>
-
-            <div class="tools-carousel-wrapper">
-                <button class="tools-arrow prev" id="toolsPrev" aria-label="Previous">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
-                </button>
-                <button class="tools-arrow next" id="toolsNext" aria-label="Next">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 6 15 12 9 18"/></svg>
-                </button>
-
-                <div class="tools-carousel">
-                    <div class="tools-track" id="toolsTrack">
-
-                        <!-- Slide 1: BTU Calculator -->
-                        <div class="tool-slide">
-                            <div class="tool-card">
-                                <img src="images/btucalculator.jpg" alt="HVAC BTU Size Calculator" class="tool-card-img">
-                                <div class="tool-card-body">
-                                    <p><strong>HVAC BTU Size Calculator</strong> — Find the right heating and cooling capacity for your home based on square footage, insulation and layout. Takes about 60 seconds.</p>
-                                    <a href="tools/btu-calculator.html" class="tool-card-cta">
-                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
-                                        Try Calculator
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Slide 2: System Selector Quiz -->
-                        <div class="tool-slide">
-                            <div class="tool-card">
-                                <img src="images/quiz.jpg" alt="Which HVAC System Is Right for You?" class="tool-card-img">
-                                <div class="tool-card-body">
-                                    <p><strong>Which System Is Right for You?</strong> — Answer a few quick questions about your home and priorities to see which HVAC system fits your needs and budget best.</p>
-                                    <a href="#" class="tool-card-cta">
-                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
-                                        Take the Quiz
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Slide 3: Guides & Printouts -->
-                        <div class="tool-slide">
-                            <div class="tool-card">
-                                <div class="tool-card-img" style="background:#ffffff;display:flex;align-items:center;justify-content:center;aspect-ratio:16/9;">
-                                    <span style="font-family:'Bebas Neue',sans-serif;font-size:clamp(24px,4vw,36px);color:var(--navy);letter-spacing:2px;text-align:center;padding:20px;">GUIDES, CALENDARS<br>&amp; PRINTOUTS</span>
-                                </div>
-                                <div class="tool-card-body">
-                                    <p><strong>Guides, Calendars &amp; Printouts</strong> — Download and print seasonal maintenance checklists, filter replacement schedules and homeowner reference guides. No signup needed.</p>
-                                    <a href="#" class="tool-card-cta">
-                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
-                                        Browse Guides
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
+            <div class="tools-left">
+                <div class="tools-header">
+                    <h2 class="tools-title"><span class="navy">FREE HVAC TOOLS &amp; PRINT-OUTS</span></h2>
+                    <div class="tools-title-sub">presented by <span class="orange">Metro Boston HVAC</span></div>
+                    <p class="tools-desc">Browse our free tools, printable guides, calendars and maintenance schedules below to help you get started, learn more about your options and keep your system running right. Everything here is completely free and does not require any personal information to use.</p>
                 </div>
 
-                <div class="tools-dots" id="toolsDots">
-                    <button class="tools-dot active" aria-label="Slide 1"></button>
-                    <button class="tools-dot" aria-label="Slide 2"></button>
-                    <button class="tools-dot" aria-label="Slide 3"></button>
+                <!-- Tool info cards (text only, synced with carousel) -->
+                <div class="tools-info" id="toolsInfo">
+                    <div class="tools-info-card active" data-slide="0">
+                        <h3 class="tools-info-title">HVAC BTU Size Calculator</h3>
+                        <p class="tools-info-desc">Find the right heating and cooling capacity for your home based on square footage, insulation and layout. Takes about 60 seconds.</p>
+                        <a href="tools/btu-calculator.html" class="tool-card-cta">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+                            Try Calculator
+                        </a>
+                    </div>
+                    <div class="tools-info-card" data-slide="1">
+                        <h3 class="tools-info-title">Which System Is Right for You?</h3>
+                        <p class="tools-info-desc">Answer a few quick questions about your home and priorities to see which HVAC system fits your needs and budget best.</p>
+                        <a href="#" class="tool-card-cta">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+                            Take the Quiz
+                        </a>
+                    </div>
+                    <div class="tools-info-card" data-slide="2">
+                        <h3 class="tools-info-title">Guides, Calendars &amp; Printouts</h3>
+                        <p class="tools-info-desc">Download and print seasonal maintenance checklists, filter replacement schedules and homeowner reference guides. No signup needed.</p>
+                        <a href="#" class="tool-card-cta">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+                            Browse Guides
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tools-right">
+                <div class="tools-carousel-wrapper">
+                    <div class="tools-carousel">
+                        <div class="tools-track" id="toolsTrack">
+                            <!-- Slide 1: BTU Calculator -->
+                            <div class="tool-slide">
+                                <img src="images/btucalculator.jpg" alt="HVAC BTU Size Calculator" class="tool-slide-img">
+                            </div>
+                            <!-- Slide 2: System Selector Quiz -->
+                            <div class="tool-slide">
+                                <img src="images/quiz.jpg" alt="Which HVAC System Is Right for You?" class="tool-slide-img">
+                            </div>
+                            <!-- Slide 3: Guides & Printouts -->
+                            <div class="tool-slide">
+                                <img src="images/Bazaart_9DE4610E-DAD3-478A-ADFA-85BF617453C3.jpeg" alt="Guides, Calendars and Printouts" class="tool-slide-img">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tools-nav">
+                        <button class="tools-arrow prev" id="toolsPrev" aria-label="Previous">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+                        </button>
+                        <div class="tools-dots" id="toolsDots">
+                            <button class="tools-dot active" aria-label="Slide 1"></button>
+                            <button class="tools-dot" aria-label="Slide 2"></button>
+                            <button class="tools-dot" aria-label="Slide 3"></button>
+                        </div>
+                        <button class="tools-arrow next" id="toolsNext" aria-label="Next">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 6 15 12 9 18"/></svg>
+                        </button>
+                    </div>
                 </div>
             </div>
 

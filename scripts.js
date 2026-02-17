@@ -206,12 +206,13 @@
         });
     })();
 
-    // Tools carousel — arrow navigation + dots + swipe
+    // Tools carousel — manual arrow/dot navigation + swipe + synced info cards
     (function() {
         var track = document.getElementById('toolsTrack');
         var dots = document.querySelectorAll('#toolsDots .tools-dot');
         var prevBtn = document.getElementById('toolsPrev');
         var nextBtn = document.getElementById('toolsNext');
+        var infoCards = document.querySelectorAll('#toolsInfo .tools-info-card');
         if (!track) return;
 
         var current = 0;
@@ -224,6 +225,9 @@
             track.style.transform = 'translateX(-' + (current * 100) + '%)';
             for (var i = 0; i < dots.length; i++) {
                 dots[i].classList.toggle('active', i === current);
+            }
+            for (var j = 0; j < infoCards.length; j++) {
+                infoCards[j].classList.toggle('active', j === current);
             }
         }
 
