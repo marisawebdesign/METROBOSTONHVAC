@@ -1440,6 +1440,7 @@
         .reviews-container {
             max-width: 1200px;
             margin: 0 auto;
+            padding: 0 20px;
         }
 
         /* Platform Bar (inside reviews section) */
@@ -1563,7 +1564,7 @@
             display: flex;
             align-items: flex-start;
             gap: 24px;
-            max-width: 800px;
+            max-width: 1000px;
             margin: 0 auto 40px;
         }
 
@@ -1632,18 +1633,18 @@
 
         .review-card-name {
             font-weight: 700;
-            font-size: 18px;
+            font-size: 20px;
             color: #1a2332;
         }
 
         .review-card-location {
-            font-size: 13px;
+            font-size: 14px;
             color: var(--gray-400);
             font-weight: 400;
         }
 
         .review-card-service {
-            font-size: 11px;
+            font-size: 12px;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 0.8px;
@@ -1660,14 +1661,14 @@
         }
 
         .review-card-stars svg {
-            width: 16px;
-            height: 16px;
+            width: 18px;
+            height: 18px;
             fill: var(--orange);
         }
 
         .review-card-text {
-            font-size: 16px;
-            line-height: 1.75;
+            font-size: 17px;
+            line-height: 1.8;
             color: var(--gray-600);
         }
 
@@ -1820,6 +1821,72 @@
             .reviews-cta-btn {
                 width: 100%;
                 max-width: 280px;
+            }
+        }
+
+        /* ==================== SOCIAL MEDIA SECTION ==================== */
+        .social-section {
+            padding: 60px 24px;
+            background: var(--white);
+        }
+
+        .social-container {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .social-label {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 20px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--gray-400);
+            margin-bottom: 28px;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .social-icon-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 64px;
+            height: 64px;
+            color: var(--navy);
+            transition: color 0.3s ease, transform 0.3s ease, filter 0.3s ease;
+        }
+
+        .social-icon-link svg {
+            width: 44px;
+            height: 44px;
+        }
+
+        .social-icon-link:hover {
+            color: var(--orange);
+            transform: scale(1.15);
+            filter: drop-shadow(0 4px 12px rgba(255, 107, 53, 0.3));
+        }
+
+        .social-icon-link:active {
+            transform: scale(1.05);
+        }
+
+        @media (max-width: 480px) {
+            .social-section {
+                padding: 48px 24px;
+            }
+            .social-icons {
+                gap: 32px;
+            }
+            .social-icon-link svg {
+                width: 38px;
+                height: 38px;
             }
         }
 
@@ -2635,4 +2702,144 @@
 
         .scroll-reveal.delay-1 { animation-delay: 0.15s; }
         .scroll-reveal.delay-2 { animation-delay: 0.3s; }
+
+        /* ==================== FOOTER ==================== */
+        .site-footer {
+            background: var(--navy-dark);
+            color: rgba(255, 255, 255, 0.7);
+            padding: 60px 24px 0;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-main {
+            display: grid;
+            grid-template-columns: 1.4fr 1fr 0.8fr;
+            gap: 48px;
+            padding-bottom: 48px;
+        }
+
+        .footer-logo {
+            margin-bottom: 16px;
+        }
+
+        .footer-logo img {
+            height: 44px;
+            width: auto;
+            display: block;
+        }
+
+        .footer-tagline {
+            font-size: 14px;
+            line-height: 1.7;
+            margin-bottom: 12px;
+            max-width: 320px;
+        }
+
+        .footer-license {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.4);
+            letter-spacing: 0.5px;
+        }
+
+        .footer-heading {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 18px;
+            letter-spacing: 2px;
+            color: var(--white);
+            margin-bottom: 20px;
+        }
+
+        .footer-contact-items {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .footer-contact-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        a.footer-contact-item:hover {
+            color: var(--orange);
+        }
+
+        .footer-contact-item svg {
+            width: 18px;
+            height: 18px;
+            flex-shrink: 0;
+            opacity: 0.5;
+        }
+
+        .footer-nav {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .footer-nav a {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .footer-nav a:hover {
+            color: var(--orange);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 24px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-copyright {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.35);
+        }
+
+        .footer-legal {
+            display: flex;
+            gap: 24px;
+        }
+
+        .footer-legal a {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.35);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .footer-legal a:hover {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        @media (max-width: 768px) {
+            .footer-main {
+                grid-template-columns: 1fr;
+                gap: 36px;
+            }
+
+            .footer-tagline {
+                max-width: none;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: 12px;
+                text-align: center;
+            }
+        }
 
