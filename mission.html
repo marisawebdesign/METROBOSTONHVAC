@@ -142,77 +142,7 @@
             text-transform: uppercase;
         }
 
-        /* Values Grid */
-        .values-section {
-            padding: 0 20px 80px;
-            background: var(--white);
-        }
-        .values-container {
-            max-width: 1100px;
-            margin: 0 auto;
-        }
-        .values-header {
-            text-align: center;
-            margin-bottom: 50px;
-        }
-        .values-header h2 {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: clamp(28px, 4vw, 40px);
-            color: var(--navy);
-            letter-spacing: 2px;
-            margin-bottom: 12px;
-        }
-        .values-header p {
-            font-size: 16px;
-            color: var(--gray-600);
-            max-width: 600px;
-            margin: 0 auto;
-        }
-        .values-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
-        }
-        .value-card {
-            background: var(--gray-50);
-            border: 1px solid var(--gray-200);
-            padding: 36px 28px;
-            border-radius: 0;
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-        .value-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 12px 40px rgba(26, 58, 82, 0.1);
-        }
-        .value-card-icon {
-            width: 48px;
-            height: 48px;
-            background: var(--navy);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 20px;
-            border-radius: 0;
-        }
-        .value-card-icon svg {
-            width: 24px;
-            height: 24px;
-            stroke: var(--orange);
-        }
-        .value-card h3 {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 22px;
-            color: var(--navy);
-            letter-spacing: 1px;
-            margin-bottom: 10px;
-        }
-        .value-card p {
-            font-size: 15px;
-            color: var(--gray-600);
-            line-height: 1.6;
-        }
-
-        /* Team Carousel Section */
+        /* Team Section */
         .team-section {
             padding: 80px 20px;
             background: var(--gray-50);
@@ -225,7 +155,7 @@
         }
         .team-header {
             text-align: center;
-            margin-bottom: 40px;
+            margin-bottom: 48px;
         }
         .team-header h2 {
             font-family: 'Bebas Neue', sans-serif;
@@ -240,99 +170,39 @@
             max-width: 550px;
             margin: 0 auto;
         }
-        .team-carousel-wrapper {
-            position: relative;
-            max-width: 800px;
-            margin: 0 auto;
+
+        /* Owner Profile */
+        .team-owner {
+            display: grid;
+            grid-template-columns: 320px 1fr;
+            gap: 48px;
+            align-items: start;
         }
-        .team-carousel {
-            overflow: hidden;
-            border-radius: 0;
-        }
-        .team-track {
-            display: flex;
-            transition: transform 0.4s ease;
-        }
-        .team-slide {
-            min-width: 100%;
-            flex-shrink: 0;
-        }
-        .team-slide img {
+        .team-owner-photo img {
             width: 100%;
-            height: 500px;
-            object-fit: cover;
             display: block;
-            border-radius: 0;
+            object-fit: cover;
         }
-        .team-slide-caption {
-            background: var(--navy);
-            padding: 20px 24px;
-            text-align: center;
-            border-radius: 0;
-        }
-        .team-slide-caption h3 {
+        .team-owner-name {
             font-family: 'Bebas Neue', sans-serif;
-            font-size: 20px;
-            color: var(--white);
+            font-size: 32px;
+            color: var(--navy);
             letter-spacing: 1.5px;
             margin-bottom: 4px;
         }
-        .team-slide-caption p {
-            font-size: 14px;
-            color: rgba(255,255,255,0.6);
+        .team-owner-title {
+            display: inline-block;
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--orange);
+            margin-bottom: 20px;
         }
-
-        /* Carousel Arrows */
-        .team-arrow {
-            position: absolute;
-            top: 50%;
-            transform: translateY(calc(-50% - 30px));
-            width: 48px;
-            height: 48px;
-            background: var(--navy);
-            border: 2px solid var(--orange);
-            color: var(--white);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            z-index: 10;
-            transition: background 0.2s;
-            border-radius: 0;
-        }
-        .team-arrow:hover {
-            background: var(--orange);
-        }
-        .team-arrow svg {
-            width: 24px;
-            height: 24px;
-        }
-        .team-arrow.prev {
-            left: -24px;
-        }
-        .team-arrow.next {
-            right: -24px;
-        }
-
-        /* Carousel Dots */
-        .team-dots {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            margin-top: 24px;
-        }
-        .team-dot {
-            width: 12px;
-            height: 12px;
-            background: var(--gray-200);
-            border: 2px solid var(--gray-400);
-            cursor: pointer;
-            transition: all 0.2s;
-            border-radius: 0;
-        }
-        .team-dot.active {
-            background: var(--orange);
-            border-color: var(--orange);
+        .team-owner-bio {
+            font-size: 16px;
+            line-height: 1.8;
+            color: var(--gray-600);
         }
 
         /* CTA Section */
@@ -474,29 +344,20 @@
         }
 
         /* ==================== RESPONSIVE ==================== */
-        @media (max-width: 1024px) {
-            .team-arrow.prev { left: 8px; }
-            .team-arrow.next { right: 8px; }
-        }
         @media (max-width: 768px) {
             .mission-hero { padding: 60px 16px 48px; }
             .mission-section { padding: 60px 16px; }
-            .values-section { padding: 0 16px 60px; }
             .team-section { padding: 60px 16px; }
             .mission-cta-section { padding: 60px 16px; }
-            .values-grid {
+            .team-owner {
                 grid-template-columns: 1fr;
-                gap: 20px;
+                gap: 32px;
+                text-align: center;
             }
-            .team-slide img {
-                height: 300px;
+            .team-owner-photo img {
+                max-width: 280px;
+                margin: 0 auto;
             }
-            .team-arrow {
-                width: 40px;
-                height: 40px;
-            }
-            .team-arrow.prev { left: 8px; }
-            .team-arrow.next { right: 8px; }
             .mission-quote {
                 padding: 28px 20px;
             }
@@ -508,9 +369,6 @@
             }
         }
         @media (max-width: 480px) {
-            .team-slide img {
-                height: 220px;
-            }
             .mission-cta-buttons {
                 flex-direction: column;
                 align-items: center;
@@ -830,83 +688,6 @@
         </div>
     </section>
 
-    <!-- ==================== OUR VALUES ==================== -->
-    <section class="values-section">
-        <div class="values-container">
-            <div class="values-header">
-                <h2>Our Core Values</h2>
-                <p>The principles that guide every service call, every repair, and every interaction with our customers.</p>
-            </div>
-
-            <div class="values-grid">
-                <div class="value-card">
-                    <div class="value-card-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-                        </svg>
-                    </div>
-                    <h3>Integrity First</h3>
-                    <p>We give honest assessments, transparent pricing, and never recommend work you don't need. Our reputation is built on trust.</p>
-                </div>
-
-                <div class="value-card">
-                    <div class="value-card-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <circle cx="12" cy="12" r="10"/>
-                            <polyline points="12 6 12 12 16 14"/>
-                        </svg>
-                    </div>
-                    <h3>Always Available</h3>
-                    <p>Emergencies don't wait for business hours. We're available 24/7, including nights, weekends, and holidays, because your comfort can't wait.</p>
-                </div>
-
-                <div class="value-card">
-                    <div class="value-card-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
-                        </svg>
-                    </div>
-                    <h3>Community Focused</h3>
-                    <p>We're your neighbors. We've raised our families here and we serve this community with the care and respect it deserves.</p>
-                </div>
-
-                <div class="value-card">
-                    <div class="value-card-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
-                        </svg>
-                    </div>
-                    <h3>Expert Craftsmanship</h3>
-                    <p>With over 30 years of experience in commercial and residential HVAC, we bring expertise and precision to every job.</p>
-                </div>
-
-                <div class="value-card">
-                    <div class="value-card-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <line x1="12" y1="1" x2="12" y2="23"/>
-                            <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
-                        </svg>
-                    </div>
-                    <h3>Fair Pricing</h3>
-                    <p>We offer a price match guarantee and flexible financing options, because quality HVAC service shouldn't break the bank.</p>
-                </div>
-
-                <div class="value-card">
-                    <div class="value-card-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
-                            <circle cx="9" cy="7" r="4"/>
-                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
-                            <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
-                        </svg>
-                    </div>
-                    <h3>Customer First</h3>
-                    <p>Real people answer our phones. We show up when we say we will. Every decision we make puts your family's safety and comfort first.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- ==================== TEAM PHOTO CAROUSEL ==================== -->
     <section class="team-section">
         <div class="team-container">
@@ -915,56 +696,14 @@
                 <p>The dedicated professionals who keep Greater Boston comfortable, day and night.</p>
             </div>
 
-            <div class="team-carousel-wrapper">
-                <button class="team-arrow prev" id="teamPrev" aria-label="Previous slide">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
-                </button>
-                <button class="team-arrow next" id="teamNext" aria-label="Next slide">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 6 15 12 9 18"/></svg>
-                </button>
-
-                <div class="team-carousel">
-                    <div class="team-track" id="teamTrack">
-                        <!-- Slide 1 -->
-                        <div class="team-slide">
-                            <img src="https://via.placeholder.com/1200x800/1a3a52/ffffff?text=Our+Team+at+Work" alt="Our Team at Work">
-                            <div class="team-slide-caption">
-                                <h3>Our Team at Work</h3>
-                                <p>Dedicated technicians committed to your comfort</p>
-                            </div>
-                        </div>
-                        <!-- Slide 2 -->
-                        <div class="team-slide">
-                            <img src="https://via.placeholder.com/1200x800/0f2536/ff6b35?text=Licensed+Technicians" alt="Licensed Technicians">
-                            <div class="team-slide-caption">
-                                <h3>Licensed Technicians</h3>
-                                <p>Fully licensed and insured professionals - MA #081600137</p>
-                            </div>
-                        </div>
-                        <!-- Slide 3 -->
-                        <div class="team-slide">
-                            <img src="https://via.placeholder.com/1200x800/2a5070/ffd700?text=Family-Owned+Since+1994" alt="Family-Owned Since 1994">
-                            <div class="team-slide-caption">
-                                <h3>Family-Owned Since 1994</h3>
-                                <p>Over 30 years of trusted service in Greater Boston</p>
-                            </div>
-                        </div>
-                        <!-- Slide 4 -->
-                        <div class="team-slide">
-                            <img src="https://via.placeholder.com/1200x800/ff6b35/ffffff?text=Serving+Greater+Boston" alt="Serving Greater Boston">
-                            <div class="team-slide-caption">
-                                <h3>Serving Greater Boston</h3>
-                                <p>Boston Metro and South Shore communities</p>
-                            </div>
-                        </div>
-                    </div>
+            <div class="team-owner">
+                <div class="team-owner-photo">
+                    <img src="images/gabe.jpg" alt="Gabe - Owner of Metro Boston HVAC">
                 </div>
-
-                <div class="team-dots" id="teamDots">
-                    <button class="team-dot active" aria-label="Slide 1"></button>
-                    <button class="team-dot" aria-label="Slide 2"></button>
-                    <button class="team-dot" aria-label="Slide 3"></button>
-                    <button class="team-dot" aria-label="Slide 4"></button>
+                <div class="team-owner-info">
+                    <h3 class="team-owner-name">Gabe</h3>
+                    <span class="team-owner-title">Owner / Operator</span>
+                    <p class="team-owner-bio">Gabe started Metro Boston HVAC with a straightforward goal: give people honest work at a fair price and actually be there when they need you. He grew up in the trades, learned the business hands-on, and built the company from the ground up by doing the kind of work he would want done in his own home. He still answers calls personally, still goes out on jobs, and still makes sure every customer gets treated right. When he is not running the business, you will usually find him spending time with his family or out in the community he has been proud to serve for over 30 years.</p>
                 </div>
             </div>
         </div>
@@ -1045,67 +784,6 @@ document.querySelectorAll('.mobile-accordion-toggle').forEach(function(btn) {
     });
 });
 
-// Team Photo Carousel
-(function() {
-    var track = document.getElementById('teamTrack');
-    var dots = document.querySelectorAll('#teamDots .team-dot');
-    var prevBtn = document.getElementById('teamPrev');
-    var nextBtn = document.getElementById('teamNext');
-    var slides = track.querySelectorAll('.team-slide');
-    var current = 0;
-    var total = slides.length;
-    var autoplayInterval;
-    var isHovered = false;
-
-    function goTo(index) {
-        if (index < 0) index = total - 1;
-        if (index >= total) index = 0;
-        current = index;
-        track.style.transform = 'translateX(-' + (current * 100) + '%)';
-        dots.forEach(function(d, i) {
-            d.classList.toggle('active', i === current);
-        });
-    }
-
-    prevBtn.addEventListener('click', function() { goTo(current - 1); });
-    nextBtn.addEventListener('click', function() { goTo(current + 1); });
-
-    dots.forEach(function(dot, i) {
-        dot.addEventListener('click', function() { goTo(i); });
-    });
-
-    // Touch/swipe support
-    var startX = 0;
-    var isDragging = false;
-
-    track.addEventListener('touchstart', function(e) {
-        startX = e.touches[0].clientX;
-        isDragging = true;
-    }, { passive: true });
-
-    track.addEventListener('touchend', function(e) {
-        if (!isDragging) return;
-        isDragging = false;
-        var diff = startX - e.changedTouches[0].clientX;
-        if (Math.abs(diff) > 50) {
-            if (diff > 0) goTo(current + 1);
-            else goTo(current - 1);
-        }
-    }, { passive: true });
-
-    // Autoplay with pause on hover
-    function startAutoplay() {
-        autoplayInterval = setInterval(function() {
-            if (!isHovered) goTo(current + 1);
-        }, 5000);
-    }
-
-    var wrapper = document.querySelector('.team-carousel-wrapper');
-    wrapper.addEventListener('mouseenter', function() { isHovered = true; });
-    wrapper.addEventListener('mouseleave', function() { isHovered = false; });
-
-    startAutoplay();
-})();
 </script>
 <script src="chat-widget.js"></script>
 </body>
