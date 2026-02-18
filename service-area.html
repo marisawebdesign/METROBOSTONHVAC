@@ -8,8 +8,311 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
-
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
     <link rel="stylesheet" href="chat-widget.css">
+
+    <style>
+        /* ===== Service Area Page Styles ===== */
+        .sa-hero {
+            background: #1a2332;
+            padding: 140px 0 60px;
+            text-align: center;
+        }
+        .sa-hero h1 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 3.2rem;
+            color: #fff;
+            letter-spacing: 2px;
+            margin: 0 0 12px;
+        }
+        .sa-hero h1 span {
+            color: #ff6b35;
+        }
+        .sa-hero p {
+            color: rgba(255,255,255,0.7);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* ===== Map Section ===== */
+        .sa-map-section {
+            padding: 60px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .sa-map-wrapper {
+            position: relative;
+            border: 2px solid #e0e0e0;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        #saMap {
+            width: 100%;
+            height: 550px;
+        }
+        .sa-map-legend {
+            position: absolute;
+            bottom: 16px;
+            left: 16px;
+            background: rgba(255,255,255,0.95);
+            padding: 12px 18px;
+            z-index: 999;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+            font-size: 13px;
+        }
+        .sa-legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 6px;
+        }
+        .sa-legend-item:last-child {
+            margin-bottom: 0;
+        }
+        .sa-legend-dot {
+            width: 12px;
+            height: 12px;
+            display: inline-block;
+            flex-shrink: 0;
+        }
+        .sa-legend-dot.metro {
+            background: #ff6b35;
+        }
+        .sa-legend-dot.south {
+            background: #1a3a52;
+        }
+
+        /* ===== Cities Section ===== */
+        .sa-cities-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px 60px;
+        }
+        .sa-cities-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+        .sa-region-block h3 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.6rem;
+            letter-spacing: 1.5px;
+            margin: 0 0 6px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .sa-region-block h3 .region-dot {
+            width: 14px;
+            height: 14px;
+            display: inline-block;
+            flex-shrink: 0;
+        }
+        .sa-region-block.metro h3 {
+            color: #ff6b35;
+        }
+        .sa-region-block.metro h3 .region-dot {
+            background: #ff6b35;
+        }
+        .sa-region-block.south h3 {
+            color: #1a3a52;
+        }
+        .sa-region-block.south h3 .region-dot {
+            background: #1a3a52;
+        }
+        .sa-region-block p {
+            color: #666;
+            font-size: 0.95rem;
+            margin: 0 0 16px;
+        }
+        .sa-city-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+        }
+        .sa-city-list li {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 12px;
+            cursor: pointer;
+            transition: background 0.2s, color 0.2s;
+            font-size: 0.95rem;
+            color: #333;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        .sa-city-list li svg {
+            width: 14px;
+            height: 14px;
+            flex-shrink: 0;
+            opacity: 0.5;
+        }
+        .sa-region-block.metro .sa-city-list li:hover {
+            background: rgba(255,107,53,0.08);
+            color: #ff6b35;
+        }
+        .sa-region-block.metro .sa-city-list li:hover svg {
+            opacity: 1;
+            stroke: #ff6b35;
+        }
+        .sa-region-block.south .sa-city-list li:hover {
+            background: rgba(26,58,82,0.06);
+            color: #1a3a52;
+        }
+        .sa-region-block.south .sa-city-list li:hover svg {
+            opacity: 1;
+            stroke: #1a3a52;
+        }
+        .sa-city-list li.active {
+            font-weight: 700;
+        }
+        .sa-region-block.metro .sa-city-list li.active {
+            background: rgba(255,107,53,0.08);
+            color: #ff6b35;
+        }
+        .sa-region-block.south .sa-city-list li.active {
+            background: rgba(26,58,82,0.06);
+            color: #1a3a52;
+        }
+
+        /* ===== CTA Section ===== */
+        .sa-cta {
+            background: #1a2332;
+            padding: 60px 20px;
+            text-align: center;
+        }
+        .sa-cta h2 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2.4rem;
+            color: #fff;
+            letter-spacing: 2px;
+            margin: 0 0 10px;
+        }
+        .sa-cta p {
+            color: rgba(255,255,255,0.7);
+            font-size: 1.05rem;
+            margin: 0 0 30px;
+        }
+        .sa-cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+        .sa-cta-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 32px;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.2rem;
+            letter-spacing: 1.5px;
+            text-decoration: none;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .sa-cta-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+        .sa-cta-btn svg {
+            width: 20px;
+            height: 20px;
+        }
+        .sa-cta-btn.call {
+            background: #ff6b35;
+            color: #fff;
+        }
+        .sa-cta-btn.estimate {
+            background: transparent;
+            color: #fff;
+            border: 2px solid rgba(255,255,255,0.3);
+        }
+        .sa-cta-btn.estimate:hover {
+            border-color: #ff6b35;
+        }
+
+        /* ===== Not Listed Note ===== */
+        .sa-not-listed {
+            text-align: center;
+            padding: 30px 20px 0;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .sa-not-listed p {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+        .sa-not-listed a {
+            color: #ff6b35;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .sa-not-listed a:hover {
+            text-decoration: underline;
+        }
+
+        /* ===== Responsive ===== */
+        @media (max-width: 1024px) {
+            #saMap {
+                height: 450px;
+            }
+        }
+        @media (max-width: 768px) {
+            .sa-hero {
+                padding: 120px 20px 40px;
+            }
+            .sa-hero h1 {
+                font-size: 2.4rem;
+            }
+            .sa-map-section {
+                padding: 40px 16px;
+            }
+            #saMap {
+                height: 380px;
+            }
+            .sa-cities-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            .sa-cities-section {
+                padding: 0 16px 40px;
+            }
+            .sa-cta h2 {
+                font-size: 2rem;
+            }
+        }
+        @media (max-width: 480px) {
+            .sa-hero {
+                padding: 110px 16px 30px;
+            }
+            .sa-hero h1 {
+                font-size: 2rem;
+            }
+            .sa-hero p {
+                font-size: 0.95rem;
+            }
+            #saMap {
+                height: 300px;
+            }
+            .sa-city-list {
+                grid-template-columns: 1fr;
+            }
+            .sa-cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            .sa-cta-btn {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
+            }
+        }
+    </style>
 </head>
 <body>
 
@@ -139,6 +442,328 @@
             <a href="quote.html" class="mobile-service-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg> Get Service</a>
         </div>
     </div>
+
+    <!-- ==================== HERO SECTION ==================== -->
+    <section class="sa-hero">
+        <h1>OUR <span>SERVICE AREA</span></h1>
+        <p>Proudly serving Boston Metro and South Shore communities with expert HVAC service, repair, and installation.</p>
+    </section>
+
+    <!-- ==================== MAP SECTION ==================== -->
+    <section class="sa-map-section">
+        <div class="sa-map-wrapper">
+            <div id="saMap"></div>
+            <div class="sa-map-legend">
+                <div class="sa-legend-item"><span class="sa-legend-dot metro"></span> Boston Metro</div>
+                <div class="sa-legend-item"><span class="sa-legend-dot south"></span> South Shore</div>
+            </div>
+        </div>
+
+        <div class="sa-not-listed">
+            <p>Don't see your town? We may still serve your area. <a href="tel:7814082506">Call us at (781) 408-2506</a> or <a href="contact.html">send us a message</a> to find out.</p>
+        </div>
+    </section>
+
+    <!-- ==================== CITY LISTS ==================== -->
+    <section class="sa-cities-section">
+        <div class="sa-cities-grid">
+            <div class="sa-region-block metro">
+                <h3><span class="region-dot"></span> BOSTON METRO</h3>
+                <p>Core service area covering Boston and surrounding communities.</p>
+                <ul class="sa-city-list">
+                    <li data-city="boston"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Boston</li>
+                    <li data-city="brookline"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Brookline</li>
+                    <li data-city="cambridge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Cambridge</li>
+                    <li data-city="somerville"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Somerville</li>
+                    <li data-city="newton"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Newton</li>
+                    <li data-city="quincy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Quincy</li>
+                    <li data-city="dedham"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Dedham</li>
+                    <li data-city="milton"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Milton</li>
+                    <li data-city="needham"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Needham</li>
+                    <li data-city="wellesley"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Wellesley</li>
+                    <li data-city="waltham"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Waltham</li>
+                    <li data-city="medford"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Medford</li>
+                    <li data-city="malden"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Malden</li>
+                    <li data-city="watertown"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Watertown</li>
+                    <li data-city="arlington"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Arlington</li>
+                    <li data-city="belmont"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Belmont</li>
+                    <li data-city="lexington"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Lexington</li>
+                    <li data-city="norwood"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Norwood</li>
+                    <li data-city="canton"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Canton</li>
+                    <li data-city="weston"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Weston</li>
+                </ul>
+            </div>
+
+            <div class="sa-region-block south">
+                <h3><span class="region-dot"></span> SOUTH SHORE</h3>
+                <p>Extended coverage across the South Shore and surrounding towns.</p>
+                <ul class="sa-city-list">
+                    <li data-city="stoughton"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Stoughton</li>
+                    <li data-city="braintree"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Braintree</li>
+                    <li data-city="weymouth"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Weymouth</li>
+                    <li data-city="randolph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Randolph</li>
+                    <li data-city="brockton"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Brockton</li>
+                    <li data-city="avon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Avon</li>
+                    <li data-city="holbrook"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Holbrook</li>
+                    <li data-city="abington"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Abington</li>
+                    <li data-city="rockland"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Rockland</li>
+                    <li data-city="hanover"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Hanover</li>
+                    <li data-city="hingham"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Hingham</li>
+                    <li data-city="norwell"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Norwell</li>
+                    <li data-city="scituate"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Scituate</li>
+                    <li data-city="marshfield"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Marshfield</li>
+                    <li data-city="plymouth"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Plymouth</li>
+                    <li data-city="easton"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Easton</li>
+                    <li data-city="sharon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Sharon</li>
+                    <li data-city="foxborough"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Foxborough</li>
+                    <li data-city="mansfield"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Mansfield</li>
+                    <li data-city="taunton"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Taunton</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== CTA SECTION ==================== -->
+    <section class="sa-cta">
+        <h2>NEED HVAC SERVICE IN YOUR AREA?</h2>
+        <p>Licensed technicians ready to help across Boston Metro and the South Shore.</p>
+        <div class="sa-cta-buttons">
+            <a href="tel:7814082506" class="sa-cta-btn call">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                CALL (781) 408-2506
+            </a>
+            <a href="quote.html" class="sa-cta-btn estimate">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+                GET A FREE ESTIMATE
+            </a>
+        </div>
+    </section>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-main">
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <img src="images/logo.jpg" alt="Metro Boston HVAC">
+                    </div>
+                    <p class="footer-tagline">Serving Greater Boston and the South Shore for over 30 years. Licensed, insured, and available around the clock.</p>
+                    <p class="footer-license">MA License #081600137</p>
+                </div>
+
+                <div class="footer-contact">
+                    <h4 class="footer-heading">Contact</h4>
+                    <div class="footer-contact-items">
+                        <a href="tel:+17814082506" class="footer-contact-item">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                            (781) 408-2506
+                        </a>
+                        <a href="mailto:metrobostonhvac@gmail.com" class="footer-contact-item">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="22 6 12 13 2 6"/></svg>
+                            metrobostonhvac@gmail.com
+                        </a>
+                        <div class="footer-contact-item">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                            Stoughton, MA
+                        </div>
+                    </div>
+                </div>
+
+                <div class="footer-links">
+                    <h4 class="footer-heading">Quick Links</h4>
+                    <nav class="footer-nav">
+                        <a href="services.html">Services</a>
+                        <a href="quote.html">Free Estimate</a>
+                        <a href="offers.html">Offers</a>
+                        <a href="contact.html">Contact</a>
+                    </nav>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p class="footer-copyright">&copy; 2026 Metro Boston HVAC. All rights reserved.</p>
+                <div class="footer-legal">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Use</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+(function() {
+    var map = L.map('saMap', {
+        center: [42.16, -70.98],
+        zoom: 10,
+        zoomControl: false,
+        scrollWheelZoom: false,
+        attributionControl: false
+    });
+
+    L.control.zoom({ position: 'topright' }).addTo(map);
+
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+        attribution: '&copy; OpenStreetMap &copy; CARTO',
+        maxZoom: 16,
+        minZoom: 9
+    }).addTo(map);
+
+    var cities = {
+        boston:     { lat: 42.3601, lng: -71.0589, region: 'metro' },
+        brookline: { lat: 42.3318, lng: -71.1212, region: 'metro' },
+        cambridge: { lat: 42.3736, lng: -71.1097, region: 'metro' },
+        somerville:{ lat: 42.3876, lng: -71.0995, region: 'metro' },
+        newton:    { lat: 42.3370, lng: -71.2092, region: 'metro' },
+        quincy:    { lat: 42.2529, lng: -71.0023, region: 'metro' },
+        dedham:    { lat: 42.2418, lng: -71.1663, region: 'metro' },
+        milton:    { lat: 42.2498, lng: -71.0662, region: 'metro' },
+        needham:   { lat: 42.2804, lng: -71.2328, region: 'metro' },
+        wellesley: { lat: 42.2968, lng: -71.2924, region: 'metro' },
+        waltham:   { lat: 42.3765, lng: -71.2356, region: 'metro' },
+        medford:   { lat: 42.4184, lng: -71.1062, region: 'metro' },
+        malden:    { lat: 42.4251, lng: -71.0662, region: 'metro' },
+        watertown: { lat: 42.3709, lng: -71.1828, region: 'metro' },
+        arlington: { lat: 42.4153, lng: -71.1564, region: 'metro' },
+        belmont:   { lat: 42.3959, lng: -71.1789, region: 'metro' },
+        lexington: { lat: 42.4473, lng: -71.2245, region: 'metro' },
+        norwood:   { lat: 42.1946, lng: -71.1995, region: 'metro' },
+        canton:    { lat: 42.1584, lng: -71.1448, region: 'metro' },
+        weston:    { lat: 42.3668, lng: -71.3031, region: 'metro' },
+        stoughton: { lat: 42.1251, lng: -71.0984, region: 'south-shore' },
+        braintree: { lat: 42.2041, lng: -70.9992, region: 'south-shore' },
+        weymouth:  { lat: 42.2188, lng: -70.9396, region: 'south-shore' },
+        randolph:  { lat: 42.1626, lng: -71.0418, region: 'south-shore' },
+        brockton:  { lat: 42.0834, lng: -71.0184, region: 'south-shore' },
+        avon:      { lat: 42.1307, lng: -71.0412, region: 'south-shore' },
+        holbrook:  { lat: 42.1551, lng: -70.9904, region: 'south-shore' },
+        abington:  { lat: 42.1048, lng: -70.9454, region: 'south-shore' },
+        rockland:  { lat: 42.1307, lng: -70.9076, region: 'south-shore' },
+        hanover:   { lat: 42.1132, lng: -70.8120, region: 'south-shore' },
+        hingham:   { lat: 42.2418, lng: -70.8898, region: 'south-shore' },
+        norwell:   { lat: 42.1612, lng: -70.7932, region: 'south-shore' },
+        scituate:  { lat: 42.1951, lng: -70.7256, region: 'south-shore' },
+        marshfield:{ lat: 42.0918, lng: -70.7076, region: 'south-shore' },
+        plymouth:  { lat: 41.9584, lng: -70.6673, region: 'south-shore' },
+        easton:    { lat: 42.0243, lng: -71.1284, region: 'south-shore' },
+        sharon:    { lat: 42.1237, lng: -71.1784, region: 'south-shore' },
+        foxborough:{ lat: 42.0654, lng: -71.2476, region: 'south-shore' },
+        mansfield: { lat: 42.0334, lng: -71.2189, region: 'south-shore' },
+        taunton:   { lat: 41.9001, lng: -71.0898, region: 'south-shore' }
+    };
+
+    // Boston Metro polygon
+    L.polygon([
+        [42.455, -71.285], [42.455, -71.190], [42.445, -71.110],
+        [42.430, -71.055], [42.425, -71.020],
+        [42.408, -70.990], [42.385, -70.975], [42.370, -70.965],
+        [42.365, -70.960], [42.355, -70.955],
+        [42.340, -70.960], [42.330, -70.965], [42.315, -70.970],
+        [42.300, -70.975], [42.280, -70.975],
+        [42.260, -70.970], [42.245, -70.965], [42.235, -70.970],
+        [42.220, -71.000], [42.195, -71.040],
+        [42.160, -71.100], [42.155, -71.135],
+        [42.170, -71.175], [42.190, -71.210],
+        [42.225, -71.240], [42.265, -71.280], [42.300, -71.310],
+        [42.340, -71.320], [42.380, -71.310],
+        [42.420, -71.295], [42.440, -71.285]
+    ], {
+        color: '#ff6b35',
+        weight: 2.5,
+        fillColor: '#ff6b35',
+        fillOpacity: 0.10,
+        smoothFactor: 1.5
+    }).addTo(map);
+
+    // South Shore polygon
+    L.polygon([
+        [42.235, -70.970], [42.245, -70.930],
+        [42.270, -70.905], [42.265, -70.885], [42.255, -70.870],
+        [42.248, -70.855],
+        [42.235, -70.840], [42.220, -70.810], [42.210, -70.780],
+        [42.200, -70.730], [42.195, -70.715],
+        [42.170, -70.700], [42.140, -70.680], [42.105, -70.665],
+        [42.070, -70.660],
+        [42.020, -70.650], [41.975, -70.645], [41.950, -70.650],
+        [41.925, -70.700], [41.895, -70.810],
+        [41.885, -70.950], [41.880, -71.050],
+        [41.890, -71.100],
+        [41.920, -71.140], [41.960, -71.200],
+        [42.020, -71.250], [42.060, -71.265],
+        [42.100, -71.230], [42.125, -71.195],
+        [42.150, -71.155], [42.155, -71.135],
+        [42.160, -71.100], [42.195, -71.040],
+        [42.220, -71.000], [42.235, -70.970]
+    ], {
+        color: '#1a3a52',
+        weight: 2.5,
+        fillColor: '#1a3a52',
+        fillOpacity: 0.08,
+        smoothFactor: 1.5
+    }).addTo(map);
+
+    // City markers
+    var markers = {};
+    Object.keys(cities).forEach(function(key) {
+        var c = cities[key];
+        var color = c.region === 'metro' ? '#ff6b35' : '#1a3a52';
+        markers[key] = L.circleMarker([c.lat, c.lng], {
+            radius: 6,
+            fillColor: color,
+            color: '#fff',
+            weight: 2,
+            fillOpacity: 0.8
+        }).addTo(map);
+        var name = key.charAt(0).toUpperCase() + key.slice(1);
+        markers[key].bindTooltip(name, { direction: 'top', offset: [0, -8] });
+    });
+
+    // Region labels
+    L.marker([42.36, -71.12], {
+        icon: L.divIcon({
+            className: 'region-label-icon',
+            html: '<span style="background:rgba(255,107,53,0.9);color:#fff;padding:5px 14px;border-radius:6px;font-size:11px;font-weight:700;letter-spacing:1.5px;white-space:nowrap;box-shadow:0 2px 8px rgba(0,0,0,0.15)">BOSTON METRO</span>',
+            iconSize: [120, 26], iconAnchor: [60, 13]
+        })
+    }).addTo(map);
+
+    L.marker([42.06, -70.90], {
+        icon: L.divIcon({
+            className: 'region-label-icon',
+            html: '<span style="background:rgba(26,58,82,0.9);color:#fff;padding:5px 14px;border-radius:6px;font-size:11px;font-weight:700;letter-spacing:1.5px;white-space:nowrap;box-shadow:0 2px 8px rgba(0,0,0,0.15)">SOUTH SHORE</span>',
+            iconSize: [120, 26], iconAnchor: [60, 13]
+        })
+    }).addTo(map);
+
+    // City list hover/click interaction
+    var activeItem = null;
+    var activeMarker = null;
+
+    document.querySelectorAll('.sa-city-list li').forEach(function(li) {
+        var cityKey = li.getAttribute('data-city');
+
+        li.addEventListener('mouseenter', function() {
+            if (activeItem) activeItem.classList.remove('active');
+            if (activeMarker) { activeMarker.setRadius(6); activeMarker.closeTooltip(); }
+            li.classList.add('active');
+            activeItem = li;
+            var m = markers[cityKey];
+            if (m) { m.setRadius(14); m.openTooltip(); activeMarker = m; }
+        });
+
+        li.addEventListener('mouseleave', function() {
+            li.classList.remove('active');
+            activeItem = null;
+            if (activeMarker) { activeMarker.setRadius(6); activeMarker.closeTooltip(); activeMarker = null; }
+        });
+
+        li.addEventListener('click', function() {
+            var c = cities[cityKey];
+            if (c) map.flyTo([c.lat, c.lng], 13, { duration: 0.8 });
+        });
+    });
+})();
+</script>
 
 <script>
 document.querySelectorAll('.mobile-accordion-toggle').forEach(function(btn) {
