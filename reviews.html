@@ -619,6 +619,118 @@
             letter-spacing: -0.5px;
         }
 
+        /* ==================== REVIEW CARDS GRID ==================== */
+        .reviews-grid-section {
+            padding: 60px 24px;
+            background: var(--white);
+        }
+
+        .reviews-grid-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .reviews-grid-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .reviews-grid-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 900;
+            font-size: 2rem;
+            color: var(--navy);
+            margin-bottom: 8px;
+        }
+
+        .reviews-grid-header p {
+            color: var(--gray-600);
+            font-size: 1rem;
+        }
+
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        .review-card {
+            background: var(--white);
+            border: 1px solid var(--gray-200);
+            padding: 28px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .review-card-stars {
+            display: flex;
+            gap: 3px;
+        }
+
+        .review-card-stars svg {
+            width: 18px;
+            height: 18px;
+            fill: var(--orange);
+        }
+
+        .review-card-text {
+            font-size: 0.95rem;
+            line-height: 1.7;
+            color: var(--gray-800);
+        }
+
+        .review-card-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: auto;
+            padding-top: 12px;
+            border-top: 1px solid var(--gray-100);
+        }
+
+        .review-card-author {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .review-card-name {
+            font-weight: 700;
+            font-size: 0.9rem;
+            color: var(--navy);
+        }
+
+        .review-card-town {
+            font-size: 0.8rem;
+            color: var(--gray-600);
+        }
+
+        .review-card-meta {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .review-card-service {
+            display: inline-block;
+            background: var(--gray-50);
+            border: 1px solid var(--gray-200);
+            padding: 4px 10px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--gray-600);
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+        }
+
+        .review-card-date {
+            font-size: 0.78rem;
+            color: var(--gray-400);
+        }
+
         /* ==================== FOOTER ==================== */
         .site-footer {
             background: var(--navy);
@@ -800,6 +912,18 @@
 
             .platform-badge {
                 padding: 18px 10px;
+            }
+
+            .reviews-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .reviews-grid-section {
+                padding: 40px 16px;
+            }
+
+            .reviews-grid-header h2 {
+                font-size: 1.5rem;
             }
 
             .footer-main {
@@ -1200,6 +1324,240 @@
                     </div>
                     <span class="platform-badge-count">45 reviews</span>
                 </a>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== REVIEW CARDS GRID ==================== -->
+    <section class="reviews-grid-section" id="reviewsGrid">
+        <div class="reviews-grid-inner">
+            <div class="reviews-grid-header">
+                <h2>Reviews from Your Neighbors</h2>
+                <p>Real experiences from homeowners across our service area</p>
+            </div>
+
+            <div class="reviews-grid">
+
+                <!-- Review 1: Furnace emergency call -->
+                <div class="review-card">
+                    <div class="review-card-stars">
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    </div>
+                    <p class="review-card-text">"Our furnace died at 2am on a Saturday in the middle of January. I called expecting voicemail and Gabe actually answered. He walked me through a couple things to try over the phone, and when those didn't work he had a tech at our house by 7:30 that morning. Turned out the ignitor had cracked. They had the part on the truck, replaced it in under an hour, and we had heat before my kids even woke up. I don't know many companies that would do that."</p>
+                    <div class="review-card-footer">
+                        <div class="review-card-author">
+                            <span class="review-card-name">Karen M.</span>
+                            <span class="review-card-town">Braintree</span>
+                        </div>
+                        <div class="review-card-meta">
+                            <span class="review-card-service">Emergency Repair</span>
+                            <span class="review-card-date">Jan 2026</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 2: First-time homeowner, clear explanation -->
+                <div class="review-card">
+                    <div class="review-card-stars">
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    </div>
+                    <p class="review-card-text">"We just bought our first house and had zero clue about the HVAC system. The home inspector flagged a few things and we were kind of panicking. Gabe came out and literally spent 45 minutes walking us through everything — what the system was, how old it was, what actually needed attention and what could wait. He didn't push us into anything. We ended up doing the maintenance tune-up and he showed me how to change the filter and where the emergency shutoff is. Exactly the kind of experience you want as a new homeowner."</p>
+                    <div class="review-card-footer">
+                        <div class="review-card-author">
+                            <span class="review-card-name">Derek T.</span>
+                            <span class="review-card-town">Quincy</span>
+                        </div>
+                        <div class="review-card-meta">
+                            <span class="review-card-service">Diagnostics</span>
+                            <span class="review-card-date">Nov 2025</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 3: Chose Metro Boston after 3 quotes, no upsell -->
+                <div class="review-card">
+                    <div class="review-card-stars">
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    </div>
+                    <p class="review-card-text">"Got three quotes for a new central AC install. The first two companies both tried to sell me a bigger system than I needed and tack on a bunch of extras. Metro Boston was the only one who sized it properly for my house and didn't try to upsell me on a premium unit that would have been overkill. The price came in lower than both other quotes and the install was done in a day. It's been running all summer with no issues. Wish I'd found them sooner."</p>
+                    <div class="review-card-footer">
+                        <div class="review-card-author">
+                            <span class="review-card-name">Paul R.</span>
+                            <span class="review-card-town">Needham</span>
+                        </div>
+                        <div class="review-card-meta">
+                            <span class="review-card-service">New Installation</span>
+                            <span class="review-card-date">Aug 2025</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 4: Landlord managing multiple units -->
+                <div class="review-card">
+                    <div class="review-card-stars">
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    </div>
+                    <p class="review-card-text">"I manage six rental units in Canton and Stoughton and I've been using Metro Boston for all of them for about three years now. They handle the annual maintenance on every unit and whenever a tenant calls me with a heating or cooling issue, I just give them Gabe's number directly. He's always responsive, coordinates with the tenants so I don't have to be there, and invoices me after. It makes my life so much easier. Pricing is consistent and fair, no surprises."</p>
+                    <div class="review-card-footer">
+                        <div class="review-card-author">
+                            <span class="review-card-name">Anthony D.</span>
+                            <span class="review-card-town">Canton</span>
+                        </div>
+                        <div class="review-card-meta">
+                            <span class="review-card-service">Annual Maintenance</span>
+                            <span class="review-card-date">Oct 2025</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 5: Heat pump convert, energy savings -->
+                <div class="review-card">
+                    <div class="review-card-stars">
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    </div>
+                    <p class="review-card-text">"We'd been going back and forth about switching to a heat pump for months. Talked to a few companies and got a lot of conflicting information. Gabe was honest about what a heat pump would and wouldn't do for our house — he didn't oversell it. He actually recommended a hybrid setup because of how cold our winters get. We went with his recommendation and our gas bill dropped by about 40% this past winter. Really glad we went with someone who gave us the real picture instead of just telling us what we wanted to hear."</p>
+                    <div class="review-card-footer">
+                        <div class="review-card-author">
+                            <span class="review-card-name">Michelle S.</span>
+                            <span class="review-card-town">Milton</span>
+                        </div>
+                        <div class="review-card-meta">
+                            <span class="review-card-service">Heat Pump</span>
+                            <span class="review-card-date">Dec 2025</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 6: Weekend AC repair, responsive -->
+                <div class="review-card">
+                    <div class="review-card-stars">
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    </div>
+                    <p class="review-card-text">"AC stopped blowing cold right before a heat wave last July. Called on a Sunday afternoon and they had someone out Monday first thing. The tech found a refrigerant leak, fixed it on the spot, and didn't try to tell me I needed a whole new system like the last company did. Straightforward, fair price, and the house was cool again by lunchtime. That's all you can ask for."</p>
+                    <div class="review-card-footer">
+                        <div class="review-card-author">
+                            <span class="review-card-name">Brian K.</span>
+                            <span class="review-card-town">Weymouth</span>
+                        </div>
+                        <div class="review-card-meta">
+                            <span class="review-card-service">Emergency Repair</span>
+                            <span class="review-card-date">Jul 2025</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 7: Older home, ductwork advice -->
+                <div class="review-card">
+                    <div class="review-card-stars">
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    </div>
+                    <p class="review-card-text">"We have a 1920s colonial and the ductwork was a mess. Two other companies said we needed to rip everything out and start over — $15k minimum. Gabe came out, looked at it, and said most of the existing ductwork was actually fine, just needed sealing and a couple sections replaced. Saved us thousands. The house heats evenly now for the first time since we moved in. You can tell he has real experience because he doesn't just default to the most expensive option."</p>
+                    <div class="review-card-footer">
+                        <div class="review-card-author">
+                            <span class="review-card-name">Laura H.</span>
+                            <span class="review-card-town">Hingham</span>
+                        </div>
+                        <div class="review-card-meta">
+                            <span class="review-card-service">Diagnostics</span>
+                            <span class="review-card-date">Feb 2026</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 8: Annual maintenance, caught a problem early -->
+                <div class="review-card">
+                    <div class="review-card-stars">
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    </div>
+                    <p class="review-card-text">"Been getting our furnace serviced by Metro Boston every fall for four years. This year during the tune-up the tech found a small crack in the heat exchanger that could have turned into a carbon monoxide issue down the road. He showed me exactly what he was looking at and explained why it mattered. They replaced the exchanger the following week. Really glad they actually take the maintenance seriously and don't just go through the motions."</p>
+                    <div class="review-card-footer">
+                        <div class="review-card-author">
+                            <span class="review-card-name">Jim F.</span>
+                            <span class="review-card-town">Norwood</span>
+                        </div>
+                        <div class="review-card-meta">
+                            <span class="review-card-service">Annual Maintenance</span>
+                            <span class="review-card-date">Sep 2025</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 9: Mini split for home office addition -->
+                <div class="review-card">
+                    <div class="review-card-stars">
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    </div>
+                    <p class="review-card-text">"We converted our garage into a home office and needed a ductless mini split since there was no way to extend the existing ductwork. Gabe recommended the right size unit, installed it clean with minimal wall penetration, and even helped us figure out the Mass Save rebate paperwork. The office stays comfortable year round now. The whole project from first call to done was about a week."</p>
+                    <div class="review-card-footer">
+                        <div class="review-card-author">
+                            <span class="review-card-name">Jen C.</span>
+                            <span class="review-card-town">Dedham</span>
+                        </div>
+                        <div class="review-card-meta">
+                            <span class="review-card-service">New Installation</span>
+                            <span class="review-card-date">Mar 2025</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 10: Repeat customer, recommends to neighbors -->
+                <div class="review-card">
+                    <div class="review-card-stars">
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    </div>
+                    <p class="review-card-text">"Third time using Metro Boston and at this point I just tell everyone on our street to call them. First was an emergency furnace repair two winters ago, then they did our spring AC tune-up, and just last month they replaced our water heater. Every single time — on time, fair price, clean work, no drama. I've referred at least four neighbors and they've all had the same experience. That says a lot."</p>
+                    <div class="review-card-footer">
+                        <div class="review-card-author">
+                            <span class="review-card-name">Steve W.</span>
+                            <span class="review-card-town">Stoughton</span>
+                        </div>
+                        <div class="review-card-meta">
+                            <span class="review-card-service">Emergency Repair</span>
+                            <span class="review-card-date">Jan 2026</span>
+                        </div>
+                    </div>
+                </div>
 
             </div>
         </div>
