@@ -1,0 +1,2176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Reviews | Metro Boston HVAC | Stoughton MA</title>
+    <meta name="description" content="Read real reviews from Metro Boston HVAC customers across Greater Boston and the South Shore. 4.9 stars across Google, Yelp, Nextdoor, Thumbtack, HomeAdvisor, and Angi.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="chat-widget.css" />
+    <style>
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            border-radius: 0;
+        }
+
+        :root {
+            --navy: #1a2332;
+            --navy-dark: #0f1822;
+            --navy-light: #2a3a52;
+            --orange: #ff6b35;
+            --orange-glow: #ff8855;
+            --gold: #ffd700;
+            --white: #ffffff;
+            --gray-50: #f9fafb;
+            --gray-100: #f3f4f6;
+            --gray-200: #e5e7eb;
+            --gray-400: #9ca3af;
+            --gray-600: #4b5563;
+            --gray-800: #1f2937;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--white);
+            color: var(--gray-800);
+            line-height: 1.6;
+        }
+
+        /* ==================== HEADER TOP BAR ==================== */
+        .header-top {
+            background: var(--white);
+            border-bottom: 1px solid var(--gray-200);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1001;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+        }
+
+        .header-top-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 16px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .logo img {
+            height: 55px;
+            width: auto;
+        }
+
+        .header-mobile-name {
+            display: none;
+            font-family: 'Playfair Display', serif;
+            font-weight: 900;
+            font-size: 1.1rem;
+            color: var(--navy);
+        }
+
+        .header-mobile-name span {
+            color: var(--orange);
+        }
+
+        .header-phone {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .header-phone-icon {
+            width: 38px;
+            height: 38px;
+            background: var(--orange);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .header-phone-icon svg {
+            width: 20px;
+            height: 20px;
+            color: white;
+        }
+
+        .header-phone-info {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .header-phone-number {
+            font-weight: 700;
+            font-size: 1.15rem;
+            color: var(--navy);
+            text-decoration: none;
+            letter-spacing: -0.3px;
+        }
+
+        .header-phone-label {
+            font-size: 0.72rem;
+            color: var(--gray-600);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .header-trust-badges {
+            display: flex;
+            gap: 18px;
+        }
+
+        .trust-badge {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .trust-badge-icon {
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .trust-badge-icon svg {
+            width: 22px;
+            height: 22px;
+        }
+
+        .trust-badge-icon.emergency { background: #dc2626; }
+        .trust-badge-icon.licensed { background: var(--navy); }
+        .trust-badge-icon.reviews { background: var(--orange); }
+        .trust-badge-icon.local { background: #16a34a; }
+        .trust-badge-icon.price { background: var(--navy); }
+
+        .trust-badge-label {
+            font-size: 0.72rem;
+            font-weight: 600;
+            color: var(--gray-800);
+            max-width: 100px;
+            line-height: 1.3;
+        }
+
+        .get-service-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--orange);
+            color: white;
+            padding: 12px 20px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.82rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: background 0.2s;
+        }
+
+        .get-service-btn:hover {
+            background: var(--orange-glow);
+        }
+
+        .get-service-btn svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        .mobile-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+        }
+
+        .mobile-toggle svg {
+            width: 28px;
+            height: 28px;
+            color: var(--navy);
+        }
+
+        /* ==================== NAVIGATION BAR ==================== */
+        .header-nav {
+            background: var(--navy);
+            position: fixed;
+            top: 88px;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+        }
+
+        .header-nav-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .main-nav {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-item {
+            position: relative;
+        }
+
+        .nav-link {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            padding: 14px 18px;
+            color: rgba(255,255,255,0.85);
+            text-decoration: none;
+            font-size: 0.88rem;
+            font-weight: 500;
+            transition: color 0.2s, background 0.2s;
+            white-space: nowrap;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: white;
+            background: rgba(255,255,255,0.1);
+        }
+
+        .nav-link svg {
+            width: 14px;
+            height: 14px;
+            opacity: 0.6;
+        }
+
+        .nav-cta {
+            background: var(--orange) !important;
+            color: white !important;
+            font-weight: 700;
+            margin-left: auto;
+        }
+
+        .nav-cta:hover {
+            background: var(--orange-glow) !important;
+        }
+
+        .dropdown {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: white;
+            min-width: 220px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+            z-index: 100;
+        }
+
+        .nav-item:hover .dropdown {
+            display: block;
+        }
+
+        .dropdown-link {
+            display: block;
+            padding: 10px 18px;
+            color: var(--gray-800);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        .dropdown-link:hover {
+            background: var(--gray-50);
+            color: var(--orange);
+        }
+
+        /* ==================== MOBILE MENU ==================== */
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--navy);
+            z-index: 2000;
+            overflow-y: auto;
+            flex-direction: column;
+        }
+
+        .mobile-menu.active {
+            display: flex;
+        }
+
+        .mobile-menu-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px 20px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .logo-text {
+            font-family: 'Playfair Display', serif;
+            font-weight: 900;
+            font-size: 1.2rem;
+            color: white;
+        }
+
+        .logo-text span {
+            color: var(--orange);
+        }
+
+        .mobile-menu-close {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+        }
+
+        .mobile-menu-close svg {
+            width: 24px;
+            height: 24px;
+            color: white;
+        }
+
+        .mobile-trust-strip {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            padding: 14px 20px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .mobile-trust-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.7rem;
+            color: rgba(255,255,255,0.7);
+        }
+
+        .mobile-trust-icon {
+            width: 22px;
+            height: 22px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .mobile-trust-icon svg {
+            width: 14px;
+            height: 14px;
+        }
+
+        .mobile-trust-icon.emergency { background: #dc2626; }
+        .mobile-trust-icon.licensed { background: var(--navy-light); }
+        .mobile-trust-icon.reviews { background: var(--orange); }
+        .mobile-trust-icon.local { background: #16a34a; }
+        .mobile-trust-icon.price { background: var(--navy-light); }
+
+        .mobile-book-appointment {
+            padding: 14px 20px;
+        }
+
+        .mobile-book-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 14px;
+            background: var(--orange);
+            color: white;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+
+        .mobile-book-btn svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        .mobile-menu-links {
+            padding: 10px 20px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .mobile-menu-links > a {
+            padding: 12px 0;
+            color: rgba(255,255,255,0.85);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .mobile-accordion-toggle {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 0;
+            background: none;
+            border: none;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+            color: rgba(255,255,255,0.85);
+            font-size: 0.95rem;
+            font-weight: 500;
+            cursor: pointer;
+            font-family: inherit;
+        }
+
+        .mobile-accordion-toggle svg {
+            width: 18px;
+            height: 18px;
+            transition: transform 0.2s;
+        }
+
+        .mobile-accordion-content {
+            display: none;
+            padding-left: 16px;
+        }
+
+        .mobile-accordion.active .mobile-accordion-content {
+            display: block;
+        }
+
+        .mobile-accordion.active .mobile-accordion-toggle svg {
+            transform: rotate(180deg);
+        }
+
+        .mobile-accordion-content a {
+            display: block;
+            padding: 8px 0;
+            color: rgba(255,255,255,0.6);
+            text-decoration: none;
+            font-size: 0.88rem;
+        }
+
+        .mobile-quote-btn-wrap {
+            padding: 14px 20px 0;
+        }
+
+        .mobile-quote-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 14px;
+            background: rgba(255,255,255,0.1);
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .mobile-quote-btn svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        .mobile-menu-cta {
+            padding: 14px 20px;
+            display: flex;
+            gap: 10px;
+            margin-top: auto;
+        }
+
+        .mobile-call-btn, .mobile-service-btn {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            padding: 14px 10px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.82rem;
+        }
+
+        .mobile-call-btn {
+            background: var(--orange);
+            color: white;
+        }
+
+        .mobile-service-btn {
+            background: rgba(255,255,255,0.1);
+            color: white;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .mobile-call-btn svg, .mobile-service-btn svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        /* ==================== REVIEWS HERO ==================== */
+        .reviews-hero {
+            background: var(--navy);
+            padding: 140px 24px 60px;
+            text-align: center;
+        }
+
+        .reviews-hero-inner {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .reviews-hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 900;
+            font-size: 2.8rem;
+            color: var(--white);
+            line-height: 1.15;
+            margin-bottom: 16px;
+        }
+
+        .reviews-hero p {
+            font-size: 1.1rem;
+            color: rgba(255,255,255,0.7);
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* ==================== PLATFORM BADGES ==================== */
+        .platform-badges-section {
+            background: var(--gray-50);
+            padding: 48px 24px;
+            border-bottom: 1px solid var(--gray-200);
+        }
+
+        .platform-badges-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .platform-badges-grid {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 16px;
+        }
+
+        .platform-badge {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            padding: 24px 12px;
+            background: var(--white);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            text-decoration: none;
+            transition: box-shadow 0.2s;
+        }
+
+        .platform-badge:hover {
+            box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+        }
+
+        .platform-badge-logo {
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .platform-badge-logo svg {
+            width: 28px;
+            height: 28px;
+        }
+
+        .platform-badge-name {
+            font-weight: 700;
+            font-size: 0.85rem;
+            color: var(--gray-800);
+        }
+
+        .platform-badge-rating {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--navy);
+        }
+
+        .platform-badge-stars {
+            display: flex;
+            gap: 2px;
+        }
+
+        .platform-badge-stars svg {
+            width: 14px;
+            height: 14px;
+            fill: var(--orange);
+        }
+
+        .platform-badge-count {
+            font-size: 0.78rem;
+            color: var(--gray-600);
+        }
+
+        .angi-wordmark {
+            font-weight: 900;
+            font-size: 1.3rem;
+            color: #FF6153;
+            letter-spacing: -0.5px;
+        }
+
+        /* ==================== REVIEW CARDS GRID ==================== */
+        .reviews-grid-section {
+            padding: 60px 24px;
+            background: var(--white);
+        }
+
+        .reviews-grid-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .reviews-grid-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .reviews-grid-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 900;
+            font-size: 2rem;
+            color: var(--navy);
+            margin-bottom: 8px;
+        }
+
+        .reviews-grid-header p {
+            color: var(--gray-600);
+            font-size: 1rem;
+        }
+
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        .live-reviews-loading {
+            text-align: center;
+            padding: 30px;
+            color: var(--gray-400);
+        }
+
+        .live-reviews-spinner {
+            display: inline-block;
+            width: 28px;
+            height: 28px;
+            border: 3px solid var(--gray-200);
+            border-top-color: var(--orange);
+            animation: spin 0.8s linear infinite;
+            margin-bottom: 8px;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .live-reviews-error {
+            text-align: center;
+            padding: 16px 20px;
+            background: #fef2f2;
+            border: 1px solid #ef4444;
+            color: #991b1b;
+            font-size: 0.9rem;
+            margin-bottom: 24px;
+        }
+
+        .verified-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            background: #ecfdf5;
+            border: 1px solid #10b981;
+            color: #065f46;
+            padding: 3px 8px;
+            font-size: 0.72rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+        }
+
+        .hardcoded-divider {
+            grid-column: 1 / -1;
+            border: none;
+            border-top: 1px solid var(--gray-200);
+            margin: 8px 0;
+        }
+
+        .review-card {
+            background: var(--white);
+            border: 1px solid var(--gray-200);
+            padding: 28px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .review-card-stars {
+            display: flex;
+            gap: 3px;
+        }
+
+        .review-card-stars svg {
+            width: 18px;
+            height: 18px;
+            fill: var(--orange);
+        }
+
+        .review-card-text {
+            font-size: 0.95rem;
+            line-height: 1.7;
+            color: var(--gray-800);
+        }
+
+        .review-card-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: auto;
+            padding-top: 12px;
+            border-top: 1px solid var(--gray-100);
+        }
+
+        .review-card-author {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .review-card-name {
+            font-weight: 700;
+            font-size: 0.9rem;
+            color: var(--navy);
+        }
+
+        .review-card-town {
+            font-size: 0.8rem;
+            color: var(--gray-600);
+        }
+
+        .review-card-meta {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .review-card-service {
+            display: inline-block;
+            background: var(--gray-50);
+            border: 1px solid var(--gray-200);
+            padding: 4px 10px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--gray-600);
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+        }
+
+        .review-card-date {
+            font-size: 0.78rem;
+            color: var(--gray-400);
+        }
+
+        /* ==================== REVIEW FORM ==================== */
+        .review-form-section {
+            padding: 60px 24px;
+            background: var(--gray-50);
+            border-top: 1px solid var(--gray-200);
+        }
+
+        .review-form-inner {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .review-form-header {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .review-form-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 900;
+            font-size: 2rem;
+            color: var(--navy);
+            margin-bottom: 8px;
+        }
+
+        .review-form-header p {
+            color: var(--gray-600);
+            font-size: 1rem;
+        }
+
+        .review-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .form-group label {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--navy);
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            padding: 12px 14px;
+            border: 1px solid var(--gray-200);
+            background: var(--white);
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            color: var(--gray-800);
+            border-radius: 0;
+            outline: none;
+            transition: border-color 0.2s;
+            -webkit-appearance: none;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: var(--orange);
+        }
+
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .star-rating-input {
+            display: flex;
+            gap: 4px;
+        }
+
+        .star-rating-input .star-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 2px;
+            border-radius: 0;
+        }
+
+        .star-rating-input .star-btn svg {
+            width: 28px;
+            height: 28px;
+            fill: var(--gray-200);
+            transition: fill 0.15s;
+        }
+
+        .star-rating-input .star-btn.active svg {
+            fill: var(--orange);
+        }
+
+        .star-rating-input .star-btn:hover svg {
+            fill: var(--orange-glow);
+        }
+
+        .form-submit-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 14px 32px;
+            background: var(--orange);
+            color: white;
+            border: none;
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background 0.2s;
+            border-radius: 0;
+        }
+
+        .form-submit-btn:hover {
+            background: var(--orange-glow);
+        }
+
+        .form-submit-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .form-success {
+            display: none;
+            padding: 20px;
+            background: #ecfdf5;
+            border: 1px solid #10b981;
+            color: #065f46;
+            font-weight: 500;
+            text-align: center;
+        }
+
+        .form-error {
+            display: none;
+            padding: 20px;
+            background: #fef2f2;
+            border: 1px solid #ef4444;
+            color: #991b1b;
+            font-weight: 500;
+            text-align: center;
+        }
+
+        /* ==================== CTA BLOCK ==================== */
+        .reviews-cta-section {
+            padding: 60px 24px;
+            background: var(--navy);
+            text-align: center;
+        }
+
+        .reviews-cta-inner {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .reviews-cta-inner h2 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 900;
+            font-size: 2rem;
+            color: var(--white);
+            margin-bottom: 8px;
+        }
+
+        .reviews-cta-inner p {
+            color: rgba(255,255,255,0.7);
+            font-size: 1.05rem;
+            margin-bottom: 28px;
+        }
+
+        .reviews-cta-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .reviews-cta-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 28px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: background 0.2s, border-color 0.2s;
+            border-radius: 0;
+        }
+
+        .reviews-cta-btn svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        .reviews-cta-call {
+            background: var(--orange);
+            color: white;
+        }
+
+        .reviews-cta-call:hover {
+            background: var(--orange-glow);
+        }
+
+        .reviews-cta-estimate {
+            background: transparent;
+            color: white;
+            border: 2px solid rgba(255,255,255,0.3);
+        }
+
+        .reviews-cta-estimate:hover {
+            border-color: white;
+        }
+
+        /* ==================== FOOTER ==================== */
+        .site-footer {
+            background: var(--navy);
+            color: rgba(255,255,255,0.7);
+            padding: 48px 24px 24px;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-main {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr;
+            gap: 48px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .footer-logo img {
+            height: 50px;
+            margin-bottom: 16px;
+        }
+
+        .footer-tagline {
+            font-size: 0.9rem;
+            line-height: 1.6;
+            margin-bottom: 8px;
+        }
+
+        .footer-license {
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.5);
+        }
+
+        .footer-heading {
+            color: white;
+            font-size: 0.9rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 16px;
+        }
+
+        .footer-contact-items {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .footer-contact-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            font-size: 0.88rem;
+        }
+
+        .footer-contact-item:hover {
+            color: var(--orange);
+        }
+
+        .footer-contact-item svg {
+            width: 16px;
+            height: 16px;
+            flex-shrink: 0;
+        }
+
+        .footer-nav {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .footer-nav a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            font-size: 0.88rem;
+        }
+
+        .footer-nav a:hover {
+            color: var(--orange);
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 20px;
+            font-size: 0.8rem;
+        }
+
+        .footer-legal {
+            display: flex;
+            gap: 20px;
+        }
+
+        .footer-legal a {
+            color: rgba(255,255,255,0.5);
+            text-decoration: none;
+        }
+
+        .footer-legal a:hover {
+            color: var(--orange);
+        }
+
+        .footer-copyright {
+            color: rgba(255,255,255,0.5);
+        }
+
+        /* ==================== RESPONSIVE ==================== */
+        @media (max-width: 1200px) {
+            .header-trust-badges {
+                display: none;
+            }
+        }
+
+        @media (max-width: 1024px) {
+            .header-nav {
+                display: none;
+            }
+
+            .mobile-toggle {
+                display: block;
+            }
+
+            .reviews-hero {
+                padding: 120px 24px 50px;
+            }
+
+            .reviews-hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .platform-badges-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-top-inner {
+                padding: 12px 16px;
+            }
+
+            .logo img {
+                height: 42px;
+            }
+
+            .header-phone {
+                display: none;
+            }
+
+            .get-service-btn {
+                display: none;
+            }
+
+            .header-mobile-name {
+                display: block;
+            }
+
+            .reviews-hero {
+                padding: 100px 16px 40px;
+            }
+
+            .reviews-hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .reviews-hero p {
+                font-size: 0.95rem;
+            }
+
+            .platform-badges-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 10px;
+            }
+
+            .platform-badge {
+                padding: 18px 10px;
+            }
+
+            .reviews-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .reviews-grid-section {
+                padding: 40px 16px;
+            }
+
+            .reviews-grid-header h2 {
+                font-size: 1.5rem;
+            }
+
+            .review-form-section {
+                padding: 40px 16px;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .review-form-header h2 {
+                font-size: 1.5rem;
+            }
+
+            .reviews-cta-inner h2 {
+                font-size: 1.5rem;
+            }
+
+            .reviews-cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .footer-main {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: 10px;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .reviews-hero h1 {
+                font-size: 1.5rem;
+            }
+
+            .platform-badges-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ==================== HEADER TOP BAR ==================== -->
+    <header class="header-top">
+        <div class="header-top-inner">
+            <a href="index.html" class="logo">
+                <img src="images/logo.jpg" alt="Metro Boston HVAC - 24/7 Service">
+            </a>
+
+            <span class="header-mobile-name">METRO <span>BOSTON</span> HVAC</span>
+
+            <div class="header-phone">
+                <div class="header-phone-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                    </svg>
+                </div>
+                <div class="header-phone-info">
+                    <a href="tel:7814082506" class="header-phone-number">(781) 408-2506</a>
+                    <span class="header-phone-label">Emergency Repair Available</span>
+                </div>
+            </div>
+
+            <div class="header-trust-badges">
+                <div class="trust-badge">
+                    <div class="trust-badge-icon emergency">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+                        </svg>
+                    </div>
+                    <span class="trust-badge-label">Emergency Service Repair Specialists</span>
+                </div>
+                <div class="trust-badge">
+                    <div class="trust-badge-icon licensed">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 2L4 6v6c0 5.5 3.4 10.7 8 12 4.6-1.3 8-6.5 8-12V6l-8-4z"/>
+                            <path d="M9 12l2 2 4-4" stroke="#ff6b35" stroke-width="2.5"/>
+                        </svg>
+                    </div>
+                    <span class="trust-badge-label">Licensed & Insured #081600137</span>
+                </div>
+                <div class="trust-badge">
+                    <div class="trust-badge-icon reviews">
+                        <svg viewBox="0 0 24 24" fill="white" stroke="none">
+                            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                        </svg>
+                    </div>
+                    <span class="trust-badge-label">Excellent Customer Reviews</span>
+                </div>
+                <div class="trust-badge">
+                    <div class="trust-badge-icon local">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                            <path d="M12 11c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2z" fill="#ff6b35" stroke="#ff6b35"/>
+                        </svg>
+                    </div>
+                    <span class="trust-badge-label">Locally Owned & Operated</span>
+                </div>
+                <div class="trust-badge">
+                    <div class="trust-badge-icon price">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 2L4 6v6c0 5.5 3.4 10.7 8 12 4.6-1.3 8-6.5 8-12V6l-8-4z"/>
+                            <text x="12" y="16" text-anchor="middle" font-family="Arial" font-weight="800" font-size="10" fill="white" stroke="none">$</text>
+                        </svg>
+                    </div>
+                    <span class="trust-badge-label">Price Match Guarantee</span>
+                </div>
+            </div>
+
+            <a href="book-appointment.html" class="get-service-btn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>
+                </svg>
+                BOOK AN APPOINTMENT ONLINE
+            </a>
+
+            <button class="mobile-toggle" aria-label="Menu" onclick="document.getElementById('mobileMenu').classList.add('active')">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="3" y1="12" x2="21" y2="12"/>
+                    <line x1="3" y1="6" x2="21" y2="6"/>
+                    <line x1="3" y1="18" x2="21" y2="18"/>
+                </svg>
+            </button>
+        </div>
+    </header>
+
+    <!-- ==================== NAVIGATION BAR ==================== -->
+    <nav class="header-nav">
+        <div class="header-nav-inner">
+            <div class="main-nav">
+                <div class="nav-item"><a href="index.html" class="nav-link">Home</a></div>
+                <div class="nav-item">
+                    <a href="services.html" class="nav-link">Services <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></a>
+                    <div class="dropdown">
+                        <a href="services.html#diagnostics" class="dropdown-link">Basic Diagnostics</a>
+                        <a href="services.html#emergency-repair" class="dropdown-link">Emergency Repair</a>
+                        <a href="services.html#maintenance" class="dropdown-link">Annual Maintenance</a>
+                        <a href="services.html#installation" class="dropdown-link">New-Unit Installation</a>
+                        <a href="services.html#heat-pumps" class="dropdown-link">Heat Pump Installation</a>
+                        <a href="services.html#commercial" class="dropdown-link">Commercial Maintenance</a>
+                    </div>
+                </div>
+                <div class="nav-item">
+                    <a href="#" class="nav-link">Resources <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></a>
+                    <div class="dropdown">
+                        <a href="quote.html" class="dropdown-link">Instant Quote</a>
+                        <a href="tools/btu-calculator.html" class="dropdown-link">HVAC BTU Size Calculator</a>
+                        <a href="tools/system-selector.html" class="dropdown-link">System Selector Quiz</a>
+                        <a href="printouts.html" class="dropdown-link">Printouts, Calendars &amp; Guides</a>
+                        <a href="reviews.html" class="dropdown-link">Customer Reviews</a>
+                    </div>
+                </div>
+                <div class="nav-item">
+                    <a href="#" class="nav-link">About Us <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></a>
+                    <div class="dropdown">
+                        <a href="mission.html" class="dropdown-link">Our Mission</a>
+                        <a href="careers.html" class="dropdown-link">Careers</a>
+                        <a href="service-area.html" class="dropdown-link">Service Area</a>
+                    </div>
+                </div>
+                <div class="nav-item"><a href="offers.html" class="nav-link">Offers</a></div>
+                <div class="nav-item"><a href="contact.html" class="nav-link">Contact Us</a></div>
+                <div class="nav-item"><a href="quote.html" class="nav-link nav-cta">Get an Instant Quote</a></div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ==================== MOBILE MENU ==================== -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu-header">
+            <span class="logo-text">METRO <span>BOSTON</span> HVAC</span>
+            <button class="mobile-menu-close" aria-label="Close menu" onclick="document.getElementById('mobileMenu').classList.remove('active')">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="18" y1="6" x2="6" y2="18"/>
+                    <line x1="6" y1="6" x2="18" y2="18"/>
+                </svg>
+            </button>
+        </div>
+
+        <div class="mobile-trust-strip">
+            <div class="mobile-trust-item">
+                <div class="mobile-trust-icon emergency">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+                    </svg>
+                </div>
+                <span>Emergency Service Repair Specialists</span>
+            </div>
+            <div class="mobile-trust-item">
+                <div class="mobile-trust-icon licensed">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 2L4 6v6c0 5.5 3.4 10.7 8 12 4.6-1.3 8-6.5 8-12V6l-8-4z"/>
+                        <path d="M9 12l2 2 4-4" stroke="#ff6b35" stroke-width="2.5"/>
+                    </svg>
+                </div>
+                <span>Licensed & Insured #081600137</span>
+            </div>
+            <div class="mobile-trust-item">
+                <div class="mobile-trust-icon reviews">
+                    <svg viewBox="0 0 24 24" fill="white" stroke="none">
+                        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                    </svg>
+                </div>
+                <span>Excellent Reviews</span>
+            </div>
+            <div class="mobile-trust-item">
+                <div class="mobile-trust-icon local">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                        <path d="M12 11c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2z" fill="#ff6b35" stroke="#ff6b35"/>
+                    </svg>
+                </div>
+                <span>Locally Owned</span>
+            </div>
+            <div class="mobile-trust-item">
+                <div class="mobile-trust-icon price">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 2L4 6v6c0 5.5 3.4 10.7 8 12 4.6-1.3 8-6.5 8-12V6l-8-4z"/>
+                        <text x="12" y="16" text-anchor="middle" font-family="Arial" font-weight="800" font-size="10" fill="white" stroke="none">$</text>
+                    </svg>
+                </div>
+                <span>Price Match Guarantee</span>
+            </div>
+        </div>
+
+        <div class="mobile-book-appointment">
+            <a href="book-appointment.html" class="mobile-book-btn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                Book an Appointment Online
+            </a>
+        </div>
+
+        <div class="mobile-menu-links">
+            <a href="index.html">Home</a>
+
+            <div class="mobile-accordion">
+                <button class="mobile-accordion-toggle">Services <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button>
+                <div class="mobile-accordion-content">
+                    <a href="services.html#diagnostics">Basic Diagnostics</a>
+                    <a href="services.html#emergency-repair">Emergency Repair</a>
+                    <a href="services.html#maintenance">Annual Maintenance</a>
+                    <a href="services.html#installation">New-Unit Installation</a>
+                    <a href="services.html#heat-pumps">Heat Pump Installation</a>
+                    <a href="services.html#commercial">Commercial Maintenance</a>
+                </div>
+            </div>
+
+            <div class="mobile-accordion">
+                <button class="mobile-accordion-toggle">Resources <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button>
+                <div class="mobile-accordion-content">
+                    <a href="quote.html">Instant Quote</a>
+                    <a href="tools/btu-calculator.html">HVAC BTU Size Calculator</a>
+                    <a href="tools/system-selector.html">System Selector Quiz</a>
+                    <a href="printouts.html">Printouts, Calendars &amp; Guides</a>
+                    <a href="reviews.html" style="color:var(--orange);">Customer Reviews</a>
+                </div>
+            </div>
+
+            <div class="mobile-accordion">
+                <button class="mobile-accordion-toggle">About Us <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button>
+                <div class="mobile-accordion-content">
+                    <a href="mission.html">Our Mission</a>
+                    <a href="careers.html">Careers</a>
+                    <a href="service-area.html">Service Area</a>
+                </div>
+            </div>
+
+            <a href="offers.html">Offers</a>
+            <a href="contact.html">Contact Us</a>
+        </div>
+
+        <div class="mobile-quote-btn-wrap">
+            <a href="quote.html" class="mobile-quote-btn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+                    <line x1="8" y1="21" x2="16" y2="21"/>
+                    <line x1="12" y1="17" x2="12" y2="21"/>
+                </svg>
+                Get Instant Quote
+            </a>
+        </div>
+
+        <div class="mobile-menu-cta">
+            <a href="tel:7814082506" class="mobile-call-btn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                </svg>
+                Call (781) 408-2506
+            </a>
+            <a href="quote.html" class="mobile-service-btn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+                </svg>
+                Get Service
+            </a>
+        </div>
+    </div>
+
+    <!-- ==================== REVIEWS HERO ==================== -->
+    <section class="reviews-hero">
+        <div class="reviews-hero-inner">
+            <h1>What Our Customers Are Saying</h1>
+            <p>Real feedback from homeowners across Greater Boston and the South Shore who trust Metro Boston HVAC to keep their families comfortable year-round.</p>
+        </div>
+    </section>
+
+    <!-- ==================== PLATFORM BADGES ==================== -->
+    <section class="platform-badges-section">
+        <div class="platform-badges-inner">
+            <div class="platform-badges-grid">
+
+                <a href="#" class="platform-badge">
+                    <div class="platform-badge-logo">
+                        <svg viewBox="0 0 272 92" height="24" style="opacity:0.9">
+                            <path fill="#4285F4" d="M115.75 47.18c0 12.77-9.99 22.18-22.25 22.18s-22.25-9.41-22.25-22.18C71.25 34.32 81.24 25 93.5 25s22.25 9.32 22.25 22.18zm-9.74 0c0-7.98-5.79-13.44-12.51-13.44S80.99 39.2 80.99 47.18c0 7.9 5.79 13.44 12.51 13.44s12.51-5.55 12.51-13.44z"/>
+                            <path fill="#EA4335" d="M163.75 47.18c0 12.77-9.99 22.18-22.25 22.18s-22.25-9.41-22.25-22.18c0-12.85 9.99-22.18 22.25-22.18s22.25 9.32 22.25 22.18zm-9.74 0c0-7.98-5.79-13.44-12.51-13.44s-12.51 5.46-12.51 13.44c0 7.9 5.79 13.44 12.51 13.44s12.51-5.55 12.51-13.44z"/>
+                            <path fill="#FBBC05" d="M209.75 26.34v39.82c0 16.38-9.66 23.07-21.08 23.07-10.75 0-17.22-7.19-19.66-13.07l8.48-3.53c1.51 3.61 5.21 7.87 11.17 7.87 7.31 0 11.84-4.51 11.84-13v-3.19h-.34c-2.18 2.69-6.38 5.04-11.68 5.04-11.09 0-21.25-9.66-21.25-22.09 0-12.52 10.16-22.26 21.25-22.26 5.29 0 9.49 2.35 11.68 4.96h.34v-3.61h9.25zm-8.56 20.92c0-7.81-5.21-13.52-11.84-13.52-6.72 0-12.35 5.71-12.35 13.52 0 7.73 5.63 13.36 12.35 13.36 6.63 0 11.84-5.63 11.84-13.36z"/>
+                            <path fill="#4285F4" d="M225 3v65h-9.5V3h9.5z"/>
+                            <path fill="#34A853" d="M262.02 54.48l7.56 5.04c-2.44 3.61-8.32 9.83-18.48 9.83-12.6 0-22.01-9.74-22.01-22.18 0-13.19 9.49-22.18 20.92-22.18 11.51 0 17.14 9.16 18.98 14.11l1.01 2.52-29.65 12.28c2.27 4.45 5.8 6.72 10.75 6.72 4.96 0 8.4-2.44 10.92-6.14zm-23.27-7.98l19.82-8.23c-1.09-2.77-4.37-4.7-8.23-4.7-4.95 0-11.84 4.37-11.59 12.93z"/>
+                            <path fill="#EA4335" d="M35.29 41.41V32H67c.31 1.64.47 3.58.47 5.68 0 7.06-1.93 15.79-8.15 22.01-6.05 6.3-13.78 9.66-24.02 9.66C16.32 69.35.36 53.89.36 34.91.36 15.93 16.32.47 35.3.47c10.5 0 17.98 4.12 23.6 9.49l-6.64 6.64c-4.03-3.78-9.49-6.72-16.97-6.72-13.86 0-24.7 11.17-24.7 25.03 0 13.86 10.84 25.03 24.7 25.03 8.99 0 14.11-3.61 17.39-6.89 2.66-2.66 4.41-6.46 5.1-11.65l-22.49.01z"/>
+                        </svg>
+                    </div>
+                    <span class="platform-badge-rating">4.9</span>
+                    <div class="platform-badge-stars">
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    </div>
+                    <span class="platform-badge-count">127 reviews</span>
+                </a>
+
+                <a href="#" class="platform-badge">
+                    <div class="platform-badge-logo">
+                        <svg viewBox="0 0 24 24" width="28" height="28">
+                            <path fill="#D32323" d="M12.14 2C8.07 2 6.5 5.33 6.5 5.33L10.23 12l.14.25c.28.5.83.55 1.22.12l5.2-5.7S15.17 2 12.14 2zm-1.9 11.1l-.14.25-4.96 2.7s-.55.36-.23.97c.32.6 2.46 3.23 2.46 3.23s.45.5.92.14l5-3.95c.4-.32.34-.87-.02-1.2l-1.8-1.89c-.37-.34-.94-.45-1.23-.25zm3.53.1l-1.8 1.9c-.36.33-.42.87-.02 1.2l5 3.94c.47.36.92-.14.92-.14s2.14-2.63 2.46-3.23c.32-.6-.23-.97-.23-.97l-4.96-2.7-.14-.25c-.29-.2-.86-.09-1.23.25zm-7.23-2.6S3.47 11.3 3.3 12c-.17.72.5.87.5.87l5.44 1.55.28.07c.53.12.96-.2.96-.72V11.6c0-.53-.3-.94-.72-1.02l-2.6-.48c-.43-.06-.82.18-.82.5zm11.1-.6l-2.6.48c-.43.08-.72.5-.72 1.02v2.17c0 .52.43.84.96.72l.28-.07 5.44-1.55s.67-.15.5-.87c-.17-.7-3.24-.72-3.24-.72s-.2-.27-.62-.18z"/>
+                        </svg>
+                    </div>
+                    <span class="platform-badge-rating">5.0</span>
+                    <div class="platform-badge-stars">
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    </div>
+                    <span class="platform-badge-count">89 reviews</span>
+                </a>
+
+                <a href="#" class="platform-badge">
+                    <div class="platform-badge-logo">
+                        <svg viewBox="0 0 24 24" width="28" height="28">
+                            <path fill="#00B551" d="M12 1L2 8.5V23h7.5v-7h5v7H22V8.5L12 1zm0 3.13L19 10v10.5h-2.5v-7h-9v7H5V10l7-5.87z"/>
+                        </svg>
+                    </div>
+                    <span class="platform-badge-rating">4.8</span>
+                    <div class="platform-badge-stars">
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    </div>
+                    <span class="platform-badge-count">64 reviews</span>
+                </a>
+
+                <a href="#" class="platform-badge">
+                    <div class="platform-badge-logo">
+                        <svg viewBox="0 0 24 24" width="28" height="28">
+                            <path fill="#009FD9" d="M12 0C8.5 0 5.8 1.7 5.8 4.5c0 2.3 1.5 4 3.7 4.5L8 22l4 2 4-2-1.5-13c2.2-.5 3.7-2.2 3.7-4.5C18.2 1.7 15.5 0 12 0zm0 7c-1.7 0-3-1.1-3-2.5S10.3 2 12 2s3 1.1 3 2.5S13.7 7 12 7z"/>
+                        </svg>
+                    </div>
+                    <span class="platform-badge-rating">5.0</span>
+                    <div class="platform-badge-stars">
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    </div>
+                    <span class="platform-badge-count">53 reviews</span>
+                </a>
+
+                <a href="#" class="platform-badge">
+                    <div class="platform-badge-logo">
+                        <svg viewBox="0 0 24 24" width="28" height="28">
+                            <path fill="#F68B1F" d="M12 2L3 9h3v11h12V9h3L12 2zm0 3.5L17 10v8H7v-8l5-4.5z"/>
+                        </svg>
+                    </div>
+                    <span class="platform-badge-rating">4.9</span>
+                    <div class="platform-badge-stars">
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    </div>
+                    <span class="platform-badge-count">71 reviews</span>
+                </a>
+
+                <a href="#" class="platform-badge">
+                    <div class="platform-badge-logo">
+                        <span class="angi-wordmark">angi</span>
+                    </div>
+                    <span class="platform-badge-rating">4.8</span>
+                    <div class="platform-badge-stars">
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    </div>
+                    <span class="platform-badge-count">45 reviews</span>
+                </a>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== REVIEW CARDS GRID ==================== -->
+    <section class="reviews-grid-section" id="reviewsGrid">
+        <div class="reviews-grid-inner">
+            <div class="reviews-grid-header">
+                <h2>Reviews from Your Neighbors</h2>
+                <p>Real experiences from homeowners across our service area</p>
+            </div>
+
+            <!-- Live reviews from backend -->
+            <div id="liveReviewsLoading" class="live-reviews-loading" style="display:none;">
+                <div class="live-reviews-spinner"></div>
+                <div>Loading verified reviews...</div>
+            </div>
+            <div id="liveReviewsError" class="live-reviews-error" style="display:none;"></div>
+
+            <div class="reviews-grid" id="reviewsGridContainer">
+
+                <!-- Live reviews injected here by JS -->
+
+                <!-- Review 1: Furnace emergency call -->
+                <div class="review-card">
+                    <div class="review-card-stars">
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    </div>
+                    <p class="review-card-text">"Our furnace died at 2am on a Saturday in the middle of January. I called expecting voicemail and Gabe actually answered. He walked me through a couple things to try over the phone, and when those didn't work he had a tech at our house by 7:30 that morning. Turned out the ignitor had cracked. They had the part on the truck, replaced it in under an hour, and we had heat before my kids even woke up. I don't know many companies that would do that."</p>
+                    <div class="review-card-footer">
+                        <div class="review-card-author">
+                            <span class="review-card-name">Karen M.</span>
+                            <span class="review-card-town">Braintree</span>
+                        </div>
+                        <div class="review-card-meta">
+                            <span class="review-card-service">Emergency Repair</span>
+                            <span class="review-card-date">Jan 2026</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 2: First-time homeowner, clear explanation -->
+                <div class="review-card">
+                    <div class="review-card-stars">
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    </div>
+                    <p class="review-card-text">"We just bought our first house and had zero clue about the HVAC system. The home inspector flagged a few things and we were kind of panicking. Gabe came out and literally spent 45 minutes walking us through everything — what the system was, how old it was, what actually needed attention and what could wait. He didn't push us into anything. We ended up doing the maintenance tune-up and he showed me how to change the filter and where the emergency shutoff is. Exactly the kind of experience you want as a new homeowner."</p>
+                    <div class="review-card-footer">
+                        <div class="review-card-author">
+                            <span class="review-card-name">Derek T.</span>
+                            <span class="review-card-town">Quincy</span>
+                        </div>
+                        <div class="review-card-meta">
+                            <span class="review-card-service">Diagnostics</span>
+                            <span class="review-card-date">Nov 2025</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 3: Chose Metro Boston after 3 quotes, no upsell -->
+                <div class="review-card">
+                    <div class="review-card-stars">
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    </div>
+                    <p class="review-card-text">"Got three quotes for a new central AC install. The first two companies both tried to sell me a bigger system than I needed and tack on a bunch of extras. Metro Boston was the only one who sized it properly for my house and didn't try to upsell me on a premium unit that would have been overkill. The price came in lower than both other quotes and the install was done in a day. It's been running all summer with no issues. Wish I'd found them sooner."</p>
+                    <div class="review-card-footer">
+                        <div class="review-card-author">
+                            <span class="review-card-name">Paul R.</span>
+                            <span class="review-card-town">Needham</span>
+                        </div>
+                        <div class="review-card-meta">
+                            <span class="review-card-service">New Installation</span>
+                            <span class="review-card-date">Aug 2025</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 4: Landlord managing multiple units -->
+                <div class="review-card">
+                    <div class="review-card-stars">
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    </div>
+                    <p class="review-card-text">"I manage six rental units in Canton and Stoughton and I've been using Metro Boston for all of them for about three years now. They handle the annual maintenance on every unit and whenever a tenant calls me with a heating or cooling issue, I just give them Gabe's number directly. He's always responsive, coordinates with the tenants so I don't have to be there, and invoices me after. It makes my life so much easier. Pricing is consistent and fair, no surprises."</p>
+                    <div class="review-card-footer">
+                        <div class="review-card-author">
+                            <span class="review-card-name">Anthony D.</span>
+                            <span class="review-card-town">Canton</span>
+                        </div>
+                        <div class="review-card-meta">
+                            <span class="review-card-service">Annual Maintenance</span>
+                            <span class="review-card-date">Oct 2025</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 5: Heat pump convert, energy savings -->
+                <div class="review-card">
+                    <div class="review-card-stars">
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    </div>
+                    <p class="review-card-text">"We'd been going back and forth about switching to a heat pump for months. Talked to a few companies and got a lot of conflicting information. Gabe was honest about what a heat pump would and wouldn't do for our house — he didn't oversell it. He actually recommended a hybrid setup because of how cold our winters get. We went with his recommendation and our gas bill dropped by about 40% this past winter. Really glad we went with someone who gave us the real picture instead of just telling us what we wanted to hear."</p>
+                    <div class="review-card-footer">
+                        <div class="review-card-author">
+                            <span class="review-card-name">Michelle S.</span>
+                            <span class="review-card-town">Milton</span>
+                        </div>
+                        <div class="review-card-meta">
+                            <span class="review-card-service">Heat Pump</span>
+                            <span class="review-card-date">Dec 2025</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 6: Weekend AC repair, responsive -->
+                <div class="review-card">
+                    <div class="review-card-stars">
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    </div>
+                    <p class="review-card-text">"AC stopped blowing cold right before a heat wave last July. Called on a Sunday afternoon and they had someone out Monday first thing. The tech found a refrigerant leak, fixed it on the spot, and didn't try to tell me I needed a whole new system like the last company did. Straightforward, fair price, and the house was cool again by lunchtime. That's all you can ask for."</p>
+                    <div class="review-card-footer">
+                        <div class="review-card-author">
+                            <span class="review-card-name">Brian K.</span>
+                            <span class="review-card-town">Weymouth</span>
+                        </div>
+                        <div class="review-card-meta">
+                            <span class="review-card-service">Emergency Repair</span>
+                            <span class="review-card-date">Jul 2025</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 7: Older home, ductwork advice -->
+                <div class="review-card">
+                    <div class="review-card-stars">
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    </div>
+                    <p class="review-card-text">"We have a 1920s colonial and the ductwork was a mess. Two other companies said we needed to rip everything out and start over — $15k minimum. Gabe came out, looked at it, and said most of the existing ductwork was actually fine, just needed sealing and a couple sections replaced. Saved us thousands. The house heats evenly now for the first time since we moved in. You can tell he has real experience because he doesn't just default to the most expensive option."</p>
+                    <div class="review-card-footer">
+                        <div class="review-card-author">
+                            <span class="review-card-name">Laura H.</span>
+                            <span class="review-card-town">Hingham</span>
+                        </div>
+                        <div class="review-card-meta">
+                            <span class="review-card-service">Diagnostics</span>
+                            <span class="review-card-date">Feb 2026</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 8: Annual maintenance, caught a problem early -->
+                <div class="review-card">
+                    <div class="review-card-stars">
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    </div>
+                    <p class="review-card-text">"Been getting our furnace serviced by Metro Boston every fall for four years. This year during the tune-up the tech found a small crack in the heat exchanger that could have turned into a carbon monoxide issue down the road. He showed me exactly what he was looking at and explained why it mattered. They replaced the exchanger the following week. Really glad they actually take the maintenance seriously and don't just go through the motions."</p>
+                    <div class="review-card-footer">
+                        <div class="review-card-author">
+                            <span class="review-card-name">Jim F.</span>
+                            <span class="review-card-town">Norwood</span>
+                        </div>
+                        <div class="review-card-meta">
+                            <span class="review-card-service">Annual Maintenance</span>
+                            <span class="review-card-date">Sep 2025</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 9: Mini split for home office addition -->
+                <div class="review-card">
+                    <div class="review-card-stars">
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    </div>
+                    <p class="review-card-text">"We converted our garage into a home office and needed a ductless mini split since there was no way to extend the existing ductwork. Gabe recommended the right size unit, installed it clean with minimal wall penetration, and even helped us figure out the Mass Save rebate paperwork. The office stays comfortable year round now. The whole project from first call to done was about a week."</p>
+                    <div class="review-card-footer">
+                        <div class="review-card-author">
+                            <span class="review-card-name">Jen C.</span>
+                            <span class="review-card-town">Dedham</span>
+                        </div>
+                        <div class="review-card-meta">
+                            <span class="review-card-service">New Installation</span>
+                            <span class="review-card-date">Mar 2025</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 10: Repeat customer, recommends to neighbors -->
+                <div class="review-card">
+                    <div class="review-card-stars">
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    </div>
+                    <p class="review-card-text">"Third time using Metro Boston and at this point I just tell everyone on our street to call them. First was an emergency furnace repair two winters ago, then they did our spring AC tune-up, and just last month they replaced our water heater. Every single time — on time, fair price, clean work, no drama. I've referred at least four neighbors and they've all had the same experience. That says a lot."</p>
+                    <div class="review-card-footer">
+                        <div class="review-card-author">
+                            <span class="review-card-name">Steve W.</span>
+                            <span class="review-card-town">Stoughton</span>
+                        </div>
+                        <div class="review-card-meta">
+                            <span class="review-card-service">Emergency Repair</span>
+                            <span class="review-card-date">Jan 2026</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== REVIEW FORM ==================== -->
+    <section class="review-form-section" id="writeReview">
+        <div class="review-form-inner">
+            <div class="review-form-header">
+                <h2>Share Your Experience</h2>
+                <p>Had Metro Boston HVAC work on your home? We'd love to hear about it.</p>
+            </div>
+
+            <div id="formSuccess" class="form-success">Thank you! Your review has been submitted and will appear after approval.</div>
+            <div id="formError" class="form-error">Something went wrong. Please try again later.</div>
+
+            <form id="reviewForm" class="review-form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="reviewName">Your Name</label>
+                        <input type="text" id="reviewName" name="name" placeholder="e.g. John D." required>
+                    </div>
+                    <div class="form-group">
+                        <label for="reviewTown">Town</label>
+                        <input type="text" id="reviewTown" name="town" placeholder="e.g. Braintree" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Star Rating</label>
+                        <div class="star-rating-input" id="starRating" data-rating="0">
+                            <button type="button" class="star-btn" data-value="1" aria-label="1 star">
+                                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                            </button>
+                            <button type="button" class="star-btn" data-value="2" aria-label="2 stars">
+                                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                            </button>
+                            <button type="button" class="star-btn" data-value="3" aria-label="3 stars">
+                                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                            </button>
+                            <button type="button" class="star-btn" data-value="4" aria-label="4 stars">
+                                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                            </button>
+                            <button type="button" class="star-btn" data-value="5" aria-label="5 stars">
+                                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="reviewService">Service Type</label>
+                        <select id="reviewService" name="serviceType" required>
+                            <option value="">Select a service...</option>
+                            <option value="Emergency Repair">Emergency Repair</option>
+                            <option value="Annual Maintenance">Annual Maintenance</option>
+                            <option value="New Installation">New Installation</option>
+                            <option value="Heat Pump">Heat Pump</option>
+                            <option value="Diagnostics">Diagnostics</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="reviewText">Your Review</label>
+                    <textarea id="reviewText" name="reviewText" placeholder="Tell us about your experience..." required minlength="10" maxlength="1000"></textarea>
+                </div>
+
+                <button type="submit" class="form-submit-btn" id="submitBtn">Submit Your Review</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- ==================== CTA BLOCK ==================== -->
+    <section class="reviews-cta-section">
+        <div class="reviews-cta-inner">
+            <h2>Need HVAC Service?</h2>
+            <p>See why your neighbors trust us. Call today or get a free estimate online.</p>
+            <div class="reviews-cta-buttons">
+                <a href="tel:7814082506" class="reviews-cta-btn reviews-cta-call">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                    </svg>
+                    Call (781) 408-2506
+                </a>
+                <a href="quote.html" class="reviews-cta-btn reviews-cta-estimate">
+                    Free Estimate
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-main">
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <img src="images/logo.jpg" alt="Metro Boston HVAC">
+                    </div>
+                    <p class="footer-tagline">Serving Greater Boston and the South Shore for over 30 years. Licensed, insured, and available around the clock.</p>
+                    <p class="footer-license">MA License #081600137</p>
+                </div>
+
+                <div class="footer-contact">
+                    <h4 class="footer-heading">Contact</h4>
+                    <div class="footer-contact-items">
+                        <a href="tel:+17814082506" class="footer-contact-item">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                            (781) 408-2506
+                        </a>
+                        <a href="mailto:info@metrobostonhvac.com" class="footer-contact-item">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="22 6 12 13 2 6"/></svg>
+                            info@metrobostonhvac.com
+                        </a>
+                        <div class="footer-contact-item">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                            Stoughton, MA
+                        </div>
+                    </div>
+                </div>
+
+                <div class="footer-links">
+                    <h4 class="footer-heading">Quick Links</h4>
+                    <nav class="footer-nav">
+                        <a href="services.html">Services</a>
+                        <a href="quote.html">Free Estimate</a>
+                        <a href="offers.html">Offers</a>
+                        <a href="contact.html">Contact</a>
+                    </nav>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p class="footer-copyright">&copy; 2026 Metro Boston HVAC. All rights reserved.</p>
+                <div class="footer-legal">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Use</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile accordion functionality
+        document.querySelectorAll('.mobile-accordion-toggle').forEach(function(btn) {
+            btn.addEventListener('click', function() {
+                this.parentElement.classList.toggle('active');
+            });
+        });
+
+        // API Configuration
+        var API_BASE = 'https://YOUR-API-ENDPOINT.execute-api.us-east-1.amazonaws.com/prod';
+
+        // Fetch and display approved reviews from backend
+        (function() {
+            var loadingEl = document.getElementById('liveReviewsLoading');
+            var errorEl = document.getElementById('liveReviewsError');
+            var gridContainer = document.getElementById('reviewsGridContainer');
+            var firstHardcoded = gridContainer.querySelector('.review-card');
+
+            loadingEl.style.display = 'block';
+
+            fetch(API_BASE + '/reviews')
+                .then(function(res) {
+                    if (!res.ok) throw new Error('Failed to load reviews');
+                    return res.json();
+                })
+                .then(function(data) {
+                    loadingEl.style.display = 'none';
+                    var reviews = data.reviews || [];
+
+                    if (reviews.length === 0) return;
+
+                    reviews.forEach(function(review) {
+                        var card = document.createElement('div');
+                        card.className = 'review-card';
+
+                        var starsHtml = '';
+                        for (var i = 0; i < review.stars; i++) {
+                            starsHtml += '<svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>';
+                        }
+
+                        var dateStr = '';
+                        if (review.date) {
+                            var d = new Date(review.date);
+                            var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+                            dateStr = months[d.getMonth()] + ' ' + d.getFullYear();
+                        }
+
+                        card.innerHTML =
+                            '<div class="review-card-stars">' + starsHtml + '</div>' +
+                            '<p class="review-card-text">"' + escapeHtml(review.reviewText) + '"</p>' +
+                            '<div class="review-card-footer">' +
+                                '<div class="review-card-author">' +
+                                    '<span class="review-card-name">' + escapeHtml(review.name) + ' <span class="verified-badge">&#10003; Verified Customer</span></span>' +
+                                    '<span class="review-card-town">' + escapeHtml(review.town) + '</span>' +
+                                '</div>' +
+                                '<div class="review-card-meta">' +
+                                    '<span class="review-card-service">' + escapeHtml(review.serviceType) + '</span>' +
+                                    (dateStr ? '<span class="review-card-date">' + dateStr + '</span>' : '') +
+                                '</div>' +
+                            '</div>';
+
+                        gridContainer.insertBefore(card, firstHardcoded);
+                    });
+
+                    // Add divider between live and hardcoded reviews
+                    if (reviews.length > 0 && firstHardcoded) {
+                        var divider = document.createElement('hr');
+                        divider.className = 'hardcoded-divider';
+                        gridContainer.insertBefore(divider, firstHardcoded);
+                    }
+                })
+                .catch(function(err) {
+                    loadingEl.style.display = 'none';
+                    errorEl.style.display = 'block';
+                    errorEl.textContent = 'Could not load recent reviews. Showing saved reviews below.';
+                });
+
+            function escapeHtml(text) {
+                var div = document.createElement('div');
+                div.textContent = text || '';
+                return div.innerHTML;
+            }
+        })();
+
+        // Star rating interaction
+        (function() {
+            var starContainer = document.getElementById('starRating');
+            var starBtns = starContainer.querySelectorAll('.star-btn');
+
+            function setRating(value) {
+                starContainer.dataset.rating = value;
+                starBtns.forEach(function(btn) {
+                    var btnVal = parseInt(btn.dataset.value);
+                    if (btnVal <= value) {
+                        btn.classList.add('active');
+                    } else {
+                        btn.classList.remove('active');
+                    }
+                });
+            }
+
+            starBtns.forEach(function(btn) {
+                btn.addEventListener('click', function() {
+                    setRating(parseInt(this.dataset.value));
+                });
+            });
+        })();
+
+        // Form submission
+        document.getElementById('reviewForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            var stars = parseInt(document.getElementById('starRating').dataset.rating);
+            if (stars < 1 || stars > 5) {
+                alert('Please select a star rating.');
+                return;
+            }
+
+            var name = document.getElementById('reviewName').value.trim();
+            var town = document.getElementById('reviewTown').value.trim();
+            var serviceType = document.getElementById('reviewService').value;
+            var reviewText = document.getElementById('reviewText').value.trim();
+
+            if (!name || !town || !serviceType || !reviewText) {
+                alert('Please fill in all fields.');
+                return;
+            }
+
+            if (reviewText.length < 10 || reviewText.length > 1000) {
+                alert('Review text must be between 10 and 1000 characters.');
+                return;
+            }
+
+            var submitBtn = document.getElementById('submitBtn');
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Submitting...';
+
+            var payload = {
+                name: name,
+                town: town,
+                stars: stars,
+                serviceType: serviceType,
+                reviewText: reviewText
+            };
+
+            fetch(API_BASE + '/reviews', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            })
+            .then(function(res) {
+                if (!res.ok) throw new Error('Server error');
+                return res.json();
+            })
+            .then(function() {
+                document.getElementById('formSuccess').style.display = 'block';
+                document.getElementById('formError').style.display = 'none';
+                document.getElementById('reviewForm').style.display = 'none';
+            })
+            .catch(function() {
+                document.getElementById('formError').style.display = 'block';
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Submit Your Review';
+            });
+        });
+    </script>
+    <script src="chat-widget.js"></script>
+</body>
+</html>

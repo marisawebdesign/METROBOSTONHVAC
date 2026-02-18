@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Review Moderation | Metro Boston HVAC Admin</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            border-radius: 0;
+        }
+
+        :root {
+            --navy: #1a2332;
+            --orange: #ff6b35;
+            --orange-glow: #ff8855;
+            --white: #ffffff;
+            --gray-50: #f9fafb;
+            --gray-100: #f3f4f6;
+            --gray-200: #e5e7eb;
+            --gray-400: #9ca3af;
+            --gray-600: #4b5563;
+            --gray-800: #1f2937;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--gray-50);
+            color: var(--gray-800);
+            line-height: 1.6;
+        }
+
+        .admin-header {
+            background: var(--navy);
+            color: white;
+            padding: 20px 24px;
+        }
+
+        .admin-header-inner {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .admin-header h1 {
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+
+        .admin-header a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            font-size: 0.85rem;
+        }
+
+        .admin-header a:hover {
+            color: white;
+        }
+
+        .admin-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 24px;
+        }
+
+        .api-key-section {
+            background: var(--white);
+            border: 1px solid var(--gray-200);
+            padding: 20px;
+            margin-bottom: 24px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .api-key-section label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--navy);
+            margin-bottom: 8px;
+        }
+
+        .api-key-row {
+            display: flex;
+            gap: 10px;
+        }
+
+        .api-key-row input {
+            flex: 1;
+            padding: 10px 14px;
+            border: 1px solid var(--gray-200);
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            border-radius: 0;
+            outline: none;
+        }
+
+        .api-key-row input:focus {
+            border-color: var(--orange);
+        }
+
+        .api-key-row button {
+            padding: 10px 20px;
+            background: var(--navy);
+            color: white;
+            border: none;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            font-size: 0.85rem;
+            cursor: pointer;
+            border-radius: 0;
+        }
+
+        .api-key-row button:hover {
+            background: var(--orange);
+        }
+
+        .endpoint-section {
+            background: var(--white);
+            border: 1px solid var(--gray-200);
+            padding: 20px;
+            margin-bottom: 24px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .endpoint-section label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--navy);
+            margin-bottom: 8px;
+        }
+
+        .endpoint-section input {
+            width: 100%;
+            padding: 10px 14px;
+            border: 1px solid var(--gray-200);
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            border-radius: 0;
+            outline: none;
+        }
+
+        .endpoint-section input:focus {
+            border-color: var(--orange);
+        }
+
+        .filter-bar {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .filter-btn {
+            padding: 8px 18px;
+            background: var(--white);
+            border: 1px solid var(--gray-200);
+            font-family: 'Inter', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 500;
+            cursor: pointer;
+            color: var(--gray-600);
+            border-radius: 0;
+        }
+
+        .filter-btn.active {
+            background: var(--navy);
+            color: white;
+            border-color: var(--navy);
+        }
+
+        .filter-btn:hover:not(.active) {
+            border-color: var(--orange);
+            color: var(--orange);
+        }
+
+        .status-bar {
+            padding: 14px 20px;
+            background: var(--white);
+            border: 1px solid var(--gray-200);
+            margin-bottom: 16px;
+            font-size: 0.9rem;
+            color: var(--gray-600);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .loading-msg {
+            text-align: center;
+            padding: 40px;
+            color: var(--gray-400);
+        }
+
+        .review-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .admin-review-card {
+            background: var(--white);
+            border: 1px solid var(--gray-200);
+            padding: 24px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .admin-review-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 12px;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .admin-review-meta {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .admin-review-name {
+            font-weight: 700;
+            font-size: 1rem;
+            color: var(--navy);
+        }
+
+        .admin-review-details {
+            font-size: 0.82rem;
+            color: var(--gray-600);
+        }
+
+        .admin-review-stars {
+            display: flex;
+            gap: 2px;
+        }
+
+        .admin-review-stars svg {
+            width: 16px;
+            height: 16px;
+            fill: var(--orange);
+        }
+
+        .admin-review-text {
+            font-size: 0.95rem;
+            line-height: 1.7;
+            margin-bottom: 16px;
+            color: var(--gray-800);
+        }
+
+        .admin-review-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn-approve, .btn-reject {
+            padding: 8px 20px;
+            border: none;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            font-size: 0.85rem;
+            cursor: pointer;
+            border-radius: 0;
+        }
+
+        .btn-approve {
+            background: #16a34a;
+            color: white;
+        }
+
+        .btn-approve:hover {
+            background: #15803d;
+        }
+
+        .btn-reject {
+            background: #dc2626;
+            color: white;
+        }
+
+        .btn-reject:hover {
+            background: #b91c1c;
+        }
+
+        .btn-approve:disabled, .btn-reject:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+            color: var(--gray-400);
+            font-size: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .admin-container {
+                padding: 16px;
+            }
+
+            .api-key-row {
+                flex-direction: column;
+            }
+
+            .admin-review-top {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="admin-header">
+        <div class="admin-header-inner">
+            <h1>Review Moderation</h1>
+            <a href="reviews.html">View Public Reviews Page</a>
+        </div>
+    </header>
+
+    <div class="admin-container">
+
+        <div class="endpoint-section">
+            <label for="apiEndpoint">API Endpoint Base URL</label>
+            <input type="text" id="apiEndpoint" placeholder="https://XXXXXXXX.execute-api.us-east-1.amazonaws.com/prod">
+        </div>
+
+        <div class="api-key-section">
+            <label for="apiKeyInput">Moderation API Key</label>
+            <div class="api-key-row">
+                <input type="password" id="apiKeyInput" placeholder="Enter your moderation API key">
+                <button id="fetchBtn" onclick="fetchReviews()">Load Reviews</button>
+            </div>
+        </div>
+
+        <div class="filter-bar">
+            <button class="filter-btn active" data-status="pending" onclick="setFilter('pending', this)">Pending</button>
+            <button class="filter-btn" data-status="approved" onclick="setFilter('approved', this)">Approved</button>
+            <button class="filter-btn" data-status="rejected" onclick="setFilter('rejected', this)">Rejected</button>
+        </div>
+
+        <div id="statusBar" class="status-bar" style="display:none;"></div>
+        <div id="loadingMsg" class="loading-msg" style="display:none;">Loading reviews...</div>
+        <div id="reviewList" class="review-list"></div>
+        <div id="emptyState" class="empty-state" style="display:none;">No reviews found. Enter your API key and click Load Reviews.</div>
+
+    </div>
+
+    <script>
+        var currentFilter = 'pending';
+
+        function getBaseUrl() {
+            var val = document.getElementById('apiEndpoint').value.trim();
+            // Remove trailing slash
+            return val.replace(/\/+$/, '');
+        }
+
+        function getApiKey() {
+            return document.getElementById('apiKeyInput').value.trim();
+        }
+
+        function setFilter(status, btn) {
+            currentFilter = status;
+            document.querySelectorAll('.filter-btn').forEach(function(b) {
+                b.classList.remove('active');
+            });
+            btn.classList.add('active');
+            fetchReviews();
+        }
+
+        function fetchReviews() {
+            var baseUrl = getBaseUrl();
+            var apiKey = getApiKey();
+
+            if (!baseUrl) {
+                showStatus('Please enter the API endpoint base URL.', true);
+                return;
+            }
+
+            if (!apiKey) {
+                showStatus('Please enter your API key.', true);
+                return;
+            }
+
+            document.getElementById('loadingMsg').style.display = 'block';
+            document.getElementById('reviewList').innerHTML = '';
+            document.getElementById('emptyState').style.display = 'none';
+            document.getElementById('statusBar').style.display = 'none';
+
+            fetch(baseUrl + '/reviews/moderate?status=' + currentFilter, {
+                headers: { 'x-api-key': apiKey }
+            })
+            .then(function(res) {
+                if (!res.ok) throw new Error('HTTP ' + res.status);
+                return res.json();
+            })
+            .then(function(data) {
+                document.getElementById('loadingMsg').style.display = 'none';
+                renderReviews(data.reviews || []);
+            })
+            .catch(function(err) {
+                document.getElementById('loadingMsg').style.display = 'none';
+                showStatus('Error loading reviews: ' + err.message, true);
+            });
+        }
+
+        function renderReviews(reviews) {
+            var list = document.getElementById('reviewList');
+            list.innerHTML = '';
+
+            if (reviews.length === 0) {
+                document.getElementById('emptyState').style.display = 'block';
+                document.getElementById('emptyState').textContent = 'No ' + currentFilter + ' reviews found.';
+                return;
+            }
+
+            document.getElementById('emptyState').style.display = 'none';
+
+            reviews.forEach(function(review) {
+                var card = document.createElement('div');
+                card.className = 'admin-review-card';
+
+                var starsHtml = '';
+                for (var i = 0; i < review.stars; i++) {
+                    starsHtml += '<svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>';
+                }
+
+                var date = new Date(review.timestamp).toLocaleDateString('en-US', {
+                    year: 'numeric', month: 'short', day: 'numeric',
+                    hour: '2-digit', minute: '2-digit'
+                });
+
+                var actionsHtml = '';
+                if (currentFilter === 'pending') {
+                    actionsHtml = '<div class="admin-review-actions">' +
+                        '<button class="btn-approve" onclick="moderateReview(\'' + review.reviewId + '\', \'approve\', this)">Approve</button>' +
+                        '<button class="btn-reject" onclick="moderateReview(\'' + review.reviewId + '\', \'reject\', this)">Reject</button>' +
+                        '</div>';
+                }
+
+                card.innerHTML =
+                    '<div class="admin-review-top">' +
+                        '<div class="admin-review-meta">' +
+                            '<span class="admin-review-name">' + escapeHtml(review.reviewerName) + '</span>' +
+                            '<span class="admin-review-details">' + escapeHtml(review.town) + ' &middot; ' + escapeHtml(review.serviceType) + ' &middot; ' + date + '</span>' +
+                        '</div>' +
+                        '<div class="admin-review-stars">' + starsHtml + '</div>' +
+                    '</div>' +
+                    '<p class="admin-review-text">' + escapeHtml(review.reviewText) + '</p>' +
+                    actionsHtml;
+
+                list.appendChild(card);
+            });
+        }
+
+        function moderateReview(reviewId, action, btn) {
+            var baseUrl = getBaseUrl();
+            var apiKey = getApiKey();
+
+            var card = btn.closest('.admin-review-card');
+            var buttons = card.querySelectorAll('button');
+            buttons.forEach(function(b) { b.disabled = true; });
+
+            fetch(baseUrl + '/reviews/moderate', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'x-api-key': apiKey
+                },
+                body: JSON.stringify({ reviewId: reviewId, action: action })
+            })
+            .then(function(res) {
+                if (!res.ok) throw new Error('HTTP ' + res.status);
+                return res.json();
+            })
+            .then(function() {
+                card.style.opacity = '0.4';
+                showStatus('Review ' + action + 'd successfully.', false);
+                setTimeout(function() {
+                    card.remove();
+                    // Check if list is now empty
+                    if (document.getElementById('reviewList').children.length === 0) {
+                        document.getElementById('emptyState').style.display = 'block';
+                        document.getElementById('emptyState').textContent = 'No ' + currentFilter + ' reviews found.';
+                    }
+                }, 800);
+            })
+            .catch(function(err) {
+                showStatus('Error: ' + err.message, true);
+                buttons.forEach(function(b) { b.disabled = false; });
+            });
+        }
+
+        function showStatus(msg, isError) {
+            var bar = document.getElementById('statusBar');
+            bar.textContent = msg;
+            bar.style.display = 'block';
+            bar.style.borderColor = isError ? '#ef4444' : '#10b981';
+            bar.style.color = isError ? '#991b1b' : '#065f46';
+            bar.style.background = isError ? '#fef2f2' : '#ecfdf5';
+        }
+
+        function escapeHtml(text) {
+            var div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+    </script>
+
+</body>
+</html>
