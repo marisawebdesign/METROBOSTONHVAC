@@ -12,27 +12,76 @@
     <link rel="stylesheet" href="chat-widget.css">
 
     <style>
-        /* ===== Service Area Page Styles ===== */
-        .sa-hero {
-            background: #1a2332;
-            padding: 140px 0 60px;
+        /* ==================== PAGE HERO ==================== */
+        .page-hero {
+            background: var(--navy-dark);
+            padding: 80px 24px 60px;
             text-align: center;
+            position: relative;
+            overflow: hidden;
         }
-        .sa-hero h1 {
+
+        .page-hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(15,37,54,0.95), rgba(26,58,82,0.85));
+            z-index: 1;
+        }
+
+        .page-hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .page-hero h1 {
             font-family: 'Bebas Neue', sans-serif;
-            font-size: 3.2rem;
-            color: #fff;
+            font-size: clamp(36px, 6vw, 56px);
+            color: var(--white);
             letter-spacing: 2px;
-            margin: 0 0 12px;
+            line-height: 1.1;
+            margin-bottom: 16px;
         }
-        .sa-hero h1 span {
-            color: #ff6b35;
+
+        .page-hero h1 .accent {
+            color: var(--orange);
         }
-        .sa-hero p {
-            color: rgba(255,255,255,0.7);
-            font-size: 1.1rem;
+
+        .page-hero p {
+            font-size: clamp(16px, 2vw, 20px);
+            color: rgba(255,255,255,0.8);
             max-width: 600px;
             margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .page-hero-badges {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-top: 28px;
+            flex-wrap: wrap;
+        }
+
+        .page-hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 30px;
+            padding: 10px 20px;
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--white);
+        }
+
+        .page-hero-badge svg {
+            width: 18px;
+            height: 18px;
+            color: var(--orange);
         }
 
         /* ===== Map Section ===== */
@@ -263,11 +312,8 @@
             }
         }
         @media (max-width: 768px) {
-            .sa-hero {
-                padding: 120px 20px 40px;
-            }
-            .sa-hero h1 {
-                font-size: 2.4rem;
+            .page-hero {
+                padding: 60px 20px 40px;
             }
             .sa-map-section {
                 padding: 40px 16px;
@@ -287,14 +333,12 @@
             }
         }
         @media (max-width: 480px) {
-            .sa-hero {
-                padding: 110px 16px 30px;
+            .page-hero-badges {
+                gap: 12px;
             }
-            .sa-hero h1 {
-                font-size: 2rem;
-            }
-            .sa-hero p {
-                font-size: 0.95rem;
+            .page-hero-badge {
+                padding: 8px 14px;
+                font-size: 12px;
             }
             #saMap {
                 height: 300px;
@@ -443,10 +487,26 @@
         </div>
     </div>
 
-    <!-- ==================== HERO SECTION ==================== -->
-    <section class="sa-hero">
-        <h1>OUR <span>SERVICE AREA</span></h1>
-        <p>Proudly serving Boston Metro and South Shore communities with expert HVAC service, repair, and installation.</p>
+    <!-- ==================== PAGE HERO ==================== -->
+    <section class="page-hero">
+        <div class="page-hero-content">
+            <h1>Our <span class="accent">Service Area</span></h1>
+            <p>Proudly serving Boston Metro and South Shore communities with expert HVAC service, repair, and installation.</p>
+            <div class="page-hero-badges">
+                <span class="page-hero-badge">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                    24/7 Availability
+                </span>
+                <span class="page-hero-badge">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                    Usually Within 1 Hour
+                </span>
+                <span class="page-hero-badge">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L4 6v6c0 5.5 3.4 10.7 8 12 4.6-1.3 8-6.5 8-12V6l-8-4z"/></svg>
+                    Licensed #081600137
+                </span>
+            </div>
+        </div>
     </section>
 
     <!-- ==================== MAP SECTION ==================== -->
