@@ -731,6 +731,229 @@
             color: var(--gray-400);
         }
 
+        /* ==================== REVIEW FORM ==================== */
+        .review-form-section {
+            padding: 60px 24px;
+            background: var(--gray-50);
+            border-top: 1px solid var(--gray-200);
+        }
+
+        .review-form-inner {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .review-form-header {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .review-form-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 900;
+            font-size: 2rem;
+            color: var(--navy);
+            margin-bottom: 8px;
+        }
+
+        .review-form-header p {
+            color: var(--gray-600);
+            font-size: 1rem;
+        }
+
+        .review-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .form-group label {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--navy);
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            padding: 12px 14px;
+            border: 1px solid var(--gray-200);
+            background: var(--white);
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            color: var(--gray-800);
+            border-radius: 0;
+            outline: none;
+            transition: border-color 0.2s;
+            -webkit-appearance: none;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: var(--orange);
+        }
+
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .star-rating-input {
+            display: flex;
+            gap: 4px;
+        }
+
+        .star-rating-input .star-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 2px;
+            border-radius: 0;
+        }
+
+        .star-rating-input .star-btn svg {
+            width: 28px;
+            height: 28px;
+            fill: var(--gray-200);
+            transition: fill 0.15s;
+        }
+
+        .star-rating-input .star-btn.active svg {
+            fill: var(--orange);
+        }
+
+        .star-rating-input .star-btn:hover svg {
+            fill: var(--orange-glow);
+        }
+
+        .form-submit-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 14px 32px;
+            background: var(--orange);
+            color: white;
+            border: none;
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background 0.2s;
+            border-radius: 0;
+        }
+
+        .form-submit-btn:hover {
+            background: var(--orange-glow);
+        }
+
+        .form-submit-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .form-success {
+            display: none;
+            padding: 20px;
+            background: #ecfdf5;
+            border: 1px solid #10b981;
+            color: #065f46;
+            font-weight: 500;
+            text-align: center;
+        }
+
+        .form-error {
+            display: none;
+            padding: 20px;
+            background: #fef2f2;
+            border: 1px solid #ef4444;
+            color: #991b1b;
+            font-weight: 500;
+            text-align: center;
+        }
+
+        /* ==================== CTA BLOCK ==================== */
+        .reviews-cta-section {
+            padding: 60px 24px;
+            background: var(--navy);
+            text-align: center;
+        }
+
+        .reviews-cta-inner {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .reviews-cta-inner h2 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 900;
+            font-size: 2rem;
+            color: var(--white);
+            margin-bottom: 8px;
+        }
+
+        .reviews-cta-inner p {
+            color: rgba(255,255,255,0.7);
+            font-size: 1.05rem;
+            margin-bottom: 28px;
+        }
+
+        .reviews-cta-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .reviews-cta-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 28px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: background 0.2s, border-color 0.2s;
+            border-radius: 0;
+        }
+
+        .reviews-cta-btn svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        .reviews-cta-call {
+            background: var(--orange);
+            color: white;
+        }
+
+        .reviews-cta-call:hover {
+            background: var(--orange-glow);
+        }
+
+        .reviews-cta-estimate {
+            background: transparent;
+            color: white;
+            border: 2px solid rgba(255,255,255,0.3);
+        }
+
+        .reviews-cta-estimate:hover {
+            border-color: white;
+        }
+
         /* ==================== FOOTER ==================== */
         .site-footer {
             background: var(--navy);
@@ -924,6 +1147,27 @@
 
             .reviews-grid-header h2 {
                 font-size: 1.5rem;
+            }
+
+            .review-form-section {
+                padding: 40px 16px;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .review-form-header h2 {
+                font-size: 1.5rem;
+            }
+
+            .reviews-cta-inner h2 {
+                font-size: 1.5rem;
+            }
+
+            .reviews-cta-buttons {
+                flex-direction: column;
+                align-items: center;
             }
 
             .footer-main {
@@ -1563,6 +1807,93 @@
         </div>
     </section>
 
+    <!-- ==================== REVIEW FORM ==================== -->
+    <section class="review-form-section" id="writeReview">
+        <div class="review-form-inner">
+            <div class="review-form-header">
+                <h2>Share Your Experience</h2>
+                <p>Had Metro Boston HVAC work on your home? We'd love to hear about it.</p>
+            </div>
+
+            <div id="formSuccess" class="form-success">Thank you! Your review has been submitted and will appear after approval.</div>
+            <div id="formError" class="form-error">Something went wrong. Please try again later.</div>
+
+            <form id="reviewForm" class="review-form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="reviewName">Your Name</label>
+                        <input type="text" id="reviewName" name="name" placeholder="e.g. John D." required>
+                    </div>
+                    <div class="form-group">
+                        <label for="reviewTown">Town</label>
+                        <input type="text" id="reviewTown" name="town" placeholder="e.g. Braintree" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Star Rating</label>
+                        <div class="star-rating-input" id="starRating" data-rating="0">
+                            <button type="button" class="star-btn" data-value="1" aria-label="1 star">
+                                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                            </button>
+                            <button type="button" class="star-btn" data-value="2" aria-label="2 stars">
+                                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                            </button>
+                            <button type="button" class="star-btn" data-value="3" aria-label="3 stars">
+                                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                            </button>
+                            <button type="button" class="star-btn" data-value="4" aria-label="4 stars">
+                                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                            </button>
+                            <button type="button" class="star-btn" data-value="5" aria-label="5 stars">
+                                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="reviewService">Service Type</label>
+                        <select id="reviewService" name="serviceType" required>
+                            <option value="">Select a service...</option>
+                            <option value="Emergency Repair">Emergency Repair</option>
+                            <option value="Annual Maintenance">Annual Maintenance</option>
+                            <option value="New Installation">New Installation</option>
+                            <option value="Heat Pump">Heat Pump</option>
+                            <option value="Diagnostics">Diagnostics</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="reviewText">Your Review</label>
+                    <textarea id="reviewText" name="reviewText" placeholder="Tell us about your experience..." required minlength="10" maxlength="1000"></textarea>
+                </div>
+
+                <button type="submit" class="form-submit-btn" id="submitBtn">Submit Your Review</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- ==================== CTA BLOCK ==================== -->
+    <section class="reviews-cta-section">
+        <div class="reviews-cta-inner">
+            <h2>Need HVAC Service?</h2>
+            <p>See why your neighbors trust us. Call today or get a free estimate online.</p>
+            <div class="reviews-cta-buttons">
+                <a href="tel:7814082506" class="reviews-cta-btn reviews-cta-call">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                    </svg>
+                    Call (781) 408-2506
+                </a>
+                <a href="quote.html" class="reviews-cta-btn reviews-cta-estimate">
+                    Free Estimate
+                </a>
+            </div>
+        </div>
+    </section>
+
     <!-- ==================== FOOTER ==================== -->
     <footer class="site-footer">
         <div class="footer-container">
@@ -1619,6 +1950,88 @@
         document.querySelectorAll('.mobile-accordion-toggle').forEach(function(btn) {
             btn.addEventListener('click', function() {
                 this.parentElement.classList.toggle('active');
+            });
+        });
+
+        // Star rating interaction
+        (function() {
+            var starContainer = document.getElementById('starRating');
+            var starBtns = starContainer.querySelectorAll('.star-btn');
+
+            function setRating(value) {
+                starContainer.dataset.rating = value;
+                starBtns.forEach(function(btn) {
+                    var btnVal = parseInt(btn.dataset.value);
+                    if (btnVal <= value) {
+                        btn.classList.add('active');
+                    } else {
+                        btn.classList.remove('active');
+                    }
+                });
+            }
+
+            starBtns.forEach(function(btn) {
+                btn.addEventListener('click', function() {
+                    setRating(parseInt(this.dataset.value));
+                });
+            });
+        })();
+
+        // Form submission
+        document.getElementById('reviewForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            var stars = parseInt(document.getElementById('starRating').dataset.rating);
+            if (stars < 1 || stars > 5) {
+                alert('Please select a star rating.');
+                return;
+            }
+
+            var name = document.getElementById('reviewName').value.trim();
+            var town = document.getElementById('reviewTown').value.trim();
+            var serviceType = document.getElementById('reviewService').value;
+            var reviewText = document.getElementById('reviewText').value.trim();
+
+            if (!name || !town || !serviceType || !reviewText) {
+                alert('Please fill in all fields.');
+                return;
+            }
+
+            if (reviewText.length < 10 || reviewText.length > 1000) {
+                alert('Review text must be between 10 and 1000 characters.');
+                return;
+            }
+
+            var submitBtn = document.getElementById('submitBtn');
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Submitting...';
+
+            var payload = {
+                name: name,
+                town: town,
+                stars: stars,
+                serviceType: serviceType,
+                reviewText: reviewText
+            };
+
+            fetch('https://YOUR-API-ENDPOINT.execute-api.us-east-1.amazonaws.com/prod/reviews', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            })
+            .then(function(res) {
+                if (!res.ok) throw new Error('Server error');
+                return res.json();
+            })
+            .then(function() {
+                document.getElementById('formSuccess').style.display = 'block';
+                document.getElementById('formError').style.display = 'none';
+                document.getElementById('reviewForm').style.display = 'none';
+            })
+            .catch(function() {
+                document.getElementById('formError').style.display = 'block';
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Submit Your Review';
             });
         });
     </script>
