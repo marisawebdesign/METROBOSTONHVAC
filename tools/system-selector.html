@@ -23,34 +23,26 @@
 
         /* ==================== PAGE HERO ==================== */
         .page-hero {
-            background: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy) 60%, var(--navy-light) 100%);
-            padding: 140px 24px 60px;
+            background: var(--navy-dark);
+            padding: 80px 24px 60px;
             text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page-hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(15,37,54,0.95), rgba(26,58,82,0.85));
+            z-index: 1;
         }
 
         .page-hero-content {
+            position: relative;
+            z-index: 2;
             max-width: 800px;
             margin: 0 auto;
-        }
-
-        .page-hero-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            background: rgba(255,255,255,0.1);
-            border: 1px solid rgba(255,255,255,0.15);
-            padding: 6px 14px;
-            margin-bottom: 16px;
-            font-size: 12px;
-            font-weight: 600;
-            color: var(--orange);
-            letter-spacing: 1px;
-            text-transform: uppercase;
-        }
-
-        .page-hero-badge svg {
-            width: 14px;
-            height: 14px;
         }
 
         .page-hero h1 {
@@ -65,11 +57,38 @@
         .page-hero h1 .accent { color: var(--orange); }
 
         .page-hero p {
-            font-size: 18px;
+            font-size: clamp(16px, 2vw, 20px);
             color: rgba(255,255,255,0.8);
             max-width: 600px;
             margin: 0 auto;
             line-height: 1.6;
+        }
+
+        .page-hero-badges {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-top: 28px;
+            flex-wrap: wrap;
+        }
+
+        .page-hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 30px;
+            padding: 10px 20px;
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--white);
+        }
+
+        .page-hero-badge svg {
+            width: 18px;
+            height: 18px;
+            color: var(--orange);
         }
 
         /* ==================== QUIZ INTRO ==================== */
@@ -676,12 +695,10 @@
 
         /* ==================== RESPONSIVE (quiz-specific only) ==================== */
         @media (max-width: 1024px) {
-            .page-hero { padding: 120px 24px 50px; }
         }
 
         @media (max-width: 768px) {
-            .page-hero { padding: 110px 16px 40px; }
-            .page-hero p { font-size: 16px; }
+            .page-hero { padding: 60px 20px 40px; }
             .quiz-intro { padding: 0 16px; margin-top: -20px; }
             .quiz-intro-card { padding: 24px; }
             .quiz-intro-features { flex-direction: column; gap: 12px; }
@@ -695,8 +712,8 @@
         }
 
         @media (max-width: 480px) {
-            .page-hero h1 { font-size: 32px; }
-            .page-hero-badge { font-size: 11px; padding: 5px 10px; }
+            .page-hero-badges { gap: 12px; }
+            .page-hero-badge { padding: 8px 14px; font-size: 12px; }
             .quiz-start h2 { font-size: 26px; }
             .quiz-start p { font-size: 15px; }
             .quiz-option label { padding: 14px 16px; gap: 10px; }
@@ -842,12 +859,22 @@
     <!-- ==================== PAGE HERO ==================== -->
     <section class="page-hero">
         <div class="page-hero-content">
-            <div class="page-hero-badge">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
-                Free HVAC Assessment Tool
-            </div>
             <h1>System Selector <span class="accent">Quiz</span></h1>
             <p>Answer a few quick questions and we'll recommend the ideal heating and cooling system for your home.</p>
+            <div class="page-hero-badges">
+                <span class="page-hero-badge">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                    24/7 Availability
+                </span>
+                <span class="page-hero-badge">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                    Usually Within 1 Hour
+                </span>
+                <span class="page-hero-badge">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L4 6v6c0 5.5 3.4 10.7 8 12 4.6-1.3 8-6.5 8-12V6l-8-4z"/></svg>
+                    Licensed #081600137
+                </span>
+            </div>
         </div>
     </section>
 
