@@ -23,14 +23,36 @@
     // Sandbox application ID (used only for reference; token stays server-side)
     var SQUARE_APP_ID = 'sandbox-sq0idb-bldX2LOA_sZ-YySB16G2ww';
 
-    // ── Fallback / demo data ─────────────────────────────────────────
-    var FALLBACK_SERVICES = [
-        { id: 'fb-1', name: 'AC Repair & Diagnostics', description: 'Complete inspection and repair of your cooling system. $79 diagnostic fee waived with repair.', icon: 'fa-wrench', variationId: 'fb-var-1', durationMinutes: 60 },
-        { id: 'fb-2', name: 'Heating System Repair', description: 'Furnace and boiler diagnostics, repair, and tune-ups to keep you warm all winter.', icon: 'fa-fire', variationId: 'fb-var-2', durationMinutes: 60 },
-        { id: 'fb-3', name: 'New AC Installation', description: 'Professional installation of high-efficiency cooling systems with free estimates.', icon: 'fa-snowflake', variationId: 'fb-var-3', durationMinutes: 120 },
-        { id: 'fb-4', name: 'Heat Pump Service', description: 'Installation, repair, and maintenance for ductless mini-splits and heat pump systems.', icon: 'fa-fan', variationId: 'fb-var-4', durationMinutes: 90 },
-        { id: 'fb-5', name: 'Annual Maintenance Plan', description: 'Yearly tune-up and inspection to prevent breakdowns and extend equipment life.', icon: 'fa-calendar-check', variationId: 'fb-var-5', durationMinutes: 60 },
-        { id: 'fb-6', name: 'Emergency Repair', description: '24/7 emergency service for heating and cooling breakdowns. No after-hours fees.', icon: 'fa-bolt', variationId: 'fb-var-6', durationMinutes: 60 }
+    // ── Square sandbox catalog IDs ──────────────────────────────────
+    // These match the services created in the client's Square Appointments account.
+    // When switching to production, update these IDs to match the production catalog.
+    var SQUARE_LOCATION_ID = 'LB2SQAX9GKWQF';
+    var SQUARE_TEAM_MEMBER_ID = 'TMkDrMGgzzIjJD33';
+
+    // ── The only 2 bookable services ─────────────────────────────────
+    var SERVICES = [
+        {
+            id: '3R33CEORE4S6KLDZ52O6QBGY',
+            name: 'Free Phone Consultation',
+            description: 'Not sure what you need? Talk through your HVAC issue with a licensed technician over the phone. No cost, no pressure.',
+            icon: 'fa-phone',
+            variationId: 'XGE5A5SSYWQ6P4JWEI523GX2',
+            variationVersion: 1771503378277,
+            durationMinutes: 30,
+            priceLabel: 'FREE',
+            priceCents: 0
+        },
+        {
+            id: '5NCZHPG4ZEJQIEEU2MRU4UQI',
+            name: '$79 Diagnostic Visit',
+            description: 'A technician comes to your home, inspects your system, and tells you exactly what is going on. Fee waived if you proceed with repair.',
+            icon: 'fa-wrench',
+            variationId: 'UZHFLQXSD7CEX5LNQ7HH5BGU',
+            variationVersion: 1771503378277,
+            durationMinutes: 60,
+            priceLabel: '$79',
+            priceCents: 7900
+        }
     ];
 
     // ── State ─────────────────────────────────────────────────────────
@@ -198,38 +220,17 @@
 
     // ── Step 1: Services ─────────────────────────────────────────────
     function fetchServices() {
-        showLoading(servicesGrid);
+        // Always use the 2 hardcoded services from the client's Square account.
+        // These are the only bookable services offered.
+        services = SERVICES;
+        locationId = SQUARE_LOCATION_ID;
 
+        // Determine if we can reach the live API for availability later
         if (!API_BASE) {
             demoMode = true;
-            services = FALLBACK_SERVICES;
-            locationId = 'demo-location';
-            renderServices();
-            return;
         }
 
-        apiGet('services')
-            .then(function (data) {
-                if (data.services && data.services.length > 0) {
-                    services = data.services;
-                    locationId = data.locationId;
-                    // Assign icons
-                    for (var i = 0; i < services.length; i++) {
-                        services[i].icon = getServiceIcon(services[i].name);
-                    }
-                } else {
-                    demoMode = true;
-                    services = FALLBACK_SERVICES;
-                    locationId = 'demo-location';
-                }
-                renderServices();
-            })
-            .catch(function () {
-                demoMode = true;
-                services = FALLBACK_SERVICES;
-                locationId = 'demo-location';
-                renderServices();
-            });
+        renderServices();
     }
 
     function renderServices() {
@@ -242,15 +243,12 @@
             html += '<div class="service-card-icon"><i class="fa-solid ' + icon + '"></i></div>';
             html += '<div class="service-card-info">';
             html += '<div class="service-card-name">' + s.name + '</div>';
-            html += '<div class="service-card-desc">' + s.description + '</div>';
-            if (s.durationMinutes) {
-                html += '<div class="service-card-duration"><i class="fa-regular fa-clock"></i> ' + s.durationMinutes + ' min</div>';
+            if (s.priceLabel) {
+                html += '<div class="service-card-price">' + s.priceLabel + '</div>';
             }
+            html += '<div class="service-card-desc">' + s.description + '</div>';
+            html += '<div class="service-card-duration"><i class="fa-regular fa-clock"></i> ' + s.durationMinutes + ' min</div>';
             html += '</div></div>';
-        }
-
-        if (demoMode) {
-            html += '<div class="demo-notice"><i class="fa-solid fa-circle-info"></i> Preview mode — connect your Square account to show live services.</div>';
         }
 
         servicesGrid.innerHTML = html;
@@ -358,6 +356,7 @@
 
         showLoading(timeslotsEl);
 
+        // If no API configured, use demo availability
         if (demoMode) {
             availabilityCache[mk] = generateDemoAvailability(year, month);
             renderCalendar();
@@ -375,12 +374,21 @@
             locationId: locationId
         })
         .then(function (data) {
-            availabilityCache[mk] = data.availabilities || [];
+            if (data.error || data.errors) {
+                // API returned an error (e.g. sandbox not onboarded to Appointments)
+                // Fall back to demo availability
+                demoMode = true;
+                availabilityCache[mk] = generateDemoAvailability(year, month);
+            } else {
+                availabilityCache[mk] = data.availabilities || [];
+            }
             renderCalendar();
             hideLoading(timeslotsEl);
         })
         .catch(function () {
-            availabilityCache[mk] = [];
+            // Network error — fall back to demo availability
+            demoMode = true;
+            availabilityCache[mk] = generateDemoAvailability(year, month);
             renderCalendar();
             hideLoading(timeslotsEl);
         });
@@ -527,9 +535,10 @@
         var lastName = nameParts.length > 1 ? nameParts.slice(1).join(' ') : '';
 
         var segment = selectedSlot.appointment_segments ? selectedSlot.appointment_segments[0] : {};
+        var teamMemberId = segment.team_member_id || SQUARE_TEAM_MEMBER_ID;
 
         if (demoMode) {
-            // Simulate success after short delay
+            // Simulate success after short delay (sandbox/demo mode)
             setTimeout(function () {
                 showSuccess();
             }, 1500);
@@ -542,7 +551,7 @@
             durationMinutes: segment.duration_minutes || selectedService.durationMinutes || 60,
             locationId: locationId,
             startAt: selectedSlot.start_at,
-            teamMemberId: segment.team_member_id || null,
+            teamMemberId: teamMemberId,
             customerFirstName: firstName,
             customerLastName: lastName,
             customerEmail: email,
