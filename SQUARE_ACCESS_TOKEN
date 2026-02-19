@@ -1,12 +1,11 @@
-Sandbox Application ID
+Production Application ID
 
 Identifies your application in select Square API and SDK calls.
 
-sandbox-sq0idb-bldX2LOA_sZ-YySB16G2ww
+sq0idp-RhIFdYpXA-o3MaKjng32Pw
 
 
-Sandbox Access token • Replace
+Production Access token
 
 Grants full production access to the corresponding Square account.
-
-EAAAl18DRkXlyuQTVtxDE-MNgLMi8pA7tkBd3ABu9oye2JcFrqt9DQR7w7uiWer3
+EAAAlyN0stJ_UaO_hoGyASa-vIka1-nh0isjjnzRl8ZlxXbeI0LcSVhS4leQo9dz
