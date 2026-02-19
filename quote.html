@@ -1918,18 +1918,6 @@
                     <label class="form-label" for="email">Email Address *</label>
                     <input type="email" class="form-input" id="email" placeholder="john@example.com" required>
                 </div>
-                <div class="form-group full-width">
-                    <label class="form-label" for="address">Street Address</label>
-                    <input type="text" class="form-input" id="address" placeholder="123 Main Street">
-                </div>
-                <div class="form-group">
-                    <label class="form-label" for="city">City</label>
-                    <input type="text" class="form-input" id="city" placeholder="Stoughton" value="Stoughton">
-                </div>
-                <div class="form-group">
-                    <label class="form-label" for="zip">ZIP Code</label>
-                    <input type="text" class="form-input" id="zip" placeholder="02072" maxlength="5">
-                </div>
             </div>
 
             <div class="step-nav">
@@ -2261,9 +2249,6 @@
                 formData.lastName = ln;
                 formData.phone = ph;
                 formData.email = em;
-                formData.address = document.getElementById('address').value.trim();
-                formData.city = document.getElementById('city').value.trim();
-                formData.zip = document.getElementById('zip').value.trim();
                 return true;
             }
             return true;
@@ -2439,14 +2424,13 @@
 
         function submitToWeb3Forms(serviceLabel, low, high) {
             var web3formData = new FormData();
-            web3formData.append('access_key', 'YOUR_WEB3FORMS_ACCESS_KEY_HERE');
+            web3formData.append('access_key', 'd12aa62f-bca5-440f-a9d2-f188463233b7');
             web3formData.append('subject', 'New HVAC Quote Request - ' + formData.firstName + ' ' + formData.lastName);
             web3formData.append('from_name', 'Metro Boston HVAC Quote Calculator');
             web3formData.append('to', 'METROBOSTONHVAC@gmail.com');
             web3formData.append('Name', formData.firstName + ' ' + formData.lastName);
             web3formData.append('Phone', formData.phone);
             web3formData.append('Email', formData.email);
-            web3formData.append('Address', (formData.address || 'Not provided') + ', ' + (formData.city || '') + ' ' + (formData.zip || ''));
             web3formData.append('Service Requested', serviceLabel);
             web3formData.append('Home Size', formData.sqft || 'N/A');
             web3formData.append('System Age', formData.systemAge || 'N/A');
@@ -2474,9 +2458,6 @@
             document.getElementById('lastName').value = '';
             document.getElementById('phone').value = '';
             document.getElementById('email').value = '';
-            document.getElementById('address').value = '';
-            document.getElementById('city').value = 'Stoughton';
-            document.getElementById('zip').value = '';
             ['btn1Next', 'btn2Next', 'btn3Next'].forEach(function(id) {
                 var b = document.getElementById(id);
                 if (b) b.disabled = true;
