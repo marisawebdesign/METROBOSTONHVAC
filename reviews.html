@@ -187,36 +187,6 @@
             gap: 24px;
         }
 
-        .live-reviews-loading {
-            text-align: center;
-            padding: 30px;
-            color: var(--gray-400);
-        }
-
-        .live-reviews-spinner {
-            display: inline-block;
-            width: 28px;
-            height: 28px;
-            border: 3px solid var(--gray-200);
-            border-top-color: var(--orange);
-            animation: spin 0.8s linear infinite;
-            margin-bottom: 8px;
-        }
-
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
-
-        .live-reviews-error {
-            text-align: center;
-            padding: 16px 20px;
-            background: #fef2f2;
-            border: 1px solid #ef4444;
-            color: #991b1b;
-            font-size: 0.9rem;
-            margin-bottom: 24px;
-        }
-
         .verified-badge {
             display: inline-flex;
             align-items: center;
@@ -229,13 +199,6 @@
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 0.3px;
-        }
-
-        .hardcoded-divider {
-            grid-column: 1 / -1;
-            border: none;
-            border-top: 1px solid var(--gray-200);
-            margin: 8px 0;
         }
 
         .review-card {
@@ -1003,16 +966,7 @@
                 <p>Real experiences from homeowners across our service area</p>
             </div>
 
-            <!-- Live reviews from backend -->
-            <div id="liveReviewsLoading" class="live-reviews-loading" style="display:none;">
-                <div class="live-reviews-spinner"></div>
-                <div>Loading verified reviews...</div>
-            </div>
-            <div id="liveReviewsError" class="live-reviews-error" style="display:none;"></div>
-
             <div class="reviews-grid" id="reviewsGridContainer">
-
-                <!-- Live reviews injected here by JS -->
 
                 <!-- Review 1 (from homepage): Sarah M., Braintree, AC Repair -->
                 <div class="review-card">
@@ -1384,81 +1338,6 @@
             });
         });
 
-        // API Configuration
-        var API_BASE = 'https://YOUR-API-ENDPOINT.execute-api.us-east-1.amazonaws.com/prod';
-
-        // Fetch and display approved reviews from backend
-        (function() {
-            var loadingEl = document.getElementById('liveReviewsLoading');
-            var errorEl = document.getElementById('liveReviewsError');
-            var gridContainer = document.getElementById('reviewsGridContainer');
-            var firstHardcoded = gridContainer.querySelector('.review-card');
-
-            loadingEl.style.display = 'block';
-
-            fetch(API_BASE + '/reviews')
-                .then(function(res) {
-                    if (!res.ok) throw new Error('Failed to load reviews');
-                    return res.json();
-                })
-                .then(function(data) {
-                    loadingEl.style.display = 'none';
-                    var reviews = data.reviews || [];
-
-                    if (reviews.length === 0) return;
-
-                    reviews.forEach(function(review) {
-                        var card = document.createElement('div');
-                        card.className = 'review-card';
-
-                        var starsHtml = '';
-                        for (var i = 0; i < review.stars; i++) {
-                            starsHtml += '<svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>';
-                        }
-
-                        var dateStr = '';
-                        if (review.date) {
-                            var d = new Date(review.date);
-                            var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-                            dateStr = months[d.getMonth()] + ' ' + d.getFullYear();
-                        }
-
-                        card.innerHTML =
-                            '<div class="review-card-stars">' + starsHtml + '</div>' +
-                            '<p class="review-card-text">"' + escapeHtml(review.reviewText) + '"</p>' +
-                            '<div class="review-card-footer">' +
-                                '<div class="review-card-author">' +
-                                    '<span class="review-card-name">' + escapeHtml(review.name) + ' <span class="verified-badge">&#10003; Verified Customer</span></span>' +
-                                    '<span class="review-card-town">' + escapeHtml(review.town) + '</span>' +
-                                '</div>' +
-                                '<div class="review-card-meta">' +
-                                    '<span class="review-card-service">' + escapeHtml(review.serviceType) + '</span>' +
-                                    (dateStr ? '<span class="review-card-date">' + dateStr + '</span>' : '') +
-                                '</div>' +
-                            '</div>';
-
-                        gridContainer.insertBefore(card, firstHardcoded);
-                    });
-
-                    // Add divider between live and hardcoded reviews
-                    if (reviews.length > 0 && firstHardcoded) {
-                        var divider = document.createElement('hr');
-                        divider.className = 'hardcoded-divider';
-                        gridContainer.insertBefore(divider, firstHardcoded);
-                    }
-                })
-                .catch(function(err) {
-                    loadingEl.style.display = 'none';
-                    errorEl.style.display = 'block';
-                    errorEl.textContent = 'Could not load recent reviews. Showing saved reviews below.';
-                });
-
-            function escapeHtml(text) {
-                var div = document.createElement('div');
-                div.textContent = text || '';
-                return div.innerHTML;
-            }
-        })();
 
         // Star rating interaction
         (function() {
@@ -1484,7 +1363,7 @@
             });
         })();
 
-        // Form submission
+        // Form submission via Web3Forms
         document.getElementById('reviewForm').addEventListener('submit', function(e) {
             e.preventDefault();
 
@@ -1513,27 +1392,36 @@
             submitBtn.disabled = true;
             submitBtn.textContent = 'Submitting...';
 
-            var payload = {
-                name: name,
-                town: town,
-                stars: stars,
-                serviceType: serviceType,
-                reviewText: reviewText
-            };
+            var starText = '';
+            for (var i = 0; i < stars; i++) starText += '\u2605';
 
-            fetch(API_BASE + '/reviews', {
+            var formData = new FormData();
+            formData.append('access_key', 'e2b9ee10-cc37-416d-9a75-14d8e9dbd3ed');
+            formData.append('subject', 'New Customer Review Submission - ' + name);
+            formData.append('from_name', 'Metro Boston HVAC Reviews');
+            formData.append('Name', name);
+            formData.append('Town', town);
+            formData.append('Star Rating', starText + ' (' + stars + '/5)');
+            formData.append('Service Type', serviceType);
+            formData.append('Review', reviewText);
+
+            fetch('https://api.web3forms.com/submit', {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(payload)
+                body: formData
             })
             .then(function(res) {
-                if (!res.ok) throw new Error('Server error');
                 return res.json();
             })
-            .then(function() {
-                document.getElementById('formSuccess').style.display = 'block';
-                document.getElementById('formError').style.display = 'none';
-                document.getElementById('reviewForm').style.display = 'none';
+            .then(function(data) {
+                if (data.success) {
+                    document.getElementById('formSuccess').style.display = 'block';
+                    document.getElementById('formError').style.display = 'none';
+                    document.getElementById('reviewForm').style.display = 'none';
+                } else {
+                    document.getElementById('formError').style.display = 'block';
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = 'Submit Your Review';
+                }
             })
             .catch(function() {
                 document.getElementById('formError').style.display = 'block';
