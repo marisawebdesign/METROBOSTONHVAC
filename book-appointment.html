@@ -11,135 +11,72 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="chat-widget.css">
     <style>
-        /* ==================== HERO ==================== */
-        .booking-hero {
+        /* ==================== DIAGNOSTIC BANNER ==================== */
+        .diag-banner {
             background: #1a2332;
-            padding: 80px 24px 48px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-            border-top: 4px solid #ff6b35;
+            border-bottom: 3px solid #ff6b35;
+            padding: 28px 24px;
         }
-        .booking-hero::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(135deg, rgba(15,37,54,0.95), rgba(26,58,82,0.85));
-            z-index: 1;
-        }
-        .booking-hero-inner {
-            position: relative;
-            z-index: 2;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        .booking-hero h1 {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: clamp(36px, 6vw, 56px);
-            color: #fff;
-            letter-spacing: 2px;
-            line-height: 1.1;
-            margin-bottom: 12px;
-        }
-        .booking-hero h1 .accent { color: #ff6b35; }
-        .booking-hero p {
-            font-size: clamp(16px, 2vw, 20px);
-            color: rgba(255,255,255,0.75);
-            max-width: 560px;
-            margin: 0 auto;
-            line-height: 1.6;
-        }
-
-        /* ==================== SERVICE TABS ==================== */
-        .svc-tabs {
-            background: #f5f5f5;
-            padding: 48px 24px 0;
-        }
-        .svc-tabs-inner {
+        .diag-banner-inner {
             max-width: 1060px;
             margin: 0 auto;
-        }
-        .svc-tabs-label {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 22px;
-            color: #1a2332;
-            letter-spacing: 1px;
-            margin-bottom: 20px;
-            text-align: center;
-        }
-        .svc-tab-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-        }
-        .svc-tab {
-            display: flex;
-            align-items: flex-start;
-            gap: 18px;
-            padding: 24px;
-            background: #fff;
-            border: 2px solid #e5e7eb;
-            border-left: 5px solid #e5e7eb;
-            cursor: pointer;
-            transition: all 0.25s ease;
-        }
-        .svc-tab:hover {
-            border-color: #ff6b35;
-            box-shadow: 0 4px 20px rgba(255,107,53,0.12);
-        }
-        .svc-tab.active {
-            background: #1a2332;
-            border-color: #1a2332;
-            border-left-color: #ff6b35;
-        }
-        .svc-tab.active .svc-tab-name,
-        .svc-tab.active .svc-tab-desc { color: rgba(255,255,255,0.85); }
-        .svc-tab.active .svc-tab-name { color: #fff; }
-        .svc-tab.active .svc-tab-price { color: #ff6b35; }
-        .svc-tab.active .svc-tab-icon { color: #ff6b35; background: rgba(255,107,53,0.15); }
-        .svc-tab.active .svc-tab-meta { color: rgba(255,255,255,0.5); }
-        .svc-tab-icon {
-            flex-shrink: 0;
-            width: 48px;
-            height: 48px;
             display: flex;
             align-items: center;
             justify-content: center;
+            gap: 20px;
+        }
+        .diag-banner-icon {
+            flex-shrink: 0;
+            width: 52px;
+            height: 52px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 107, 53, 0.12);
+            border-radius: 50%;
+        }
+        .diag-banner-icon i {
             font-size: 22px;
-            color: #1a2332;
-            background: #f5f5f5;
-            transition: all 0.25s ease;
-        }
-        .svc-tab-body { flex: 1; }
-        .svc-tab-name {
-            font-family: 'Source Sans 3', sans-serif;
-            font-size: 17px;
-            font-weight: 700;
-            color: #1a2332;
-            margin-bottom: 2px;
-            transition: color 0.25s ease;
-        }
-        .svc-tab-price {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 24px;
             color: #ff6b35;
-            letter-spacing: 0.5px;
-            margin-bottom: 6px;
-            transition: color 0.25s ease;
         }
-        .svc-tab-desc {
-            font-size: 14px;
-            color: #4b5563;
-            line-height: 1.5;
-            transition: color 0.25s ease;
+        .diag-banner-text {
+            text-align: left;
         }
-        .svc-tab-meta {
+        .diag-banner-headline {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(22px, 3vw, 30px);
+            color: #fff;
+            letter-spacing: 1.5px;
+            line-height: 1.1;
+            margin-bottom: 4px;
+        }
+        .diag-banner-headline .price {
+            color: #ff6b35;
+        }
+        .diag-banner-sub {
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 15px;
+            color: rgba(255, 255, 255, 0.6);
+            line-height: 1.4;
+        }
+        .diag-banner-badge {
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(255, 255, 255, 0.07);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            padding: 8px 16px;
+            font-family: 'Source Sans 3', sans-serif;
             font-size: 13px;
-            color: #9ca3af;
-            margin-top: 8px;
-            transition: color 0.25s ease;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.7);
+            white-space: nowrap;
         }
-        .svc-tab-meta i { margin-right: 4px; }
+        .diag-banner-badge i {
+            color: #ff6b35;
+            font-size: 14px;
+        }
 
         /* ==================== BOOKING AREA ==================== */
         .booking-area {
@@ -147,111 +84,170 @@
             padding: 40px 24px 80px;
         }
         .booking-columns {
-            max-width: 1060px;
+            max-width: 1140px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: 1fr 1.2fr;
-            gap: 28px;
+            grid-template-columns: 380px 1fr;
+            gap: 32px;
             align-items: start;
         }
 
-        /* ── Left column: service detail card ── */
-        .detail-card {
+        /* ── Left column: service info ── */
+        .info-card {
             background: #fff;
             box-shadow: 0 2px 16px rgba(0,0,0,0.06);
             position: sticky;
             top: 100px;
         }
-        .detail-card-head {
+        .info-card-head {
             background: #1a2332;
             padding: 22px 28px;
         }
-        .detail-card-head h2 {
+        .info-card-head h2 {
             font-family: 'Bebas Neue', sans-serif;
             font-size: 24px;
             color: #fff;
             letter-spacing: 1px;
             margin: 0;
         }
-        .detail-card-body {
+        .info-card-body {
             padding: 28px;
         }
-        .detail-empty {
-            text-align: center;
-            padding: 48px 20px;
-            color: #9ca3af;
-        }
-        .detail-empty i { font-size: 40px; margin-bottom: 16px; display: block; }
-        .detail-empty p { font-size: 15px; line-height: 1.6; margin: 0; }
-
-        .detail-badge {
-            display: inline-block;
-            font-family: 'Source Sans 3', sans-serif;
-            font-size: 12px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            padding: 4px 12px;
-            margin-bottom: 14px;
-        }
-        .detail-badge.free { background: #d1fae5; color: #065f46; }
-        .detail-badge.paid { background: #fff3e0; color: #b45309; }
-        .detail-title {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 30px;
-            color: #1a2332;
-            letter-spacing: 1px;
-            margin-bottom: 8px;
-        }
-        .detail-price-big {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 36px;
-            color: #ff6b35;
-            margin-bottom: 14px;
-        }
-        .detail-desc {
+        .info-card-body p {
             font-size: 15px;
             color: #4b5563;
             line-height: 1.7;
-            margin-bottom: 24px;
+            margin-bottom: 16px;
         }
-        .detail-section-label {
+        .info-card-body p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Service buttons group */
+        .svc-group-label {
             font-family: 'Bebas Neue', sans-serif;
-            font-size: 18px;
+            font-size: 20px;
             color: #1a2332;
             letter-spacing: 0.5px;
-            margin-bottom: 12px;
+            margin-bottom: 14px;
         }
-        .detail-bullets {
-            list-style: none;
-            padding: 0;
-            margin: 0 0 24px;
-        }
-        .detail-bullets li {
+        .svc-buttons {
             display: flex;
-            align-items: flex-start;
-            gap: 10px;
-            font-size: 14px;
-            color: #4b5563;
-            line-height: 1.5;
-            padding: 6px 0;
+            flex-direction: column;
+            gap: 0;
+            margin-bottom: 24px;
         }
-        .detail-bullets li i {
-            color: #ff6b35;
-            font-size: 14px;
-            margin-top: 3px;
-            flex-shrink: 0;
-        }
-        .detail-divider { height: 1px; background: #e5e7eb; margin: 20px 0; }
-        .detail-meta {
+        .svc-btn {
             display: flex;
             align-items: center;
-            gap: 8px;
-            font-size: 14px;
-            color: #4b5563;
-            padding: 4px 0;
+            gap: 12px;
+            padding: 14px 18px;
+            background: #fff;
+            border: 1px solid #e5e7eb;
+            border-bottom: none;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 15px;
+            font-weight: 600;
+            color: #1a2332;
+            text-align: left;
+            width: 100%;
         }
-        .detail-meta i { color: #ff6b35; width: 18px; text-align: center; }
+        .svc-btn:last-child {
+            border-bottom: 1px solid #e5e7eb;
+        }
+        .svc-btn:hover {
+            background: #f9fafb;
+            border-color: #ff6b35;
+        }
+        .svc-btn:hover + .svc-btn {
+            border-top-color: #ff6b35;
+        }
+        .svc-btn.active {
+            background: #1a2332;
+            color: #fff;
+            border-color: #1a2332;
+        }
+        .svc-btn.active + .svc-btn {
+            border-top-color: #e5e7eb;
+        }
+        .svc-btn-icon {
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: 14px;
+            color: #ff6b35;
+            background: rgba(255, 107, 53, 0.08);
+            transition: all 0.2s ease;
+        }
+        .svc-btn.active .svc-btn-icon {
+            background: rgba(255, 107, 53, 0.15);
+        }
+
+        /* Service description panel */
+        .svc-desc-panel {
+            display: none;
+            animation: panelFade 0.3s ease forwards;
+        }
+        .svc-desc-panel.active {
+            display: block;
+        }
+        .svc-desc-panel p {
+            font-size: 15px;
+            color: #4b5563;
+            line-height: 1.7;
+            margin-bottom: 14px;
+        }
+        .svc-desc-panel p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Action buttons inside non-booking panels */
+        .svc-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 18px;
+        }
+        .svc-action-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 18px;
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            white-space: nowrap;
+        }
+        .svc-action-btn.primary {
+            background: #ff6b35;
+            color: #fff;
+        }
+        .svc-action-btn.primary:hover {
+            background: #ff8855;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(255, 107, 53, 0.3);
+        }
+        .svc-action-btn.secondary {
+            background: #fff;
+            color: #1a2332;
+            border: 1px solid #e5e7eb;
+        }
+        .svc-action-btn.secondary:hover {
+            border-color: #1a2332;
+            background: #f9fafb;
+        }
+        .svc-action-btn i {
+            font-size: 14px;
+        }
+
+        /* Detail trust row */
         .detail-trust {
             display: flex;
             justify-content: center;
@@ -272,11 +268,19 @@
         /* ── Right column: Square embed ── */
         .embed-card {
             background: #fff;
-            box-shadow: 0 2px 16px rgba(0,0,0,0.06);
+            box-shadow: 0 4px 24px rgba(0,0,0,0.10);
+            border: 2px solid #ff6b35;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+        .embed-card.hidden-scheduler {
+            display: none;
         }
         .embed-card-head {
             background: #1a2332;
             padding: 22px 28px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
         }
         .embed-card-head h2 {
             font-family: 'Bebas Neue', sans-serif;
@@ -284,6 +288,17 @@
             color: #fff;
             letter-spacing: 1px;
             margin: 0;
+        }
+        .embed-card-head .head-badge {
+            margin-left: auto;
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            background: rgba(255, 107, 53, 0.15);
+            color: #ff6b35;
+            padding: 4px 12px;
         }
         .embed-card-body {
             padding: 0;
@@ -295,6 +310,69 @@
             width: 100%;
             min-height: 700px;
             border: none;
+        }
+
+        /* No-scheduler message card (replaces embed when scheduler hidden) */
+        .no-scheduler-card {
+            background: #fff;
+            box-shadow: 0 2px 16px rgba(0,0,0,0.06);
+            display: none;
+        }
+        .no-scheduler-card.visible {
+            display: block;
+        }
+        .no-scheduler-card-head {
+            background: #1a2332;
+            padding: 22px 28px;
+        }
+        .no-scheduler-card-head h2 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 24px;
+            color: #fff;
+            letter-spacing: 1px;
+            margin: 0;
+        }
+        .no-scheduler-body {
+            padding: 36px 28px;
+            text-align: center;
+        }
+        .no-scheduler-body .no-sched-icon {
+            font-size: 48px;
+            color: #ff6b35;
+            margin-bottom: 18px;
+        }
+        .no-scheduler-body h3 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 26px;
+            color: #1a2332;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+        }
+        .no-scheduler-body p {
+            font-size: 15px;
+            color: #4b5563;
+            line-height: 1.7;
+            max-width: 420px;
+            margin: 0 auto 24px;
+        }
+        .no-scheduler-body .no-sched-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: #ff6b35;
+            color: #fff;
+            padding: 16px 32px;
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 17px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 16px rgba(255,107,53,0.3);
+        }
+        .no-scheduler-body .no-sched-cta:hover {
+            background: #ff8855;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(255,107,53,0.4);
         }
         .embed-fallback {
             padding: 40px 28px;
@@ -348,6 +426,7 @@
             height: 36px;
             border: 4px solid #e5e7eb;
             border-top-color: #ff6b35;
+            border-radius: 50%;
             animation: embedSpin 0.8s linear infinite;
         }
         @keyframes embedSpin { to { transform: rotate(360deg); } }
@@ -403,24 +482,27 @@
             .booking-columns {
                 grid-template-columns: 1fr;
             }
-            .detail-card { position: static; order: 2; }
+            .info-card { position: static; order: 2; }
             .embed-card { order: 1; }
+            .no-scheduler-card { order: 1; }
         }
         @media (max-width: 768px) {
-            .booking-hero { padding: 60px 20px 36px; }
-            .svc-tabs { padding: 32px 16px 0; }
-            .svc-tab-row { grid-template-columns: 1fr; gap: 14px; }
+            .diag-banner { padding: 22px 16px; }
+            .diag-banner-inner { flex-wrap: wrap; gap: 14px; }
+            .diag-banner-badge { display: none; }
             .booking-area { padding: 28px 16px 60px; }
             .booking-columns { gap: 20px; }
-            .detail-card-body { padding: 22px 18px; }
+            .info-card-body { padding: 22px 18px; }
             .embed-card-body iframe { min-height: 600px; }
             .detail-trust { flex-direction: column; align-items: center; gap: 10px; }
+            .no-scheduler-body { padding: 28px 18px; }
         }
         @media (max-width: 480px) {
-            .svc-tab { padding: 18px 16px; gap: 14px; }
-            .svc-tab-icon { width: 42px; height: 42px; font-size: 18px; }
-            .detail-title { font-size: 24px; }
-            .detail-price-big { font-size: 28px; }
+            .diag-banner-inner { justify-content: flex-start; }
+            .diag-banner-icon { width: 44px; height: 44px; }
+            .diag-banner-icon i { font-size: 18px; }
+            .svc-actions { flex-direction: column; }
+            .svc-action-btn { justify-content: center; }
         }
     </style>
 </head>
@@ -494,37 +576,18 @@
         </div>
     </div>
 
-    <!-- ==================== HERO ==================== -->
-    <section class="booking-hero">
-        <div class="booking-hero-inner">
-            <h1>Book an <span class="accent">Appointment</span></h1>
-            <p>Choose a service, pick your time, and we'll take it from there.</p>
-        </div>
-    </section>
-
-    <!-- ==================== SERVICE TABS ==================== -->
-    <section class="svc-tabs">
-        <div class="svc-tabs-inner">
-            <div class="svc-tabs-label">Choose a Service</div>
-            <div class="svc-tab-row" id="svcTabs">
-                <div class="svc-tab" data-svc="consult" id="tabConsult">
-                    <div class="svc-tab-icon"><i class="fa-solid fa-phone"></i></div>
-                    <div class="svc-tab-body">
-                        <div class="svc-tab-name">Free Consultation</div>
-                        <div class="svc-tab-price">FREE</div>
-                        <div class="svc-tab-desc">A no-obligation phone call with our team to discuss your HVAC needs and recommend the right solution.</div>
-                        <div class="svc-tab-meta"><i class="fa-regular fa-clock"></i> 30 min &middot; Phone call</div>
-                    </div>
-                </div>
-                <div class="svc-tab" data-svc="diagnostic" id="tabDiagnostic">
-                    <div class="svc-tab-icon"><i class="fa-solid fa-wrench"></i></div>
-                    <div class="svc-tab-body">
-                        <div class="svc-tab-name">Diagnostic Service</div>
-                        <div class="svc-tab-price">$79</div>
-                        <div class="svc-tab-desc">An in-person visit from a certified HVAC technician. Full system diagnostic and clear explanation of your options.</div>
-                        <div class="svc-tab-meta"><i class="fa-regular fa-clock"></i> 60 min &middot; In-home visit</div>
-                    </div>
-                </div>
+    <!-- ==================== DIAGNOSTIC BANNER ==================== -->
+    <section class="diag-banner">
+        <div class="diag-banner-inner">
+            <div class="diag-banner-icon">
+                <i class="fa-solid fa-stethoscope"></i>
+            </div>
+            <div class="diag-banner-text">
+                <div class="diag-banner-headline"><span class="price">$79</span> Diagnostic Fee — Waived With Any Completed Service</div>
+                <div class="diag-banner-sub">A certified technician diagnoses your system on-site. If you move forward with the repair, the diagnostic fee is on us.</div>
+            </div>
+            <div class="diag-banner-badge">
+                <i class="fa-solid fa-shield-halved"></i> Licensed MA #081600137
             </div>
         </div>
     </section>
@@ -533,20 +596,99 @@
     <section class="booking-area">
         <div class="booking-columns">
 
-            <!-- Left: Service detail -->
-            <div class="detail-card" id="detailCard">
-                <div class="detail-card-head"><h2 id="detailHeading">Service Details</h2></div>
-                <div class="detail-card-body" id="detailBody">
-                    <div class="detail-empty">
-                        <i class="fa-regular fa-hand-pointer"></i>
-                        <p>Select a service above to see details and book your appointment.</p>
+            <!-- Left: Service info -->
+            <div class="info-card" id="infoCard">
+                <div class="info-card-head"><h2>Book Your Appointment</h2></div>
+                <div class="info-card-body" id="infoBody">
+
+                    <!-- Service button selector -->
+                    <div class="svc-group-label">Our Services</div>
+                    <div class="svc-buttons" id="svcButtons">
+                        <button class="svc-btn active" data-svc="consult">
+                            <span class="svc-btn-icon"><i class="fa-solid fa-comments"></i></span>
+                            Free Consultation
+                        </button>
+                        <button class="svc-btn" data-svc="diagnostic">
+                            <span class="svc-btn-icon"><i class="fa-solid fa-stethoscope"></i></span>
+                            Diagnostic Appointment
+                        </button>
+                        <button class="svc-btn" data-svc="repair">
+                            <span class="svc-btn-icon"><i class="fa-solid fa-wrench"></i></span>
+                            Repairs &amp; Maintenance
+                        </button>
+                        <button class="svc-btn" data-svc="install">
+                            <span class="svc-btn-icon"><i class="fa-solid fa-house-chimney"></i></span>
+                            New Installation
+                        </button>
+                        <button class="svc-btn" data-svc="emergency">
+                            <span class="svc-btn-icon"><i class="fa-solid fa-bolt"></i></span>
+                            Emergency Service
+                        </button>
+                    </div>
+
+                    <!-- Free Consultation panel -->
+                    <div class="svc-desc-panel active" id="panel-consult">
+                        <p>If you're not sure what's going on with your system or just want to talk through your options, start here. Our free consultation is a no-pressure phone call with someone who actually knows HVAC — not a sales pitch.</p>
+                        <p>We'll listen to what you're dealing with, ask the right questions, and give you an honest recommendation. If you need a diagnostic visit, we'll let you know. If it's something you can handle on your own, we'll tell you that too.</p>
+                        <p><strong>30 minutes &middot; Phone call &middot; No charge</strong></p>
+                    </div>
+
+                    <!-- Diagnostic panel -->
+                    <div class="svc-desc-panel" id="panel-diagnostic">
+                        <p>A licensed technician comes to your home, inspects your HVAC system, and gives you a clear picture of what's happening and what it'll take to fix it. No guesswork, no vague answers.</p>
+                        <p>The diagnostic visit is $79. If you decide to move forward with the repair, that fee gets applied to the cost of the work — so it's essentially waived. You only pay it if you choose not to proceed.</p>
+                        <p><strong>60 minutes &middot; In-home visit &middot; $79 (waived with service)</strong></p>
+                    </div>
+
+                    <!-- Repairs & Maintenance panel -->
+                    <div class="svc-desc-panel" id="panel-repair">
+                        <p>Before we can repair or service your system, we need to see it first. Every repair starts with a diagnostic appointment so our technician can identify exactly what's going on — no assumptions, no unnecessary parts swaps.</p>
+                        <p>This protects you. We won't recommend work you don't need, and you'll get an accurate estimate before anything gets done. The $79 diagnostic fee is waived if you go ahead with the repair.</p>
+                        <p>In the meantime, here are some tools that might help while you decide:</p>
+                        <div class="svc-actions">
+                            <a href="tel:7814082506" class="svc-action-btn primary"><i class="fa-solid fa-phone"></i> Call (781) 408-2506</a>
+                            <a href="quote.html" class="svc-action-btn secondary"><i class="fa-solid fa-calculator"></i> Instant Quote</a>
+                            <a href="tools/system-selector.html" class="svc-action-btn secondary"><i class="fa-solid fa-list-check"></i> System Selector</a>
+                            <a href="tools/btu-calculator.html" class="svc-action-btn secondary"><i class="fa-solid fa-ruler-combined"></i> BTU Calculator</a>
+                        </div>
+                    </div>
+
+                    <!-- New Installation panel -->
+                    <div class="svc-desc-panel" id="panel-install">
+                        <p>New system installations start with an on-site evaluation. We need to see your space, check your ductwork, calculate the proper sizing, and understand what matters most to you before we recommend anything.</p>
+                        <p>This isn't a one-size-fits-all situation. The right system depends on your home's layout, your budget, and how you actually use your heating and cooling. A diagnostic appointment lets us get all of that right from the start.</p>
+                        <p>If you'd rather talk it through first, give us a call. We're happy to walk you through the process over the phone.</p>
+                        <div class="svc-actions">
+                            <a href="tel:7814082506" class="svc-action-btn primary"><i class="fa-solid fa-phone"></i> Call (781) 408-2506</a>
+                            <a href="quote.html" class="svc-action-btn secondary"><i class="fa-solid fa-calculator"></i> Instant Quote</a>
+                            <a href="tools/system-selector.html" class="svc-action-btn secondary"><i class="fa-solid fa-list-check"></i> System Selector</a>
+                            <a href="tools/btu-calculator.html" class="svc-action-btn secondary"><i class="fa-solid fa-ruler-combined"></i> BTU Calculator</a>
+                        </div>
+                    </div>
+
+                    <!-- Emergency Service panel -->
+                    <div class="svc-desc-panel" id="panel-emergency">
+                        <p>If your heat is out in the middle of winter or your AC dies on the hottest day of the year, don't worry about scheduling online — just call us. We pick up the phone and we'll get someone to you.</p>
+                        <p>We handle emergency calls 24/7, including weekends and holidays. Payment and scheduling details get sorted when our technician arrives. Your comfort and safety come first.</p>
+                        <div class="svc-actions">
+                            <a href="tel:7814082506" class="svc-action-btn primary"><i class="fa-solid fa-phone"></i> Call (781) 408-2506</a>
+                        </div>
+                    </div>
+
+                    <div class="detail-trust">
+                        <span><i class="fa-solid fa-shield-halved"></i> Licensed #081600137</span>
+                        <span><i class="fa-solid fa-star"></i> 5-Star Rated</span>
+                        <span><i class="fa-solid fa-bolt"></i> Same-Day Available</span>
                     </div>
                 </div>
             </div>
 
-            <!-- Right: Square Appointments embed -->
+            <!-- Right: Square Appointments embed (visible for consult + diagnostic) -->
             <div class="embed-card" id="embedCard">
-                <div class="embed-card-head"><h2>Schedule Your Appointment</h2></div>
+                <div class="embed-card-head">
+                    <h2>Schedule Your Appointment</h2>
+                    <span class="head-badge">Book Online</span>
+                </div>
                 <div class="embed-card-body" id="embedBody">
                     <div class="embed-loading" id="embedLoading">
                         <div class="embed-spinner"></div>
@@ -563,6 +705,17 @@
                         <p>Having trouble loading the booking calendar? You can book directly on our scheduling page.</p>
                         <a href="https://book.squareup.com/appointments/istvchqri5df4y/location/L7XCXJRZ06283/services" target="_blank" rel="noopener" class="btn-square-book"><i class="fa-regular fa-calendar"></i> Book on Square</a>
                     </div>
+                </div>
+            </div>
+
+            <!-- Alternate right column (visible for repair, install, emergency) -->
+            <div class="no-scheduler-card" id="noSchedulerCard">
+                <div class="no-scheduler-card-head"><h2>Next Steps</h2></div>
+                <div class="no-scheduler-body" id="noSchedulerBody">
+                    <div class="no-sched-icon"><i class="fa-solid fa-phone-volume"></i></div>
+                    <h3>Give Us a Call</h3>
+                    <p>This service isn't available for online booking, but we're just a phone call away. We'll get everything sorted out quickly.</p>
+                    <a href="tel:7814082506" class="no-sched-cta"><i class="fa-solid fa-phone"></i> Call (781) 408-2506</a>
                 </div>
             </div>
 
@@ -583,7 +736,79 @@ document.querySelectorAll('.mobile-accordion-toggle').forEach(function(btn){
     btn.addEventListener('click',function(){this.parentElement.classList.toggle('active');});
 });
 </script>
-<script src="booking-wizard.js"></script>
+<script>
+(function() {
+    'use strict';
+
+    // Iframe loading
+    var embedIframe = document.getElementById('squareEmbed');
+    var embedLoading = document.getElementById('embedLoading');
+    var embedFallback = document.getElementById('embedFallback');
+
+    if (embedIframe) {
+        embedIframe.addEventListener('load', function() {
+            if (embedLoading) embedLoading.classList.add('hidden');
+        });
+        embedIframe.addEventListener('error', function() {
+            if (embedLoading) embedLoading.classList.add('hidden');
+            if (embedFallback) embedFallback.style.display = 'block';
+            embedIframe.style.display = 'none';
+        });
+        setTimeout(function() {
+            if (embedLoading && !embedLoading.classList.contains('hidden')) {
+                embedLoading.classList.add('hidden');
+                if (embedFallback) embedFallback.style.display = 'block';
+                embedIframe.style.display = 'none';
+            }
+        }, 15000);
+    }
+
+    // Service button selector
+    var svcButtons = document.querySelectorAll('#svcButtons .svc-btn');
+    var panels = document.querySelectorAll('.svc-desc-panel');
+    var embedCard = document.getElementById('embedCard');
+    var noSchedulerCard = document.getElementById('noSchedulerCard');
+    var bookableServices = ['consult', 'diagnostic'];
+
+    function selectService(svc) {
+        // Update active button
+        svcButtons.forEach(function(b) { b.classList.remove('active'); });
+        var activeBtn = document.querySelector('#svcButtons .svc-btn[data-svc="' + svc + '"]');
+        if (activeBtn) activeBtn.classList.add('active');
+
+        // Show matching panel
+        panels.forEach(function(p) { p.classList.remove('active'); });
+        var target = document.getElementById('panel-' + svc);
+        if (target) target.classList.add('active');
+
+        // Toggle scheduler vs no-scheduler card
+        var isBookable = bookableServices.indexOf(svc) !== -1;
+        if (embedCard) {
+            if (isBookable) {
+                embedCard.classList.remove('hidden-scheduler');
+            } else {
+                embedCard.classList.add('hidden-scheduler');
+            }
+        }
+        if (noSchedulerCard) {
+            if (isBookable) {
+                noSchedulerCard.classList.remove('visible');
+            } else {
+                noSchedulerCard.classList.add('visible');
+            }
+        }
+    }
+
+    svcButtons.forEach(function(btn) {
+        btn.addEventListener('click', function() {
+            selectService(btn.getAttribute('data-svc'));
+        });
+    });
+
+    // Initialize with consultation selected
+    selectService('consult');
+})();
+</script>
 <script src="chat-widget.js"></script>
 </body>
 </html>
