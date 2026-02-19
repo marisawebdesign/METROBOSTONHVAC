@@ -4,23 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Book an Appointment | Metro Boston HVAC | Schedule Service Online</title>
-    <meta name="description" content="Book a $79 diagnostic visit or free phone consultation with Metro Boston HVAC. Licensed MA contractor #081600137. Serving Greater Boston and the South Shore. Call (781) 408-2506.">
+    <meta name="description" content="Book an HVAC appointment online with Metro Boston HVAC. Select your service, choose a date and time, and confirm — all in one place. Licensed MA contractor #081600137. Call (781) 408-2506.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="chat-widget.css">
 
     <style>
         /* ==================== PAGE HERO ==================== */
         .page-hero {
-            background: var(--navy-dark);
+            background: #1a2332;
             padding: 80px 24px 60px;
             text-align: center;
             position: relative;
             overflow: hidden;
-            border-top: 4px solid var(--orange);
+            border-top: 4px solid #ff6b35;
         }
-
         .page-hero::before {
             content: '';
             position: absolute;
@@ -28,27 +28,21 @@
             background: linear-gradient(135deg, rgba(15,37,54,0.95), rgba(26,58,82,0.85));
             z-index: 1;
         }
-
         .page-hero-content {
             position: relative;
             z-index: 2;
             max-width: 800px;
             margin: 0 auto;
         }
-
         .page-hero h1 {
             font-family: 'Bebas Neue', sans-serif;
             font-size: clamp(36px, 6vw, 56px);
-            color: var(--white);
+            color: #ffffff;
             letter-spacing: 2px;
             line-height: 1.1;
             margin-bottom: 16px;
         }
-
-        .page-hero h1 .accent {
-            color: var(--orange);
-        }
-
+        .page-hero h1 .accent { color: #ff6b35; }
         .page-hero p {
             font-size: clamp(16px, 2vw, 20px);
             color: rgba(255,255,255,0.8);
@@ -57,207 +51,623 @@
             line-height: 1.6;
         }
 
-        /* ==================== BOOKING LAYOUT (TWO-COLUMN) ==================== */
-        .booking-section {
-            background: var(--gray-50);
-            padding: 80px 24px;
+        /* ==================== WIZARD SECTION ==================== */
+        .wizard-section {
+            background: #f5f5f5;
+            padding: 60px 24px 80px;
+        }
+        .wizard-outer {
+            max-width: 920px;
+            margin: 0 auto;
         }
 
-        .booking-layout {
-            max-width: 1200px;
-            margin: 0 auto;
+        /* ── Progress Bar ── */
+        .wizard-progress {
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            margin-bottom: 40px;
+            padding: 0 12px;
+        }
+        .wizard-step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            flex-shrink: 0;
+        }
+        .step-number {
+            width: 42px;
+            height: 42px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Source Sans 3', sans-serif;
+            font-weight: 700;
+            font-size: 16px;
+            border: 2px solid #9ca3af;
+            color: #9ca3af;
+            background: #ffffff;
+            transition: all 0.3s ease;
+        }
+        .step-label {
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 12px;
+            font-weight: 600;
+            color: #9ca3af;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            text-align: center;
+            max-width: 100px;
+            transition: color 0.3s ease;
+        }
+        .wizard-step.active .step-number {
+            background: #ff6b35;
+            border-color: #ff6b35;
+            color: #ffffff;
+        }
+        .wizard-step.active .step-label { color: #ff6b35; }
+        .wizard-step.completed .step-number {
+            background: #1a2332;
+            border-color: #1a2332;
+            color: #ffffff;
+        }
+        .wizard-step.completed .step-label { color: #1a2332; }
+        .wizard-step-line {
+            flex: 1;
+            height: 2px;
+            background: #e5e7eb;
+            margin: 20px 8px 0;
+            min-width: 30px;
+            transition: background 0.3s ease;
+        }
+        .wizard-step-line.completed { background: #1a2332; }
+
+        /* ── Wizard Panels ── */
+        .wizard-panel {
+            display: none;
+            opacity: 0;
+        }
+        .wizard-panel.active {
+            display: block;
+            animation: wizardFadeIn 0.35s ease forwards;
+        }
+        @keyframes wizardFadeIn {
+            from { opacity: 0; transform: translateY(12px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .wizard-card {
+            background: #ffffff;
+            padding: 40px;
+            box-shadow: 0 2px 16px rgba(0,0,0,0.07);
+        }
+        .wizard-card h2 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(24px, 4vw, 34px);
+            color: #1a2332;
+            letter-spacing: 1px;
+            margin-bottom: 28px;
+        }
+
+        /* ── Wizard Buttons ── */
+        .wizard-actions {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 32px;
+            gap: 16px;
+        }
+        .wizard-actions--right {
+            justify-content: flex-end;
+        }
+        .btn-next {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #ff6b35;
+            color: #ffffff;
+            border: none;
+            padding: 16px 36px;
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 17px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 16px rgba(255,107,53,0.3);
+        }
+        .btn-next:hover:not(:disabled) {
+            background: #ff8855;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(255,107,53,0.4);
+        }
+        .btn-next:disabled {
+            opacity: 0.45;
+            cursor: not-allowed;
+            transform: none;
+        }
+        .btn-back {
+            background: none;
+            border: none;
+            color: #9ca3af;
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            padding: 8px 4px;
+            transition: color 0.2s ease;
+        }
+        .btn-back:hover { color: #1a2332; }
+        .btn-back i { margin-right: 4px; }
+
+        /* ── Step 1: Service Cards ── */
+        .services-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 48px;
+            gap: 16px;
+            min-height: 120px;
+        }
+        .service-card {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            padding: 20px;
+            background: #ffffff;
+            border: 2px solid #e5e7eb;
+            border-left: 4px solid #e5e7eb;
+            cursor: pointer;
+            transition: all 0.25s ease;
+        }
+        .service-card:hover {
+            border-color: #ff6b35;
+            box-shadow: 0 0 0 1px rgba(255,107,53,0.15);
+        }
+        .service-card.selected {
+            background: #1a2332;
+            border-color: #1a2332;
+            border-left-color: #ff6b35;
+        }
+        .service-card.selected .service-card-name,
+        .service-card.selected .service-card-desc,
+        .service-card.selected .service-card-duration { color: #ffffff; }
+        .service-card.selected .service-card-icon { color: #ff6b35; }
+        .service-card.selected .service-card-duration { color: rgba(255,255,255,0.6); }
+        .service-card-icon {
+            flex-shrink: 0;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            color: #1a2332;
+            transition: color 0.25s ease;
+        }
+        .service-card-info { flex: 1; }
+        .service-card-name {
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 16px;
+            font-weight: 700;
+            color: #1a2332;
+            margin-bottom: 4px;
+            transition: color 0.25s ease;
+        }
+        .service-card-desc {
+            font-size: 14px;
+            color: #4b5563;
+            line-height: 1.5;
+            transition: color 0.25s ease;
+        }
+        .service-card-duration {
+            font-size: 13px;
+            color: #9ca3af;
+            margin-top: 6px;
+            transition: color 0.25s ease;
+        }
+        .demo-notice {
+            grid-column: 1 / -1;
+            font-size: 13px;
+            color: #9ca3af;
+            padding: 12px 16px;
+            background: #f9fafb;
+            border: 1px dashed #e5e7eb;
+            text-align: center;
+        }
+        .demo-notice i { margin-right: 6px; color: #ff6b35; }
+
+        /* ── Step 2: Date & Time ── */
+        .datetime-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
             align-items: start;
         }
 
-        /* ==================== LEFT COLUMN: BOOKING OPTIONS ==================== */
-        .booking-options {
+        /* Calendar */
+        .calendar-wrapper { }
+        .calendar-nav {
             display: flex;
-            flex-direction: column;
-            gap: 48px;
-        }
-
-        .booking-option {
-            background: var(--white);
-            padding: 36px;
-            border: 1px solid var(--gray-200);
-        }
-
-        .diagnostic-header {
-            display: flex;
-            align-items: flex-start;
-            gap: 28px;
-            margin-bottom: 24px;
-        }
-
-        .diagnostic-price {
-            flex-shrink: 0;
-            text-align: center;
-        }
-
-        .diagnostic-price .price {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 64px;
-            color: var(--navy-dark);
-            letter-spacing: 1px;
-            line-height: 1;
-        }
-
-        .diagnostic-price .waived-tag {
-            display: inline-block;
-            margin-top: 8px;
-            padding: 6px 14px;
-            background: var(--navy-dark);
-            color: var(--white);
-            font-size: 13px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .booking-option h2 {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: clamp(24px, 3.5vw, 34px);
-            color: var(--navy-dark);
-            letter-spacing: 1px;
-            line-height: 1.1;
-            margin-bottom: 16px;
-        }
-
-        .booking-option p {
-            font-size: 16px;
-            color: var(--gray-600);
-            line-height: 1.7;
-            margin-bottom: 12px;
-        }
-
-        .diagnostic-credentials {
-            margin-top: 16px;
-            padding-top: 16px;
-            border-top: 1px solid var(--gray-200);
-            font-size: 14px;
-            color: var(--gray-600);
-            font-weight: 600;
-        }
-
-        .booking-option-cta {
-            display: inline-flex;
             align-items: center;
-            gap: 10px;
-            margin-top: 20px;
-            background: var(--orange);
-            color: var(--white);
-            padding: 16px 28px;
-            font-size: 17px;
-            font-weight: 700;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            box-shadow: 0 6px 20px rgba(255,107,53,0.4);
+            justify-content: space-between;
+            background: #1a2332;
+            padding: 14px 20px;
+            margin-bottom: 0;
         }
-
-        .booking-option-cta:hover {
-            background: var(--orange-glow);
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(255,107,53,0.5);
+        .calendar-nav-btn {
+            background: none;
+            border: none;
+            color: #ffffff;
+            font-size: 18px;
+            cursor: pointer;
+            padding: 4px 8px;
+            transition: color 0.2s ease;
         }
-
-        .booking-option-cta svg {
-            width: 22px;
-            height: 22px;
-        }
-
-        .booking-option-cta.outline {
-            background: transparent;
-            color: var(--navy-dark);
-            border: 2px solid var(--navy-dark);
-            box-shadow: none;
-        }
-
-        .booking-option-cta.outline:hover {
-            background: var(--navy-dark);
-            color: var(--white);
-            box-shadow: none;
-        }
-
-        /* ==================== RIGHT COLUMN: CALENDAR ==================== */
-        .booking-calendar {
-            position: sticky;
-            top: 24px;
-        }
-
-        .booking-calendar-label {
+        .calendar-nav-btn:hover { color: #ff6b35; }
+        .calendar-month-label {
             font-family: 'Bebas Neue', sans-serif;
-            font-size: 24px;
-            color: var(--navy-dark);
+            font-size: 22px;
+            color: #ffffff;
             letter-spacing: 1px;
+        }
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            border: 1px solid #e5e7eb;
+            border-top: none;
+            background: #ffffff;
+        }
+        .cal-header {
+            padding: 10px 4px;
+            text-align: center;
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 12px;
+            font-weight: 700;
+            color: #9ca3af;
+            text-transform: uppercase;
+            background: #f9fafb;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        .cal-day {
+            padding: 12px 4px;
+            text-align: center;
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 15px;
+            font-weight: 600;
+            color: #1a2332;
+            cursor: default;
+            transition: all 0.15s ease;
+            position: relative;
+            min-height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .cal-day.empty { background: transparent; }
+        .cal-day.disabled {
+            color: #d1d5db;
+            cursor: not-allowed;
+        }
+        .cal-day.today::after {
+            content: '';
+            position: absolute;
+            bottom: 6px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 18px;
+            height: 2px;
+            background: #ff6b35;
+        }
+        .cal-day.available {
+            cursor: pointer;
+            color: #1a2332;
+            font-weight: 700;
+        }
+        .cal-day.available:hover {
+            background: rgba(255,107,53,0.1);
+            color: #ff6b35;
+        }
+        .cal-day.selected {
+            background: #ff6b35;
+            color: #ffffff;
+        }
+        .cal-day.selected::after { background: #ffffff; }
+
+        /* Time Slots */
+        .timeslots-wrapper { }
+        .timeslots-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 20px;
+            color: #1a2332;
+            letter-spacing: 0.5px;
             margin-bottom: 16px;
         }
-
-        .square-embed-container {
-            width: 100%;
-            min-height: 500px;
-            background: var(--white);
-            border: 1px solid var(--gray-200);
+        .timeslots-container { min-height: 200px; }
+        .timeslots-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+        }
+        .timeslot-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 14px 12px;
+            background: #ffffff;
+            border: 2px solid #1a2332;
+            color: #1a2332;
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .timeslot-btn:hover {
+            background: rgba(255,107,53,0.08);
+            border-color: #ff6b35;
+            color: #ff6b35;
+        }
+        .timeslot-btn.selected {
+            background: #ff6b35;
+            border-color: #ff6b35;
+            color: #ffffff;
+        }
+        .timeslots-placeholder {
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 40px 24px;
-        }
-
-        .square-embed-container .placeholder-text {
-            font-size: 18px;
-            color: var(--gray-600);
+            min-height: 200px;
+            color: #9ca3af;
             text-align: center;
-            margin-bottom: 8px;
+            gap: 12px;
         }
+        .timeslots-placeholder i { font-size: 32px; }
+        .timeslots-placeholder p { font-size: 15px; margin: 0; }
 
-        .square-embed-container .placeholder-phone {
-            font-size: 20px;
+        /* ── Step 3: Customer Form ── */
+        .customer-form { display: flex; flex-direction: column; gap: 24px; }
+        .form-group { display: flex; flex-direction: column; gap: 6px; }
+        .form-group label {
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 14px;
             font-weight: 700;
-            color: var(--navy-dark);
-            text-decoration: none;
+            color: #1a2332;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+        }
+        .form-group input,
+        .form-group textarea {
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 16px;
+            color: #1a2332;
+            padding: 14px 0;
+            border: none;
+            border-bottom: 2px solid #e5e7eb;
+            background: transparent;
+            outline: none;
+            transition: border-color 0.2s ease;
+            width: 100%;
+        }
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-bottom-color: #1a2332;
+        }
+        .form-group textarea {
+            resize: vertical;
+            min-height: 80px;
         }
 
-        .square-embed-container .placeholder-phone:hover {
-            color: var(--orange);
+        /* ── Step 4: Confirmation ── */
+        .confirm-card { }
+        .confirm-row {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            padding: 14px 0;
+        }
+        .confirm-icon {
+            flex-shrink: 0;
+            width: 28px;
+            text-align: center;
+            color: #ff6b35;
+            font-size: 16px;
+            padding-top: 2px;
+        }
+        .confirm-detail { flex: 1; }
+        .confirm-label {
+            display: block;
+            font-size: 12px;
+            font-weight: 700;
+            color: #9ca3af;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+            margin-bottom: 2px;
+        }
+        .confirm-value {
+            display: block;
+            font-size: 16px;
+            font-weight: 600;
+            color: #1a2332;
+        }
+        .confirm-divider {
+            height: 1px;
+            background: #1a2332;
+            opacity: 0.12;
+        }
+        .confirm-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 32px;
+        }
+        .btn-confirm {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            width: 100%;
+            background: #ff6b35;
+            color: #ffffff;
+            border: none;
+            padding: 18px 36px;
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 18px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 16px rgba(255,107,53,0.3);
+        }
+        .btn-confirm:hover:not(:disabled) {
+            background: #ff8855;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(255,107,53,0.4);
+        }
+        .btn-confirm:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+        .btn-edit-booking {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            width: 100%;
+            background: transparent;
+            color: #1a2332;
+            border: 2px solid #1a2332;
+            padding: 16px 36px;
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .btn-edit-booking:hover:not(:disabled) {
+            background: #1a2332;
+            color: #ffffff;
+        }
+        .btn-edit-booking:disabled { opacity: 0.5; cursor: not-allowed; }
+        .booking-error {
+            display: none;
+            padding: 14px 16px;
+            background: #fef2f2;
+            border-left: 4px solid #ef4444;
+            color: #b91c1c;
+            font-size: 15px;
+            font-weight: 600;
+            margin-top: 16px;
+        }
+
+        /* ── Success State ── */
+        .success-content {
+            text-align: center;
+            padding: 60px 24px;
+        }
+        .success-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #ff6b35;
+            color: #ffffff;
+            font-size: 36px;
+        }
+        .success-content h2 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(28px, 4vw, 40px);
+            color: #1a2332;
+            letter-spacing: 1.5px;
+            margin-bottom: 12px;
+            text-align: center;
+        }
+        .success-content p {
+            font-size: 18px;
+            color: #4b5563;
+            line-height: 1.7;
+            max-width: 480px;
+            margin: 0 auto 32px;
+        }
+        .btn-book-another {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: transparent;
+            color: #1a2332;
+            border: 2px solid #1a2332;
+            padding: 14px 28px;
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .btn-book-another:hover {
+            background: #1a2332;
+            color: #ffffff;
+        }
+
+        /* ── Loading Spinner ── */
+        .wizard-loading {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 200px;
+            gap: 16px;
+            color: #9ca3af;
+        }
+        .wizard-loading p { font-size: 15px; margin: 0; }
+        .wizard-spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid #e5e7eb;
+            border-top-color: #ff6b35;
+            animation: wizardSpin 0.8s linear infinite;
+        }
+        .spinner-inline {
+            display: inline-block;
+            width: 18px;
+            height: 18px;
+            border: 3px solid rgba(255,255,255,0.3);
+            border-top-color: #ffffff;
+            animation: wizardSpin 0.8s linear infinite;
+            vertical-align: middle;
+        }
+        @keyframes wizardSpin {
+            to { transform: rotate(360deg); }
         }
 
         /* ==================== EMERGENCY SECTION ==================== */
         .emergency-section {
-            background: var(--navy-dark);
+            background: #1a2332;
             padding: 60px 24px;
             text-align: center;
         }
-
         .emergency-inner {
             max-width: 700px;
             margin: 0 auto;
         }
-
         .emergency-inner h2 {
             font-family: 'Bebas Neue', sans-serif;
             font-size: clamp(28px, 4vw, 44px);
-            color: var(--white);
+            color: #ffffff;
             letter-spacing: 1.5px;
             margin-bottom: 16px;
         }
-
         .emergency-inner p {
             font-size: 18px;
             color: rgba(255,255,255,0.75);
             line-height: 1.6;
             margin-bottom: 32px;
         }
-
         .emergency-call-btn {
             display: inline-flex;
             align-items: center;
             gap: 10px;
-            background: var(--orange);
-            color: var(--white);
+            background: #ff6b35;
+            color: #ffffff;
             padding: 18px 36px;
             font-size: 20px;
             font-weight: 700;
@@ -265,45 +675,36 @@
             transition: all 0.3s ease;
             box-shadow: 0 6px 20px rgba(255,107,53,0.4);
         }
-
         .emergency-call-btn:hover {
-            background: var(--orange-glow);
+            background: #ff8855;
             transform: translateY(-2px);
             box-shadow: 0 10px 30px rgba(255,107,53,0.5);
         }
-
-        .emergency-call-btn svg {
-            width: 24px;
-            height: 24px;
-        }
+        .emergency-call-btn svg { width: 24px; height: 24px; }
 
         /* ==================== PAYMENT SECTION ==================== */
         .payment-section {
-            background: var(--white);
+            background: #ffffff;
             padding: 60px 24px;
-            border-top: 1px solid var(--gray-200);
+            border-top: 1px solid #e5e7eb;
         }
-
         .payment-inner {
             max-width: 700px;
             margin: 0 auto;
             text-align: center;
         }
-
         .payment-inner h2 {
             font-family: 'Bebas Neue', sans-serif;
             font-size: clamp(24px, 3vw, 34px);
-            color: var(--navy-dark);
+            color: #1a2332;
             letter-spacing: 1px;
             margin-bottom: 16px;
         }
-
         .payment-inner p {
             font-size: 17px;
-            color: var(--gray-600);
+            color: #4b5563;
             line-height: 1.7;
         }
-
         .payment-icons {
             display: flex;
             justify-content: center;
@@ -311,60 +712,54 @@
             margin-top: 24px;
             flex-wrap: wrap;
         }
-
         .payment-icon {
             display: flex;
             align-items: center;
             justify-content: center;
             padding: 10px 18px;
-            border: 1px solid var(--gray-200);
-            background: var(--gray-50);
+            border: 1px solid #e5e7eb;
+            background: #f9fafb;
             font-size: 14px;
             font-weight: 700;
-            color: var(--gray-600);
+            color: #4b5563;
             letter-spacing: 0.3px;
         }
 
         /* ==================== CTA BANNER ==================== */
         .cta-banner {
-            background: var(--navy-dark);
+            background: #1a2332;
             padding: 60px 24px;
             text-align: center;
         }
-
         .cta-banner-inner {
             max-width: 700px;
             margin: 0 auto;
         }
-
         .cta-banner h2 {
             font-family: 'Bebas Neue', sans-serif;
             font-size: clamp(28px, 4vw, 44px);
-            color: var(--white);
+            color: #ffffff;
             letter-spacing: 1.5px;
             margin-bottom: 12px;
         }
-
         .cta-banner p {
             font-size: 18px;
             color: rgba(255,255,255,0.7);
             margin-bottom: 32px;
             line-height: 1.6;
         }
-
         .cta-banner-actions {
             display: flex;
             justify-content: center;
             gap: 16px;
             flex-wrap: wrap;
         }
-
         .cta-btn-primary {
             display: inline-flex;
             align-items: center;
             gap: 10px;
-            background: var(--orange);
-            color: var(--white);
+            background: #ff6b35;
+            color: #ffffff;
             padding: 18px 36px;
             font-size: 20px;
             font-weight: 700;
@@ -372,94 +767,78 @@
             transition: all 0.3s ease;
             box-shadow: 0 6px 20px rgba(255,107,53,0.4);
         }
-
         .cta-btn-primary:hover {
-            background: var(--orange-glow);
+            background: #ff8855;
             transform: translateY(-2px);
             box-shadow: 0 10px 30px rgba(255,107,53,0.5);
         }
+        .cta-btn-primary svg { width: 24px; height: 24px; }
 
-        .cta-btn-primary svg {
-            width: 24px;
-            height: 24px;
-        }
-
-        /* ==================== RESPONSIVE (PAGE-SPECIFIC) ==================== */
-        @media (max-width: 1024px) {
-            .booking-layout {
-                grid-template-columns: 1fr;
-                gap: 32px;
-            }
-
-            .booking-calendar {
-                position: static;
-            }
-        }
-
+        /* ==================== RESPONSIVE ==================== */
         @media (max-width: 768px) {
-            .page-hero {
-                padding: 60px 20px 40px;
+            .page-hero { padding: 60px 20px 40px; }
+            .wizard-section { padding: 40px 16px 60px; }
+
+            .wizard-progress { gap: 0; }
+            .step-label { font-size: 10px; max-width: 72px; }
+            .step-number { width: 36px; height: 36px; font-size: 14px; }
+            .wizard-step-line { margin: 17px 4px 0; }
+
+            .wizard-card { padding: 28px 20px; }
+
+            .services-grid { grid-template-columns: 1fr; }
+
+            .datetime-layout {
+                grid-template-columns: 1fr;
+                gap: 28px;
+            }
+            .timeslots-grid { grid-template-columns: repeat(2, 1fr); }
+            .timeslot-btn { padding: 16px 12px; font-size: 16px; min-height: 50px; }
+
+            .btn-next {
+                width: 100%;
+                justify-content: center;
+                padding: 18px 24px;
+                font-size: 18px;
+            }
+            .wizard-actions {
+                flex-direction: column-reverse;
+                align-items: stretch;
+            }
+            .wizard-actions--right {
+                align-items: stretch;
+            }
+            .btn-back { text-align: center; padding: 12px; }
+
+            .confirm-actions .btn-confirm,
+            .confirm-actions .btn-edit-booking {
+                font-size: 17px;
+                padding: 18px 24px;
             }
 
-            .booking-section {
-                padding: 60px 20px;
-            }
-
-            .booking-option {
-                padding: 28px 20px;
-            }
-
-            .diagnostic-header {
-                flex-direction: column;
-                align-items: center;
-                text-align: center;
-                gap: 16px;
-            }
-
-            .diagnostic-price .price {
-                font-size: 56px;
-            }
-
-            .emergency-section {
-                padding: 40px 20px;
-            }
-
-            .payment-section {
-                padding: 40px 20px;
-            }
-
-            .cta-banner {
-                padding: 40px 20px;
-            }
-
-            .cta-banner-actions {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .square-embed-container {
-                min-height: 300px;
-                padding: 30px 16px;
-            }
+            .emergency-section { padding: 40px 20px; }
+            .payment-section { padding: 40px 20px; }
+            .cta-banner { padding: 40px 20px; }
+            .cta-banner-actions { flex-direction: column; align-items: center; }
         }
 
         @media (max-width: 480px) {
-            .diagnostic-price .price {
-                font-size: 48px;
-            }
+            .step-label { font-size: 9px; max-width: 60px; }
+            .step-number { width: 32px; height: 32px; font-size: 13px; }
+            .wizard-step-line { margin-top: 15px; }
 
-            .booking-option p {
-                font-size: 15px;
-            }
+            .wizard-card { padding: 24px 16px; }
 
-            .payment-icons {
-                gap: 12px;
-            }
+            .service-card { padding: 16px; gap: 12px; }
+            .service-card-name { font-size: 15px; }
+            .service-card-desc { font-size: 13px; }
 
-            .payment-icon {
-                padding: 8px 14px;
-                font-size: 13px;
-            }
+            .cal-day { padding: 10px 2px; min-height: 40px; font-size: 14px; }
+
+            .timeslots-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+
+            .payment-icons { gap: 12px; }
+            .payment-icon { padding: 8px 14px; font-size: 13px; }
         }
     </style>
 </head>
@@ -596,56 +975,135 @@
     <section class="page-hero">
         <div class="page-hero-content">
             <h1>Book an <span class="accent">Appointment</span></h1>
-            <p>Schedule a diagnostic visit or consultation online. Same-day appointments often available.</p>
+            <p>Select your service, pick a time, and confirm your booking — all online in minutes.</p>
         </div>
     </section>
 
-    <!-- ==================== BOOKING SECTION (TWO-COLUMN) ==================== -->
-    <section class="booking-section">
-        <div class="booking-layout">
+    <!-- ==================== BOOKING WIZARD ==================== -->
+    <section class="wizard-section">
+        <div class="wizard-outer" id="bookingWizard">
 
-            <!-- LEFT COLUMN: Booking Options -->
-            <div class="booking-options">
-
-                <!-- $79 Diagnostic Visit -->
-                <div class="booking-option">
-                    <div class="diagnostic-header">
-                        <div class="diagnostic-price">
-                            <div class="price">$79</div>
-                            <span class="waived-tag">Waived with repair</span>
-                        </div>
-                        <div class="diagnostic-details">
-                            <h2>Diagnostic Visit</h2>
-                        </div>
-                    </div>
-                    <p>A technician comes to your home, inspects your system, and tells you exactly what is going on. The cost is $79. That covers the visit, the inspection, and a clear explanation of what we find.</p>
-                    <p>If you decide to move forward with the repair, the $79 diagnostic fee is waived completely. You only pay for the repair itself. So if your system does need work and you give us the go-ahead, the diagnostic was free. If you decide not to move forward, you still walk away knowing exactly what the problem is and what your options are. Either way, you are not guessing.</p>
-                    <div class="diagnostic-credentials">Over 30 years of experience. Licensed and insured in Massachusetts (MA #081600137).</div>
-                    <a href="tel:7814082506" class="booking-option-cta">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-                        Call to Schedule a Diagnostic
-                    </a>
+            <!-- Progress Bar -->
+            <div class="wizard-progress">
+                <div class="wizard-step active" data-step="1">
+                    <div class="step-number">1</div>
+                    <div class="step-label">Select Service</div>
                 </div>
-
-                <!-- Free Phone Consultation -->
-                <div class="booking-option">
-                    <h2>Free Phone Consultation</h2>
-                    <p>Not sure what you need yet? No problem. Schedule a free phone call and we will help you figure out next steps. We can talk through what is going on with your system, answer your questions, and help you decide whether a diagnostic visit makes sense. No pressure, no cost.</p>
-                    <a href="tel:7814082506" class="booking-option-cta outline">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-                        Call to Schedule a Consultation
-                    </a>
+                <div class="wizard-step-line"></div>
+                <div class="wizard-step" data-step="2">
+                    <div class="step-number">2</div>
+                    <div class="step-label">Choose Date &amp; Time</div>
                 </div>
-
+                <div class="wizard-step-line"></div>
+                <div class="wizard-step" data-step="3">
+                    <div class="step-number">3</div>
+                    <div class="step-label">Your Info</div>
+                </div>
+                <div class="wizard-step-line"></div>
+                <div class="wizard-step" data-step="4">
+                    <div class="step-number">4</div>
+                    <div class="step-label">Confirm</div>
+                </div>
             </div>
 
-            <!-- RIGHT COLUMN: Calendar -->
-            <div class="booking-calendar">
-                <h3 class="booking-calendar-label">Schedule Online</h3>
-                <!-- SQUARE APPOINTMENTS EMBED CODE GOES HERE -->
-                <div id="square-booking" class="square-embed-container">
-                    <p class="placeholder-text">Online booking coming soon.</p>
-                    <a href="tel:7814082506" class="placeholder-phone">Call (781) 408-2506 to schedule</a>
+            <!-- Step 1: Service Selection -->
+            <div class="wizard-panel active" id="wizardStep1">
+                <div class="wizard-card">
+                    <h2>Select a Service</h2>
+                    <div class="services-grid" id="servicesGrid">
+                        <!-- Services loaded by booking-wizard.js -->
+                    </div>
+                    <div class="wizard-actions wizard-actions--right">
+                        <button class="btn-next" id="btnNext1" disabled>Next <i class="fa-solid fa-arrow-right"></i></button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 2: Date & Time -->
+            <div class="wizard-panel" id="wizardStep2">
+                <div class="wizard-card">
+                    <h2>Choose Date &amp; Time</h2>
+                    <div class="datetime-layout">
+                        <!-- Calendar -->
+                        <div class="calendar-wrapper">
+                            <div class="calendar-nav">
+                                <button class="calendar-nav-btn" id="calendarPrev"><i class="fa-solid fa-chevron-left"></i></button>
+                                <span class="calendar-month-label" id="calendarMonthLabel"></span>
+                                <button class="calendar-nav-btn" id="calendarNext"><i class="fa-solid fa-chevron-right"></i></button>
+                            </div>
+                            <div class="calendar-grid" id="calendarGrid"></div>
+                        </div>
+                        <!-- Time Slots -->
+                        <div class="timeslots-wrapper">
+                            <div class="timeslots-title" id="timeslotsTitle">Available Times</div>
+                            <div class="timeslots-container" id="timeslotsContainer">
+                                <div class="timeslots-placeholder">
+                                    <i class="fa-regular fa-clock"></i>
+                                    <p>Select a date to see available times</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="wizard-actions">
+                        <button class="btn-back" id="btnBack2"><i class="fa-solid fa-arrow-left"></i> Back</button>
+                        <button class="btn-next" id="btnNext2" disabled>Next <i class="fa-solid fa-arrow-right"></i></button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 3: Customer Info -->
+            <div class="wizard-panel" id="wizardStep3">
+                <div class="wizard-card">
+                    <h2>Your Information</h2>
+                    <form class="customer-form" id="customerForm" autocomplete="on" onsubmit="return false;">
+                        <div class="form-group">
+                            <label for="bookingName">Full Name</label>
+                            <input type="text" id="bookingName" name="name" required autocomplete="name" placeholder="John Smith">
+                        </div>
+                        <div class="form-group">
+                            <label for="bookingPhone">Phone Number</label>
+                            <input type="tel" id="bookingPhone" name="phone" required autocomplete="tel" placeholder="(781) 555-0123">
+                        </div>
+                        <div class="form-group">
+                            <label for="bookingEmail">Email Address</label>
+                            <input type="email" id="bookingEmail" name="email" required autocomplete="email" placeholder="john@example.com">
+                        </div>
+                        <div class="form-group">
+                            <label for="bookingNotes">What's the issue? <span style="font-weight:400;color:#9ca3af">(optional)</span></label>
+                            <textarea id="bookingNotes" name="notes" placeholder="Describe what's going on with your system..."></textarea>
+                        </div>
+                    </form>
+                    <div class="wizard-actions">
+                        <button class="btn-back" id="btnBack3"><i class="fa-solid fa-arrow-left"></i> Back</button>
+                        <button class="btn-next" id="btnNext3" disabled>Next <i class="fa-solid fa-arrow-right"></i></button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 4: Confirmation -->
+            <div class="wizard-panel" id="wizardStep4">
+                <div class="wizard-card">
+                    <h2>Confirm Your Booking</h2>
+                    <div class="confirm-card" id="confirmationCard">
+                        <!-- Populated by booking-wizard.js -->
+                    </div>
+                    <div class="booking-error" id="bookingError"></div>
+                    <div class="confirm-actions">
+                        <button class="btn-confirm" id="btnConfirm">Confirm Booking</button>
+                        <button class="btn-edit-booking" id="btnEdit"><i class="fa-solid fa-pen"></i> Edit Booking</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Success State -->
+            <div class="wizard-panel" id="wizardSuccess">
+                <div class="wizard-card">
+                    <div class="success-content">
+                        <div class="success-icon"><i class="fa-solid fa-check"></i></div>
+                        <h2>You're All Set!</h2>
+                        <p>Your appointment request has been submitted. We'll call you within 24 hours to confirm your appointment time.</p>
+                        <button class="btn-book-another" id="btnBookAnother"><i class="fa-solid fa-plus"></i> Book Another Appointment</button>
+                    </div>
                 </div>
             </div>
 
@@ -700,7 +1158,7 @@ document.querySelectorAll('.mobile-accordion-toggle').forEach(function(btn) {
     btn.addEventListener('click', function() { this.parentElement.classList.toggle('active'); });
 });
 </script>
-
+<script src="booking-wizard.js"></script>
 <script src="chat-widget.js"></script>
 </body>
 </html>
