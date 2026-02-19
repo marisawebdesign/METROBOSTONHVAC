@@ -84,11 +84,11 @@
             padding: 40px 24px 80px;
         }
         .booking-columns {
-            max-width: 1060px;
+            max-width: 1140px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: 1fr 1.2fr;
-            gap: 28px;
+            grid-template-columns: 380px 1fr;
+            gap: 32px;
             align-items: start;
         }
 
@@ -268,11 +268,19 @@
         /* ── Right column: Square embed ── */
         .embed-card {
             background: #fff;
-            box-shadow: 0 2px 16px rgba(0,0,0,0.06);
+            box-shadow: 0 4px 24px rgba(0,0,0,0.10);
+            border: 2px solid #ff6b35;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+        .embed-card.hidden-scheduler {
+            display: none;
         }
         .embed-card-head {
             background: #1a2332;
             padding: 22px 28px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
         }
         .embed-card-head h2 {
             font-family: 'Bebas Neue', sans-serif;
@@ -280,6 +288,17 @@
             color: #fff;
             letter-spacing: 1px;
             margin: 0;
+        }
+        .embed-card-head .head-badge {
+            margin-left: auto;
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            background: rgba(255, 107, 53, 0.15);
+            color: #ff6b35;
+            padding: 4px 12px;
         }
         .embed-card-body {
             padding: 0;
@@ -291,6 +310,69 @@
             width: 100%;
             min-height: 700px;
             border: none;
+        }
+
+        /* No-scheduler message card (replaces embed when scheduler hidden) */
+        .no-scheduler-card {
+            background: #fff;
+            box-shadow: 0 2px 16px rgba(0,0,0,0.06);
+            display: none;
+        }
+        .no-scheduler-card.visible {
+            display: block;
+        }
+        .no-scheduler-card-head {
+            background: #1a2332;
+            padding: 22px 28px;
+        }
+        .no-scheduler-card-head h2 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 24px;
+            color: #fff;
+            letter-spacing: 1px;
+            margin: 0;
+        }
+        .no-scheduler-body {
+            padding: 36px 28px;
+            text-align: center;
+        }
+        .no-scheduler-body .no-sched-icon {
+            font-size: 48px;
+            color: #ff6b35;
+            margin-bottom: 18px;
+        }
+        .no-scheduler-body h3 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 26px;
+            color: #1a2332;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+        }
+        .no-scheduler-body p {
+            font-size: 15px;
+            color: #4b5563;
+            line-height: 1.7;
+            max-width: 420px;
+            margin: 0 auto 24px;
+        }
+        .no-scheduler-body .no-sched-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: #ff6b35;
+            color: #fff;
+            padding: 16px 32px;
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 17px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 16px rgba(255,107,53,0.3);
+        }
+        .no-scheduler-body .no-sched-cta:hover {
+            background: #ff8855;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(255,107,53,0.4);
         }
         .embed-fallback {
             padding: 40px 28px;
@@ -402,6 +484,7 @@
             }
             .info-card { position: static; order: 2; }
             .embed-card { order: 1; }
+            .no-scheduler-card { order: 1; }
         }
         @media (max-width: 768px) {
             .diag-banner { padding: 22px 16px; }
@@ -412,6 +495,7 @@
             .info-card-body { padding: 22px 18px; }
             .embed-card-body iframe { min-height: 600px; }
             .detail-trust { flex-direction: column; align-items: center; gap: 10px; }
+            .no-scheduler-body { padding: 28px 18px; }
         }
         @media (max-width: 480px) {
             .diag-banner-inner { justify-content: flex-start; }
@@ -599,9 +683,12 @@
                 </div>
             </div>
 
-            <!-- Right: Square Appointments embed -->
+            <!-- Right: Square Appointments embed (visible for consult + diagnostic) -->
             <div class="embed-card" id="embedCard">
-                <div class="embed-card-head"><h2>Schedule Your Appointment</h2></div>
+                <div class="embed-card-head">
+                    <h2>Schedule Your Appointment</h2>
+                    <span class="head-badge">Book Online</span>
+                </div>
                 <div class="embed-card-body" id="embedBody">
                     <div class="embed-loading" id="embedLoading">
                         <div class="embed-spinner"></div>
@@ -618,6 +705,17 @@
                         <p>Having trouble loading the booking calendar? You can book directly on our scheduling page.</p>
                         <a href="https://book.squareup.com/appointments/istvchqri5df4y/location/L7XCXJRZ06283/services" target="_blank" rel="noopener" class="btn-square-book"><i class="fa-regular fa-calendar"></i> Book on Square</a>
                     </div>
+                </div>
+            </div>
+
+            <!-- Alternate right column (visible for repair, install, emergency) -->
+            <div class="no-scheduler-card" id="noSchedulerCard">
+                <div class="no-scheduler-card-head"><h2>Next Steps</h2></div>
+                <div class="no-scheduler-body" id="noSchedulerBody">
+                    <div class="no-sched-icon"><i class="fa-solid fa-phone-volume"></i></div>
+                    <h3>Give Us a Call</h3>
+                    <p>This service isn't available for online booking, but we're just a phone call away. We'll get everything sorted out quickly.</p>
+                    <a href="tel:7814082506" class="no-sched-cta"><i class="fa-solid fa-phone"></i> Call (781) 408-2506</a>
                 </div>
             </div>
 
@@ -668,21 +766,47 @@ document.querySelectorAll('.mobile-accordion-toggle').forEach(function(btn){
     // Service button selector
     var svcButtons = document.querySelectorAll('#svcButtons .svc-btn');
     var panels = document.querySelectorAll('.svc-desc-panel');
+    var embedCard = document.getElementById('embedCard');
+    var noSchedulerCard = document.getElementById('noSchedulerCard');
+    var bookableServices = ['consult', 'diagnostic'];
+
+    function selectService(svc) {
+        // Update active button
+        svcButtons.forEach(function(b) { b.classList.remove('active'); });
+        var activeBtn = document.querySelector('#svcButtons .svc-btn[data-svc="' + svc + '"]');
+        if (activeBtn) activeBtn.classList.add('active');
+
+        // Show matching panel
+        panels.forEach(function(p) { p.classList.remove('active'); });
+        var target = document.getElementById('panel-' + svc);
+        if (target) target.classList.add('active');
+
+        // Toggle scheduler vs no-scheduler card
+        var isBookable = bookableServices.indexOf(svc) !== -1;
+        if (embedCard) {
+            if (isBookable) {
+                embedCard.classList.remove('hidden-scheduler');
+            } else {
+                embedCard.classList.add('hidden-scheduler');
+            }
+        }
+        if (noSchedulerCard) {
+            if (isBookable) {
+                noSchedulerCard.classList.remove('visible');
+            } else {
+                noSchedulerCard.classList.add('visible');
+            }
+        }
+    }
 
     svcButtons.forEach(function(btn) {
         btn.addEventListener('click', function() {
-            var svc = btn.getAttribute('data-svc');
-
-            // Update active button
-            svcButtons.forEach(function(b) { b.classList.remove('active'); });
-            btn.classList.add('active');
-
-            // Show matching panel
-            panels.forEach(function(p) { p.classList.remove('active'); });
-            var target = document.getElementById('panel-' + svc);
-            if (target) target.classList.add('active');
+            selectService(btn.getAttribute('data-svc'));
         });
     });
+
+    // Initialize with consultation selected
+    selectService('consult');
 })();
 </script>
 <script src="chat-widget.js"></script>
