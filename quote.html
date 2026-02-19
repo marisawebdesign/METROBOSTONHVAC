@@ -1996,7 +1996,7 @@
                 premium: { label: 'Premium Annual Plan', low: 349, high: 549 }
             },
             unsure: {
-                general: { label: 'Diagnostic Assessment', low: 79, high: 150 }
+                general: { label: 'Diagnostic Assessment', low: 79, high: 79 }
             }
         };
 
@@ -2049,14 +2049,7 @@
                 html += makeRadio('repairProblem', 'thermostat', 'Thermostat Issues', 'Temperature doesn\'t match settings', '<path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"/>');
                 html += makeRadio('repairProblem', 'other', 'Other / Not Sure', 'Something else or need diagnosis', '<circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/>');
                 html += '</div>';
-
-                html += '<p class="step-subtitle" style="margin-bottom: 12px; font-weight: 700; color: var(--navy-dark);">How Urgent Is This?</p>';
-                html += '<div class="option-grid">';
-                html += makeRadio('urgency', 'emergency', 'Emergency - Right Now', 'System down, need immediate help', '<polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>');
-                html += makeRadio('urgency', 'today', 'Today If Possible', 'Need service today', '<circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>');
-                html += makeRadio('urgency', 'thisWeek', 'This Week', 'Can wait a day or two', '<rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>');
-                html += makeRadio('urgency', 'flexible', 'Flexible', 'No rush, schedule at convenience', '<circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>');
-                html += '</div>';
+                formData.urgency = 'standard';
 
             } else if (type === 'install') {
                 html += '<h2 class="step-title">What System Do You Need?</h2>';
@@ -2188,10 +2181,8 @@
                 var type = formData.serviceType;
                 if (type === 'repair') {
                     var p = document.querySelector('input[name="repairProblem"]:checked');
-                    var u = document.querySelector('input[name="urgency"]:checked');
-                    if (!p || !u) return false;
+                    if (!p) return false;
                     formData.repairProblem = p.value;
-                    formData.urgency = u.value;
                 } else if (type === 'install') {
                     var it = document.querySelector('input[name="installType"]:checked');
                     var is2 = document.querySelector('input[name="installSituation"]:checked');
@@ -2285,7 +2276,7 @@
                 var type = formData.serviceType || (s1 ? s1.value : '');
                 var valid2 = false;
                 if (type === 'repair') {
-                    valid2 = !!document.querySelector('input[name="repairProblem"]:checked') && !!document.querySelector('input[name="urgency"]:checked');
+                    valid2 = !!document.querySelector('input[name="repairProblem"]:checked');
                 } else if (type === 'install') {
                     valid2 = !!document.querySelector('input[name="installType"]:checked') && !!document.querySelector('input[name="installSituation"]:checked');
                 } else if (type === 'maintenance') {
@@ -2317,7 +2308,7 @@
 
             if (type === 'repair' && pricing.repair[formData.repairProblem]) {
                 pricingData = pricing.repair[formData.repairProblem];
-                serviceLabel = 'Emergency Repair: ' + pricingData.label;
+                serviceLabel = 'Repair: ' + pricingData.label;
                 breakdownRows = breakdowns.repair;
             } else if (type === 'install' && pricing.install[formData.installType]) {
                 pricingData = pricing.install[formData.installType];
@@ -2333,9 +2324,9 @@
                 breakdownRows = breakdowns.unsure;
             }
 
-            // Apply size and accessibility multipliers
-            var sizeMult = sizeMultipliers[formData.sqft] || 1.0;
-            var accessMult = accessMultipliers[formData.accessibility] || 1.0;
+            // Apply size and accessibility multipliers (skip for diagnostic — flat fee)
+            var sizeMult = (type === 'unsure') ? 1.0 : (sizeMultipliers[formData.sqft] || 1.0);
+            var accessMult = (type === 'unsure') ? 1.0 : (accessMultipliers[formData.accessibility] || 1.0);
             // Brand new installs cost ~15% more (new ductwork, electrical, etc.)
             var newInstallMult = (type === 'install' && formData.installSituation === 'brandnew') ? 1.15 : 1.0;
 
@@ -2351,8 +2342,8 @@
 
             // Single estimate card
             html += '<div class="estimate-card">';
-            html += '<div class="estimate-label">Estimated Price Range</div>';
-            html += '<div class="estimate-range"><span class="dollar">$</span>' + formatNum(finalLow) + ' &ndash; <span class="dollar">$</span>' + formatNum(finalHigh) + '</div>';
+            html += '<div class="estimate-label">' + (finalLow === finalHigh ? 'Flat Rate' : 'Estimated Price Range') + '</div>';
+            html += '<div class="estimate-range">' + (finalLow === finalHigh ? '<span class="dollar">$</span>' + formatNum(finalLow) : '<span class="dollar">$</span>' + formatNum(finalLow) + ' &ndash; <span class="dollar">$</span>' + formatNum(finalHigh)) + '</div>';
             html += '<div class="estimate-service-label">' + serviceLabel + '</div>';
 
             // Diagnostic fee note for repair and unsure
