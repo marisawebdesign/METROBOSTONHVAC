@@ -18,6 +18,7 @@
             text-align: center;
             position: relative;
             overflow: hidden;
+            border-top: 4px solid var(--orange);
         }
 
         .page-hero::before {
@@ -56,23 +57,39 @@
             line-height: 1.6;
         }
 
-        /* ==================== DIAGNOSTIC SECTION ==================== */
-        .diagnostic-section {
+        /* ==================== BOOKING LAYOUT (TWO-COLUMN) ==================== */
+        .booking-section {
             background: var(--gray-50);
             padding: 80px 24px;
-            border-top: 4px solid var(--orange);
         }
 
-        .diagnostic-inner {
-            max-width: 960px;
+        .booking-layout {
+            max-width: 1200px;
             margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+            align-items: start;
+        }
+
+        /* ==================== LEFT COLUMN: BOOKING OPTIONS ==================== */
+        .booking-options {
+            display: flex;
+            flex-direction: column;
+            gap: 48px;
+        }
+
+        .booking-option {
+            background: var(--white);
+            padding: 36px;
+            border: 1px solid var(--gray-200);
         }
 
         .diagnostic-header {
             display: flex;
             align-items: flex-start;
-            gap: 40px;
-            margin-bottom: 40px;
+            gap: 28px;
+            margin-bottom: 24px;
         }
 
         .diagnostic-price {
@@ -82,7 +99,7 @@
 
         .diagnostic-price .price {
             font-family: 'Bebas Neue', sans-serif;
-            font-size: 72px;
+            font-size: 64px;
             color: var(--navy-dark);
             letter-spacing: 1px;
             line-height: 1;
@@ -100,41 +117,93 @@
             letter-spacing: 0.5px;
         }
 
-        .diagnostic-details h2 {
+        .booking-option h2 {
             font-family: 'Bebas Neue', sans-serif;
-            font-size: clamp(28px, 4vw, 40px);
+            font-size: clamp(24px, 3.5vw, 34px);
             color: var(--navy-dark);
             letter-spacing: 1px;
             line-height: 1.1;
-            margin-bottom: 20px;
-        }
-
-        .diagnostic-details p {
-            font-size: 18px;
-            color: var(--gray-600);
-            line-height: 1.7;
             margin-bottom: 16px;
         }
 
+        .booking-option p {
+            font-size: 16px;
+            color: var(--gray-600);
+            line-height: 1.7;
+            margin-bottom: 12px;
+        }
+
         .diagnostic-credentials {
-            margin-top: 24px;
-            padding-top: 20px;
+            margin-top: 16px;
+            padding-top: 16px;
             border-top: 1px solid var(--gray-200);
-            font-size: 15px;
+            font-size: 14px;
             color: var(--gray-600);
             font-weight: 600;
         }
 
+        .booking-option-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 20px;
+            background: var(--orange);
+            color: var(--white);
+            padding: 16px 28px;
+            font-size: 17px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 20px rgba(255,107,53,0.4);
+        }
+
+        .booking-option-cta:hover {
+            background: var(--orange-glow);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(255,107,53,0.5);
+        }
+
+        .booking-option-cta svg {
+            width: 22px;
+            height: 22px;
+        }
+
+        .booking-option-cta.outline {
+            background: transparent;
+            color: var(--navy-dark);
+            border: 2px solid var(--navy-dark);
+            box-shadow: none;
+        }
+
+        .booking-option-cta.outline:hover {
+            background: var(--navy-dark);
+            color: var(--white);
+            box-shadow: none;
+        }
+
+        /* ==================== RIGHT COLUMN: CALENDAR ==================== */
+        .booking-calendar {
+            position: sticky;
+            top: 24px;
+        }
+
+        .booking-calendar-label {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 24px;
+            color: var(--navy-dark);
+            letter-spacing: 1px;
+            margin-bottom: 16px;
+        }
+
         .square-embed-container {
             width: 100%;
-            min-height: 400px;
+            min-height: 500px;
             background: var(--white);
             border: 1px solid var(--gray-200);
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            margin-top: 40px;
             padding: 40px 24px;
         }
 
@@ -154,99 +223,6 @@
 
         .square-embed-container .placeholder-phone:hover {
             color: var(--orange);
-        }
-
-        .diagnostic-cta {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            margin-top: 24px;
-            background: var(--orange);
-            color: var(--white);
-            padding: 18px 36px;
-            font-size: 20px;
-            font-weight: 700;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            box-shadow: 0 6px 20px rgba(255,107,53,0.4);
-        }
-
-        .diagnostic-cta:hover {
-            background: var(--orange-glow);
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(255,107,53,0.5);
-        }
-
-        .diagnostic-cta svg {
-            width: 24px;
-            height: 24px;
-        }
-
-        .diagnostic-cta-wrap {
-            text-align: center;
-        }
-
-        /* ==================== CONSULTATION SECTION ==================== */
-        .consultation-section {
-            background: var(--white);
-            padding: 80px 24px;
-        }
-
-        .consultation-inner {
-            max-width: 720px;
-            margin: 0 auto;
-        }
-
-        .consultation-inner h2 {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: clamp(24px, 3.5vw, 34px);
-            color: var(--navy-dark);
-            letter-spacing: 1px;
-            line-height: 1.1;
-            margin-bottom: 16px;
-        }
-
-        .consultation-inner p {
-            font-size: 17px;
-            color: var(--gray-600);
-            line-height: 1.7;
-            margin-bottom: 16px;
-        }
-
-        .consultation-inner .square-embed-container {
-            min-height: 350px;
-            border: 1px solid var(--gray-200);
-            background: var(--gray-50);
-        }
-
-        .consultation-cta {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            margin-top: 24px;
-            background: transparent;
-            color: var(--navy-dark);
-            padding: 16px 32px;
-            font-size: 18px;
-            font-weight: 700;
-            text-decoration: none;
-            border: 2px solid var(--navy-dark);
-            transition: all 0.3s ease;
-        }
-
-        .consultation-cta:hover {
-            background: var(--navy-dark);
-            color: var(--white);
-            transform: translateY(-2px);
-        }
-
-        .consultation-cta svg {
-            width: 22px;
-            height: 22px;
-        }
-
-        .consultation-cta-wrap {
-            text-align: center;
         }
 
         /* ==================== EMERGENCY SECTION ==================== */
@@ -409,28 +385,39 @@
         }
 
         /* ==================== RESPONSIVE (PAGE-SPECIFIC) ==================== */
+        @media (max-width: 1024px) {
+            .booking-layout {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+
+            .booking-calendar {
+                position: static;
+            }
+        }
+
         @media (max-width: 768px) {
             .page-hero {
                 padding: 60px 20px 40px;
             }
 
-            .diagnostic-section {
+            .booking-section {
                 padding: 60px 20px;
+            }
+
+            .booking-option {
+                padding: 28px 20px;
             }
 
             .diagnostic-header {
                 flex-direction: column;
                 align-items: center;
                 text-align: center;
-                gap: 24px;
+                gap: 16px;
             }
 
             .diagnostic-price .price {
                 font-size: 56px;
-            }
-
-            .consultation-section {
-                padding: 60px 20px;
             }
 
             .emergency-section {
@@ -461,12 +448,8 @@
                 font-size: 48px;
             }
 
-            .diagnostic-details p {
-                font-size: 16px;
-            }
-
-            .consultation-inner p {
-                font-size: 16px;
+            .booking-option p {
+                font-size: 15px;
             }
 
             .payment-icons {
@@ -617,55 +600,55 @@
         </div>
     </section>
 
-    <!-- ==================== $79 DIAGNOSTIC SECTION ==================== -->
-    <section class="diagnostic-section">
-        <div class="diagnostic-inner">
-            <div class="diagnostic-header">
-                <div class="diagnostic-price">
-                    <div class="price">$79</div>
-                    <span class="waived-tag">Waived with repair</span>
-                </div>
-                <div class="diagnostic-details">
-                    <h2>Diagnostic Visit</h2>
+    <!-- ==================== BOOKING SECTION (TWO-COLUMN) ==================== -->
+    <section class="booking-section">
+        <div class="booking-layout">
+
+            <!-- LEFT COLUMN: Booking Options -->
+            <div class="booking-options">
+
+                <!-- $79 Diagnostic Visit -->
+                <div class="booking-option">
+                    <div class="diagnostic-header">
+                        <div class="diagnostic-price">
+                            <div class="price">$79</div>
+                            <span class="waived-tag">Waived with repair</span>
+                        </div>
+                        <div class="diagnostic-details">
+                            <h2>Diagnostic Visit</h2>
+                        </div>
+                    </div>
                     <p>A technician comes to your home, inspects your system, and tells you exactly what is going on. The cost is $79. That covers the visit, the inspection, and a clear explanation of what we find.</p>
                     <p>If you decide to move forward with the repair, the $79 diagnostic fee is waived completely. You only pay for the repair itself. So if your system does need work and you give us the go-ahead, the diagnostic was free. If you decide not to move forward, you still walk away knowing exactly what the problem is and what your options are. Either way, you are not guessing.</p>
                     <div class="diagnostic-credentials">Over 30 years of experience. Licensed and insured in Massachusetts (MA #081600137).</div>
+                    <a href="tel:7814082506" class="booking-option-cta">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                        Call to Schedule a Diagnostic
+                    </a>
+                </div>
+
+                <!-- Free Phone Consultation -->
+                <div class="booking-option">
+                    <h2>Free Phone Consultation</h2>
+                    <p>Not sure what you need yet? No problem. Schedule a free phone call and we will help you figure out next steps. We can talk through what is going on with your system, answer your questions, and help you decide whether a diagnostic visit makes sense. No pressure, no cost.</p>
+                    <a href="tel:7814082506" class="booking-option-cta outline">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                        Call to Schedule a Consultation
+                    </a>
+                </div>
+
+            </div>
+
+            <!-- RIGHT COLUMN: Calendar -->
+            <div class="booking-calendar">
+                <h3 class="booking-calendar-label">Schedule Online</h3>
+                <!-- SQUARE APPOINTMENTS EMBED CODE GOES HERE -->
+                <div id="square-booking" class="square-embed-container">
+                    <p class="placeholder-text">Online booking coming soon.</p>
+                    <a href="tel:7814082506" class="placeholder-phone">Call (781) 408-2506 to schedule</a>
                 </div>
             </div>
 
-            <!-- SQUARE APPOINTMENTS EMBED CODE GOES HERE - $79 DIAGNOSTIC -->
-            <div id="square-booking-diagnostic" class="square-embed-container">
-                <p class="placeholder-text">Online booking coming soon.</p>
-                <a href="tel:7814082506" class="placeholder-phone">Call (781) 408-2506 to schedule</a>
-            </div>
-
-            <div class="diagnostic-cta-wrap">
-                <a href="tel:7814082506" class="diagnostic-cta">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-                    Call to Schedule a Diagnostic
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- ==================== FREE CONSULTATION SECTION ==================== -->
-    <section class="consultation-section">
-        <div class="consultation-inner">
-            <h2>Free Phone Consultation</h2>
-            <p>Not sure what you need yet? No problem. Schedule a free phone call and we will help you figure out next steps. We can talk through what is going on with your system, answer your questions, and help you decide whether a diagnostic visit makes sense. No pressure, no cost.</p>
-
-            <!-- SQUARE APPOINTMENTS EMBED CODE GOES HERE - FREE CONSULTATION -->
-            <div id="square-booking-consultation" class="square-embed-container">
-                <p class="placeholder-text">Online booking coming soon.</p>
-                <a href="tel:7814082506" class="placeholder-phone">Call (781) 408-2506 to schedule</a>
-            </div>
-
-            <div class="consultation-cta-wrap">
-                <a href="tel:7814082506" class="consultation-cta">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-                    Call to Schedule a Consultation
-                </a>
-            </div>
         </div>
     </section>
 
