@@ -516,8 +516,81 @@
             <div class="info-card" id="infoCard">
                 <div class="info-card-head"><h2>Book Your Appointment</h2></div>
                 <div class="info-card-body" id="infoBody">
-                    <p>Select a service on the right to schedule your appointment online. Choose the time that works best for you, and we'll confirm the details.</p>
-                    <p>If you're not sure where to start, a free consultation is always a good first step. We'll talk through what's going on and point you in the right direction.</p>
+
+                    <!-- Service button selector -->
+                    <div class="svc-group-label">Our Services</div>
+                    <div class="svc-buttons" id="svcButtons">
+                        <button class="svc-btn active" data-svc="consult">
+                            <span class="svc-btn-icon"><i class="fa-solid fa-comments"></i></span>
+                            Free Consultation
+                        </button>
+                        <button class="svc-btn" data-svc="diagnostic">
+                            <span class="svc-btn-icon"><i class="fa-solid fa-stethoscope"></i></span>
+                            Diagnostic Appointment
+                        </button>
+                        <button class="svc-btn" data-svc="repair">
+                            <span class="svc-btn-icon"><i class="fa-solid fa-wrench"></i></span>
+                            Repairs &amp; Maintenance
+                        </button>
+                        <button class="svc-btn" data-svc="install">
+                            <span class="svc-btn-icon"><i class="fa-solid fa-house-chimney"></i></span>
+                            New Installation
+                        </button>
+                        <button class="svc-btn" data-svc="emergency">
+                            <span class="svc-btn-icon"><i class="fa-solid fa-bolt"></i></span>
+                            Emergency Service
+                        </button>
+                    </div>
+
+                    <!-- Free Consultation panel -->
+                    <div class="svc-desc-panel active" id="panel-consult">
+                        <p>If you're not sure what's going on with your system or just want to talk through your options, start here. Our free consultation is a no-pressure phone call with someone who actually knows HVAC — not a sales pitch.</p>
+                        <p>We'll listen to what you're dealing with, ask the right questions, and give you an honest recommendation. If you need a diagnostic visit, we'll let you know. If it's something you can handle on your own, we'll tell you that too.</p>
+                        <p><strong>30 minutes &middot; Phone call &middot; No charge</strong></p>
+                    </div>
+
+                    <!-- Diagnostic panel -->
+                    <div class="svc-desc-panel" id="panel-diagnostic">
+                        <p>A licensed technician comes to your home, inspects your HVAC system, and gives you a clear picture of what's happening and what it'll take to fix it. No guesswork, no vague answers.</p>
+                        <p>The diagnostic visit is $79. If you decide to move forward with the repair, that fee gets applied to the cost of the work — so it's essentially waived. You only pay it if you choose not to proceed.</p>
+                        <p><strong>60 minutes &middot; In-home visit &middot; $79 (waived with service)</strong></p>
+                    </div>
+
+                    <!-- Repairs & Maintenance panel -->
+                    <div class="svc-desc-panel" id="panel-repair">
+                        <p>Before we can repair or service your system, we need to see it first. Every repair starts with a diagnostic appointment so our technician can identify exactly what's going on — no assumptions, no unnecessary parts swaps.</p>
+                        <p>This protects you. We won't recommend work you don't need, and you'll get an accurate estimate before anything gets done. The $79 diagnostic fee is waived if you go ahead with the repair.</p>
+                        <p>In the meantime, here are some tools that might help while you decide:</p>
+                        <div class="svc-actions">
+                            <a href="tel:7814082506" class="svc-action-btn primary"><i class="fa-solid fa-phone"></i> Call (781) 408-2506</a>
+                            <a href="quote.html" class="svc-action-btn secondary"><i class="fa-solid fa-calculator"></i> Instant Quote</a>
+                            <a href="tools/system-selector.html" class="svc-action-btn secondary"><i class="fa-solid fa-list-check"></i> System Selector</a>
+                            <a href="tools/btu-calculator.html" class="svc-action-btn secondary"><i class="fa-solid fa-ruler-combined"></i> BTU Calculator</a>
+                        </div>
+                    </div>
+
+                    <!-- New Installation panel -->
+                    <div class="svc-desc-panel" id="panel-install">
+                        <p>New system installations start with an on-site evaluation. We need to see your space, check your ductwork, calculate the proper sizing, and understand what matters most to you before we recommend anything.</p>
+                        <p>This isn't a one-size-fits-all situation. The right system depends on your home's layout, your budget, and how you actually use your heating and cooling. A diagnostic appointment lets us get all of that right from the start.</p>
+                        <p>If you'd rather talk it through first, give us a call. We're happy to walk you through the process over the phone.</p>
+                        <div class="svc-actions">
+                            <a href="tel:7814082506" class="svc-action-btn primary"><i class="fa-solid fa-phone"></i> Call (781) 408-2506</a>
+                            <a href="quote.html" class="svc-action-btn secondary"><i class="fa-solid fa-calculator"></i> Instant Quote</a>
+                            <a href="tools/system-selector.html" class="svc-action-btn secondary"><i class="fa-solid fa-list-check"></i> System Selector</a>
+                            <a href="tools/btu-calculator.html" class="svc-action-btn secondary"><i class="fa-solid fa-ruler-combined"></i> BTU Calculator</a>
+                        </div>
+                    </div>
+
+                    <!-- Emergency Service panel -->
+                    <div class="svc-desc-panel" id="panel-emergency">
+                        <p>If your heat is out in the middle of winter or your AC dies on the hottest day of the year, don't worry about scheduling online — just call us. We pick up the phone and we'll get someone to you.</p>
+                        <p>We handle emergency calls 24/7, including weekends and holidays. Payment and scheduling details get sorted when our technician arrives. Your comfort and safety come first.</p>
+                        <div class="svc-actions">
+                            <a href="tel:7814082506" class="svc-action-btn primary"><i class="fa-solid fa-phone"></i> Call (781) 408-2506</a>
+                        </div>
+                    </div>
+
                     <div class="detail-trust">
                         <span><i class="fa-solid fa-shield-halved"></i> Licensed #081600137</span>
                         <span><i class="fa-solid fa-star"></i> 5-Star Rated</span>
@@ -568,6 +641,8 @@ document.querySelectorAll('.mobile-accordion-toggle').forEach(function(btn){
 <script>
 (function() {
     'use strict';
+
+    // Iframe loading
     var embedIframe = document.getElementById('squareEmbed');
     var embedLoading = document.getElementById('embedLoading');
     var embedFallback = document.getElementById('embedFallback');
@@ -589,6 +664,25 @@ document.querySelectorAll('.mobile-accordion-toggle').forEach(function(btn){
             }
         }, 15000);
     }
+
+    // Service button selector
+    var svcButtons = document.querySelectorAll('#svcButtons .svc-btn');
+    var panels = document.querySelectorAll('.svc-desc-panel');
+
+    svcButtons.forEach(function(btn) {
+        btn.addEventListener('click', function() {
+            var svc = btn.getAttribute('data-svc');
+
+            // Update active button
+            svcButtons.forEach(function(b) { b.classList.remove('active'); });
+            btn.classList.add('active');
+
+            // Show matching panel
+            panels.forEach(function(p) { p.classList.remove('active'); });
+            var target = document.getElementById('panel-' + svc);
+            if (target) target.classList.add('active');
+        });
+    });
 })();
 </script>
 <script src="chat-widget.js"></script>
