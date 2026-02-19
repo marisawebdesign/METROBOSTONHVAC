@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Emergency HVAC Services | Stoughton MA | 24/7 Heating & Cooling</title>
     <meta name="description" content="24/7 emergency HVAC repair in Stoughton MA and surrounding areas. Licensed MA contractor with 30+ years experience. Fast response, price match guarantee.">
+    <link rel="preload" as="image" href="images/hero-mobile.jpg" media="(max-width: 768px)">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
@@ -283,7 +284,11 @@
     <!-- ==================== HERO ==================== -->
     <section class="hero">
         <div class="hero-background">
-            <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1920&q=80" alt="HVAC service team standing by service van">
+            <picture>
+                <source media="(max-width: 768px)" srcset="images/hero-mobile.jpg">
+                <source media="(min-width: 769px)" srcset="images/hero.jpg">
+                <img src="images/hero.jpg" alt="HVAC service team standing by service van" width="1920" height="1272" fetchpriority="high">
+            </picture>
         </div>
         <div class="hero-overlay"></div>
 
