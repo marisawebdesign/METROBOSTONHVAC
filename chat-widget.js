@@ -475,6 +475,7 @@
             addBotMessage("We'll get someone out to you. Give us a call and we can usually have a technician there within the hour.");
 
             setTimeout(function() { addPhoneCTA(); }, 300);
+            setTimeout(function() { addLinkCTA('Or Book Online', 'book-appointment.html'); }, 500);
 
             setTimeout(function() {
                 addOptions([
@@ -482,7 +483,7 @@
                     { label: "What should I expect?", next: "what_to_expect" },
                     { label: "Start over", next: "welcome", restart: true }
                 ]);
-            }, 500);
+            }, 700);
         }, TYPING_DELAY);
     }
 
@@ -493,7 +494,7 @@
             addBotMessage("No problem. When you're ready, give us a call or reach out online. We're here 24/7.");
 
             setTimeout(function() { addPhoneCTA(); }, 300);
-            setTimeout(function() { addLinkCTA('Contact Us Online', 'contact.html'); }, 500);
+            setTimeout(function() { addLinkCTA('Book an Appointment Online', 'book-appointment.html'); }, 500);
             setTimeout(function() {
                 addOptions([
                     { label: "Do you have any specials?", next: "offers_plug" },
