@@ -99,6 +99,7 @@
       { "label": "My system isn't working right", "next": "emergency", "icon": "alert" },
       { "label": "I need maintenance", "next": "maintenance", "icon": "tool" },
       { "label": "I'd like a quote", "next": "quote", "icon": "dollar" },
+      { "label": "Book an appointment online", "next": "book_appointment", "icon": "calendar" },
       { "label": "General question", "next": "general", "icon": "question" },
       { "label": "What happens during a service call?", "next": "what_to_expect", "icon": "info" }
     ]
@@ -146,6 +147,31 @@
     ]
   },
 
+  "book_appointment": {
+    "messages": [
+      "You can book a free consultation or diagnostic appointment right from our website — pick a time that works for you and we'll confirm it."
+    ],
+    "phone_cta": true,
+    "link_cta": { "label": "Book an Appointment", "url": "book-appointment.html" },
+    "options": [
+      { "label": "What services can I book online?", "next": "book_services_info" },
+      { "label": "What's the $79 diagnostic fee?", "next": "faq_emergency_pricing" },
+      { "label": "Start over", "next": "welcome", "restart": true }
+    ]
+  },
+
+  "book_services_info": {
+    "messages": [
+      "Right now you can book two things online: a free 30-minute phone consultation, or a diagnostic appointment ($79, waived if you go ahead with a repair).",
+      "For repairs, installations, and emergencies, give us a call so we can prioritize and dispatch properly — those need a real conversation to get right."
+    ],
+    "phone_cta": true,
+    "link_cta": { "label": "Book an Appointment", "url": "book-appointment.html" },
+    "options": [
+      { "label": "Start over", "next": "welcome", "restart": true }
+    ]
+  },
+
   "emergency": {
     "messages": [
       "Okay — select everything that applies so we can help:"
@@ -173,7 +199,7 @@
       "Let's get someone out to take a look."
     ],
     "phone_cta": true,
-    "link_cta": { "label": "Contact Us Online", "url": "contact.html" },
+    "link_cta": { "label": "Book a Diagnostic Appointment", "url": "book-appointment.html" },
     "options": [
       { "label": "What should I expect during the visit?", "next": "what_to_expect" },
       { "label": "Start over", "next": "welcome", "restart": true }
@@ -186,7 +212,7 @@
       "Let's get a technician out to diagnose it properly."
     ],
     "phone_cta": true,
-    "link_cta": { "label": "Contact Us Online", "url": "contact.html" },
+    "link_cta": { "label": "Book a Diagnostic Appointment", "url": "book-appointment.html" },
     "options": [
       { "label": "What should I expect during the visit?", "next": "what_to_expect" },
       { "label": "Start over", "next": "welcome", "restart": true }
@@ -225,7 +251,7 @@
       "Let's get someone scheduled."
     ],
     "phone_cta": true,
-    "link_cta": { "label": "Contact Us Online", "url": "contact.html" },
+    "link_cta": { "label": "Book a Diagnostic Appointment", "url": "book-appointment.html" },
     "options": [
       { "label": "What should I expect during the visit?", "next": "what_to_expect" },
       { "label": "Start over", "next": "welcome", "restart": true }
@@ -282,7 +308,7 @@
       "Give us a call or reach out online — we'll find a time that works for your schedule."
     ],
     "phone_cta": true,
-    "link_cta": { "label": "Contact Us to Schedule", "url": "contact.html" },
+    "link_cta": { "label": "Book a Tune-Up Appointment", "url": "book-appointment.html" },
     "options": [
       { "label": "What does a tune-up cost?", "next": "quote_maintenance" },
       { "label": "Do you have any specials?", "next": "offers_plug" },
@@ -325,6 +351,7 @@
     "link_cta": { "label": "Get an Instant Quote", "url": "quote.html" },
     "options": [
       { "label": "What does installation cost?", "next": "quote_installation" },
+      { "label": "I'd like to schedule a consultation", "next": "book_appointment" },
       { "label": "Start over", "next": "welcome", "restart": true }
     ]
   },
@@ -385,11 +412,12 @@
     "messages": [
       "Thanks for sharing that. For the most accurate pricing, our team can give you a detailed estimate over the phone or in person.",
       "We always provide upfront pricing — you'll know exactly what the job costs before any work begins. No hidden fees, ever.",
-      "Would you like to give us a call, or would you prefer to use our online quote tool?"
+      "Would you like to give us a call, book online, or try our quote tool?"
     ],
     "phone_cta": true,
     "link_cta": { "label": "Get an Instant Quote", "url": "quote.html" },
     "options": [
+      { "label": "Book an appointment online", "next": "book_appointment" },
       { "label": "Do you have any current offers?", "next": "offers_plug" },
       { "label": "What should I expect during a service call?", "next": "what_to_expect" },
       { "label": "Start over", "next": "welcome", "restart": true }
