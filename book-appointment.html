@@ -203,7 +203,7 @@
         .services-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 16px;
+            gap: 20px;
             min-height: 120px;
         }
         .service-card {
@@ -245,12 +245,21 @@
         .service-card-info { flex: 1; }
         .service-card-name {
             font-family: 'Source Sans 3', sans-serif;
-            font-size: 16px;
+            font-size: 17px;
             font-weight: 700;
             color: #1a2332;
-            margin-bottom: 4px;
+            margin-bottom: 2px;
             transition: color 0.25s ease;
         }
+        .service-card-price {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 22px;
+            color: #ff6b35;
+            letter-spacing: 0.5px;
+            margin-bottom: 6px;
+            transition: color 0.25s ease;
+        }
+        .service-card.selected .service-card-price { color: #ff6b35; }
         .service-card-desc {
             font-size: 14px;
             color: #4b5563;
@@ -263,16 +272,12 @@
             margin-top: 6px;
             transition: color 0.25s ease;
         }
-        .demo-notice {
-            grid-column: 1 / -1;
-            font-size: 13px;
-            color: #9ca3af;
-            padding: 12px 16px;
-            background: #f9fafb;
-            border: 1px dashed #e5e7eb;
-            text-align: center;
+        .service-card-icon {
+            background: #f5f5f5;
+            width: 48px;
+            height: 48px;
         }
-        .demo-notice i { margin-right: 6px; color: #ff6b35; }
+        .service-card.selected .service-card-icon { background: rgba(255,107,53,0.15); }
 
         /* ── Step 2: Date & Time ── */
         .datetime-layout {
