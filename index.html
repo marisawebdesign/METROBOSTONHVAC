@@ -6,11 +6,12 @@
     <title>Emergency HVAC Services | Stoughton MA | 24/7 Heating & Cooling</title>
     <meta name="description" content="24/7 emergency HVAC repair in Stoughton MA and surrounding areas. Licensed MA contractor with 30+ years experience. Fast response, price match guarantee.">
 
-    <!-- Preconnect to external domains -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Preconnect to external domains (only Unsplash remains external) -->
     <link rel="preconnect" href="https://images.unsplash.com">
-    <link rel="preconnect" href="https://unpkg.com">
+
+    <!-- Preload critical fonts (self-hosted) -->
+    <link rel="preload" as="font" href="fonts/bebas-neue-latin-400-normal.woff2" type="font/woff2" crossorigin>
+    <link rel="preload" as="font" href="fonts/source-sans-3-latin-400-normal.woff2" type="font/woff2" crossorigin>
 
     <!-- Preload hero image -->
     <link rel="preload" as="image" href="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1920&q=80&fm=webp" type="image/webp">
@@ -85,21 +86,18 @@
     </style>
 
     <!-- Full CSS loaded async (non-render-blocking) -->
-    <link rel="stylesheet" href="styles.css" media="print" onload="this.media='all'">
-    <noscript><link rel="stylesheet" href="styles.css"></noscript>
+    <link rel="stylesheet" href="styles.css?v=1.0" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="styles.css?v=1.0"></noscript>
 
-    <!-- Google Fonts loaded async (non-render-blocking) -->
-    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Source+Sans+3:wght@400;600;700&display=swap">
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
-    <noscript><link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet"></noscript>
+    <!-- Fonts are self-hosted via @font-face in styles.css (no external Google Fonts needed) -->
 
-    <!-- Leaflet CSS loaded async (map is below fold) -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" media="print" onload="this.media='all'" />
-    <noscript><link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"></noscript>
+    <!-- Leaflet CSS loaded async (self-hosted, map is below fold) -->
+    <link rel="stylesheet" href="leaflet.css?v=1.9.4" media="print" onload="this.media='all'" />
+    <noscript><link rel="stylesheet" href="leaflet.css?v=1.9.4"></noscript>
 
     <!-- Chat widget CSS loaded async (widget is non-critical) -->
-    <link rel="stylesheet" href="chat-widget.css" media="print" onload="this.media='all'" />
-    <noscript><link rel="stylesheet" href="chat-widget.css"></noscript>
+    <link rel="stylesheet" href="chat-widget.css?v=1.0" media="print" onload="this.media='all'" />
+    <noscript><link rel="stylesheet" href="chat-widget.css?v=1.0"></noscript>
 </head>
 <body>
 
@@ -1124,8 +1122,8 @@
         </div>
     </footer>
 
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" defer></script>
-<script src="scripts.js" defer></script>
+<script src="leaflet.js?v=1.9.4" defer></script>
+<script src="scripts.js?v=1.0" defer></script>
 <script>
 // Mobile accordion
 document.querySelectorAll('.mobile-accordion-toggle').forEach(function(btn) {
@@ -1312,6 +1310,6 @@ document.querySelectorAll('.mobile-accordion-toggle').forEach(function(btn) {
     });
 })();
 </script>
-<script src="chat-widget.js" defer></script>
+<script src="chat-widget.js?v=1.0" defer></script>
 </body>
 </html>
