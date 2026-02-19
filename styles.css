@@ -1069,7 +1069,7 @@
         /* Service Area Map */
         .service-area-section {
             max-width: 1200px;
-            margin: 60px auto 0;
+            margin: 40px auto 0;
         }
 
         .service-area-section h3 {
@@ -1077,7 +1077,7 @@
             font-size: clamp(24px, 3vw, 32px);
             color: var(--navy);
             letter-spacing: 1px;
-            margin-bottom: 20px;
+            margin-bottom: 16px;
             text-align: center;
         }
 
@@ -1131,10 +1131,13 @@
         /* City List Grid */
         .city-list-section {
             margin-top: 24px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0 32px;
         }
 
         .city-list-region {
-            margin-bottom: 20px;
+            margin-bottom: 12px;
         }
 
         .city-list-region-header {
@@ -1182,13 +1185,13 @@
             padding: 0;
             margin: 0;
             display: grid;
-            grid-template-columns: repeat(5, 1fr);
-            gap: 6px 12px;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3px 8px;
             max-height: 500px;
             overflow: hidden;
             transition: max-height 0.4s ease, opacity 0.3s ease, margin 0.3s ease;
             opacity: 1;
-            margin-top: 12px;
+            margin-top: 10px;
         }
 
         .city-list-region.collapsed .map-city-list {
@@ -1200,9 +1203,9 @@
         .map-city-list li {
             display: flex;
             align-items: center;
-            gap: 8px;
-            padding: 7px 10px;
-            font-size: 14px;
+            gap: 6px;
+            padding: 5px 8px;
+            font-size: 13px;
             font-weight: 600;
             color: var(--gray-600);
             border-radius: 8px;
@@ -2348,8 +2351,13 @@
                 max-height: 400px;
             }
 
+            .city-list-section {
+                grid-template-columns: 1fr 1fr;
+                gap: 0 24px;
+            }
+
             .map-city-list {
-                grid-template-columns: repeat(4, 1fr);
+                grid-template-columns: repeat(2, 1fr);
             }
 
             .payment-container {
@@ -2521,13 +2529,18 @@
                 height: 320px;
             }
 
+            .city-list-section {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+
             .map-city-list {
                 grid-template-columns: repeat(3, 1fr);
             }
 
             .map-city-list li {
                 font-size: 13px;
-                padding: 6px 8px;
+                padding: 5px 6px;
             }
 
             .quote-features {
