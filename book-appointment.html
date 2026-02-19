@@ -3,13 +3,482 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Book an Appointment | Metro Boston HVAC</title>
-    <meta name="description" content="Schedule your HVAC service appointment online with Metro Boston HVAC. Fast, easy booking for repairs, maintenance, and installations.">
+    <title>Book an Appointment | Metro Boston HVAC | Schedule Service Online</title>
+    <meta name="description" content="Book a $79 diagnostic visit or free phone consultation with Metro Boston HVAC. Licensed MA contractor #081600137. Serving Greater Boston and the South Shore. Call (781) 408-2506.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
-
     <link rel="stylesheet" href="chat-widget.css">
+
+    <style>
+        /* ==================== PAGE HERO ==================== */
+        .page-hero {
+            background: var(--navy-dark);
+            padding: 80px 24px 60px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page-hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(15,37,54,0.95), rgba(26,58,82,0.85));
+            z-index: 1;
+        }
+
+        .page-hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .page-hero h1 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(36px, 6vw, 56px);
+            color: var(--white);
+            letter-spacing: 2px;
+            line-height: 1.1;
+            margin-bottom: 16px;
+        }
+
+        .page-hero h1 .accent {
+            color: var(--orange);
+        }
+
+        .page-hero p {
+            font-size: clamp(16px, 2vw, 20px);
+            color: rgba(255,255,255,0.8);
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* ==================== DIAGNOSTIC SECTION ==================== */
+        .diagnostic-section {
+            background: var(--gray-50);
+            padding: 80px 24px;
+            border-top: 4px solid var(--orange);
+        }
+
+        .diagnostic-inner {
+            max-width: 960px;
+            margin: 0 auto;
+        }
+
+        .diagnostic-header {
+            display: flex;
+            align-items: flex-start;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .diagnostic-price {
+            flex-shrink: 0;
+            text-align: center;
+        }
+
+        .diagnostic-price .price {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 72px;
+            color: var(--navy-dark);
+            letter-spacing: 1px;
+            line-height: 1;
+        }
+
+        .diagnostic-price .waived-tag {
+            display: inline-block;
+            margin-top: 8px;
+            padding: 6px 14px;
+            background: var(--navy-dark);
+            color: var(--white);
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .diagnostic-details h2 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(28px, 4vw, 40px);
+            color: var(--navy-dark);
+            letter-spacing: 1px;
+            line-height: 1.1;
+            margin-bottom: 20px;
+        }
+
+        .diagnostic-details p {
+            font-size: 18px;
+            color: var(--gray-600);
+            line-height: 1.7;
+            margin-bottom: 16px;
+        }
+
+        .diagnostic-credentials {
+            margin-top: 24px;
+            padding-top: 20px;
+            border-top: 1px solid var(--gray-200);
+            font-size: 15px;
+            color: var(--gray-600);
+            font-weight: 600;
+        }
+
+        .square-embed-container {
+            width: 100%;
+            min-height: 400px;
+            background: var(--white);
+            border: 1px solid var(--gray-200);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin-top: 40px;
+            padding: 40px 24px;
+        }
+
+        .square-embed-container .placeholder-text {
+            font-size: 18px;
+            color: var(--gray-600);
+            text-align: center;
+            margin-bottom: 8px;
+        }
+
+        .square-embed-container .placeholder-phone {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--navy-dark);
+            text-decoration: none;
+        }
+
+        .square-embed-container .placeholder-phone:hover {
+            color: var(--orange);
+        }
+
+        .diagnostic-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 24px;
+            background: var(--orange);
+            color: var(--white);
+            padding: 18px 36px;
+            font-size: 20px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 20px rgba(255,107,53,0.4);
+        }
+
+        .diagnostic-cta:hover {
+            background: var(--orange-glow);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(255,107,53,0.5);
+        }
+
+        .diagnostic-cta svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        .diagnostic-cta-wrap {
+            text-align: center;
+        }
+
+        /* ==================== CONSULTATION SECTION ==================== */
+        .consultation-section {
+            background: var(--white);
+            padding: 80px 24px;
+        }
+
+        .consultation-inner {
+            max-width: 720px;
+            margin: 0 auto;
+        }
+
+        .consultation-inner h2 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(24px, 3.5vw, 34px);
+            color: var(--navy-dark);
+            letter-spacing: 1px;
+            line-height: 1.1;
+            margin-bottom: 16px;
+        }
+
+        .consultation-inner p {
+            font-size: 17px;
+            color: var(--gray-600);
+            line-height: 1.7;
+            margin-bottom: 16px;
+        }
+
+        .consultation-inner .square-embed-container {
+            min-height: 350px;
+            border: 1px solid var(--gray-200);
+            background: var(--gray-50);
+        }
+
+        .consultation-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 24px;
+            background: transparent;
+            color: var(--navy-dark);
+            padding: 16px 32px;
+            font-size: 18px;
+            font-weight: 700;
+            text-decoration: none;
+            border: 2px solid var(--navy-dark);
+            transition: all 0.3s ease;
+        }
+
+        .consultation-cta:hover {
+            background: var(--navy-dark);
+            color: var(--white);
+            transform: translateY(-2px);
+        }
+
+        .consultation-cta svg {
+            width: 22px;
+            height: 22px;
+        }
+
+        .consultation-cta-wrap {
+            text-align: center;
+        }
+
+        /* ==================== EMERGENCY SECTION ==================== */
+        .emergency-section {
+            background: var(--navy-dark);
+            padding: 60px 24px;
+            text-align: center;
+        }
+
+        .emergency-inner {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .emergency-inner h2 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(28px, 4vw, 44px);
+            color: var(--white);
+            letter-spacing: 1.5px;
+            margin-bottom: 16px;
+        }
+
+        .emergency-inner p {
+            font-size: 18px;
+            color: rgba(255,255,255,0.75);
+            line-height: 1.6;
+            margin-bottom: 32px;
+        }
+
+        .emergency-call-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--orange);
+            color: var(--white);
+            padding: 18px 36px;
+            font-size: 20px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 20px rgba(255,107,53,0.4);
+        }
+
+        .emergency-call-btn:hover {
+            background: var(--orange-glow);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(255,107,53,0.5);
+        }
+
+        .emergency-call-btn svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        /* ==================== PAYMENT SECTION ==================== */
+        .payment-section {
+            background: var(--white);
+            padding: 60px 24px;
+            border-top: 1px solid var(--gray-200);
+        }
+
+        .payment-inner {
+            max-width: 700px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .payment-inner h2 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(24px, 3vw, 34px);
+            color: var(--navy-dark);
+            letter-spacing: 1px;
+            margin-bottom: 16px;
+        }
+
+        .payment-inner p {
+            font-size: 17px;
+            color: var(--gray-600);
+            line-height: 1.7;
+        }
+
+        .payment-icons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 24px;
+            flex-wrap: wrap;
+        }
+
+        .payment-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 18px;
+            border: 1px solid var(--gray-200);
+            background: var(--gray-50);
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--gray-600);
+            letter-spacing: 0.3px;
+        }
+
+        /* ==================== CTA BANNER ==================== */
+        .cta-banner {
+            background: var(--navy-dark);
+            padding: 60px 24px;
+            text-align: center;
+        }
+
+        .cta-banner-inner {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .cta-banner h2 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(28px, 4vw, 44px);
+            color: var(--white);
+            letter-spacing: 1.5px;
+            margin-bottom: 12px;
+        }
+
+        .cta-banner p {
+            font-size: 18px;
+            color: rgba(255,255,255,0.7);
+            margin-bottom: 32px;
+            line-height: 1.6;
+        }
+
+        .cta-banner-actions {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .cta-btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--orange);
+            color: var(--white);
+            padding: 18px 36px;
+            font-size: 20px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 20px rgba(255,107,53,0.4);
+        }
+
+        .cta-btn-primary:hover {
+            background: var(--orange-glow);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(255,107,53,0.5);
+        }
+
+        .cta-btn-primary svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        /* ==================== RESPONSIVE (PAGE-SPECIFIC) ==================== */
+        @media (max-width: 768px) {
+            .page-hero {
+                padding: 60px 20px 40px;
+            }
+
+            .diagnostic-section {
+                padding: 60px 20px;
+            }
+
+            .diagnostic-header {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                gap: 24px;
+            }
+
+            .diagnostic-price .price {
+                font-size: 56px;
+            }
+
+            .consultation-section {
+                padding: 60px 20px;
+            }
+
+            .emergency-section {
+                padding: 40px 20px;
+            }
+
+            .payment-section {
+                padding: 40px 20px;
+            }
+
+            .cta-banner {
+                padding: 40px 20px;
+            }
+
+            .cta-banner-actions {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .square-embed-container {
+                min-height: 300px;
+                padding: 30px 16px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .diagnostic-price .price {
+                font-size: 48px;
+            }
+
+            .diagnostic-details p {
+                font-size: 16px;
+            }
+
+            .consultation-inner p {
+                font-size: 16px;
+            }
+
+            .payment-icons {
+                gap: 12px;
+            }
+
+            .payment-icon {
+                padding: 8px 14px;
+                font-size: 13px;
+            }
+        }
+    </style>
 </head>
 <body>
 
@@ -140,9 +609,112 @@
         </div>
     </div>
 
+    <!-- ==================== PAGE HERO ==================== -->
+    <section class="page-hero">
+        <div class="page-hero-content">
+            <h1>Book an <span class="accent">Appointment</span></h1>
+            <p>Schedule a diagnostic visit or consultation online. Same-day appointments often available.</p>
+        </div>
+    </section>
+
+    <!-- ==================== $79 DIAGNOSTIC SECTION ==================== -->
+    <section class="diagnostic-section">
+        <div class="diagnostic-inner">
+            <div class="diagnostic-header">
+                <div class="diagnostic-price">
+                    <div class="price">$79</div>
+                    <span class="waived-tag">Waived with repair</span>
+                </div>
+                <div class="diagnostic-details">
+                    <h2>Diagnostic Visit</h2>
+                    <p>A technician comes to your home, inspects your system, and tells you exactly what is going on. The cost is $79. That covers the visit, the inspection, and a clear explanation of what we find.</p>
+                    <p>If you decide to move forward with the repair, the $79 diagnostic fee is waived completely. You only pay for the repair itself. So if your system does need work and you give us the go-ahead, the diagnostic was free. If you decide not to move forward, you still walk away knowing exactly what the problem is and what your options are. Either way, you are not guessing.</p>
+                    <div class="diagnostic-credentials">Over 30 years of experience. Licensed and insured in Massachusetts (MA #081600137).</div>
+                </div>
+            </div>
+
+            <!-- SQUARE APPOINTMENTS EMBED CODE GOES HERE - $79 DIAGNOSTIC -->
+            <div id="square-booking-diagnostic" class="square-embed-container">
+                <p class="placeholder-text">Online booking coming soon.</p>
+                <a href="tel:7814082506" class="placeholder-phone">Call (781) 408-2506 to schedule</a>
+            </div>
+
+            <div class="diagnostic-cta-wrap">
+                <a href="tel:7814082506" class="diagnostic-cta">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                    Call to Schedule a Diagnostic
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== FREE CONSULTATION SECTION ==================== -->
+    <section class="consultation-section">
+        <div class="consultation-inner">
+            <h2>Free Phone Consultation</h2>
+            <p>Not sure what you need yet? No problem. Schedule a free phone call and we will help you figure out next steps. We can talk through what is going on with your system, answer your questions, and help you decide whether a diagnostic visit makes sense. No pressure, no cost.</p>
+
+            <!-- SQUARE APPOINTMENTS EMBED CODE GOES HERE - FREE CONSULTATION -->
+            <div id="square-booking-consultation" class="square-embed-container">
+                <p class="placeholder-text">Online booking coming soon.</p>
+                <a href="tel:7814082506" class="placeholder-phone">Call (781) 408-2506 to schedule</a>
+            </div>
+
+            <div class="consultation-cta-wrap">
+                <a href="tel:7814082506" class="consultation-cta">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                    Call to Schedule a Consultation
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== EMERGENCY REPAIR CALLOUT ==================== -->
+    <section class="emergency-section">
+        <div class="emergency-inner">
+            <h2>Need Emergency Repair?</h2>
+            <p>For emergency service, call us any time, day or night. We are available 24/7 including weekends and holidays. No after-hours fees.</p>
+            <a href="tel:7814082506" class="emergency-call-btn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                Call (781) 408-2506
+            </a>
+        </div>
+    </section>
+
+    <!-- ==================== PAYMENT SECTION ==================== -->
+    <section class="payment-section">
+        <div class="payment-inner">
+            <h2>Payment</h2>
+            <p>We accept all major credit cards, debit cards, Apple Pay, Google Pay, and cash for emergency repairs, new installations, and all services.</p>
+            <div class="payment-icons">
+                <span class="payment-icon">Visa</span>
+                <span class="payment-icon">Mastercard</span>
+                <span class="payment-icon">Amex</span>
+                <span class="payment-icon">Discover</span>
+                <span class="payment-icon">Apple Pay</span>
+                <span class="payment-icon">Google Pay</span>
+                <span class="payment-icon">Cash</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== BOTTOM CTA BANNER ==================== -->
+    <section class="cta-banner">
+        <div class="cta-banner-inner">
+            <h2>Questions? Give Us a Call.</h2>
+            <p>We pick up the phone day and night. Talk to a real person, not a recording.</p>
+            <div class="cta-banner-actions">
+                <a href="tel:7814082506" class="cta-btn-primary">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                    Call (781) 408-2506
+                </a>
+            </div>
+        </div>
+    </section>
+
 <script>
 document.querySelectorAll('.mobile-accordion-toggle').forEach(function(btn) {
-    btn.addEventListener('click', function() { this.parentElement.classList.toggle('open'); });
+    btn.addEventListener('click', function() { this.parentElement.classList.toggle('active'); });
 });
 </script>
 
