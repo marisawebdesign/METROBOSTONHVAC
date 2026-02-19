@@ -58,6 +58,10 @@
             flex-shrink: 0;
         }
 
+        .logo picture {
+            display: contents;
+        }
+
         .logo img {
             height: 72px;
             width: auto;
@@ -1057,6 +1061,7 @@
             border-radius: 16px;
             overflow: hidden;
             box-shadow: 0 20px 50px rgba(26, 58, 82, 0.15);
+            aspect-ratio: 1 / 1;
         }
 
         .local-image img {
@@ -1064,6 +1069,10 @@
             height: 100%;
             object-fit: cover;
             display: block;
+        }
+
+        .local-image picture {
+            display: contents;
         }
 
         /* Service Area Map */
@@ -1365,10 +1374,16 @@
         .tool-slide {
             flex: 0 0 100%;
             min-width: 0;
+            aspect-ratio: 1 / 1;
+        }
+
+        .tool-slide picture {
+            display: contents;
         }
 
         .tool-slide-img {
             width: 100%;
+            height: 100%;
             display: block;
             object-fit: cover;
         }
@@ -2107,6 +2122,7 @@
             position: relative;
             border-radius: 16px;
             overflow: visible;
+            aspect-ratio: 1 / 1;
         }
 
         .payment-image img {
@@ -2724,6 +2740,10 @@
 
         .footer-logo {
             margin-bottom: 16px;
+        }
+
+        .footer-logo picture {
+            display: contents;
         }
 
         .footer-logo img {
