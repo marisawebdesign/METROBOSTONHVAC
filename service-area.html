@@ -6,9 +6,11 @@
     <title>Service Area | Metro Boston HVAC</title>
     <meta name="description" content="Metro Boston HVAC serves Stoughton, Brockton, Canton, Quincy, and surrounding South Shore communities.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+    <link rel="preload" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"></noscript>
     <link rel="stylesheet" href="chat-widget.css">
 
     <style>
@@ -817,6 +819,6 @@ document.querySelectorAll('.mobile-accordion-toggle').forEach(function(btn) {
 });
 </script>
 
-<script src="chat-widget.js"></script>
+<script src="chat-widget.js" defer></script>
 </body>
 </html>
