@@ -6,6 +6,7 @@
     <title>HVAC Services | Metro Boston HVAC | Emergency Repair, Installation & Maintenance</title>
     <meta name="description" content="Complete HVAC services for Greater Boston and the South Shore. Emergency repair, diagnostics, maintenance, new installations, and heat pump systems. Licensed MA contractor #081600137. Available 24/7.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="chat-widget.css">
@@ -957,7 +958,20 @@
             }
 
             .mobile-toggle {
-                display: block;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background: var(--navy-dark);
+                border-radius: 8px;
+                padding: 10px;
+                min-width: 48px;
+                min-height: 48px;
+            }
+
+            .mobile-toggle svg {
+                width: 26px;
+                height: 26px;
+                color: white;
             }
 
             .header-mobile-name {
@@ -1000,7 +1014,7 @@
 
         @media (max-width: 768px) {
             .page-hero {
-                padding: 60px 20px 40px;
+                padding: 120px 20px 40px;
             }
 
             .svc-section {
@@ -1393,7 +1407,7 @@
                 </div>
             </div>
             <div class="svc-image scroll-reveal delay-1">
-                <img src="images/basicdiagnostic.jpg" alt="Metro Boston HVAC basic diagnostic service" style="object-fit: contain; width: 100%; height: auto;">
+                <img src="images/basicdiagnostic.jpg" alt="Metro Boston HVAC basic diagnostic service" style="object-fit: contain; width: 100%; height: auto;" loading="lazy" width="1024" height="1024">
             </div>
         </div>
     </section>
@@ -1440,7 +1454,7 @@
                 </div>
             </div>
             <div class="svc-image scroll-reveal delay-1">
-                <img src="images/hvacemergency.jpg" alt="Metro Boston HVAC emergency repair service" style="object-fit: contain; width: 100%; height: auto;">
+                <img src="images/hvacemergency.jpg" alt="Metro Boston HVAC emergency repair service" style="object-fit: contain; width: 100%; height: auto;" loading="lazy" width="600" height="600">
             </div>
         </div>
     </section>
@@ -1487,7 +1501,7 @@
                 </div>
             </div>
             <div class="svc-image scroll-reveal delay-1">
-                <img src="images/annualplan.jpg" alt="Metro Boston HVAC annual maintenance plan" style="object-fit: contain; width: 100%; height: auto;">
+                <img src="images/annualplan.jpg" alt="Metro Boston HVAC annual maintenance plan" style="object-fit: contain; width: 100%; height: auto;" loading="lazy" width="800" height="800">
             </div>
         </div>
     </section>
@@ -1534,7 +1548,7 @@
                 </div>
             </div>
             <div class="svc-image scroll-reveal delay-1">
-                <img src="images/newinstall.jpg" alt="Metro Boston HVAC new unit installation" style="object-fit: contain; width: 100%; height: auto;">
+                <img src="images/newinstall.jpg" alt="Metro Boston HVAC new unit installation" style="object-fit: contain; width: 100%; height: auto;" loading="lazy" width="1024" height="1024">
             </div>
         </div>
     </section>
@@ -1581,7 +1595,7 @@
                 </div>
             </div>
             <div class="svc-image scroll-reveal delay-1">
-                <img src="images/heatpump.jpg" alt="Metro Boston HVAC heat pump installation" style="object-fit: contain; width: 100%; height: auto;">
+                <img src="images/heatpump.jpg" alt="Metro Boston HVAC heat pump installation" style="object-fit: contain; width: 100%; height: auto;" loading="lazy" width="600" height="600">
             </div>
         </div>
     </section>
@@ -1628,7 +1642,7 @@
                 </div>
             </div>
             <div class="svc-image scroll-reveal delay-1">
-                <img src="images/commercial.jpg" alt="Metro Boston HVAC commercial maintenance" style="object-fit: contain; width: 100%; height: auto;">
+                <img src="images/commercial.jpg" alt="Metro Boston HVAC commercial maintenance" style="object-fit: contain; width: 100%; height: auto;" loading="lazy" width="1024" height="1024">
             </div>
         </div>
     </section>
@@ -1712,6 +1726,6 @@ document.querySelectorAll('.mobile-accordion-toggle').forEach(function(btn) {
 });
 </script>
 
-<script src="chat-widget.js"></script>
+<script src="chat-widget.js" defer></script>
 </body>
 </html>

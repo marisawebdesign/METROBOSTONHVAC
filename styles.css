@@ -685,6 +685,7 @@
             height: 100%;
             object-fit: cover;
             object-position: center 40%;
+            aspect-ratio: 3 / 2;
         }
 
         .hero-overlay {
@@ -2309,7 +2310,20 @@
             }
 
             .mobile-toggle {
-                display: block;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background: var(--navy-dark);
+                border-radius: 8px;
+                padding: 10px;
+                min-width: 48px;
+                min-height: 48px;
+            }
+
+            .mobile-toggle svg {
+                width: 26px;
+                height: 26px;
+                color: white;
             }
 
             .header-mobile-name {

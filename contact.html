@@ -1026,7 +1026,20 @@
             }
 
             .mobile-toggle {
-                display: block;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background: var(--navy-dark);
+                border-radius: 8px;
+                padding: 10px;
+                min-width: 48px;
+                min-height: 48px;
+            }
+
+            .mobile-toggle svg {
+                width: 26px;
+                height: 26px;
+                color: white;
             }
 
             .header-mobile-name {
@@ -1054,7 +1067,7 @@
 
         @media (max-width: 768px) {
             .page-hero {
-                padding: 60px 20px 40px;
+                padding: 120px 20px 40px;
             }
 
             .contact-form-card {

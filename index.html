@@ -5,10 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Emergency HVAC Services | Stoughton MA | 24/7 Heating & Cooling</title>
     <meta name="description" content="24/7 emergency HVAC repair in Stoughton MA and surrounding areas. Licensed MA contractor with 30+ years experience. Fast response, price match guarantee.">
+    <link rel="preload" as="image" href="images/hero-mobile.jpg" media="(max-width: 768px)">
     <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="preload" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"></noscript>
     <link rel="stylesheet" href="chat-widget.css" />
 </head>
 <body>
@@ -17,7 +20,7 @@
     <header class="header-top">
         <div class="header-top-inner">
             <a href="index.html" class="logo">
-                <img src="images/logo.jpg" alt="Metro Boston HVAC - 24/7 Service">
+                <img src="images/logo-small.jpg" alt="Metro Boston HVAC - 24/7 Service">
             </a>
 
             <!-- Mobile company name (visible only on mobile) -->
@@ -283,7 +286,11 @@
     <!-- ==================== HERO ==================== -->
     <section class="hero">
         <div class="hero-background">
-            <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1920&q=80" alt="HVAC service team standing by service van">
+            <picture>
+                <source media="(max-width: 768px)" srcset="images/hero-mobile.jpg">
+                <source media="(min-width: 769px)" srcset="images/hero.jpg">
+                <img src="images/hero.jpg" alt="HVAC service team standing by service van" width="1920" height="1272" fetchpriority="high">
+            </picture>
         </div>
         <div class="hero-overlay"></div>
 
@@ -431,7 +438,7 @@
             </div>
 
             <div class="local-image scroll-reveal fade-right delay-1">
-                <img src="images/van.jpg" alt="Metro Boston HVAC service van">
+                <img src="images/van.jpg" alt="Metro Boston HVAC service van" loading="lazy" width="800" height="800">
             </div>
         </div>
 
@@ -552,7 +559,7 @@
 
             <div class="payment-right scroll-reveal fade-up delay-1">
                 <div class="payment-image">
-                    <img src="https://media.istockphoto.com/id/2172868819/photo/a-homeowner-and-a-technician-shake-hands-in-front-of-a-house-near-an-external-heat-pump-unit.jpg?s=612x612&w=0&k=20&c=ANGz3ns6p3AK3nN2OqGTX3PR6SBQqrLlu4CjEt93qYI=" alt="HVAC technician shaking hands with satisfied homeowner">
+                    <img src="images/handshake.jpg" alt="HVAC technician shaking hands with satisfied homeowner" loading="lazy" width="612" height="345">
                     <div class="price-shield">
                         <svg class="shield-bg" viewBox="0 0 160 180" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <defs>
@@ -650,15 +657,15 @@
                         <div class="tools-track" id="toolsTrack">
                             <!-- Slide 1: BTU Calculator -->
                             <div class="tool-slide">
-                                <img src="images/btucalculator.jpg" alt="HVAC BTU Size Calculator" class="tool-slide-img">
+                                <img src="images/btucalculator.jpg" alt="HVAC BTU Size Calculator" class="tool-slide-img" loading="lazy" width="400" height="400">
                             </div>
                             <!-- Slide 2: System Selector Quiz -->
                             <div class="tool-slide">
-                                <img src="images/quiz.jpg" alt="Which HVAC System Is Right for You?" class="tool-slide-img">
+                                <img src="images/quiz.jpg" alt="Which HVAC System Is Right for You?" class="tool-slide-img" loading="lazy" width="400" height="400">
                             </div>
                             <!-- Slide 3: Guides & Printouts -->
                             <div class="tool-slide">
-                                <img src="images/Bazaart_9DE4610E-DAD3-478A-ADFA-85BF617453C3.jpeg" alt="Guides, Calendars and Printouts" class="tool-slide-img">
+                                <img src="images/Bazaart_9DE4610E-DAD3-478A-ADFA-85BF617453C3.jpeg" alt="Guides, Calendars and Printouts" class="tool-slide-img" loading="lazy" width="400" height="400">
                             </div>
                         </div>
                     </div>
@@ -967,7 +974,7 @@
             <div class="footer-main">
                 <div class="footer-brand">
                     <div class="footer-logo">
-                        <img src="images/logo.jpg" alt="Metro Boston HVAC">
+                        <img src="images/logo.jpg" alt="Metro Boston HVAC" loading="lazy" width="200" height="200">
                     </div>
                     <p class="footer-tagline">Serving Greater Boston and the South Shore for over 30 years. Licensed, insured, and available around the clock.</p>
                     <p class="footer-license">MA License #081600137</p>
@@ -1012,8 +1019,8 @@
         </div>
     </footer>
 
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-<script src="scripts.js"></script>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" defer></script>
+<script src="scripts.js" defer></script>
 <script>
 // Mobile accordion
 document.querySelectorAll('.mobile-accordion-toggle').forEach(function(btn) {
@@ -1200,6 +1207,6 @@ document.querySelectorAll('.mobile-accordion-toggle').forEach(function(btn) {
     });
 })();
 </script>
-<script src="chat-widget.js"></script>
+<script src="chat-widget.js" defer></script>
 </body>
 </html>
