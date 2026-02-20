@@ -146,6 +146,7 @@
             letter-spacing: 1.5px;
             color: var(--orange);
             line-height: 1.2;
+            max-width: 260px;
         }
 
         /* Trust Badges */
